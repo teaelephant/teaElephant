@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */; };
+		4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29053124C0AEDE007A3D1B /* ContentView.swift */; };
+		4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29053324C0AEDF007A3D1B /* Assets.xcassets */; };
+		4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29053624C0AEDF007A3D1B /* Preview Assets.xcassets */; };
+		4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29054124C0AEDF007A3D1B /* TeaElephantTests.swift */; };
+		4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29054C24C0AEDF007A3D1B /* TeaElephantUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4B29053E24C0AEDF007A3D1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B29052424C0AEDE007A3D1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B29052B24C0AEDE007A3D1B;
+			remoteInfo = TeaElephant;
+		};
+		4B29054924C0AEDF007A3D1B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B29052424C0AEDE007A3D1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4B29052B24C0AEDE007A3D1B;
+			remoteInfo = TeaElephant;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4B29052C24C0AEDE007A3D1B /* TeaElephant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaElephant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantApp.swift; sourceTree = "<group>"; };
+		4B29053124C0AEDE007A3D1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4B29053324C0AEDF007A3D1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B29053624C0AEDF007A3D1B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4B29053824C0AEDF007A3D1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B29053D24C0AEDF007A3D1B /* TeaElephantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeaElephantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B29054124C0AEDF007A3D1B /* TeaElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantTests.swift; sourceTree = "<group>"; };
+		4B29054324C0AEDF007A3D1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B29054824C0AEDF007A3D1B /* TeaElephantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeaElephantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B29054C24C0AEDF007A3D1B /* TeaElephantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantUITests.swift; sourceTree = "<group>"; };
+		4B29054E24C0AEDF007A3D1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4B29052924C0AEDE007A3D1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B29053A24C0AEDF007A3D1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B29054524C0AEDF007A3D1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4B29052324C0AEDE007A3D1B = {
+			isa = PBXGroup;
+			children = (
+				4B29052E24C0AEDE007A3D1B /* TeaElephant */,
+				4B29054024C0AEDF007A3D1B /* TeaElephantTests */,
+				4B29054B24C0AEDF007A3D1B /* TeaElephantUITests */,
+				4B29052D24C0AEDE007A3D1B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4B29052D24C0AEDE007A3D1B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4B29052C24C0AEDE007A3D1B /* TeaElephant.app */,
+				4B29053D24C0AEDF007A3D1B /* TeaElephantTests.xctest */,
+				4B29054824C0AEDF007A3D1B /* TeaElephantUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4B29052E24C0AEDE007A3D1B /* TeaElephant */ = {
+			isa = PBXGroup;
+			children = (
+				4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */,
+				4B29053124C0AEDE007A3D1B /* ContentView.swift */,
+				4B29053324C0AEDF007A3D1B /* Assets.xcassets */,
+				4B29053824C0AEDF007A3D1B /* Info.plist */,
+				4B29053524C0AEDF007A3D1B /* Preview Content */,
+			);
+			path = TeaElephant;
+			sourceTree = "<group>";
+		};
+		4B29053524C0AEDF007A3D1B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4B29053624C0AEDF007A3D1B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4B29054024C0AEDF007A3D1B /* TeaElephantTests */ = {
+			isa = PBXGroup;
+			children = (
+				4B29054124C0AEDF007A3D1B /* TeaElephantTests.swift */,
+				4B29054324C0AEDF007A3D1B /* Info.plist */,
+			);
+			path = TeaElephantTests;
+			sourceTree = "<group>";
+		};
+		4B29054B24C0AEDF007A3D1B /* TeaElephantUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4B29054C24C0AEDF007A3D1B /* TeaElephantUITests.swift */,
+				4B29054E24C0AEDF007A3D1B /* Info.plist */,
+			);
+			path = TeaElephantUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4B29052B24C0AEDE007A3D1B /* TeaElephant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B29055124C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephant" */;
+			buildPhases = (
+				4B29052824C0AEDE007A3D1B /* Sources */,
+				4B29052924C0AEDE007A3D1B /* Frameworks */,
+				4B29052A24C0AEDE007A3D1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TeaElephant;
+			productName = TeaElephant;
+			productReference = 4B29052C24C0AEDE007A3D1B /* TeaElephant.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4B29053C24C0AEDF007A3D1B /* TeaElephantTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B29055424C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephantTests" */;
+			buildPhases = (
+				4B29053924C0AEDF007A3D1B /* Sources */,
+				4B29053A24C0AEDF007A3D1B /* Frameworks */,
+				4B29053B24C0AEDF007A3D1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B29053F24C0AEDF007A3D1B /* PBXTargetDependency */,
+			);
+			name = TeaElephantTests;
+			productName = TeaElephantTests;
+			productReference = 4B29053D24C0AEDF007A3D1B /* TeaElephantTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4B29054724C0AEDF007A3D1B /* TeaElephantUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B29055724C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephantUITests" */;
+			buildPhases = (
+				4B29054424C0AEDF007A3D1B /* Sources */,
+				4B29054524C0AEDF007A3D1B /* Frameworks */,
+				4B29054624C0AEDF007A3D1B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B29054A24C0AEDF007A3D1B /* PBXTargetDependency */,
+			);
+			name = TeaElephantUITests;
+			productName = TeaElephantUITests;
+			productReference = 4B29054824C0AEDF007A3D1B /* TeaElephantUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4B29052424C0AEDE007A3D1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					4B29052B24C0AEDE007A3D1B = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					4B29053C24C0AEDF007A3D1B = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 4B29052B24C0AEDE007A3D1B;
+					};
+					4B29054724C0AEDF007A3D1B = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 4B29052B24C0AEDE007A3D1B;
+					};
+				};
+			};
+			buildConfigurationList = 4B29052724C0AEDE007A3D1B /* Build configuration list for PBXProject "TeaElephant" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4B29052324C0AEDE007A3D1B;
+			productRefGroup = 4B29052D24C0AEDE007A3D1B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4B29052B24C0AEDE007A3D1B /* TeaElephant */,
+				4B29053C24C0AEDF007A3D1B /* TeaElephantTests */,
+				4B29054724C0AEDF007A3D1B /* TeaElephantUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4B29052A24C0AEDE007A3D1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
+				4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B29053B24C0AEDF007A3D1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B29054624C0AEDF007A3D1B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B29052824C0AEDE007A3D1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */,
+				4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B29053924C0AEDF007A3D1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B29054424C0AEDF007A3D1B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B29053F24C0AEDF007A3D1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B29052B24C0AEDE007A3D1B /* TeaElephant */;
+			targetProxy = 4B29053E24C0AEDF007A3D1B /* PBXContainerItemProxy */;
+		};
+		4B29054A24C0AEDF007A3D1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4B29052B24C0AEDE007A3D1B /* TeaElephant */;
+			targetProxy = 4B29054924C0AEDF007A3D1B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4B29054F24C0AEDF007A3D1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4B29055024C0AEDF007A3D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4B29055224C0AEDF007A3D1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
+				DEVELOPMENT_TEAM = R859U8DTY9;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TeaElephant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4B29055324C0AEDF007A3D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
+				DEVELOPMENT_TEAM = R859U8DTY9;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = TeaElephant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4B29055524C0AEDF007A3D1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R859U8DTY9;
+				INFOPLIST_FILE = TeaElephantTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeaElephant.app/TeaElephant";
+			};
+			name = Debug;
+		};
+		4B29055624C0AEDF007A3D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R859U8DTY9;
+				INFOPLIST_FILE = TeaElephantTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeaElephant.app/TeaElephant";
+			};
+			name = Release;
+		};
+		4B29055824C0AEDF007A3D1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R859U8DTY9;
+				INFOPLIST_FILE = TeaElephantUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TeaElephant;
+			};
+			name = Debug;
+		};
+		4B29055924C0AEDF007A3D1B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R859U8DTY9;
+				INFOPLIST_FILE = TeaElephantUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TeaElephant;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4B29052724C0AEDE007A3D1B /* Build configuration list for PBXProject "TeaElephant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B29054F24C0AEDF007A3D1B /* Debug */,
+				4B29055024C0AEDF007A3D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B29055124C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B29055224C0AEDF007A3D1B /* Debug */,
+				4B29055324C0AEDF007A3D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B29055424C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephantTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B29055524C0AEDF007A3D1B /* Debug */,
+				4B29055624C0AEDF007A3D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4B29055724C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephantUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B29055824C0AEDF007A3D1B /* Debug */,
+				4B29055924C0AEDF007A3D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4B29052424C0AEDE007A3D1B /* Project object */;
+}
