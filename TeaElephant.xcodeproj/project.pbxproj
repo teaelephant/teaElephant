@@ -3,16 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CEAFD5C62553C1D9181D6E5 /* writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAFA09EF2B87EBF906E98D /* writer.swift */; };
 		4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */; };
 		4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29053124C0AEDE007A3D1B /* ContentView.swift */; };
 		4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29053324C0AEDF007A3D1B /* Assets.xcassets */; };
 		4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29053624C0AEDF007A3D1B /* Preview Assets.xcassets */; };
 		4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29054124C0AEDF007A3D1B /* TeaElephantTests.swift */; };
 		4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29054C24C0AEDF007A3D1B /* TeaElephantUITests.swift */; };
+		4B29055C24C2ECEC007A3D1B /* reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29055B24C2ECEC007A3D1B /* reader.swift */; };
+		4B29055F24C2ED3E007A3D1B /* TeaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29055E24C2ED3E007A3D1B /* TeaInfo.swift */; };
+		4B29056424C4374F007A3D1B /* NewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29056324C4374F007A3D1B /* NewCard.swift */; };
+		4B29056624C43760007A3D1B /* ShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29056524C43760007A3D1B /* ShowCard.swift */; };
+		4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */; };
+		4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34874624C63F360098F811 /* UIResponder+Current.swift */; };
+		4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67095B24C8A89900F4C4ED /* CardViewer.swift */; };
+		4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85B4E424C447DE00588DB9 /* Menu.swift */; };
+		4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */; };
+		4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CEAFA09EF2B87EBF906E98D /* writer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = writer.swift; sourceTree = "<group>"; };
 		4B29052C24C0AEDE007A3D1B /* TeaElephant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaElephant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantApp.swift; sourceTree = "<group>"; };
 		4B29053124C0AEDE007A3D1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +57,17 @@
 		4B29054824C0AEDF007A3D1B /* TeaElephantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeaElephantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B29054C24C0AEDF007A3D1B /* TeaElephantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantUITests.swift; sourceTree = "<group>"; };
 		4B29054E24C0AEDF007A3D1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B29055B24C2ECEC007A3D1B /* reader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reader.swift; sourceTree = "<group>"; };
+		4B29055E24C2ED3E007A3D1B /* TeaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaInfo.swift; sourceTree = "<group>"; };
+		4B29056024C35DE9007A3D1B /* TeaElephant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeaElephant.entitlements; sourceTree = "<group>"; };
+		4B29056324C4374F007A3D1B /* NewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCard.swift; sourceTree = "<group>"; };
+		4B29056524C43760007A3D1B /* ShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCard.swift; sourceTree = "<group>"; };
+		4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
+		4B34874624C63F360098F811 /* UIResponder+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Current.swift"; sourceTree = "<group>"; };
+		4B67095B24C8A89900F4C4ED /* CardViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewer.swift; sourceTree = "<group>"; };
+		4B85B4E424C447DE00588DB9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFieldCommunicator.swift; sourceTree = "<group>"; };
+		4BA6B76824C4E20800C46814 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +96,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CEAFD82D710C2C5A7179BBD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B29053124C0AEDE007A3D1B /* ContentView.swift */,
+				4B29056324C4374F007A3D1B /* NewCard.swift */,
+				4B29056524C43760007A3D1B /* ShowCard.swift */,
+				4B85B4E424C447DE00588DB9 /* Menu.swift */,
+				4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */,
+				4B34874624C63F360098F811 /* UIResponder+Current.swift */,
+				4B67095B24C8A89900F4C4ED /* CardViewer.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4B29052324C0AEDE007A3D1B = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +117,7 @@
 				4B29054024C0AEDF007A3D1B /* TeaElephantTests */,
 				4B29054B24C0AEDF007A3D1B /* TeaElephantUITests */,
 				4B29052D24C0AEDE007A3D1B /* Products */,
+				4BA6B76724C4E20800C46814 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,11 +134,14 @@
 		4B29052E24C0AEDE007A3D1B /* TeaElephant */ = {
 			isa = PBXGroup;
 			children = (
+				4B29056024C35DE9007A3D1B /* TeaElephant.entitlements */,
+				4B29055D24C2ED2A007A3D1B /* Models */,
+				4B29055A24C2ECD6007A3D1B /* TagManagement */,
 				4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */,
-				4B29053124C0AEDE007A3D1B /* ContentView.swift */,
 				4B29053324C0AEDF007A3D1B /* Assets.xcassets */,
 				4B29053824C0AEDF007A3D1B /* Info.plist */,
 				4B29053524C0AEDF007A3D1B /* Preview Content */,
+				1CEAFD82D710C2C5A7179BBD /* Views */,
 			);
 			path = TeaElephant;
 			sourceTree = "<group>";
@@ -128,6 +170,32 @@
 				4B29054E24C0AEDF007A3D1B /* Info.plist */,
 			);
 			path = TeaElephantUITests;
+			sourceTree = "<group>";
+		};
+		4B29055A24C2ECD6007A3D1B /* TagManagement */ = {
+			isa = PBXGroup;
+			children = (
+				4B29055B24C2ECEC007A3D1B /* reader.swift */,
+				1CEAFA09EF2B87EBF906E98D /* writer.swift */,
+				4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */,
+			);
+			path = TagManagement;
+			sourceTree = "<group>";
+		};
+		4B29055D24C2ED2A007A3D1B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4B29055E24C2ED3E007A3D1B /* TeaInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4BA6B76724C4E20800C46814 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BA6B76824C4E20800C46814 /* CoreNFC.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +277,7 @@
 				};
 			};
 			buildConfigurationList = 4B29052724C0AEDE007A3D1B /* Build configuration list for PBXProject "TeaElephant" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -259,8 +327,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */,
+				4B29055C24C2ECEC007A3D1B /* reader.swift in Sources */,
 				4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */,
+				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
+				4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */,
+				4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */,
+				4B29056624C43760007A3D1B /* ShowCard.swift in Sources */,
+				4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */,
+				4B29056424C4374F007A3D1B /* NewCard.swift in Sources */,
+				4B29055F24C2ED3E007A3D1B /* TeaInfo.swift in Sources */,
 				4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */,
+				1CEAFD5C62553C1D9181D6E5 /* writer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
@@ -439,6 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
