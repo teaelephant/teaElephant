@@ -13,21 +13,21 @@ struct ShowCard: View {
     var body: some View {
         if info != nil {
             VStack(alignment:.leading) {
-                Text(info!.name).bold().font(.title).foregroundColor(.orange)
+                Text(info!.data.name).bold().font(.title).foregroundColor(.orange)
                 HStack{
-                    Text(info!.type.rawValue).italic().multilineTextAlignment(.trailing)
+                    Text(info!.data.type.rawValue).italic().multilineTextAlignment(.trailing)
                     Spacer()
                 }
                 Spacer()
-                Text(info!.description).baselineOffset(5)
+                Text(info!.data.description).baselineOffset(5)
                 Spacer()
                 HStack {
                     Text("Годен до:")
-                    Text(self.dateToString(info!.expirationDate)).foregroundColor(.red)
+                    Text(self.dateToString(info!.meta.expirationDate)).foregroundColor(.red)
                 }
                 HStack {
                     Text("Температура заваривания")
-                    Text(info!.brewingTemp.formattedString)
+                    Text(info!.meta.brewingTemp.formattedString)
                 }
             }.padding(.horizontal, 20)
         } else {
@@ -46,8 +46,7 @@ struct ShowCard: View {
 
 struct ShowCard_Previews: PreviewProvider {
     static var previews: some View {
-        ShowCard(info: .constant(TeaInfo(
-                                    name: "Очень вкусный чай", type: TeaType.other, description: "тут длинная история о том как отважные первопроходцы нашли первые листочки этого прекрасного чая, и отбиваясь от нападения туземцев смогли доставить драгоценные листочки этого чая свой королеве", expirationDate: Date(), brewingTemp: 100)))
+        ShowCard(info: .constant(TeaInfo(meta: TeaMeta(id:"", expirationDate: Date(), brewingTemp: 100), data: TeaData(name: "Очень вкусный чай", type: TeaType.other, description: "тут длинная история о том как отважные первопроходцы нашли первые листочки этого прекрасного чая, и отбиваясь от нападения туземцев смогли доставить драгоценные листочки этого чая свой королеве"))))
     }
 }
 
@@ -65,7 +64,7 @@ extension Formatter {
     }()
 }
 
-extension Decimal {
+extension Int {
     var formattedString: String {
         return Formatter.stringFormatters.string(for: self) ?? ""
     }

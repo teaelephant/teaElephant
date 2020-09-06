@@ -5,8 +5,9 @@
 import Foundation
 import CoreNFC
 import UIKit
+import MessagePacker
 
-class tagWriter: NSObject {
+class tagWriter: NSObject, ShortInfoWriter {
     var nfc: NearFieldCommunicator!
     var message: NFCNDEFMessage?
 
@@ -15,15 +16,14 @@ class tagWriter: NSObject {
         nfc = NearFieldCommunicator(delegate: self)
     }
 
-    public func writeData(info: TeaInfo) throws {
+    public func writeData(info: TeaMeta) throws {
         guard NFCTagReaderSession.readingAvailable else {
             print("Scanning Not Supported")
             return
         }
         var data: Data
-        let jsonEncoder = JSONEncoder()
         do {
-            data = try jsonEncoder.encode(info)
+            data = try info.toBytes()
         } catch {
             print(error.localizedDescription)
             throw error

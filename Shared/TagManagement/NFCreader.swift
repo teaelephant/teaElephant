@@ -9,18 +9,24 @@ import Foundation
 import SwiftUI
 import UIKit
 import CoreNFC
+import MessagePacker
 
-class Reader: NSObject, ObservableObject {
+class NFCReader: NSObject, ObservableObject, ShortInfoReader {
     var nfc: NearFieldCommunicator!
-    @Published var detectedInfo: TeaInfo?
+    private var onRead: ((_ meta: TeaMeta) -> Void)?
+    @Published var detectedInfo: TeaMeta?
     @Published var error: Error?
 
     override init() {
         super.init()
         nfc = NearFieldCommunicator(delegate: self)
     }
+    
+    func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) -> Void) {
+        self.onRead = onRead
+    }
 
-    func start() {
+    func startReadInfo() {
         guard NFCTagReaderSession.readingAvailable else {
             print("Scanning Not Supported")
             return
@@ -33,7 +39,7 @@ class Reader: NSObject, ObservableObject {
     }
 }
 
-extension Reader: NFCProtocol {
+extension NFCReader: NFCProtocol {
 
     func ready() -> Void {
     }
@@ -89,11 +95,14 @@ extension Reader: NFCProtocol {
                 return
             }
 
-            let jsonDecoder = JSONDecoder()
             do {
-                self.detectedInfo = try jsonDecoder.decode(TeaInfo.self, from: messages[0].records[0].payload)
+                self.detectedInfo = try TeaMeta.fromBytes(data: messages[0].records[0].payload)
+                if self.onRead != nil && self.detectedInfo != nil {
+                    self.onRead!(self.detectedInfo!)
+                }
             } catch {
                 print(error.localizedDescription)
+                return
             }
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardViewer: View {
-    @ObservedObject private var reader = Reader()
+    @ObservedObject private var reader = Reader(infoReader: NFCReader(), extender: Api("https://te.xax.cloud"))
     var body: some View {
         VStack{
             ShowCard(info: $reader.detectedInfo)
@@ -23,7 +23,7 @@ struct CardViewer: View {
         }
     }
     func read() {
-        reader.start()
+        reader.readInfo()
         print("Прочитано.")
     }
 }

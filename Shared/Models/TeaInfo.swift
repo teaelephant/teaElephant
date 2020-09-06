@@ -15,9 +15,12 @@ enum TeaType: String, Codable {
 }
 
 struct TeaInfo: Codable {
+    let meta: TeaMeta
+    let data: TeaData
+}
+
+struct TeaData: Codable {
     let name: String
     let type: TeaType
     let description: String
-    let expirationDate: Date
-    let brewingTemp: Decimal
 }

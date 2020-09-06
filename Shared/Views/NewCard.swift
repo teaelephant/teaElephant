@@ -16,6 +16,9 @@ struct NewCard: View {
     @State private var expirationDate = Date.init()
     @State private var brewingTemp: String = "100"
     var body: some View {
+        #if APPCLIP
+        FullAppOffer()
+        #else
         ScrollView {
         VStack(alignment: .center, spacing: 20) {
             HStack{
@@ -53,6 +56,7 @@ struct NewCard: View {
             }
         }.padding()
         }.keyboardAdaptive()
+        #endif
     }
         
 
@@ -63,26 +67,25 @@ struct NewCard: View {
             nf.isLenient = true
             return nf
         }
-        var temp: Decimal
+        var temp: Int
         guard let n = formatter.number(from: brewingTemp) else {
             print("Температура заванривания - не число")
             return
         }
-        temp = n.decimalValue
+        temp = n.intValue
+        print(temp)
 
-        let info = TeaInfo(
-                name: name,
-                type: type,
-                description: description,
-                expirationDate: expirationDate,
-                brewingTemp: temp
+        let data = TeaData(
+            name:name,
+            type: type,
+            description: description
         )
-        print(info)
-        let writer = tagWriter()
         do {
-            try writer.writeData(info: info)
+            let w = writer(extend: Api("https://te.xax.cloud"), meta: tagWriter())
+            try w.write(data, expirationDate: expirationDate, brewingTemp: temp)
         } catch {
             print(error.localizedDescription)
+            return
         }
         print("Сохранено")
     }
