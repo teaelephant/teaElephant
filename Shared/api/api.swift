@@ -12,12 +12,12 @@ enum ApiError: Error {
     case serverError
 }
 
-class Api: ExtendInfoWriter, ExtendInfoReader {
+class Api: ExtendInfoWriter, ExtendInfoReader, ApiSearcher {
     var host: String
     var res: TeaInfo?
 
     init(_ url: String) {
-        self.host = url
+        host = url
     }
 
     func writeExtendInfo(info: TeaData, callback: @escaping (String, Error?) -> ()) throws {
@@ -77,9 +77,73 @@ class Api: ExtendInfoWriter, ExtendInfoReader {
         }
     }
 
+    func search(prefix: String, callback: @escaping (TeaDataWithID?, Error?) -> ()) {
+        DispatchQueue.global(qos: .utility).async {
+            let result = self.searchRecords(prefix: prefix)
+
+            DispatchQueue.main.async {
+                switch result {
+                case let .success(res):
+                    if res == nil {
+                        callback(nil, nil)
+                    }
+                    let decoder = JSONDecoder()
+                    do {
+                        let newInfo = try decoder.decode([TeaDataResponse].self, from: res!)
+                        if newInfo.count > 0 {
+                            callback(TeaDataWithID(ID: newInfo[0].ID, name: newInfo[0].name, type: newInfo[0].type, description: newInfo[0].description), nil)
+                        } else {
+                            callback(nil, nil)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                        callback(nil, error)
+                    }
+                case let .failure(error):
+                    callback(nil, error)
+                }
+            }
+        }
+    }
+
+    private func searchRecords(prefix: String) -> Result<Data?, ApiError> {
+        guard let escapedPrefix = prefix.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else{
+            print("fail escaping prefix: ", prefix)
+            return .failure(.notUrl(host + "/all?name=" + prefix))
+        }
+        guard let url = URL(string: host + "/all?name=" + escapedPrefix) else {
+            print("fail url: ", prefix)
+            return .failure(.notUrl(host + "/all?name=" + escapedPrefix))
+        }
+
+        var request = URLRequest(url: url)
+
+        request.httpMethod = "GET"
+
+        var result: Result<Data?, ApiError>!
+
+        let semaphore = DispatchSemaphore(value: 0)
+
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            if let data = data {
+                result = .success(data)
+            } else {
+                result = .failure(.serverError)
+            }
+            semaphore.signal()
+        }.resume()
+
+        _ = semaphore.wait(timeout: .distantFuture)
+
+        return result
+    }
+
     private func makeNewRecord(data: Data) -> Result<Data?, ApiError> {
-        guard let url = URL(string: self.host + "/new_record") else {
-            return .failure(.notUrl(self.host + "/new_record"))
+        guard let url = URL(string: host + "/new_record") else {
+            return .failure(.notUrl(host + "/new_record"))
         }
 
         var request = URLRequest(url: url)
@@ -108,10 +172,10 @@ class Api: ExtendInfoWriter, ExtendInfoReader {
 
         return result
     }
-    
+
     private func readRecord(id: String) -> Result<Data?, ApiError> {
-        guard let url = URL(string: self.host + "/" + id) else {
-            return .failure(.notUrl(self.host + "/" + id))
+        guard let url = URL(string: host + "/" + id) else {
+            return .failure(.notUrl(host + "/" + id))
         }
 
         var request = URLRequest(url: url)

@@ -13,14 +13,6 @@
 		4B1D0A222504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
 		4B1D0A232504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
 		4B1D0A242504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
-		4B1D0A252504168300D26450 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5B24D6D1E4006B9F96 /* MessagePacker */; };
-		4B1D0A262504168300D26450 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D6724D757C0006B9F96 /* Alamofire */; };
-		4B1D0A272504168300D26450 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D6D24D75C03006B9F96 /* PromiseKit */; };
-		4B1D0A282504168300D26450 /* PMKAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D7224D75DEF006B9F96 /* PMKAlamofire */; };
-		4B1D0A292504168300D26450 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5D24D6D1F1006B9F96 /* MessagePacker */; };
-		4B1D0A2A2504168300D26450 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D6924D757C9006B9F96 /* Alamofire */; };
-		4B1D0A2B2504168300D26450 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D6F24D75C13006B9F96 /* PromiseKit */; };
-		4B1D0A2C2504168300D26450 /* PMKAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D7424D75DF7006B9F96 /* PMKAlamofire */; };
 		4B1D0A2F2504169F00D26450 /* reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* reader.swift */; };
 		4B1D0A302504169F00D26450 /* reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* reader.swift */; };
 		4B1D0A312504169F00D26450 /* reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* reader.swift */; };
@@ -41,13 +33,25 @@
 		4B29056624C43760007A3D1B /* ShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29056524C43760007A3D1B /* ShowCard.swift */; };
 		4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */; };
 		4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34874624C63F360098F811 /* UIResponder+Current.swift */; };
+		4B37AF0A25AA608E00209E22 /* searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* searcher.swift */; };
+		4B37AF1325AA65BD00209E22 /* searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* searcher.swift */; };
+		4B37AF1E25AAE60200209E22 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF1D25AAE60200209E22 /* Description.swift */; };
+		4B37AF1F25AAE60200209E22 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF1D25AAE60200209E22 /* Description.swift */; };
 		4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
 		4B587D6124D6E865006B9F96 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
 		4B587D6424D6EDFB006B9F96 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
 		4B587D6524D6EDFB006B9F96 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
 		4B587D6B24D757DC006B9F96 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
 		4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67095B24C8A89900F4C4ED /* CardViewer.swift */; };
+		4B81886A250CBDBC0056E169 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B818868250CBD990056E169 /* StoreKit.framework */; };
+		4B81886D250CBDD60056E169 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B818868250CBD990056E169 /* StoreKit.framework */; };
 		4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85B4E424C447DE00588DB9 /* Menu.swift */; };
+		4B864A3325AB0A7000714203 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5B24D6D1E4006B9F96 /* MessagePacker */; };
+		4B864A3425AB0A7000714203 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5D24D6D1F1006B9F96 /* MessagePacker */; };
+		4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BB525AAEB6600FF40DB /* Name.swift */; };
+		4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BB525AAEB6600FF40DB /* Name.swift */; };
+		4B8D0BBD25AAECA900FF40DB /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BBC25AAECA900FF40DB /* Type.swift */; };
+		4B8D0BBE25AAECA900FF40DB /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BBC25AAECA900FF40DB /* Type.swift */; };
 		4B8E853324D08D0B001FCFFF /* TeaElephantAppClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E853224D08D0B001FCFFF /* TeaElephantAppClipApp.swift */; };
 		4B8E853724D08D0D001FCFFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B8E853624D08D0D001FCFFF /* Assets.xcassets */; };
 		4B8E853A24D08D0D001FCFFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B8E853924D08D0D001FCFFF /* Preview Assets.xcassets */; };
@@ -133,10 +137,15 @@
 		4B29056524C43760007A3D1B /* ShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCard.swift; sourceTree = "<group>"; };
 		4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
 		4B34874624C63F360098F811 /* UIResponder+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Current.swift"; sourceTree = "<group>"; };
+		4B37AF0925AA608E00209E22 /* searcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searcher.swift; sourceTree = "<group>"; };
+		4B37AF1D25AAE60200209E22 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		4B587D5F24D6E865006B9F96 /* TeaMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaMeta.swift; sourceTree = "<group>"; };
 		4B587D6324D6EDFB006B9F96 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		4B67095B24C8A89900F4C4ED /* CardViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewer.swift; sourceTree = "<group>"; };
+		4B818868250CBD990056E169 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4B85B4E424C447DE00588DB9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		4B8D0BB525AAEB6600FF40DB /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		4B8D0BBC25AAECA900FF40DB /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		4B8E853024D08D0B001FCFFF /* TeaElephantAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaElephantAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B8E853224D08D0B001FCFFF /* TeaElephantAppClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantAppClipApp.swift; sourceTree = "<group>"; };
 		4B8E853624D08D0D001FCFFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,10 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B1D0A262504168300D26450 /* Alamofire in Frameworks */,
-				4B1D0A272504168300D26450 /* PromiseKit in Frameworks */,
-				4B1D0A252504168300D26450 /* MessagePacker in Frameworks */,
-				4B1D0A282504168300D26450 /* PMKAlamofire in Frameworks */,
+				4B864A3325AB0A7000714203 /* MessagePacker in Frameworks */,
+				4B81886D250CBDD60056E169 /* StoreKit.framework in Frameworks */,
 				4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,10 +187,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B1D0A2A2504168300D26450 /* Alamofire in Frameworks */,
-				4B1D0A2B2504168300D26450 /* PromiseKit in Frameworks */,
-				4B1D0A292504168300D26450 /* MessagePacker in Frameworks */,
-				4B1D0A2C2504168300D26450 /* PMKAlamofire in Frameworks */,
+				4B864A3425AB0A7000714203 /* MessagePacker in Frameworks */,
+				4B81886A250CBDBC0056E169 /* StoreKit.framework in Frameworks */,
 				4B587D6B24D757DC006B9F96 /* CoreNFC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +206,9 @@
 				4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */,
 				4B34874624C63F360098F811 /* UIResponder+Current.swift */,
 				4B67095B24C8A89900F4C4ED /* CardViewer.swift */,
+				4B37AF1D25AAE60200209E22 /* Description.swift */,
+				4B8D0BB525AAEB6600FF40DB /* Name.swift */,
+				4B8D0BBC25AAECA900FF40DB /* Type.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,6 +296,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4B37AF0825AA607600209E22 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4B37AF0925AA608E00209E22 /* searcher.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		4B587D6224D6EDAD006B9F96 /* api */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +337,7 @@
 		4B8E854424D09EFE001FCFFF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4B37AF0825AA607600209E22 /* Search */,
 				4B587D6224D6EDAD006B9F96 /* api */,
 				4B29055D24C2ED2A007A3D1B /* Models */,
 				4B29055A24C2ECD6007A3D1B /* TagManagement */,
@@ -333,6 +350,7 @@
 		4BA6B76724C4E20800C46814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B818868250CBD990056E169 /* StoreKit.framework */,
 				4BA6B76824C4E20800C46814 /* CoreNFC.framework */,
 			);
 			name = Frameworks;
@@ -358,9 +376,6 @@
 			name = TeaElephant;
 			packageProductDependencies = (
 				4B587D5B24D6D1E4006B9F96 /* MessagePacker */,
-				4B587D6724D757C0006B9F96 /* Alamofire */,
-				4B587D6D24D75C03006B9F96 /* PromiseKit */,
-				4B587D7224D75DEF006B9F96 /* PMKAlamofire */,
 			);
 			productName = TeaElephant;
 			productReference = 4B29052C24C0AEDE007A3D1B /* TeaElephant.app */;
@@ -417,9 +432,6 @@
 			name = TeaElephantAppClip;
 			packageProductDependencies = (
 				4B587D5D24D6D1F1006B9F96 /* MessagePacker */,
-				4B587D6924D757C9006B9F96 /* Alamofire */,
-				4B587D6F24D75C13006B9F96 /* PromiseKit */,
-				4B587D7424D75DF7006B9F96 /* PMKAlamofire */,
 			);
 			productName = TeaElephantAppClip;
 			productReference = 4B8E853024D08D0B001FCFFF /* TeaElephantAppClip.app */;
@@ -461,9 +473,6 @@
 			mainGroup = 4B29052324C0AEDE007A3D1B;
 			packageReferences = (
 				4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */,
-				4B587D6624D757C0006B9F96 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				4B587D6C24D75C03006B9F96 /* XCRemoteSwiftPackageReference "PromiseKit" */,
-				4B587D7124D75DEF006B9F96 /* XCRemoteSwiftPackageReference "PMKAlamofire" */,
 			);
 			productRefGroup = 4B29052D24C0AEDE007A3D1B /* Products */;
 			projectDirPath = "";
@@ -521,14 +530,18 @@
 			files = (
 				4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */,
 				4B587D6424D6EDFB006B9F96 /* api.swift in Sources */,
+				4B37AF0A25AA608E00209E22 /* searcher.swift in Sources */,
 				4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */,
 				4B1D0A222504152100D26450 /* NFCreader.swift in Sources */,
+				4B8D0BBD25AAECA900FF40DB /* Type.swift in Sources */,
 				4B1D0A322504169F00D26450 /* writer.swift in Sources */,
 				4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */,
 				4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */,
 				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
 				4B1D0A3625041ACE00D26450 /* TeaDataResponse.swift in Sources */,
 				4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */,
+				4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */,
+				4B37AF1E25AAE60200209E22 /* Description.swift in Sources */,
 				4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */,
 				4B29056624C43760007A3D1B /* ShowCard.swift in Sources */,
 				4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */,
@@ -569,6 +582,8 @@
 			files = (
 				4B8E855024D09F9F001FCFFF /* UIResponder+Current.swift in Sources */,
 				4B8E855424D09F9F001FCFFF /* KeyboardHeightPublisher.swift in Sources */,
+				4B37AF1325AA65BD00209E22 /* searcher.swift in Sources */,
+				4B37AF1F25AAE60200209E22 /* Description.swift in Sources */,
 				4B8E855124D09F9F001FCFFF /* ContentView.swift in Sources */,
 				4B8E854F24D09F95001FCFFF /* NearFieldCommunicator.swift in Sources */,
 				4B8E855524D09F9F001FCFFF /* ShowCard.swift in Sources */,
@@ -580,10 +595,12 @@
 				4B1D0A242504152100D26450 /* NFCreader.swift in Sources */,
 				4B1D0A312504169F00D26450 /* reader.swift in Sources */,
 				4B587D6524D6EDFB006B9F96 /* api.swift in Sources */,
+				4B8D0BBE25AAECA900FF40DB /* Type.swift in Sources */,
 				4B1D0A3825041ACE00D26450 /* TeaDataResponse.swift in Sources */,
 				4B8E854924D09F8D001FCFFF /* TeaInfo.swift in Sources */,
 				4B8E853324D08D0B001FCFFF /* TeaElephantAppClipApp.swift in Sources */,
 				4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */,
+				4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */,
 				4B587D6124D6E865006B9F96 /* TeaMeta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,20 +746,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -754,11 +774,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -768,6 +789,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -866,16 +888,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
@@ -891,7 +915,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -901,6 +925,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
@@ -968,30 +993,6 @@
 				minimumVersion = 0.4.1;
 			};
 		};
-		4B587D6624D757C0006B9F96 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		4B587D6C24D75C03006B9F96 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.13.2;
-			};
-		};
-		4B587D7124D75DEF006B9F96 /* XCRemoteSwiftPackageReference "PMKAlamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PromiseKit/PMKAlamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1004,36 +1005,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */;
 			productName = MessagePacker;
-		};
-		4B587D6724D757C0006B9F96 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B587D6624D757C0006B9F96 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		4B587D6924D757C9006B9F96 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B587D6624D757C0006B9F96 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		4B587D6D24D75C03006B9F96 /* PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B587D6C24D75C03006B9F96 /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
-		};
-		4B587D6F24D75C13006B9F96 /* PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B587D6C24D75C03006B9F96 /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
-		};
-		4B587D7224D75DEF006B9F96 /* PMKAlamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B587D7124D75DEF006B9F96 /* XCRemoteSwiftPackageReference "PMKAlamofire" */;
-			productName = PMKAlamofire;
-		};
-		4B587D7424D75DF7006B9F96 /* PMKAlamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B587D7124D75DEF006B9F96 /* XCRemoteSwiftPackageReference "PMKAlamofire" */;
-			productName = PMKAlamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

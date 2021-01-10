@@ -13,7 +13,7 @@ struct FullAppOffer: View {
     var body: some View {
         Text("Install Full App")
             .appStoreOverlay(isPresented: $showFullApp) {
-                    SKOverlay.AppConfiguration(appIdentifier:"1525011607", position: .bottom)
+                SKOverlay.AppClipConfiguration(position: .bottom)
             }.onAppear(perform: onload).onDisappear(perform: unload)
     }
     func onload(){

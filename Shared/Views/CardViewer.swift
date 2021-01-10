@@ -15,7 +15,7 @@ struct CardViewer: View {
             Spacer()
             Button(action: {
                 withAnimation {
-                    self.read()
+                    read()
                 }
             }) {
                 Text("Прочтиать содержимое").padding(10)

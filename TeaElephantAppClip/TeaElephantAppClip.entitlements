@@ -4,7 +4,8 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>appclips:teaelephant.xax.cloud</string>
+		<string>appclips:te.xax.cloud</string>
+		<string>webcredentials:te.xax.cloud</string>
 	</array>
 	<key>com.apple.developer.parent-application-identifiers</key>
 	<array>

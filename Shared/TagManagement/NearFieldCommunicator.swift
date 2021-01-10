@@ -29,6 +29,7 @@ class NearFieldCommunicator: NSObject {
             aSession.invalidate()
         }
         session = NFCNDEFReaderSession(delegate: delegate, queue: nil, invalidateAfterFirstRead: true)
+        session?.alertMessage = "Приложи телефон к баночке с чаем чтобы узнать что в ней"
         self.session.begin()
     }
 

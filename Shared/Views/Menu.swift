@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let scale:CGFloat  = 1.5
+
 struct Menu: View {
     var body: some View {
         NavigationView {
@@ -16,7 +18,7 @@ struct Menu: View {
                     destination: NewCard(),
                     label: {
                         Label{ Text("Подписать банку") } icon: {
-                            Image(systemName: "pencil.tip.crop.circle.badge.plus").scaleEffect(x: 2, y: 2, anchor: .center)
+                            Image(systemName: "pencil.tip.crop.circle.badge.plus").scaleEffect(x: scale, y: scale, anchor: .center)
                         }.font(.title)
                     })
                 Spacer()
@@ -24,7 +26,7 @@ struct Menu: View {
                     destination: CardViewer(),
                     label: {
                        Label{ Text("Прочитать банку") } icon: {
-                           Image(systemName: "doc").scaleEffect(x: 2, y: 2, anchor: .center)
+                           Image(systemName: "doc").scaleEffect(x: scale, y: scale, anchor: .center)
                        }.font(.title)
                 })
                 Spacer()

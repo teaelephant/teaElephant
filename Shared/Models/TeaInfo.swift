@@ -24,3 +24,10 @@ struct TeaData: Codable {
     let type: TeaType
     let description: String
 }
+
+struct TeaDataWithID: Codable {
+    let ID: String
+    let name: String
+    let type: TeaType
+    let description: String
+}
