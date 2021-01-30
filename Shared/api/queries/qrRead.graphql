@@ -1,0 +1,13 @@
+query read($id:ID!){
+    getQrRecord(id:$id){
+        id
+        tea{
+            id
+            name
+            type
+            description
+        }
+        bowlingTemp
+        expirationDate
+    }
+}

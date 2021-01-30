@@ -1,0 +1,8 @@
+query get($id:ID!){
+    getTea(id:$id){
+        id
+        name
+        type
+        description
+    }
+}

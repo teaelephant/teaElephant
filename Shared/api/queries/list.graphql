@@ -1,0 +1,9 @@
+query list($prefix: String){
+  getTeas(prefix: $prefix){
+    id
+    name
+    type
+    description
+  }
+}
+

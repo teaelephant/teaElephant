@@ -24,6 +24,8 @@
 	<true/>
 	<key>NFCReaderUsageDescription</key>
 	<string>Reader using for read tea info from tea box</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Scanning qr codes</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -40,6 +42,9 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 </dict>
 </plist>

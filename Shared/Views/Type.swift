@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct Type: View {
-    var type: TeaType
+struct TypeView: View {
+    var type: Type
     var body: some View {
         Text(type.rawValue).italic().multilineTextAlignment(.trailing)
     }
 }
 
-struct Type_Previews: PreviewProvider {
+struct TypeView_Previews: PreviewProvider {
     static var previews: some View {
-        Type(type: TeaType.tea)
+        TypeView(type: Type.tea)
     }
 }

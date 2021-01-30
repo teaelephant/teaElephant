@@ -7,21 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CEAF0F996CA19454EAD4557 /* DetecorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF4F74D285D288F667D5E /* DetecorView.swift */; };
+		1CEAF55E49D8EBDB7195A8A1 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAFF5F083FF2F9221E7D4D /* Detector.swift */; };
+		1CEAF5EAC162B7CB98A68823 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
+		1CEAF6293A5B3D4A7F3463B1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF455D315B2941A7F79C5 /* Manager.swift */; };
+		1CEAF7E96CA361110A5DA9B1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF343EFDA9C201FD64806 /* ScannerViewController.swift */; };
+		1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */; };
+		1CEAFA47F2EA7DCDE9DDB1C2 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF856689D0D88ADB1AA86 /* TitleView.swift */; };
+		1CEAFB59120D515FC865748C /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
+		1CEAFB5A1B87520A502CCCC5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
+		1CEAFB92E9A61058082EAB87 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF455D315B2941A7F79C5 /* Manager.swift */; };
+		1CEAFC2FB4DCF8952E85CA45 /* ARComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF54E0D2B6FC8BEF0DB13 /* ARComponent.swift */; };
+		1CEAFE2B82A0A88AF3BEFAC7 /* TitleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF535CB6742DDFAABBF8A /* TitleEntity.swift */; };
+		1CEAFEB02F756D050878B559 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF455D315B2941A7F79C5 /* Manager.swift */; };
+		1CEAFFEF66C6F8F828D3DCC8 /* DetecorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF4F74D285D288F667D5E /* DetecorView.swift */; };
 		4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; };
 		4B1D0A202504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; };
 		4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; };
 		4B1D0A222504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
 		4B1D0A232504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
 		4B1D0A242504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
-		4B1D0A2F2504169F00D26450 /* reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* reader.swift */; };
-		4B1D0A302504169F00D26450 /* reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* reader.swift */; };
-		4B1D0A312504169F00D26450 /* reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* reader.swift */; };
-		4B1D0A322504169F00D26450 /* writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2E2504169F00D26450 /* writer.swift */; };
-		4B1D0A332504169F00D26450 /* writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2E2504169F00D26450 /* writer.swift */; };
-		4B1D0A342504169F00D26450 /* writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2E2504169F00D26450 /* writer.swift */; };
-		4B1D0A3625041ACE00D26450 /* TeaDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A3525041ACE00D26450 /* TeaDataResponse.swift */; };
-		4B1D0A3725041ACE00D26450 /* TeaDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A3525041ACE00D26450 /* TeaDataResponse.swift */; };
-		4B1D0A3825041ACE00D26450 /* TeaDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A3525041ACE00D26450 /* TeaDataResponse.swift */; };
+		4B1D0A2F2504169F00D26450 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* Reader.swift */; };
+		4B1D0A302504169F00D26450 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* Reader.swift */; };
+		4B1D0A312504169F00D26450 /* Reader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2D2504169F00D26450 /* Reader.swift */; };
+		4B1D0A322504169F00D26450 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2E2504169F00D26450 /* Writer.swift */; };
+		4B1D0A332504169F00D26450 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2E2504169F00D26450 /* Writer.swift */; };
+		4B1D0A342504169F00D26450 /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A2E2504169F00D26450 /* Writer.swift */; };
 		4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */; };
 		4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29053124C0AEDE007A3D1B /* ContentView.swift */; };
 		4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B29053324C0AEDF007A3D1B /* Assets.xcassets */; };
@@ -33,8 +44,22 @@
 		4B29056624C43760007A3D1B /* ShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B29056524C43760007A3D1B /* ShowCard.swift */; };
 		4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */; };
 		4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34874624C63F360098F811 /* UIResponder+Current.swift */; };
-		4B37AF0A25AA608E00209E22 /* searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* searcher.swift */; };
-		4B37AF1325AA65BD00209E22 /* searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* searcher.swift */; };
+		4B36C30725C2D7EE006C9293 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
+		4B36C30B25C2D875006C9293 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
+		4B36C30F25C2D890006C9293 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
+		4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5B24D6D1E4006B9F96 /* MessagePacker */; };
+		4B36C41225C3077C006C9293 /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF931D25BCE1C1005FC04F /* ApolloCore */; };
+		4B36C41325C3077C006C9293 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF931F25BCE1C1005FC04F /* ApolloWebSocket */; };
+		4B36C41425C3077C006C9293 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF933125BCE285005FC04F /* Apollo */; };
+		4B36C41525C3077C006C9293 /* ApolloCodegenLib in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF933325BCE289005FC04F /* ApolloCodegenLib */; };
+		4B36C41625C3077C006C9293 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC992EB25C1DCC300E5070E /* CodeScanner */; };
+		4B36C41725C3077C006C9293 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5D24D6D1F1006B9F96 /* MessagePacker */; };
+		4B36C41825C3077C006C9293 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF93D725BCF495005FC04F /* Apollo */; };
+		4B36C41925C3077C006C9293 /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF93DC25BCF4B2005FC04F /* ApolloCore */; };
+		4B36C41A25C3077C006C9293 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF93DE25BCF4B5005FC04F /* ApolloWebSocket */; };
+		4B36C41B25C3077C006C9293 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4B36C30225C2D3F9006C9293 /* CodeScanner */; };
+		4B37AF0A25AA608E00209E22 /* Searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* Searcher.swift */; };
+		4B37AF1325AA65BD00209E22 /* Searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* Searcher.swift */; };
 		4B37AF1E25AAE60200209E22 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF1D25AAE60200209E22 /* Description.swift */; };
 		4B37AF1F25AAE60200209E22 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF1D25AAE60200209E22 /* Description.swift */; };
 		4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
@@ -43,11 +68,9 @@
 		4B587D6524D6EDFB006B9F96 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
 		4B587D6B24D757DC006B9F96 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
 		4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67095B24C8A89900F4C4ED /* CardViewer.swift */; };
-		4B81886A250CBDBC0056E169 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B818868250CBD990056E169 /* StoreKit.framework */; };
-		4B81886D250CBDD60056E169 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B818868250CBD990056E169 /* StoreKit.framework */; };
 		4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85B4E424C447DE00588DB9 /* Menu.swift */; };
-		4B864A3325AB0A7000714203 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5B24D6D1E4006B9F96 /* MessagePacker */; };
-		4B864A3425AB0A7000714203 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5D24D6D1F1006B9F96 /* MessagePacker */; };
+		4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
+		4B8ACD9F25BC91E8001DE00A /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */; };
 		4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BB525AAEB6600FF40DB /* Name.swift */; };
 		4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BB525AAEB6600FF40DB /* Name.swift */; };
 		4B8D0BBD25AAECA900FF40DB /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BBC25AAECA900FF40DB /* Type.swift */; };
@@ -73,6 +96,20 @@
 		4B8E855C24D0AEA5001FCFFF /* FullAppOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E855B24D0AEA5001FCFFF /* FullAppOffer.swift */; };
 		4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */; };
 		4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
+		4BF8F1FD25C18F880061E0FE /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */; };
+		4BF8F1FE25C18F8F0061E0FE /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
+		4BFF931225BCDED1005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
+		4BFF939025BCECD0005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
+		4BFF939925BCED79005FC04F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF939825BCED79005FC04F /* Search.swift */; };
+		4BFF939B25BCED79005FC04F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF939825BCED79005FC04F /* Search.swift */; };
+		4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93A625BCEF03005FC04F /* RecordGetter.swift */; };
+		4BFF93A825BCEF03005FC04F /* RecordGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93A625BCEF03005FC04F /* RecordGetter.swift */; };
+		4BFF93A925BCEF03005FC04F /* RecordGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93A625BCEF03005FC04F /* RecordGetter.swift */; };
+		4BFF93B125BCF18D005FC04F /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
+		4BFF93D325BCF484005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
+		4BFF93E725BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
+		4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
+		4BFF93E925BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,14 +148,36 @@
 			name = "Embed App Clips";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4BFF933825BCE293005FC04F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1CEAF03A3D2B34C4D665250C /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorController.swift; sourceTree = "<group>"; };
+		1CEAF1E146311E4E03BC8CE7 /* qrWrite.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = qrWrite.graphql; sourceTree = "<group>"; };
+		1CEAF296B4514C9F54B6F2A1 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = schema.json; sourceTree = "<group>"; };
+		1CEAF343EFDA9C201FD64806 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		1CEAF371A747B66EAA8A014A /* get.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = get.graphql; sourceTree = "<group>"; };
+		1CEAF455D315B2941A7F79C5 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		1CEAF4F74D285D288F667D5E /* DetecorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetecorView.swift; sourceTree = "<group>"; };
+		1CEAF535CB6742DDFAABBF8A /* TitleEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleEntity.swift; sourceTree = "<group>"; };
+		1CEAF54E0D2B6FC8BEF0DB13 /* ARComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARComponent.swift; sourceTree = "<group>"; };
+		1CEAF7893496AA85F8233991 /* qrRead.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = qrRead.graphql; sourceTree = "<group>"; };
+		1CEAF856689D0D88ADB1AA86 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		1CEAFF5F083FF2F9221E7D4D /* Detector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detector.swift; sourceTree = "<group>"; };
 		4B1D0A1D2504152100D26450 /* NFCwriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFCwriter.swift; sourceTree = "<group>"; };
 		4B1D0A1E2504152100D26450 /* NFCreader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFCreader.swift; sourceTree = "<group>"; };
-		4B1D0A2D2504169F00D26450 /* reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reader.swift; sourceTree = "<group>"; };
-		4B1D0A2E2504169F00D26450 /* writer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = writer.swift; sourceTree = "<group>"; };
-		4B1D0A3525041ACE00D26450 /* TeaDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaDataResponse.swift; sourceTree = "<group>"; };
+		4B1D0A2D2504169F00D26450 /* Reader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reader.swift; sourceTree = "<group>"; };
+		4B1D0A2E2504169F00D26450 /* Writer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Writer.swift; sourceTree = "<group>"; };
 		4B29052C24C0AEDE007A3D1B /* TeaElephant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaElephant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B29052F24C0AEDE007A3D1B /* TeaElephantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantApp.swift; sourceTree = "<group>"; };
 		4B29053124C0AEDE007A3D1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,13 +196,14 @@
 		4B29056524C43760007A3D1B /* ShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCard.swift; sourceTree = "<group>"; };
 		4B34874424C63EE20098F811 /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
 		4B34874624C63F360098F811 /* UIResponder+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Current.swift"; sourceTree = "<group>"; };
-		4B37AF0925AA608E00209E22 /* searcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searcher.swift; sourceTree = "<group>"; };
+		4B37AF0925AA608E00209E22 /* Searcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcher.swift; sourceTree = "<group>"; };
 		4B37AF1D25AAE60200209E22 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		4B587D5F24D6E865006B9F96 /* TeaMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaMeta.swift; sourceTree = "<group>"; };
 		4B587D6324D6EDFB006B9F96 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		4B67095B24C8A89900F4C4ED /* CardViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewer.swift; sourceTree = "<group>"; };
-		4B818868250CBD990056E169 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4B85B4E424C447DE00588DB9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		4B8ACD9C25BC91DA001DE00A /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
+		4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
 		4B8D0BB525AAEB6600FF40DB /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		4B8D0BBC25AAECA900FF40DB /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		4B8E853024D08D0B001FCFFF /* TeaElephantAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaElephantAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +216,12 @@
 		4B8E855B24D0AEA5001FCFFF /* FullAppOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullAppOffer.swift; sourceTree = "<group>"; };
 		4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFieldCommunicator.swift; sourceTree = "<group>"; };
 		4BA6B76824C4E20800C46814 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
+		4BFF931125BCDED1005FC04F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		4BFF934325BCE2DE005FC04F /* newRecord.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = newRecord.graphql; sourceTree = "<group>"; };
+		4BFF939825BCED79005FC04F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		4BFF939F25BCEDCF005FC04F /* list.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = list.graphql; sourceTree = "<group>"; };
+		4BFF93A625BCEF03005FC04F /* RecordGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordGetter.swift; sourceTree = "<group>"; };
+		4BFF93E625BCF514005FC04F /* RecordWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,9 +229,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B864A3325AB0A7000714203 /* MessagePacker in Frameworks */,
-				4B81886D250CBDD60056E169 /* StoreKit.framework in Frameworks */,
+				4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */,
+				4B36C41225C3077C006C9293 /* ApolloCore in Frameworks */,
+				4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */,
+				4B36C41625C3077C006C9293 /* CodeScanner in Frameworks */,
+				4B36C41525C3077C006C9293 /* ApolloCodegenLib in Frameworks */,
+				4B36C41325C3077C006C9293 /* ApolloWebSocket in Frameworks */,
+				4B36C41425C3077C006C9293 /* Apollo in Frameworks */,
 				4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */,
+				4B8ACD9F25BC91E8001DE00A /* RealityKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,15 +259,66 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B864A3425AB0A7000714203 /* MessagePacker in Frameworks */,
-				4B81886A250CBDBC0056E169 /* StoreKit.framework in Frameworks */,
+				4B36C41725C3077C006C9293 /* MessagePacker in Frameworks */,
+				4B36C41825C3077C006C9293 /* Apollo in Frameworks */,
+				4BF8F1FD25C18F880061E0FE /* RealityKit.framework in Frameworks */,
+				4BF8F1FE25C18F8F0061E0FE /* ARKit.framework in Frameworks */,
+				4B36C41A25C3077C006C9293 /* ApolloWebSocket in Frameworks */,
+				4B36C41925C3077C006C9293 /* ApolloCore in Frameworks */,
 				4B587D6B24D757DC006B9F96 /* CoreNFC.framework in Frameworks */,
+				4B36C41B25C3077C006C9293 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CEAF0E2E20091FE5939E222 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1CEAF03A3D2B34C4D665250C /* Entity.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1CEAF18217AA3B5615E54681 /* QRManagement */ = {
+			isa = PBXGroup;
+			children = (
+				1CEAF455D315B2941A7F79C5 /* Manager.swift */,
+				1CEAF343EFDA9C201FD64806 /* ScannerViewController.swift */,
+			);
+			path = QRManagement;
+			sourceTree = "<group>";
+		};
+		1CEAF395AC349EC20FE88FB4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1CEAF54E0D2B6FC8BEF0DB13 /* ARComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1CEAF89883C9DC2B109E4D22 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */,
+				1CEAFF5F083FF2F9221E7D4D /* Detector.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1CEAFCC9EC05CBB1C66062A9 /* ARBoxesView */ = {
+			isa = PBXGroup;
+			children = (
+				1CEAF89883C9DC2B109E4D22 /* Controllers */,
+				1CEAFDB6C4C7985B72CA1547 /* Views */,
+				1CEAF0E2E20091FE5939E222 /* Models */,
+				1CEAFE67C69613D14C274229 /* Entities */,
+				1CEAF395AC349EC20FE88FB4 /* Components */,
+			);
+			path = ARBoxesView;
+			sourceTree = "<group>";
+		};
 		1CEAFD82D710C2C5A7179BBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +334,23 @@
 				4B8D0BBC25AAECA900FF40DB /* Type.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1CEAFDB6C4C7985B72CA1547 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1CEAF856689D0D88ADB1AA86 /* TitleView.swift */,
+				1CEAF4F74D285D288F667D5E /* DetecorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1CEAFE67C69613D14C274229 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1CEAF535CB6742DDFAABBF8A /* TitleEntity.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		4B29052324C0AEDE007A3D1B = {
@@ -278,8 +418,8 @@
 		4B29055A24C2ECD6007A3D1B /* TagManagement */ = {
 			isa = PBXGroup;
 			children = (
-				4B1D0A2D2504169F00D26450 /* reader.swift */,
-				4B1D0A2E2504169F00D26450 /* writer.swift */,
+				4B1D0A2D2504169F00D26450 /* Reader.swift */,
+				4B1D0A2E2504169F00D26450 /* Writer.swift */,
 				4B1D0A1E2504152100D26450 /* NFCreader.swift */,
 				4B1D0A1D2504152100D26450 /* NFCwriter.swift */,
 				4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */,
@@ -299,7 +439,7 @@
 		4B37AF0825AA607600209E22 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				4B37AF0925AA608E00209E22 /* searcher.swift */,
+				4B37AF0925AA608E00209E22 /* Searcher.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -307,8 +447,13 @@
 		4B587D6224D6EDAD006B9F96 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				4BFF93E625BCF514005FC04F /* RecordWriter.swift */,
+				4BFF931025BCDEB0005FC04F /* mitations */,
+				4BFF930F25BCDEA5005FC04F /* queries */,
 				4B587D6324D6EDFB006B9F96 /* api.swift */,
-				4B1D0A3525041ACE00D26450 /* TeaDataResponse.swift */,
+				1CEAF296B4514C9F54B6F2A1 /* schema.json */,
+				4BFF939825BCED79005FC04F /* Search.swift */,
+				4BFF93A625BCEF03005FC04F /* RecordGetter.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -343,6 +488,9 @@
 				4B29055A24C2ECD6007A3D1B /* TagManagement */,
 				1CEAFD82D710C2C5A7179BBD /* Views */,
 				4B8E854524D09F31001FCFFF /* SharedAssets.xcassets */,
+				4BFF931125BCDED1005FC04F /* Network.swift */,
+				1CEAF18217AA3B5615E54681 /* QRManagement */,
+				1CEAFCC9EC05CBB1C66062A9 /* ARBoxesView */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -350,10 +498,30 @@
 		4BA6B76724C4E20800C46814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B818868250CBD990056E169 /* StoreKit.framework */,
+				4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */,
+				4B8ACD9C25BC91DA001DE00A /* ARKit.framework */,
 				4BA6B76824C4E20800C46814 /* CoreNFC.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BFF930F25BCDEA5005FC04F /* queries */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF939F25BCEDCF005FC04F /* list.graphql */,
+				1CEAF371A747B66EAA8A014A /* get.graphql */,
+				1CEAF7893496AA85F8233991 /* qrRead.graphql */,
+			);
+			path = queries;
+			sourceTree = "<group>";
+		};
+		4BFF931025BCDEB0005FC04F /* mitations */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF934325BCE2DE005FC04F /* newRecord.graphql */,
+				1CEAF1E146311E4E03BC8CE7 /* qrWrite.graphql */,
+			);
+			path = mitations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,10 +531,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B29055124C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephant" */;
 			buildPhases = (
+				4BFF930E25BCDE1E005FC04F /* Generate Apollo GraphQL API */,
 				4B29052824C0AEDE007A3D1B /* Sources */,
 				4B29052924C0AEDE007A3D1B /* Frameworks */,
 				4B29052A24C0AEDE007A3D1B /* Resources */,
 				4B8E854024D08D0D001FCFFF /* Embed App Clips */,
+				4BFF933825BCE293005FC04F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -376,6 +546,11 @@
 			name = TeaElephant;
 			packageProductDependencies = (
 				4B587D5B24D6D1E4006B9F96 /* MessagePacker */,
+				4BFF931D25BCE1C1005FC04F /* ApolloCore */,
+				4BFF931F25BCE1C1005FC04F /* ApolloWebSocket */,
+				4BFF933125BCE285005FC04F /* Apollo */,
+				4BFF933325BCE289005FC04F /* ApolloCodegenLib */,
+				4BC992EB25C1DCC300E5070E /* CodeScanner */,
 			);
 			productName = TeaElephant;
 			productReference = 4B29052C24C0AEDE007A3D1B /* TeaElephant.app */;
@@ -432,6 +607,10 @@
 			name = TeaElephantAppClip;
 			packageProductDependencies = (
 				4B587D5D24D6D1F1006B9F96 /* MessagePacker */,
+				4BFF93D725BCF495005FC04F /* Apollo */,
+				4BFF93DC25BCF4B2005FC04F /* ApolloCore */,
+				4BFF93DE25BCF4B5005FC04F /* ApolloWebSocket */,
+				4B36C30225C2D3F9006C9293 /* CodeScanner */,
 			);
 			productName = TeaElephantAppClip;
 			productReference = 4B8E853024D08D0B001FCFFF /* TeaElephantAppClip.app */;
@@ -473,6 +652,8 @@
 			mainGroup = 4B29052324C0AEDE007A3D1B;
 			packageReferences = (
 				4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */,
+				4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 4B29052D24C0AEDE007A3D1B /* Products */;
 			projectDirPath = "";
@@ -523,6 +704,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BFF930E25BCDE1E005FC04F /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=../Shared/api/**/*.graphql --localSchemaFile=\"../Shared/api/schema.json\" ../Shared/api/API.swift\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4B29052824C0AEDE007A3D1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -530,15 +732,15 @@
 			files = (
 				4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */,
 				4B587D6424D6EDFB006B9F96 /* api.swift in Sources */,
-				4B37AF0A25AA608E00209E22 /* searcher.swift in Sources */,
+				4B37AF0A25AA608E00209E22 /* Searcher.swift in Sources */,
+				4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */,
 				4B1D0A222504152100D26450 /* NFCreader.swift in Sources */,
 				4B8D0BBD25AAECA900FF40DB /* Type.swift in Sources */,
-				4B1D0A322504169F00D26450 /* writer.swift in Sources */,
+				4B1D0A322504169F00D26450 /* Writer.swift in Sources */,
 				4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */,
 				4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */,
 				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
-				4B1D0A3625041ACE00D26450 /* TeaDataResponse.swift in Sources */,
 				4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */,
 				4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */,
 				4B37AF1E25AAE60200209E22 /* Description.swift in Sources */,
@@ -546,9 +748,20 @@
 				4B29056624C43760007A3D1B /* ShowCard.swift in Sources */,
 				4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */,
 				4B29056424C4374F007A3D1B /* NewCard.swift in Sources */,
-				4B1D0A2F2504169F00D26450 /* reader.swift in Sources */,
+				4B1D0A2F2504169F00D26450 /* Reader.swift in Sources */,
 				4B29055F24C2ED3E007A3D1B /* TeaInfo.swift in Sources */,
 				4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */,
+				4BFF939925BCED79005FC04F /* Search.swift in Sources */,
+				4BFF93E725BCF514005FC04F /* RecordWriter.swift in Sources */,
+				4BFF931225BCDED1005FC04F /* Network.swift in Sources */,
+				1CEAF6293A5B3D4A7F3463B1 /* Manager.swift in Sources */,
+				1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */,
+				1CEAF55E49D8EBDB7195A8A1 /* Detector.swift in Sources */,
+				1CEAFA47F2EA7DCDE9DDB1C2 /* TitleView.swift in Sources */,
+				1CEAF0F996CA19454EAD4557 /* DetecorView.swift in Sources */,
+				1CEAFE2B82A0A88AF3BEFAC7 /* TitleEntity.swift in Sources */,
+				1CEAFC2FB4DCF8952E85CA45 /* ARComponent.swift in Sources */,
+				1CEAF5EAC162B7CB98A68823 /* Entity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,14 +769,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B1D0A332504169F00D26450 /* writer.swift in Sources */,
-				4B1D0A302504169F00D26450 /* reader.swift in Sources */,
+				4B1D0A332504169F00D26450 /* Writer.swift in Sources */,
+				4BFF93A825BCEF03005FC04F /* RecordGetter.swift in Sources */,
+				4B1D0A302504169F00D26450 /* Reader.swift in Sources */,
 				4B1D0A202504152100D26450 /* NFCwriter.swift in Sources */,
-				4B1D0A3725041ACE00D26450 /* TeaDataResponse.swift in Sources */,
 				4B8E854C24D09F93001FCFFF /* NearFieldCommunicator.swift in Sources */,
+				4BFF939025BCECD0005FC04F /* Network.swift in Sources */,
 				4B8E854724D09F8B001FCFFF /* TeaInfo.swift in Sources */,
 				4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */,
+				4BFF93B125BCF18D005FC04F /* api.swift in Sources */,
+				4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */,
 				4B1D0A232504152100D26450 /* NFCreader.swift in Sources */,
+				1CEAFEB02F756D050878B559 /* Manager.swift in Sources */,
+				1CEAF7E96CA361110A5DA9B1 /* ScannerViewController.swift in Sources */,
+				4B36C30725C2D7EE006C9293 /* TeaMeta.swift in Sources */,
+				1CEAFB5A1B87520A502CCCC5 /* Entity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +793,8 @@
 			files = (
 				4B8E854824D09F8C001FCFFF /* TeaInfo.swift in Sources */,
 				4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */,
+				4B36C30F25C2D890006C9293 /* api.swift in Sources */,
+				4B36C30B25C2D875006C9293 /* TeaMeta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,28 +802,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BFF93D325BCF484005FC04F /* Network.swift in Sources */,
 				4B8E855024D09F9F001FCFFF /* UIResponder+Current.swift in Sources */,
 				4B8E855424D09F9F001FCFFF /* KeyboardHeightPublisher.swift in Sources */,
-				4B37AF1325AA65BD00209E22 /* searcher.swift in Sources */,
+				4B37AF1325AA65BD00209E22 /* Searcher.swift in Sources */,
 				4B37AF1F25AAE60200209E22 /* Description.swift in Sources */,
 				4B8E855124D09F9F001FCFFF /* ContentView.swift in Sources */,
 				4B8E854F24D09F95001FCFFF /* NearFieldCommunicator.swift in Sources */,
+				4BFF93A925BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B8E855524D09F9F001FCFFF /* ShowCard.swift in Sources */,
 				4B8E855624D09F9F001FCFFF /* Menu.swift in Sources */,
 				4B8E855C24D0AEA5001FCFFF /* FullAppOffer.swift in Sources */,
 				4B8E855324D09F9F001FCFFF /* CardViewer.swift in Sources */,
 				4B8E855224D09F9F001FCFFF /* NewCard.swift in Sources */,
-				4B1D0A342504169F00D26450 /* writer.swift in Sources */,
+				4B1D0A342504169F00D26450 /* Writer.swift in Sources */,
 				4B1D0A242504152100D26450 /* NFCreader.swift in Sources */,
-				4B1D0A312504169F00D26450 /* reader.swift in Sources */,
+				4B1D0A312504169F00D26450 /* Reader.swift in Sources */,
 				4B587D6524D6EDFB006B9F96 /* api.swift in Sources */,
 				4B8D0BBE25AAECA900FF40DB /* Type.swift in Sources */,
-				4B1D0A3825041ACE00D26450 /* TeaDataResponse.swift in Sources */,
 				4B8E854924D09F8D001FCFFF /* TeaInfo.swift in Sources */,
 				4B8E853324D08D0B001FCFFF /* TeaElephantAppClipApp.swift in Sources */,
 				4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */,
+				4BFF939B25BCED79005FC04F /* Search.swift in Sources */,
 				4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */,
 				4B587D6124D6E865006B9F96 /* TeaMeta.swift in Sources */,
+				4BFF93E925BCF514005FC04F /* RecordWriter.swift in Sources */,
+				1CEAFB92E9A61058082EAB87 /* Manager.swift in Sources */,
+				1CEAFFEF66C6F8F828D3DCC8 /* DetecorView.swift in Sources */,
+				1CEAFB59120D515FC865748C /* Entity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,7 +905,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -732,7 +960,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -751,7 +979,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -762,11 +990,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -779,7 +1007,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -789,11 +1017,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -888,7 +1116,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -899,12 +1127,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -915,7 +1143,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -925,12 +1153,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -993,9 +1221,30 @@
 				minimumVersion = 0.4.1;
 			};
 		};
+		4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+		4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.40.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B36C30225C2D3F9006C9293 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		4B587D5B24D6D1E4006B9F96 /* MessagePacker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */;
@@ -1005,6 +1254,46 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */;
 			productName = MessagePacker;
+		};
+		4BC992EB25C1DCC300E5070E /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		4BFF931D25BCE1C1005FC04F /* ApolloCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloCore;
+		};
+		4BFF931F25BCE1C1005FC04F /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
+		4BFF933125BCE285005FC04F /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		4BFF933325BCE289005FC04F /* ApolloCodegenLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloCodegenLib;
+		};
+		4BFF93D725BCF495005FC04F /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		4BFF93DC25BCF4B2005FC04F /* ApolloCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloCore;
+		};
+		4BFF93DE25BCF4B5005FC04F /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

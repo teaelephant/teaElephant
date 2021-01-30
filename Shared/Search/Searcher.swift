@@ -1,5 +1,5 @@
 //
-//  searcher.swift
+//  Search.swift
 //  TeaElephant
 //
 //  Created by Andrew Khasanov on 10.01.2021.
@@ -31,7 +31,7 @@ class Searcher: ObservableObject {
             if data != nil {
                 self.detectedInfo = TeaInfo(
                         meta: TeaMeta(id: data!.ID, expirationDate: Date.init(), brewingTemp: 100),
-                        data: TeaData(name: data!.name, type: data!.type, description: data!.description)
+                    data: TeaData(name: data!.name, type: Type(rawValue: data!.type.rawValue)!, description: data!.description)
                 )
             }
         }

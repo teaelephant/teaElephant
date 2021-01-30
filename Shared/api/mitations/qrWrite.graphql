@@ -1,0 +1,5 @@
+mutation write($id:ID!, $data:QRRecordData!){
+    writeToQR(id:$id, data:$data){
+        id
+    }
+}

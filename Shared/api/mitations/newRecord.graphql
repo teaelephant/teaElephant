@@ -1,0 +1,5 @@
+mutation create($tea: TeaData!){
+    newTea(tea: $tea){
+        id
+    }
+}

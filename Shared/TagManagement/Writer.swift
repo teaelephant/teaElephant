@@ -21,7 +21,7 @@ class writer {
     }
 
     func write(_ data: TeaData, expirationDate: Date, brewingTemp: Int) throws {
-        try self.extend.writeExtendInfo(info: data) { (id, err) -> () in
+        try extend.writeExtendInfo(info: data) { (id, err) -> () in
             if err != nil {
                 print(err!)
                 return

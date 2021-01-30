@@ -19,11 +19,11 @@ extension TeaMeta {
         var data: Data
         let encoder = MessagePackEncoder()
         do {
-            data = try encoder.encode(self.id)
+            data = try encoder.encode(id)
             print(data.count)
-            data.append(try encoder.encode(self.expirationDate.timeIntervalSince1970))
+            data.append(try encoder.encode(expirationDate.timeIntervalSince1970))
             print(data.count)
-            data.append(try encoder.encode(self.brewingTemp))
+            data.append(try encoder.encode(brewingTemp))
             print(data.count)
         } catch {
             print(error.localizedDescription)

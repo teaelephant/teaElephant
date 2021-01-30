@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MessagePacker",
+        "repositoryURL": "https://github.com/hirotakan/MessagePacker.git",
+        "state": {
+          "branch": null,
+          "revision": "c51325cd83b9cd3234804084915bb6ed73da65de",
+          "version": "0.4.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
