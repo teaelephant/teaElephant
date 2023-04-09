@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TeaElephantSchema
 
 struct TypeView: View {
     var type: Type

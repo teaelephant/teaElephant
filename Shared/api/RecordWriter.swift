@@ -4,6 +4,7 @@
 
 import Foundation
 import Apollo
+import TeaElephantSchema
 
 class RecordWriter: ExtendInfoWriter {
     func writeExtendInfo(info: TeaData, callback: @escaping (String, Error?)->()) throws {

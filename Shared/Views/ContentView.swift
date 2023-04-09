@@ -12,7 +12,12 @@ struct ContentView: View {
         VStack {
             Menu()
         }
+        .eraseToAnyView()
     }
+
+    #if DEBUG
+    @ObservedObject var iO = injectionObserver
+    #endif
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import CodeScanner
 import UIKit
+import TeaElephantSchema
 
 struct NewCard: View {
 	@Environment(\.presentationMode) var presentationMode
@@ -16,7 +17,7 @@ struct NewCard: View {
 	@State private var name = ""
 	@State private var type = Type.tea
 	@State private var description = ""
-	@State private var expirationDate = Date.init()
+    @State private var expirationDate = Foundation.Date.init()
 	@State private var brewingTemp: String = "100"
 	@State private var readQRCode = false
 	var body: some View {
@@ -27,7 +28,7 @@ struct NewCard: View {
 			CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson") { result in
 				switch result {
 				case .success(let code):
-					saveQR(code)
+                    saveQR(code.string)
 					readQRCode = false
 				case .failure(let error):
 					print(error.localizedDescription)
@@ -47,7 +48,7 @@ struct NewCard: View {
 					}.zIndex(1.0)
 					if $searcher.detectedInfo.wrappedValue != nil {
 						Name(name: ($searcher.detectedInfo.wrappedValue?.data.name)!)
-						TypeView(type: ($searcher.detectedInfo.wrappedValue?.data.type)!)
+                        TypeView(type: ($searcher.detectedInfo.wrappedValue?.data.type.value)!)
 						Description(description: ($searcher.detectedInfo.wrappedValue?.data.description)!)
 					} else {
 						Picker(selection: $type, label: Text("Тип напитка")) {
@@ -118,7 +119,7 @@ struct NewCard: View {
 
 		let data = TeaData(
 						name: name,
-						type: Type(rawValue: type.rawValue)!,
+						type: GraphQLEnum(Type(rawValue: type.rawValue)!),
 						description: description
 		)
 		do {
@@ -174,7 +175,7 @@ struct NewCard: View {
 
 		let data = TeaData(
 						name: name,
-						type: Type(rawValue: type.rawValue)!,
+						type: GraphQLEnum(Type(rawValue: type.rawValue)!),
 						description: description
 		)
 		do {

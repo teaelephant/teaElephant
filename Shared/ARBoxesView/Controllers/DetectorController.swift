@@ -5,6 +5,7 @@ import ARKit
 import Vision
 import Combine
 import SwiftUI
+import TeaElephantSchema
 
 class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegate {
 	var arView: ARView!
@@ -155,7 +156,7 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 					print(errors)
 					return
 				}
-				guard let tea = graphQLResult.data?.getQrRecord?.tea else {
+				guard let tea = graphQLResult.data?.qrRecord?.tea else {
 					return
 				}
 				self.newEntities.append(EntityModel(

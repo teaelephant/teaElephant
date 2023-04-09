@@ -1,5 +1,5 @@
 query read($id:ID!){
-    getQrRecord(id:$id){
+    qrRecord(id:$id){
         id
         tea{
             id

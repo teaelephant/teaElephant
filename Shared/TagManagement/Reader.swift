@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import TeaElephantSchema
 
 protocol ExtendInfoReader {
 	func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void)
@@ -50,16 +51,12 @@ class Reader: ObservableObject {
 					self.error = errors.first
 					return
 				}
-				guard let qr = graphQLResult.data?.getQrRecord else {
+				guard let qr = graphQLResult.data?.qrRecord else {
 					return
 				}
-				guard let tea = qr.tea else {
-					return
-				}
-				let expirationDate = qr.expirationDate ?? ""
 				self.detectedInfo = TeaInfo(
-								meta: TeaMeta(id: tea.id, expirationDate: ISO8601DateFormatter().date(from: expirationDate)!, brewingTemp: qr.bowlingTemp ?? 0),
-								data: TeaData(name: tea.name, type: tea.type, description: tea.description)
+                    meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
+								data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description)
 				)
 			case .failure(let error):
 				self.error = error

@@ -46,17 +46,9 @@
 		4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34874624C63F360098F811 /* UIResponder+Current.swift */; };
 		4B36C30725C2D7EE006C9293 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
 		4B36C30B25C2D875006C9293 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
-		4B36C30F25C2D890006C9293 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
 		4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5B24D6D1E4006B9F96 /* MessagePacker */; };
-		4B36C41225C3077C006C9293 /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF931D25BCE1C1005FC04F /* ApolloCore */; };
-		4B36C41325C3077C006C9293 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF931F25BCE1C1005FC04F /* ApolloWebSocket */; };
-		4B36C41425C3077C006C9293 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF933125BCE285005FC04F /* Apollo */; };
-		4B36C41525C3077C006C9293 /* ApolloCodegenLib in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF933325BCE289005FC04F /* ApolloCodegenLib */; };
 		4B36C41625C3077C006C9293 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC992EB25C1DCC300E5070E /* CodeScanner */; };
 		4B36C41725C3077C006C9293 /* MessagePacker in Frameworks */ = {isa = PBXBuildFile; productRef = 4B587D5D24D6D1F1006B9F96 /* MessagePacker */; };
-		4B36C41825C3077C006C9293 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF93D725BCF495005FC04F /* Apollo */; };
-		4B36C41925C3077C006C9293 /* ApolloCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF93DC25BCF4B2005FC04F /* ApolloCore */; };
-		4B36C41A25C3077C006C9293 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 4BFF93DE25BCF4B5005FC04F /* ApolloWebSocket */; };
 		4B36C41B25C3077C006C9293 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 4B36C30225C2D3F9006C9293 /* CodeScanner */; };
 		4B37AF0A25AA608E00209E22 /* Searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* Searcher.swift */; };
 		4B37AF1325AA65BD00209E22 /* Searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* Searcher.swift */; };
@@ -64,8 +56,6 @@
 		4B37AF1F25AAE60200209E22 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF1D25AAE60200209E22 /* Description.swift */; };
 		4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
 		4B587D6124D6E865006B9F96 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
-		4B587D6424D6EDFB006B9F96 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
-		4B587D6524D6EDFB006B9F96 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
 		4B587D6B24D757DC006B9F96 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
 		4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67095B24C8A89900F4C4ED /* CardViewer.swift */; };
 		4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85B4E424C447DE00588DB9 /* Menu.swift */; };
@@ -94,8 +84,15 @@
 		4B8E855624D09F9F001FCFFF /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85B4E424C447DE00588DB9 /* Menu.swift */; };
 		4B8E855724D09FAA001FCFFF /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B8E854524D09F31001FCFFF /* SharedAssets.xcassets */; };
 		4B8E855C24D0AEA5001FCFFF /* FullAppOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E855B24D0AEA5001FCFFF /* FullAppOffer.swift */; };
+		4B9CD76129E1DB54006C5F93 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9CD76029E1DB54006C5F93 /* Apollo */; };
+		4B9CD76329E1DB59006C5F93 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9CD76229E1DB59006C5F93 /* ApolloWebSocket */; };
+		4B9CD76529E1DB61006C5F93 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9CD76429E1DB61006C5F93 /* Apollo */; };
+		4B9CD76729E1DC59006C5F93 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9CD76629E1DC59006C5F93 /* ApolloWebSocket */; };
+		4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B9CD7A629E1EEF9006C5F93 /* apollo-codegen-config.json */; };
 		4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */; };
 		4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
+		4BDF3A5B29E2027A003D8F92 /* TeaElephantSchema in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDF3A5A29E2027A003D8F92 /* TeaElephantSchema */; };
+		4BDF3A5D29E20282003D8F92 /* TeaElephantSchema in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDF3A5C29E20282003D8F92 /* TeaElephantSchema */; };
 		4BF8F1FD25C18F880061E0FE /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */; };
 		4BF8F1FE25C18F8F0061E0FE /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
 		4BFF931225BCDED1005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
@@ -105,7 +102,6 @@
 		4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93A625BCEF03005FC04F /* RecordGetter.swift */; };
 		4BFF93A825BCEF03005FC04F /* RecordGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93A625BCEF03005FC04F /* RecordGetter.swift */; };
 		4BFF93A925BCEF03005FC04F /* RecordGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93A625BCEF03005FC04F /* RecordGetter.swift */; };
-		4BFF93B125BCF18D005FC04F /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D6324D6EDFB006B9F96 /* api.swift */; };
 		4BFF93D325BCF484005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
 		4BFF93E725BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
 		4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
@@ -199,7 +195,6 @@
 		4B37AF0925AA608E00209E22 /* Searcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcher.swift; sourceTree = "<group>"; };
 		4B37AF1D25AAE60200209E22 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		4B587D5F24D6E865006B9F96 /* TeaMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaMeta.swift; sourceTree = "<group>"; };
-		4B587D6324D6EDFB006B9F96 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		4B67095B24C8A89900F4C4ED /* CardViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewer.swift; sourceTree = "<group>"; };
 		4B85B4E424C447DE00588DB9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		4B8ACD9C25BC91DA001DE00A /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
@@ -214,6 +209,9 @@
 		4B8E853C24D08D0D001FCFFF /* TeaElephantAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeaElephantAppClip.entitlements; sourceTree = "<group>"; };
 		4B8E854524D09F31001FCFFF /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
 		4B8E855B24D0AEA5001FCFFF /* FullAppOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullAppOffer.swift; sourceTree = "<group>"; };
+		4B9CD7A629E1EEF9006C5F93 /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = "<group>"; };
+		4B9CD7B229E201AE006C5F93 /* schema */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = schema; path = Shared/api/schema; sourceTree = "<group>"; };
+		4B9CD7B429E201E7006C5F93 /* schema */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = schema; path = Shared/api/schema; sourceTree = "<group>"; };
 		4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFieldCommunicator.swift; sourceTree = "<group>"; };
 		4BA6B76824C4E20800C46814 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
 		4BFF931125BCDED1005FC04F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -230,12 +228,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */,
-				4B36C41225C3077C006C9293 /* ApolloCore in Frameworks */,
+				4B9CD76129E1DB54006C5F93 /* Apollo in Frameworks */,
 				4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */,
 				4B36C41625C3077C006C9293 /* CodeScanner in Frameworks */,
-				4B36C41525C3077C006C9293 /* ApolloCodegenLib in Frameworks */,
-				4B36C41325C3077C006C9293 /* ApolloWebSocket in Frameworks */,
-				4B36C41425C3077C006C9293 /* Apollo in Frameworks */,
+				4B9CD76329E1DB59006C5F93 /* ApolloWebSocket in Frameworks */,
+				4BDF3A5B29E2027A003D8F92 /* TeaElephantSchema in Frameworks */,
 				4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */,
 				4B8ACD9F25BC91E8001DE00A /* RealityKit.framework in Frameworks */,
 			);
@@ -260,11 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B36C41725C3077C006C9293 /* MessagePacker in Frameworks */,
-				4B36C41825C3077C006C9293 /* Apollo in Frameworks */,
+				4B9CD76529E1DB61006C5F93 /* Apollo in Frameworks */,
 				4BF8F1FD25C18F880061E0FE /* RealityKit.framework in Frameworks */,
 				4BF8F1FE25C18F8F0061E0FE /* ARKit.framework in Frameworks */,
-				4B36C41A25C3077C006C9293 /* ApolloWebSocket in Frameworks */,
-				4B36C41925C3077C006C9293 /* ApolloCore in Frameworks */,
+				4B9CD76729E1DC59006C5F93 /* ApolloWebSocket in Frameworks */,
+				4BDF3A5D29E20282003D8F92 /* TeaElephantSchema in Frameworks */,
 				4B587D6B24D757DC006B9F96 /* CoreNFC.framework in Frameworks */,
 				4B36C41B25C3077C006C9293 /* CodeScanner in Frameworks */,
 			);
@@ -356,6 +353,7 @@
 		4B29052324C0AEDE007A3D1B = {
 			isa = PBXGroup;
 			children = (
+				4B9CD7B329E201E7006C5F93 /* Packages */,
 				4B8E854424D09EFE001FCFFF /* Shared */,
 				4B29052E24C0AEDE007A3D1B /* TeaElephant */,
 				4B29054024C0AEDF007A3D1B /* TeaElephantTests */,
@@ -447,10 +445,10 @@
 		4B587D6224D6EDAD006B9F96 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				4B9CD7A629E1EEF9006C5F93 /* apollo-codegen-config.json */,
 				4BFF93E625BCF514005FC04F /* RecordWriter.swift */,
 				4BFF931025BCDEB0005FC04F /* mitations */,
 				4BFF930F25BCDEA5005FC04F /* queries */,
-				4B587D6324D6EDFB006B9F96 /* api.swift */,
 				1CEAF296B4514C9F54B6F2A1 /* schema.json */,
 				4BFF939825BCED79005FC04F /* Search.swift */,
 				4BFF93A625BCEF03005FC04F /* RecordGetter.swift */,
@@ -495,9 +493,18 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		4B9CD7B329E201E7006C5F93 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				4B9CD7B429E201E7006C5F93 /* schema */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		4BA6B76724C4E20800C46814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B9CD7B229E201AE006C5F93 /* schema */,
 				4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */,
 				4B8ACD9C25BC91DA001DE00A /* ARKit.framework */,
 				4BA6B76824C4E20800C46814 /* CoreNFC.framework */,
@@ -531,7 +538,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B29055124C0AEDF007A3D1B /* Build configuration list for PBXNativeTarget "TeaElephant" */;
 			buildPhases = (
-				4BFF930E25BCDE1E005FC04F /* Generate Apollo GraphQL API */,
 				4B29052824C0AEDE007A3D1B /* Sources */,
 				4B29052924C0AEDE007A3D1B /* Frameworks */,
 				4B29052A24C0AEDE007A3D1B /* Resources */,
@@ -546,11 +552,10 @@
 			name = TeaElephant;
 			packageProductDependencies = (
 				4B587D5B24D6D1E4006B9F96 /* MessagePacker */,
-				4BFF931D25BCE1C1005FC04F /* ApolloCore */,
-				4BFF931F25BCE1C1005FC04F /* ApolloWebSocket */,
-				4BFF933125BCE285005FC04F /* Apollo */,
-				4BFF933325BCE289005FC04F /* ApolloCodegenLib */,
 				4BC992EB25C1DCC300E5070E /* CodeScanner */,
+				4B9CD76029E1DB54006C5F93 /* Apollo */,
+				4B9CD76229E1DB59006C5F93 /* ApolloWebSocket */,
+				4BDF3A5A29E2027A003D8F92 /* TeaElephantSchema */,
 			);
 			productName = TeaElephant;
 			productReference = 4B29052C24C0AEDE007A3D1B /* TeaElephant.app */;
@@ -607,10 +612,10 @@
 			name = TeaElephantAppClip;
 			packageProductDependencies = (
 				4B587D5D24D6D1F1006B9F96 /* MessagePacker */,
-				4BFF93D725BCF495005FC04F /* Apollo */,
-				4BFF93DC25BCF4B2005FC04F /* ApolloCore */,
-				4BFF93DE25BCF4B5005FC04F /* ApolloWebSocket */,
 				4B36C30225C2D3F9006C9293 /* CodeScanner */,
+				4B9CD76429E1DB61006C5F93 /* Apollo */,
+				4B9CD76629E1DC59006C5F93 /* ApolloWebSocket */,
+				4BDF3A5C29E20282003D8F92 /* TeaElephantSchema */,
 			);
 			productName = TeaElephantAppClip;
 			productReference = 4B8E853024D08D0B001FCFFF /* TeaElephantAppClip.app */;
@@ -622,8 +627,9 @@
 		4B29052424C0AEDE007A3D1B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					4B29052B24C0AEDE007A3D1B = {
 						CreatedOnToolsVersion = 12.0;
@@ -652,8 +658,8 @@
 			mainGroup = 4B29052324C0AEDE007A3D1B;
 			packageReferences = (
 				4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */,
-				4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 			);
 			productRefGroup = 4B29052D24C0AEDE007A3D1B /* Products */;
 			projectDirPath = "";
@@ -674,6 +680,7 @@
 			files = (
 				4B8E854624D09F31001FCFFF /* SharedAssets.xcassets in Resources */,
 				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
+				4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */,
 				4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,34 +711,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4BFF930E25BCDE1E005FC04F /* Generate Apollo GraphQL API */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Apollo GraphQL API";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=../Shared/api/**/*.graphql --localSchemaFile=\"../Shared/api/schema.json\" ../Shared/api/API.swift\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		4B29052824C0AEDE007A3D1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */,
-				4B587D6424D6EDFB006B9F96 /* api.swift in Sources */,
 				4B37AF0A25AA608E00209E22 /* Searcher.swift in Sources */,
 				4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */,
@@ -777,7 +762,6 @@
 				4BFF939025BCECD0005FC04F /* Network.swift in Sources */,
 				4B8E854724D09F8B001FCFFF /* TeaInfo.swift in Sources */,
 				4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */,
-				4BFF93B125BCF18D005FC04F /* api.swift in Sources */,
 				4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */,
 				4B1D0A232504152100D26450 /* NFCreader.swift in Sources */,
 				1CEAFEB02F756D050878B559 /* Manager.swift in Sources */,
@@ -793,7 +777,6 @@
 			files = (
 				4B8E854824D09F8C001FCFFF /* TeaInfo.swift in Sources */,
 				4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */,
-				4B36C30F25C2D890006C9293 /* api.swift in Sources */,
 				4B36C30B25C2D875006C9293 /* TeaMeta.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,7 +801,6 @@
 				4B1D0A342504169F00D26450 /* Writer.swift in Sources */,
 				4B1D0A242504152100D26450 /* NFCreader.swift in Sources */,
 				4B1D0A312504169F00D26450 /* Reader.swift in Sources */,
-				4B587D6524D6EDFB006B9F96 /* api.swift in Sources */,
 				4B8D0BBE25AAECA900FF40DB /* Type.swift in Sources */,
 				4B8E854924D09F8D001FCFFF /* TeaInfo.swift in Sources */,
 				4B8E853324D08D0B001FCFFF /* TeaElephantAppClipApp.swift in Sources */,
@@ -909,6 +891,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "\"-Xlinker -interposable\"";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -963,6 +946,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "\"-Xlinker -interposable\"";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -985,6 +969,7 @@
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1012,6 +997,7 @@
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1213,12 +1199,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hirotakan/MessagePacker.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.1;
+				minimumVersion = 0.4.7;
 			};
 		};
 		4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
@@ -1226,15 +1220,7 @@
 			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.7;
-			};
-		};
-		4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.40.0;
+				minimumVersion = 2.3.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1255,45 +1241,38 @@
 			package = 4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */;
 			productName = MessagePacker;
 		};
+		4B9CD76029E1DB54006C5F93 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		4B9CD76229E1DB59006C5F93 /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
+		4B9CD76429E1DB61006C5F93 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		4B9CD76629E1DC59006C5F93 /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
 		4BC992EB25C1DCC300E5070E /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
 		};
-		4BFF931D25BCE1C1005FC04F /* ApolloCore */ = {
+		4BDF3A5A29E2027A003D8F92 /* TeaElephantSchema */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloCore;
+			productName = TeaElephantSchema;
 		};
-		4BFF931F25BCE1C1005FC04F /* ApolloWebSocket */ = {
+		4BDF3A5C29E20282003D8F92 /* TeaElephantSchema */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloWebSocket;
-		};
-		4BFF933125BCE285005FC04F /* Apollo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = Apollo;
-		};
-		4BFF933325BCE289005FC04F /* ApolloCodegenLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloCodegenLib;
-		};
-		4BFF93D725BCF495005FC04F /* Apollo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = Apollo;
-		};
-		4BFF93DC25BCF4B2005FC04F /* ApolloCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloCore;
-		};
-		4BFF93DE25BCF4B5005FC04F /* ApolloWebSocket */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4BFF931C25BCE1C1005FC04F /* XCRemoteSwiftPackageReference "apollo-ios" */;
-			productName = ApolloWebSocket;
+			productName = TeaElephantSchema;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

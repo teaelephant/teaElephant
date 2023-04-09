@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TeaElephantSchema
 
 protocol ApiSearcher {
     func search(prefix: String, callback: @escaping (TeaDataWithID?, Error?) -> Void)
@@ -31,7 +32,7 @@ class Searcher: ObservableObject {
             if data != nil {
                 self.detectedInfo = TeaInfo(
                         meta: TeaMeta(id: data!.ID, expirationDate: Date.init(), brewingTemp: 100),
-                    data: TeaData(name: data!.name, type: Type(rawValue: data!.type.rawValue)!, description: data!.description)
+                        data: TeaData(name: data!.name, type: GraphQLEnum(rawValue: data!.type.rawValue), description: data!.description)
                 )
             }
         }

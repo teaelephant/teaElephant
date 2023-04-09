@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import TeaElephantSchema
 
 class QRManager {
     public func write(id: String, data: TeaMeta) {
@@ -18,7 +19,7 @@ class QRManager {
                     print(errors)
                     return
                 }
-                guard let id = graphQLResult.data?.writeToQr.id else {
+                guard let id = graphQLResult.data?.writeToQR.id else {
                     return
                 }
                 print(id)

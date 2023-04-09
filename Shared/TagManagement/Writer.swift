@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import TeaElephantSchema
 
 protocol ExtendInfoWriter {
     func writeExtendInfo(info: TeaData, callback: @escaping (String, Error?)->()) throws
@@ -20,7 +21,7 @@ class writer {
         self.meta = meta
     }
 
-    func write(_ data: TeaData, expirationDate: Date, brewingTemp: Int) throws {
+    func write(_ data: TeaData, expirationDate: Foundation.Date, brewingTemp: Int) throws {
         try extend.writeExtendInfo(info: data) { (id, err) -> () in
             if err != nil {
                 print(err!)

@@ -7,8 +7,7 @@
 
 import Foundation
 import Apollo
-
-import Foundation
+import TeaElephantSchema
 
 class RecordGetter: ExtendInfoReader {
     func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) {
@@ -20,7 +19,7 @@ class RecordGetter: ExtendInfoReader {
                     callback(nil, errors[0])
                     return
                 }
-                guard let tea = graphQLResult.data?.getTea else { return }
+                guard let tea = graphQLResult.data?.tea else { return }
                 callback(TeaData(name: tea.name, type: tea.type, description: tea.description), nil)
             case .failure(let error):
                 callback(nil, error)

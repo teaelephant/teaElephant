@@ -1,5 +1,5 @@
 query list($prefix: String){
-  getTeas(prefix: $prefix){
+  teas(prefix: $prefix){
     id
     name
     type

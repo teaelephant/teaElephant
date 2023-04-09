@@ -1,5 +1,5 @@
 query get($id:ID!){
-    getTea(id:$id){
+    tea(id:$id){
         id
         name
         type

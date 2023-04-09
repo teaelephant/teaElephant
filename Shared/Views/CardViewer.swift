@@ -17,7 +17,7 @@ struct CardViewer: View {
 				CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson") { result in
 					switch result {
 					case .success(let code):
-						processQR(code)
+                        processQR(code.string)
 						readQRCode = false
 					case .failure(let error):
 						print(error.localizedDescription)

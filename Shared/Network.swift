@@ -16,15 +16,15 @@ class Network {
 
     /// A web socket transport to use for subscriptions
     private lazy var webSocketTransport: WebSocketTransport = {
-        let url = URL(string: "wss://te.xax.cloud/v2/query")!
-        let request = URLRequest(url: url)
-        return WebSocketTransport(request: request)
+        let url = URL(string: "wss://tea-elephant.com/v2/query")!
+        let webSocketClient = WebSocket(url: url, protocol: .graphql_transport_ws)
+        return WebSocketTransport(websocket: webSocketClient)
     }()
 
     /// An HTTP transport to use for queries and mutations
     private lazy var normalTransport: RequestChainNetworkTransport = {
-        let url = URL(string: "https://te.xax.cloud/v2/query")!
-        return RequestChainNetworkTransport(interceptorProvider: LegacyInterceptorProvider(store: store), endpointURL: url)
+        let url = URL(string: "https://tea-elephant.com/v2/query")!
+        return RequestChainNetworkTransport(interceptorProvider: DefaultInterceptorProvider(store: store), endpointURL: url)
     }()
 
     /// A split network transport to allow the use of both of the above

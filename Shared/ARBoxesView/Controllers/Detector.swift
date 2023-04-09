@@ -13,7 +13,7 @@ import Vision
 import Combine
 import SwiftUI
 
-final class Detector: UIViewControllerRepresentable {
+struct Detector: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> DetectorController {
         let view = DetectorController()
 

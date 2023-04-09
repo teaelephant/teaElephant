@@ -49,7 +49,12 @@ struct Menu: View {
 				Spacer()
 			}.navigationBarTitle("Меню")
 		}
+	    .eraseToAnyView()
 	}
+
+	#if DEBUG
+	@ObservedObject var iO = injectionObserver
+	#endif
 }
 
 struct Menu_Previews: PreviewProvider {

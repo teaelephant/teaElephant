@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TeaElephantSchema
 
 struct TeaInfo {
     let meta: TeaMeta
