@@ -93,7 +93,6 @@
 		4B968BED2A84F0C700D6FC4E /* DetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B907C0B2A84ED6900C89BFC /* DetailManager.swift */; };
 		4B968BEE2A84F0CA00D6FC4E /* DetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B907C0B2A84ED6900C89BFC /* DetailManager.swift */; };
 		4B968BEF2A84F0CB00D6FC4E /* DetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B907C0B2A84ED6900C89BFC /* DetailManager.swift */; };
-		4B968BF12A84F16300D6FC4E /* DetailUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B968BF02A84F16300D6FC4E /* DetailUIView.swift */; };
 		4B9CD76129E1DB54006C5F93 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9CD76029E1DB54006C5F93 /* Apollo */; };
 		4B9CD76329E1DB59006C5F93 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9CD76229E1DB59006C5F93 /* ApolloWebSocket */; };
 		4B9CD76529E1DB61006C5F93 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4B9CD76429E1DB61006C5F93 /* Apollo */; };
@@ -226,7 +225,6 @@
 		4B8E854524D09F31001FCFFF /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
 		4B8E855B24D0AEA5001FCFFF /* FullAppOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullAppOffer.swift; sourceTree = "<group>"; };
 		4B907C0B2A84ED6900C89BFC /* DetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailManager.swift; sourceTree = "<group>"; };
-		4B968BF02A84F16300D6FC4E /* DetailUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUIView.swift; sourceTree = "<group>"; };
 		4B9CD7A629E1EEF9006C5F93 /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = "<group>"; };
 		4B9CD7B229E201AE006C5F93 /* schema */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = schema; path = Shared/api/schema; sourceTree = "<group>"; };
 		4B9CD7B429E201E7006C5F93 /* schema */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = schema; path = Shared/api/schema; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 				1CEAF856689D0D88ADB1AA86 /* ARView.swift */,
 				1CEAF4F74D285D288F667D5E /* DetecorView.swift */,
 				4B56FD8E2A84D5410055BDB5 /* ARCardUIView.swift */,
-				4B968BF02A84F16300D6FC4E /* DetailUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -765,7 +762,6 @@
 				4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */,
 				4BFF939925BCED79005FC04F /* Search.swift in Sources */,
 				4BFF93E725BCF514005FC04F /* RecordWriter.swift in Sources */,
-				4B968BF12A84F16300D6FC4E /* DetailUIView.swift in Sources */,
 				4BFF931225BCDED1005FC04F /* Network.swift in Sources */,
 				1CEAF6293A5B3D4A7F3463B1 /* Manager.swift in Sources */,
 				1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */,
