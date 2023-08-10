@@ -28,7 +28,7 @@ struct Menu: View {
 								})
 				Spacer()
 				NavigationLink(
-								destination: DetectorView(),
+								destination: DetectorView().environmentObject(DetailManager()),
 								label: {
 									Label {
 										Text("Просмотреть все в AR")
@@ -49,12 +49,7 @@ struct Menu: View {
 				Spacer()
 			}.navigationBarTitle("Меню")
 		}
-	    .eraseToAnyView()
 	}
-
-	#if DEBUG
-	@ObservedObject var iO = injectionObserver
-	#endif
 }
 
 struct Menu_Previews: PreviewProvider {

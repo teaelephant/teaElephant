@@ -13,7 +13,7 @@ import MessagePacker
 
 class NFCReader: NSObject, ObservableObject, ShortInfoReader {
     var nfc: NearFieldCommunicator!
-    private var onRead: ((_ meta: TeaMeta) -> Void)?
+    private var onRead: ((_ meta: TeaMeta) async -> Void)?
     @Published var detectedInfo: TeaMeta?
     @Published var error: Error?
 
@@ -22,7 +22,7 @@ class NFCReader: NSObject, ObservableObject, ShortInfoReader {
         nfc = NearFieldCommunicator(delegate: self)
     }
     
-    func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) -> Void) {
+    func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void) {
         self.onRead = onRead
     }
 
@@ -94,15 +94,16 @@ extension NFCReader: NFCProtocol {
                 self.error = ReaderError("invalid records count")
                 return
             }
-
-            do {
-                self.detectedInfo = try TeaMeta.fromBytes(data: messages[0].records[0].payload)
-                if self.onRead != nil && self.detectedInfo != nil {
-                    self.onRead!(self.detectedInfo!)
+            Task {
+                do {
+                    self.detectedInfo = try TeaMeta.fromBytes(data: messages[0].records[0].payload)
+                    if self.onRead != nil && self.detectedInfo != nil {
+                        await self.onRead!(self.detectedInfo!)
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                    return
                 }
-            } catch {
-                print(error.localizedDescription)
-                return
             }
         }
     }

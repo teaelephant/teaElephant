@@ -6,12 +6,12 @@ import Foundation
 import TeaElephantSchema
 
 protocol ExtendInfoReader {
-	func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void)
+	func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) async
 }
 
 protocol ShortInfoReader {
 	func startReadInfo()
-	func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) -> Void)
+	func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void)
 }
 
 class Reader: ObservableObject {
@@ -30,8 +30,8 @@ class Reader: ObservableObject {
 		infoReader.startReadInfo()
 	}
 
-	private func onReadMeta(_ meta: TeaMeta) {
-		extender.getExtendInfo(id: meta.id) { (data, err) -> Void in
+	private func onReadMeta(_ meta: TeaMeta) async {
+		await extender.getExtendInfo(id: meta.id) { (data, err) -> Void in
 			if err != nil {
 				self.error = err
 				return
@@ -42,25 +42,26 @@ class Reader: ObservableObject {
 		}
 	}
 
-	func processQRCode(_ code: String) {
-		Network.shared.apollo.fetch(query: ReadQuery(id: code), resultHandler: { result in
-
-			switch result {
-			case .success(let graphQLResult):
-				if let errors = graphQLResult.errors {
-					self.error = errors.first
-					return
-				}
-				guard let qr = graphQLResult.data?.qrRecord else {
-					return
-				}
-				self.detectedInfo = TeaInfo(
-                    meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
-								data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description)
-				)
-			case .failure(let error):
-				self.error = error
-			}
-		})
+	func processQRCode(_ code: String) async {
+        do {
+            for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: code)) {
+                if let errors = result.errors {
+                    self.error = errors.first
+                    return
+                }
+                guard let qr = result.data?.qrRecord else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.detectedInfo = TeaInfo(
+                        meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
+                                    data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description)
+                    )
+                }
+            }
+        } catch {
+            self.error = error
+        }
 	}
 }

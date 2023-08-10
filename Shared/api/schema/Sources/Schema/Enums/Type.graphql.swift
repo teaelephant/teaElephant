@@ -3,7 +3,7 @@
 
 import ApolloAPI
 
-public enum Type: String, EnumType {
+public enum Type_Enum: String, EnumType {
   case unknown = "unknown"
   case tea = "tea"
   case coffee = "coffee"

@@ -13,12 +13,31 @@ struct CardViewer: View {
 	@State private var readQRCode = false
 	var body: some View {
 		VStack {
+            if #available(iOS 16.0, *) {
+                if reader.error != nil {
+                    Text("\(reader.error!.localizedDescription)").background(Color.red).bold().onAppear{
+                        Task{
+                            try await Task.sleep(nanoseconds: 5_000_000_000)
+                            reader.error = nil
+                        }
+                    }
+                }
+            } else {
+                Text("\(reader.error!.localizedDescription)").foregroundColor(.red).bold().onAppear{
+                    Task{
+                        try await Task.sleep(nanoseconds: 5_000_000_000)
+                        reader.error = nil
+                    }
+                }
+            }
 			if readQRCode {
 				CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson") { result in
 					switch result {
 					case .success(let code):
-                        processQR(code.string)
-						readQRCode = false
+                        Task {
+                            await processQR(code.string)
+                            readQRCode = false
+                        }
 					case .failure(let error):
 						print(error.localizedDescription)
 						readQRCode = false
@@ -46,8 +65,8 @@ struct CardViewer: View {
 		}
 	}
 
-	private func processQR(_ code: String) {
-		reader.processQRCode(code)
+	private func processQR(_ code: String) async {
+		await reader.processQRCode(code)
 		print("Прочитано.")
 	}
 

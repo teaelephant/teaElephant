@@ -12,7 +12,7 @@ public struct TeaData: InputObject {
 
   public init(
     name: String,
-    type: GraphQLEnum<Type>,
+    type: GraphQLEnum<Type_Enum>,
     description: String
   ) {
     __data = InputDict([
@@ -27,7 +27,7 @@ public struct TeaData: InputObject {
     set { __data["name"] = newValue }
   }
 
-  public var type: GraphQLEnum<Type> {
+  public var type: GraphQLEnum<Type_Enum> {
     get { __data["type"] }
     set { __data["type"] = newValue }
   }

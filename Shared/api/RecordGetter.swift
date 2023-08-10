@@ -10,20 +10,20 @@ import Apollo
 import TeaElephantSchema
 
 class RecordGetter: ExtendInfoReader {
-    func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) {
-        Network.shared.apollo.fetch(query: GetQuery(id: id), resultHandler: { result in
-
-            switch result {
-            case .success(let graphQLResult):
-                if let errors = graphQLResult.errors {
+    func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) async {
+        do {
+            for try await result in Network.shared.apollo.fetchAsync(query: GetQuery(id: id)) {
+                if let errors = result.errors {
                     callback(nil, errors[0])
                     return
                 }
-                guard let tea = graphQLResult.data?.tea else { return }
+                guard let tea = result.data?.tea else { return }
                 callback(TeaData(name: tea.name, type: tea.type, description: tea.description), nil)
-            case .failure(let error):
-                callback(nil, error)
+                
+
             }
-        })
+        } catch {
+            callback(nil, error)
+        }
     }
 }

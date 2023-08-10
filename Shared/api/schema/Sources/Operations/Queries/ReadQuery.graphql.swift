@@ -5,25 +5,9 @@
 
 public class ReadQuery: GraphQLQuery {
   public static let operationName: String = "read"
-  public static let document: ApolloAPI.DocumentType = .notPersisted(
+  public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"""
-      query read($id: ID!) {
-        qrRecord(id: $id) {
-          __typename
-          id
-          tea {
-            __typename
-            id
-            name
-            type
-            description
-          }
-          bowlingTemp
-          expirationDate
-        }
-      }
-      """#
+      #"query read($id: ID!) { qrRecord(id: $id) { __typename id tea { __typename id name type description } bowlingTemp expirationDate } }"#
     ))
 
   public var id: ID
@@ -79,13 +63,13 @@ public class ReadQuery: GraphQLQuery {
           .field("__typename", String.self),
           .field("id", TeaElephantSchema.ID.self),
           .field("name", String.self),
-          .field("type", GraphQLEnum<Type>.self),
+          .field("type", GraphQLEnum<TeaElephantSchema.Type_Enum>.self),
           .field("description", String.self),
         ] }
 
         public var id: TeaElephantSchema.ID { __data["id"] }
         public var name: String { __data["name"] }
-        public var type: GraphQLEnum<Type> { __data["type"] }
+        public var type: GraphQLEnum<TeaElephantSchema.Type_Enum> { __data["type"] }
         public var description: String { __data["description"] }
       }
     }

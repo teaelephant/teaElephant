@@ -9,7 +9,7 @@ import Foundation
 import TeaElephantSchema
 
 protocol ApiSearcher {
-    func search(prefix: String, callback: @escaping (TeaDataWithID?, Error?) -> Void)
+    func search(prefix: String, callback: @escaping (TeaDataWithID?, Error?) -> Void) async
 }
 
 class Searcher: ObservableObject {
@@ -21,8 +21,8 @@ class Searcher: ObservableObject {
         self.api = api
     }
 
-    func search(prefix: String) {
-        api.search(prefix: prefix) { (data, err) -> Void in
+    func search(prefix: String) async {
+        await api.search(prefix: prefix) { (data, err) -> Void in
             if err != nil {
                 self.detectedInfo = nil
                 self.error = err

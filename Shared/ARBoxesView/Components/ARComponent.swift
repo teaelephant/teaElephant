@@ -25,6 +25,39 @@ extension HasTeaElephantView {
         set { teaElephantComponent.projection = newValue }
     }
 
+    var lenNew: CGFloat? {
+        get { teaElephantComponent.lenNew }
+        set { teaElephantComponent.lenNew = newValue }
+    }
+
+    var len: CGFloat? {
+        get { teaElephantComponent.len }
+        set { teaElephantComponent.len = newValue }
+    }
+
+    var firstSize: CGFloat? {
+        get { teaElephantComponent.firstSize }
+        set { teaElephantComponent.firstSize = newValue }
+    }
+    var secondSize: CGFloat? {
+        get { teaElephantComponent.secondSize }
+        set { teaElephantComponent.secondSize = newValue }
+    }
+    var firstLen: CGFloat? {
+        get { teaElephantComponent.firstLen }
+        set { teaElephantComponent.firstLen = newValue }
+    }
+    var secondLen: CGFloat? {
+        get { teaElephantComponent.secondLen }
+        set { teaElephantComponent.secondLen = newValue }
+    }
+
+    var sizeCorrection: CGSize? {
+        get { teaElephantComponent.sizeCorrection }
+        set { teaElephantComponent.sizeCorrection = newValue }
+    }
+
+
     // Returns the center point of the enity's screen space view
     func getCenterPoint(_ point: CGPoint) -> CGPoint {
         guard let view = view else {
@@ -42,6 +75,19 @@ extension HasTeaElephantView {
             fatalError("Called centerOnHitLocation(_hitLocation:) on a screen space component with no view.")
         }
         view.frame.origin = CGPoint(x: centerPoint.x, y: centerPoint.y)
+        // view.cardView.frame.origin = CGPoint(x: centerPoint.x, y: centerPoint.y)
+
+        if let sizeCorrection = sizeCorrection {
+            view.cardView.frame.size = sizeCorrection
+            view.frame.size = sizeCorrection
+            self.sizeCorrection = nil
+        } else if let len = len, let lenNew = lenNew {
+            let k = calcConstant()
+            if let k = k {
+                let u = (len + k) / (lenNew + k)
+                // view.frame.size = CGSize(width: view.lastFrame.width*u, height: view.lastFrame.height)
+            }
+        }
 
         // Updating the lastFrame of the StickyNoteView
         view.lastFrame = view.frame
@@ -85,6 +131,18 @@ extension HasTeaElephantView {
         }
     }
 
+    func calcConstant() -> CGFloat? {
+        guard let secondLen = secondLen else { return nil }
+        guard let firstSize = firstSize else { return nil }
+        guard let secondSize = secondSize else { return nil }
+        guard let firstLen = firstLen else { return nil }
+        let sizeDiff = firstSize - secondSize
+        if sizeDiff == 0 {
+            return nil
+        }
+        return (secondSize * secondLen - firstSize * firstLen) / sizeDiff
+    }
+
 }
 
 struct TeaElephantComponent: Component {
@@ -93,6 +151,16 @@ struct TeaElephantComponent: Component {
     var shouldAnimate = false
     /// Contains a screen space projection
     var projection: Projection?
+
+    var lenNew: CGFloat?
+
+    var len: CGFloat?
+
+    var firstSize: CGFloat?
+    var firstLen: CGFloat?
+    var secondSize: CGFloat?
+    var secondLen: CGFloat?
+    var sizeCorrection: CGSize?
 }
 
 struct Projection {

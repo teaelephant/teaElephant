@@ -5,19 +5,9 @@
 
 public class ListQuery: GraphQLQuery {
   public static let operationName: String = "list"
-  public static let document: ApolloAPI.DocumentType = .notPersisted(
+  public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"""
-      query list($prefix: String) {
-        teas(prefix: $prefix) {
-          __typename
-          id
-          name
-          type
-          description
-        }
-      }
-      """#
+      #"query list($prefix: String) { teas(prefix: $prefix) { __typename id name type description } }"#
     ))
 
   public var prefix: GraphQLNullable<String>
@@ -52,13 +42,13 @@ public class ListQuery: GraphQLQuery {
         .field("__typename", String.self),
         .field("id", TeaElephantSchema.ID.self),
         .field("name", String.self),
-        .field("type", GraphQLEnum<Type>.self),
+        .field("type", GraphQLEnum<TeaElephantSchema.Type_Enum>.self),
         .field("description", String.self),
       ] }
 
       public var id: TeaElephantSchema.ID { __data["id"] }
       public var name: String { __data["name"] }
-      public var type: GraphQLEnum<Type> { __data["type"] }
+      public var type: GraphQLEnum<TeaElephantSchema.Type_Enum> { __data["type"] }
       public var description: String { __data["description"] }
     }
   }

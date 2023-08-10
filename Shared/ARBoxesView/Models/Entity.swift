@@ -4,12 +4,13 @@
 
 import UIKit
 import RealityKit
+import TeaElephantSchema
 
 struct EntityModel {
 	let origin: CGPoint
 	let width: CGFloat
 	let height: CGFloat
 	let id: String
-	let name: String
+    let tea: TeaInfo
 	let worldTransform: simd_float4x4
 }

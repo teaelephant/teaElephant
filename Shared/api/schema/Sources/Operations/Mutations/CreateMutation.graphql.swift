@@ -5,16 +5,9 @@
 
 public class CreateMutation: GraphQLMutation {
   public static let operationName: String = "create"
-  public static let document: ApolloAPI.DocumentType = .notPersisted(
+  public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"""
-      mutation create($tea: TeaData!) {
-        newTea(tea: $tea) {
-          __typename
-          id
-        }
-      }
-      """#
+      #"mutation create($tea: TeaData!) { newTea(tea: $tea) { __typename id } }"#
     ))
 
   public var tea: TeaData

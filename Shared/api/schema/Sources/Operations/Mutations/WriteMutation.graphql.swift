@@ -5,16 +5,9 @@
 
 public class WriteMutation: GraphQLMutation {
   public static let operationName: String = "write"
-  public static let document: ApolloAPI.DocumentType = .notPersisted(
+  public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"""
-      mutation write($id: ID!, $data: QRRecordData!) {
-        writeToQR(id: $id, data: $data) {
-          __typename
-          id
-        }
-      }
-      """#
+      #"mutation write($id: ID!, $data: QRRecordData!) { writeToQR(id: $id, data: $data) { __typename id } }"#
     ))
 
   public var id: ID

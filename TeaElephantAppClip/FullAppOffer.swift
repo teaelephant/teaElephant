@@ -15,12 +15,8 @@ struct FullAppOffer: View {
             .appStoreOverlay(isPresented: $showFullApp) {
                 SKOverlay.AppClipConfiguration(position: .bottom)
             }.onAppear(perform: onload).onDisappear(perform: unload)
-        .eraseToAnyView()
     }
 
-    #if DEBUG
-    @ObservedObject var iO = injectionObserver
-    #endif
     func onload(){
         showFullApp = true
     }

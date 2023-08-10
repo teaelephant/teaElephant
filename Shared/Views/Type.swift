@@ -9,7 +9,7 @@ import SwiftUI
 import TeaElephantSchema
 
 struct TypeView: View {
-    var type: Type
+    var type: Type_Enum
     var body: some View {
         Text(type.rawValue).italic().multilineTextAlignment(.trailing)
     }
@@ -17,6 +17,6 @@ struct TypeView: View {
 
 struct TypeView_Previews: PreviewProvider {
     static var previews: some View {
-        TypeView(type: Type.tea)
+        TypeView(type: Type_Enum.tea)
     }
 }

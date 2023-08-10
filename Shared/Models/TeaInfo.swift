@@ -16,6 +16,6 @@ struct TeaInfo {
 struct TeaDataWithID {
     let ID: String
     let name: String
-    let type: Type
+    let type: Type_Enum
     let description: String
 }

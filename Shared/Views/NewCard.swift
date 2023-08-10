@@ -11,11 +11,12 @@ import CodeScanner
 import UIKit
 import TeaElephantSchema
 
+@available(iOS 13.0.0, *)
 struct NewCard: View {
 	@Environment(\.presentationMode) var presentationMode
 	@ObservedObject private var searcher = Searcher(Search())
 	@State private var name = ""
-	@State private var type = Type.tea
+	@State private var type = Type_Enum.tea
 	@State private var description = ""
     @State private var expirationDate = Foundation.Date.init()
 	@State private var brewingTemp: String = "100"
@@ -28,8 +29,10 @@ struct NewCard: View {
 			CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson") { result in
 				switch result {
 				case .success(let code):
-                    saveQR(code.string)
-					readQRCode = false
+                    Task{
+                        await saveQR(code.string)
+                        readQRCode = false
+                    }
 				case .failure(let error):
 					print(error.localizedDescription)
 					readQRCode = false
@@ -52,9 +55,9 @@ struct NewCard: View {
 						Description(description: ($searcher.detectedInfo.wrappedValue?.data.description)!)
 					} else {
 						Picker(selection: $type, label: Text("Тип напитка")) {
-							Text(Type.tea.rawValue).tag(1)
-							Text(Type.coffee.rawValue).tag(2)
-							Text(Type.herb.rawValue).tag(3)
+							Text(Type_Enum.tea.rawValue).tag(Type_Enum.tea)
+							Text(Type_Enum.coffee.rawValue).tag(Type_Enum.coffee)
+							Text(Type_Enum.herb.rawValue).tag(Type_Enum.herb)
 						}.frame(height: 100)
 						HStack {
 							Text("Описание")
@@ -73,9 +76,9 @@ struct NewCard: View {
 					}
 					Spacer()
 					Button(action: {
-						withAnimation {
-							saveNFC()
-						}
+                        Task{
+                            await saveNFC()
+                        }
 					}) {
 						Text("Сохранить на NFC метку").padding(10)
 					}
@@ -93,7 +96,7 @@ struct NewCard: View {
 	}
 
 
-	func saveNFC() {
+	func saveNFC() async {
 		if $searcher.detectedInfo.projectedValue.wrappedValue != nil {
 			do {
 				try tagWriter().writeData(info: $searcher.detectedInfo.projectedValue.wrappedValue!.meta)
@@ -119,12 +122,12 @@ struct NewCard: View {
 
 		let data = TeaData(
 						name: name,
-						type: GraphQLEnum(Type(rawValue: type.rawValue)!),
+						type: GraphQLEnum(Type_Enum(rawValue: type.rawValue)!),
 						description: description
 		)
 		do {
 			let w = writer(extend: RecordWriter(), meta: tagWriter())
-			try w.write(data, expirationDate: expirationDate, brewingTemp: temp)
+			try await w.write(data, expirationDate: expirationDate, brewingTemp: temp)
 		} catch {
 			print(error.localizedDescription)
 			return
@@ -135,15 +138,17 @@ struct NewCard: View {
 	}
 
 	private func search(_ prefix: String) {
-		print("search: " + prefix)
-		if prefix != "" {
-			searcher.search(prefix: prefix)
-		}
+        Task {
+            print("search: " + prefix)
+            if prefix != "" {
+                await searcher.search(prefix: prefix)
+            }
+        }
 	}
 
 	private func resetState() {
 		name = ""
-		type = Type.tea
+		type = Type_Enum.tea
 		description = ""
 		expirationDate = Date.init()
 		brewingTemp = "100"
@@ -153,9 +158,9 @@ struct NewCard: View {
 		readQRCode = true
 	}
 
-	private func saveQR(_ code: String) {
+	private func saveQR(_ code: String) async {
 		if $searcher.detectedInfo.projectedValue.wrappedValue != nil {
-			QRManager().write(id: code, data: $searcher.detectedInfo.projectedValue.wrappedValue!.meta)
+			await QRManager().write(id: code, data: $searcher.detectedInfo.projectedValue.wrappedValue!.meta)
 			name = ""
 			return
 		}
@@ -175,12 +180,12 @@ struct NewCard: View {
 
 		let data = TeaData(
 						name: name,
-						type: GraphQLEnum(Type(rawValue: type.rawValue)!),
+						type: GraphQLEnum(Type_Enum(rawValue: type.rawValue)!),
 						description: description
 		)
 		do {
 			let w = writer(extend: RecordWriter(), meta: tagWriter())
-			try w.write(data, expirationDate: expirationDate, brewingTemp: temp)
+			try await w.write(data, expirationDate: expirationDate, brewingTemp: temp)
 		} catch {
 			print(error.localizedDescription)
 			return

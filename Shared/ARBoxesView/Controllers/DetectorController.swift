@@ -11,9 +11,9 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 	var arView: ARView!
 	var subscription: Cancellable!
 	var titles = [TitleEntity]()
+    var titlesMap: Dictionary<String, TitleEntity> = [:]
 	var ids = [String]()
 	var newEntities = [EntityModel]()
-	var direction: SIMD3<Float> = SIMD3(0, 0, 0)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -51,12 +51,6 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 				return
 			}
 
-			if direction - or.direction != SIMD3(0, 0, 0) {
-				print(direction - or.direction)
-				direction = or.direction
-			}
-
-
 			// Calculates whether the note can be currently visible by the camera.
 			let cameraForward = arView.cameraTransform.matrix.columns.2.xyz
 			let cameraToWorldPointDirection = normalize(title.transform.translation - arView.cameraTransform.translation)
@@ -66,6 +60,14 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 
 			// Updates the screen position of the note based on its visibility
 			title.projection = Projection(projectedPoint: projectedPoint, isVisible: isVisible)
+            title.len = title.lenNew
+            title.lenNew = CGFloat(CGFloat(length(or.direction - or.origin)))
+            if title.secondSize == nil && title.firstLen == nil {
+                title.firstLen = title.lenNew
+            }
+            if title.secondSize != nil && title.secondLen == nil {
+                title.secondLen = title.lenNew
+            }
 			title.updateScreenPosition()
 		}
 	}
@@ -102,6 +104,7 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 						if self.ids.contains(where: { id in
 							id == payload
 						}) {
+                            self.updateSizeOfTitle(barcode: barcode, frame: frame, id: payload, session: session)
 							continue
 						}
 						self.processNewBarcode(barcode: barcode, frame: frame, payload: payload, session: session)
@@ -149,45 +152,68 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 		let convertedHeight = barcode.boundingBox.height * screenSize.height
 		let convertedWidth = barcode.boundingBox.width * screenSize.width * 2
 
-		Network.shared.apollo.fetch(query: ReadQuery(id: payload)) { result in
-			switch result {
-			case .success(let graphQLResult):
-				if let errors = graphQLResult.errors {
-					print(errors)
-					return
-				}
-				guard let tea = graphQLResult.data?.qrRecord?.tea else {
-					return
-				}
-				self.newEntities.append(EntityModel(
-								origin: convertedOrign,
-								width: convertedWidth,
-								height: convertedHeight,
-								id: payload,
-								name: tea.name,
-								worldTransform: raycastResult.worldTransform
-				))
-			case .failure(let error):
-				print(error)
-			}
-		}
-
+        Task{
+            do {
+                for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: payload)) {
+                    if let errors = result.errors {
+                        print(errors)
+                        return
+                    }
+                    guard let qr = result.data?.qrRecord else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        let info = TeaInfo(
+                            meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
+                            data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description))
+                        self.newEntities.append(EntityModel(
+                                        origin: convertedOrign,
+                                        width: convertedWidth,
+                                        height: convertedHeight,
+                                        id: payload,
+                                        tea: info,
+                                        worldTransform: raycastResult.worldTransform
+                        ))
+                    }
+                        
+                }
+            } catch {
+                print(error)
+            }
+        }
 	}
+    
+    func updateSizeOfTitle(barcode: VNBarcodeObservation, frame: ARFrame, id: String, session: ARSession) {
+        var rect = barcode.boundingBox
+        // Flip coordinates
+        rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
+        rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
+        let screenSize: CGRect = UIScreen.main.bounds
+        let convertedHeight = barcode.boundingBox.height * screenSize.height
+        let convertedWidth = barcode.boundingBox.width * screenSize.width * 2
+        DispatchQueue.main.async {
+            self.titlesMap[id]?.sizeCorrection = CGSize(width: convertedWidth, height: convertedHeight)
+            if self.titlesMap[id]?.secondSize == nil {
+                self.titlesMap[id]?.secondSize = convertedWidth
+            }
+        }
+    }
 
 	private func placeNewBarcodes() {
 		let entities = newEntities
 		newEntities = [EntityModel]()
 		for entity in entities {
 			let titleFrame = CGRect(origin: entity.origin, size: CGSize(width: entity.width, height: entity.height))
-			let title = TitleEntity(frame: titleFrame, worldTransform: entity.worldTransform, id: entity.id, name: entity.name)
+			let title = TitleEntity(frame: titleFrame, worldTransform: entity.worldTransform, id: entity.id, info: entity.tea)
 			guard let titleView = title.view else {
 				return
 			}
 			title.setPositionCenter(entity.origin)
+            title.firstSize = entity.width
 			arView.scene.addAnchor(title)
 			arView.addSubview(titleView)
 			titles.append(title)
-			titleView.textView.delegate = self
+            titlesMap[entity.id] = title
 		}
 	}
 }
