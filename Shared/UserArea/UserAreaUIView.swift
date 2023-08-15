@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct UserAreaUIView: View {
+    @ObservedObject private var manager = CollectionsManager()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if manager.validateAuth() {
+            if #available(iOS 17.0, *) {
+                CollectionsUIView(manager: manager)
+            } else {
+                Text("Unsupported")
+            }
+        } else {
+            AuthUIView(manager: manager)
+        }
     }
 }
 

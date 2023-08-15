@@ -11,7 +11,6 @@
 		1CEAF55E49D8EBDB7195A8A1 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAFF5F083FF2F9221E7D4D /* Detector.swift */; };
 		1CEAF5EAC162B7CB98A68823 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
 		1CEAF6293A5B3D4A7F3463B1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF455D315B2941A7F79C5 /* Manager.swift */; };
-		1CEAF7E96CA361110A5DA9B1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF343EFDA9C201FD64806 /* ScannerViewController.swift */; };
 		1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */; };
 		1CEAFA47F2EA7DCDE9DDB1C2 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF856689D0D88ADB1AA86 /* ARView.swift */; };
 		1CEAFB59120D515FC865748C /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
@@ -100,6 +99,33 @@
 		4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B9CD7A629E1EEF9006C5F93 /* apollo-codegen-config.json */; };
 		4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */; };
 		4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
+		4BB739D92A86A388003524A0 /* CollectionsMnagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */; };
+		4BB739DA2A86A388003524A0 /* CollectionsMnagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */; };
+		4BB739DC2A86A52C003524A0 /* CollectionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */; };
+		4BB739DD2A86A52C003524A0 /* CollectionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */; };
+		4BB739DF2A86ACE2003524A0 /* CollectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739DE2A86ACE2003524A0 /* CollectionUIView.swift */; };
+		4BB739E02A86ACE2003524A0 /* CollectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739DE2A86ACE2003524A0 /* CollectionUIView.swift */; };
+		4BB739E52A86BE08003524A0 /* addRecordsToCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739E42A86BE08003524A0 /* addRecordsToCollection.graphql */; };
+		4BB739E62A86BE08003524A0 /* addRecordsToCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739E42A86BE08003524A0 /* addRecordsToCollection.graphql */; };
+		4BB739E82A86CA32003524A0 /* deleteCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739E72A86CA32003524A0 /* deleteCollection.graphql */; };
+		4BB739E92A86CA32003524A0 /* deleteCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739E72A86CA32003524A0 /* deleteCollection.graphql */; };
+		4BB739EB2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739EA2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql */; };
+		4BB739EC2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739EA2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql */; };
+		4BB739EF2A86DEC2003524A0 /* Detector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739EE2A86DEC2003524A0 /* Detector2.swift */; };
+		4BB739F02A86DEC2003524A0 /* Detector2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739EE2A86DEC2003524A0 /* Detector2.swift */; };
+		4BB739F22A86E011003524A0 /* DetectorController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F12A86E011003524A0 /* DetectorController2.swift */; };
+		4BB739F32A86E011003524A0 /* DetectorController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F12A86E011003524A0 /* DetectorController2.swift */; };
+		4BB739F52A8917F0003524A0 /* UserAreaUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F42A8917F0003524A0 /* UserAreaUIView.swift */; };
+		4BB739F62A8917F0003524A0 /* UserAreaUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F42A8917F0003524A0 /* UserAreaUIView.swift */; };
+		4BB739F92A89184E003524A0 /* AuthUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F82A89184E003524A0 /* AuthUIView.swift */; };
+		4BB739FA2A89184E003524A0 /* AuthUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F82A89184E003524A0 /* AuthUIView.swift */; };
+		4BB739FC2A891BAC003524A0 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB739FB2A891BAB003524A0 /* AuthenticationServices.framework */; };
+		4BB739FE2A8AB4FF003524A0 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */; };
+		4BB739FF2A8AB4FF003524A0 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */; };
+		4BB73A012A8AB8B3003524A0 /* auth.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB73A002A8AB8B3003524A0 /* auth.graphql */; };
+		4BB73A022A8AB8B3003524A0 /* auth.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB73A002A8AB8B3003524A0 /* auth.graphql */; };
+		4BB73A032A8C0884003524A0 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */; };
+		4BB73A042A8C0885003524A0 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */; };
 		4BDF3A5B29E2027A003D8F92 /* TeaElephantSchema in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDF3A5A29E2027A003D8F92 /* TeaElephantSchema */; };
 		4BDF3A5D29E20282003D8F92 /* TeaElephantSchema in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDF3A5C29E20282003D8F92 /* TeaElephantSchema */; };
 		4BEF3EBD2A7BC71600829724 /* CacheInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEF3EBC2A7BC71600829724 /* CacheInterceptor.swift */; };
@@ -174,7 +200,6 @@
 		1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorController.swift; sourceTree = "<group>"; };
 		1CEAF1E146311E4E03BC8CE7 /* qrWrite.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = qrWrite.graphql; sourceTree = "<group>"; };
 		1CEAF296B4514C9F54B6F2A1 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = schema.json; sourceTree = "<group>"; };
-		1CEAF343EFDA9C201FD64806 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		1CEAF371A747B66EAA8A014A /* get.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = get.graphql; sourceTree = "<group>"; };
 		1CEAF455D315B2941A7F79C5 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		1CEAF4F74D285D288F667D5E /* DetecorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetecorView.swift; sourceTree = "<group>"; };
@@ -230,6 +255,21 @@
 		4B9CD7B429E201E7006C5F93 /* schema */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = schema; path = Shared/api/schema; sourceTree = "<group>"; };
 		4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFieldCommunicator.swift; sourceTree = "<group>"; };
 		4BA6B76824C4E20800C46814 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
+		4BB739D22A869F4D003524A0 /* collections.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = collections.graphql; sourceTree = "<group>"; };
+		4BB739D32A869F65003524A0 /* createCollection.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createCollection.graphql; sourceTree = "<group>"; };
+		4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsMnagement.swift; sourceTree = "<group>"; };
+		4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsUIView.swift; sourceTree = "<group>"; };
+		4BB739DE2A86ACE2003524A0 /* CollectionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionUIView.swift; sourceTree = "<group>"; };
+		4BB739E42A86BE08003524A0 /* addRecordsToCollection.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = addRecordsToCollection.graphql; sourceTree = "<group>"; };
+		4BB739E72A86CA32003524A0 /* deleteCollection.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = deleteCollection.graphql; sourceTree = "<group>"; };
+		4BB739EA2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = deleteRecordsFromCollection.graphql; sourceTree = "<group>"; };
+		4BB739EE2A86DEC2003524A0 /* Detector2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detector2.swift; sourceTree = "<group>"; };
+		4BB739F12A86E011003524A0 /* DetectorController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorController2.swift; sourceTree = "<group>"; };
+		4BB739F42A8917F0003524A0 /* UserAreaUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaUIView.swift; sourceTree = "<group>"; };
+		4BB739F82A89184E003524A0 /* AuthUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUIView.swift; sourceTree = "<group>"; };
+		4BB739FB2A891BAB003524A0 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
+		4BB73A002A8AB8B3003524A0 /* auth.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = auth.graphql; sourceTree = "<group>"; };
 		4BEF3EBC2A7BC71600829724 /* CacheInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheInterceptor.swift; sourceTree = "<group>"; };
 		4BFF931125BCDED1005FC04F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4BFF934325BCE2DE005FC04F /* newRecord.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = newRecord.graphql; sourceTree = "<group>"; };
@@ -244,6 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB739FC2A891BAC003524A0 /* AuthenticationServices.framework in Frameworks */,
 				4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */,
 				4B9CD76129E1DB54006C5F93 /* Apollo in Frameworks */,
 				4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */,
@@ -299,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				1CEAF455D315B2941A7F79C5 /* Manager.swift */,
-				1CEAF343EFDA9C201FD64806 /* ScannerViewController.swift */,
 			);
 			path = QRManagement;
 			sourceTree = "<group>";
@@ -466,7 +506,7 @@
 			children = (
 				4B9CD7A629E1EEF9006C5F93 /* apollo-codegen-config.json */,
 				4BFF93E625BCF514005FC04F /* RecordWriter.swift */,
-				4BFF931025BCDEB0005FC04F /* mitations */,
+				4BFF931025BCDEB0005FC04F /* mutations */,
 				4BFF930F25BCDEA5005FC04F /* queries */,
 				1CEAF296B4514C9F54B6F2A1 /* schema.json */,
 				4BFF939825BCED79005FC04F /* Search.swift */,
@@ -499,6 +539,7 @@
 		4B8E854424D09EFE001FCFFF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4BB739D42A86A1AE003524A0 /* UserArea */,
 				4B37AF0825AA607600209E22 /* Search */,
 				4B587D6224D6EDAD006B9F96 /* api */,
 				4B29055D24C2ED2A007A3D1B /* Models */,
@@ -525,6 +566,7 @@
 		4BA6B76724C4E20800C46814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BB739FB2A891BAB003524A0 /* AuthenticationServices.framework */,
 				4B9CD7B229E201AE006C5F93 /* schema */,
 				4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */,
 				4B8ACD9C25BC91DA001DE00A /* ARKit.framework */,
@@ -533,23 +575,76 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4BB739D42A86A1AE003524A0 /* UserArea */ = {
+			isa = PBXGroup;
+			children = (
+				4BB739F72A891839003524A0 /* Auth */,
+				4BB739D52A86A341003524A0 /* Collections */,
+				4BB739F42A8917F0003524A0 /* UserAreaUIView.swift */,
+			);
+			path = UserArea;
+			sourceTree = "<group>";
+		};
+		4BB739D52A86A341003524A0 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				4BB739D72A86A367003524A0 /* Controllers */,
+				4BB739D62A86A35F003524A0 /* Views */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		4BB739D62A86A35F003524A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */,
+				4BB739DE2A86ACE2003524A0 /* CollectionUIView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4BB739D72A86A367003524A0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */,
+				4BB739EE2A86DEC2003524A0 /* Detector2.swift */,
+				4BB739F12A86E011003524A0 /* DetectorController2.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BB739F72A891839003524A0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4BB739F82A89184E003524A0 /* AuthUIView.swift */,
+				4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		4BFF930F25BCDEA5005FC04F /* queries */ = {
 			isa = PBXGroup;
 			children = (
 				4BFF939F25BCEDCF005FC04F /* list.graphql */,
 				1CEAF371A747B66EAA8A014A /* get.graphql */,
 				1CEAF7893496AA85F8233991 /* qrRead.graphql */,
+				4BB739D22A869F4D003524A0 /* collections.graphql */,
 			);
 			path = queries;
 			sourceTree = "<group>";
 		};
-		4BFF931025BCDEB0005FC04F /* mitations */ = {
+		4BFF931025BCDEB0005FC04F /* mutations */ = {
 			isa = PBXGroup;
 			children = (
 				4BFF934325BCE2DE005FC04F /* newRecord.graphql */,
 				1CEAF1E146311E4E03BC8CE7 /* qrWrite.graphql */,
+				4BB739D32A869F65003524A0 /* createCollection.graphql */,
+				4BB739E42A86BE08003524A0 /* addRecordsToCollection.graphql */,
+				4BB739E72A86CA32003524A0 /* deleteCollection.graphql */,
+				4BB739EA2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql */,
+				4BB73A002A8AB8B3003524A0 /* auth.graphql */,
 			);
-			path = mitations;
+			path = mutations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -700,6 +795,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B8E854624D09F31001FCFFF /* SharedAssets.xcassets in Resources */,
+				4BB739E52A86BE08003524A0 /* addRecordsToCollection.graphql in Resources */,
+				4BB739E82A86CA32003524A0 /* deleteCollection.graphql in Resources */,
+				4BB73A012A8AB8B3003524A0 /* auth.graphql in Resources */,
+				4BB739EB2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */,
 				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
 				4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */,
 				4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */,
@@ -724,9 +823,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB739E62A86BE08003524A0 /* addRecordsToCollection.graphql in Resources */,
+				4BB739E92A86CA32003524A0 /* deleteCollection.graphql in Resources */,
 				4B8E855724D09FAA001FCFFF /* SharedAssets.xcassets in Resources */,
 				4B8E853A24D08D0D001FCFFF /* Preview Assets.xcassets in Resources */,
 				4B8E853724D08D0D001FCFFF /* Assets.xcassets in Resources */,
+				4BB73A022A8AB8B3003524A0 /* auth.graphql in Resources */,
+				4BB739EC2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +854,7 @@
 				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
 				4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */,
 				4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */,
+				4BB739DC2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
 				4B37AF1E25AAE60200209E22 /* Description.swift in Sources */,
 				4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */,
 				4B56FD8F2A84D5410055BDB5 /* ARCardUIView.swift in Sources */,
@@ -758,6 +862,7 @@
 				4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */,
 				4B29056424C4374F007A3D1B /* NewCard.swift in Sources */,
 				4B1D0A2F2504169F00D26450 /* Reader.swift in Sources */,
+				4BB739F52A8917F0003524A0 /* UserAreaUIView.swift in Sources */,
 				4B29055F24C2ED3E007A3D1B /* TeaInfo.swift in Sources */,
 				4B29053024C0AEDE007A3D1B /* TeaElephantApp.swift in Sources */,
 				4BFF939925BCED79005FC04F /* Search.swift in Sources */,
@@ -765,12 +870,18 @@
 				4BFF931225BCDED1005FC04F /* Network.swift in Sources */,
 				1CEAF6293A5B3D4A7F3463B1 /* Manager.swift in Sources */,
 				1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */,
+				4BB739D92A86A388003524A0 /* CollectionsMnagement.swift in Sources */,
+				4BB739DF2A86ACE2003524A0 /* CollectionUIView.swift in Sources */,
 				4B1B06262A7B8ECA00A332E1 /* ApolloClientExtension.swift in Sources */,
+				4BB739FE2A8AB4FF003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				1CEAF55E49D8EBDB7195A8A1 /* Detector.swift in Sources */,
 				1CEAFA47F2EA7DCDE9DDB1C2 /* ARView.swift in Sources */,
 				1CEAF0F996CA19454EAD4557 /* DetecorView.swift in Sources */,
+				4BB739EF2A86DEC2003524A0 /* Detector2.swift in Sources */,
+				4BB739F22A86E011003524A0 /* DetectorController2.swift in Sources */,
 				1CEAFE2B82A0A88AF3BEFAC7 /* TitleEntity.swift in Sources */,
 				1CEAFC2FB4DCF8952E85CA45 /* ARComponent.swift in Sources */,
+				4BB739F92A89184E003524A0 /* AuthUIView.swift in Sources */,
 				1CEAF5EAC162B7CB98A68823 /* Entity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,9 +904,9 @@
 				4B1B06272A7B919800A332E1 /* ApolloClientExtension.swift in Sources */,
 				4B1D0A232504152100D26450 /* NFCreader.swift in Sources */,
 				1CEAFEB02F756D050878B559 /* Manager.swift in Sources */,
-				1CEAF7E96CA361110A5DA9B1 /* ScannerViewController.swift in Sources */,
 				4B36C30725C2D7EE006C9293 /* TeaMeta.swift in Sources */,
 				1CEAFB5A1B87520A502CCCC5 /* Entity.swift in Sources */,
+				4BB73A032A8C0884003524A0 /* AuthorizationInterceptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +915,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B968BEF2A84F0CB00D6FC4E /* DetailManager.swift in Sources */,
+				4BB73A042A8C0885003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				4B8E854824D09F8C001FCFFF /* TeaInfo.swift in Sources */,
 				4B1B06292A7B919900A332E1 /* ApolloClientExtension.swift in Sources */,
 				4BEF3EBF2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
@@ -817,26 +929,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B968BED2A84F0C700D6FC4E /* DetailManager.swift in Sources */,
+				4BB739F32A86E011003524A0 /* DetectorController2.swift in Sources */,
 				4BFF93D325BCF484005FC04F /* Network.swift in Sources */,
 				4B8E855024D09F9F001FCFFF /* UIResponder+Current.swift in Sources */,
+				4BB739FA2A89184E003524A0 /* AuthUIView.swift in Sources */,
+				4BB739F02A86DEC2003524A0 /* Detector2.swift in Sources */,
 				4B8E855424D09F9F001FCFFF /* KeyboardHeightPublisher.swift in Sources */,
 				4B37AF1325AA65BD00209E22 /* Searcher.swift in Sources */,
 				4B37AF1F25AAE60200209E22 /* Description.swift in Sources */,
+				4BB739FF2A8AB4FF003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				4B8E855124D09F9F001FCFFF /* ContentView.swift in Sources */,
 				4B8E854F24D09F95001FCFFF /* NearFieldCommunicator.swift in Sources */,
 				4BFF93A925BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B8E855524D09F9F001FCFFF /* ShowCard.swift in Sources */,
+				4BB739DD2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
 				4B8E855624D09F9F001FCFFF /* Menu.swift in Sources */,
+				4BB739DA2A86A388003524A0 /* CollectionsMnagement.swift in Sources */,
 				4B8E855C24D0AEA5001FCFFF /* FullAppOffer.swift in Sources */,
 				4B8E855324D09F9F001FCFFF /* CardViewer.swift in Sources */,
 				4B8E855224D09F9F001FCFFF /* NewCard.swift in Sources */,
 				4B1D0A342504169F00D26450 /* Writer.swift in Sources */,
 				4B1D0A242504152100D26450 /* NFCreader.swift in Sources */,
+				4BB739F62A8917F0003524A0 /* UserAreaUIView.swift in Sources */,
 				4B1D0A312504169F00D26450 /* Reader.swift in Sources */,
 				4B8D0BBE25AAECA900FF40DB /* Type.swift in Sources */,
 				4B8E854924D09F8D001FCFFF /* TeaInfo.swift in Sources */,
 				4B8E853324D08D0B001FCFFF /* TeaElephantAppClipApp.swift in Sources */,
 				4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */,
+				4BB739E02A86ACE2003524A0 /* CollectionUIView.swift in Sources */,
 				4BFF939B25BCED79005FC04F /* Search.swift in Sources */,
 				4B1B06282A7B919800A332E1 /* ApolloClientExtension.swift in Sources */,
 				4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */,

@@ -15,7 +15,7 @@ struct CardViewer: View {
 		VStack {
             if #available(iOS 16.0, *) {
                 if reader.error != nil {
-                    Text("\(reader.error!.localizedDescription)").background(Color.red).bold().onAppear{
+                    Text("\(reader.error!)").foregroundStyle(.red).bold().onAppear{
                         Task{
                             try await Task.sleep(nanoseconds: 5_000_000_000)
                             reader.error = nil
@@ -23,7 +23,7 @@ struct CardViewer: View {
                     }
                 }
             } else {
-                Text("\(reader.error!.localizedDescription)").foregroundColor(.red).bold().onAppear{
+                Text("\(reader.error!)").foregroundColor(.red).bold().onAppear{
                     Task{
                         try await Task.sleep(nanoseconds: 5_000_000_000)
                         reader.error = nil
@@ -51,14 +51,14 @@ struct CardViewer: View {
 						readNFC()
 					}
 				}) {
-					Text("Прочтиать содержимое NFC метки").padding(10)
+					Text("Read NFC tag").padding(10)
 				}
 				Button(action: {
 					withAnimation {
 						readQR()
 					}
 				}) {
-					Text("Прочтиать содержимое QR кода").padding(10)
+					Text("Read QR code").padding(10)
 				}
 
 			}

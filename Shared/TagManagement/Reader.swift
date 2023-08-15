@@ -4,6 +4,7 @@
 
 import Foundation
 import TeaElephantSchema
+import Apollo
 
 protocol ExtendInfoReader {
 	func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) async
@@ -16,7 +17,7 @@ protocol ShortInfoReader {
 
 class Reader: ObservableObject {
 	@Published var detectedInfo: TeaInfo?
-	@Published var error: Error?
+	@Published var error: String?
 	var extender: ExtendInfoReader
 	var infoReader: ShortInfoReader
 
@@ -33,7 +34,7 @@ class Reader: ObservableObject {
 	private func onReadMeta(_ meta: TeaMeta) async {
 		await extender.getExtendInfo(id: meta.id) { (data, err) -> Void in
 			if err != nil {
-				self.error = err
+                self.error = err?.localizedDescription
 				return
 			}
 			if data != nil {
@@ -46,7 +47,7 @@ class Reader: ObservableObject {
         do {
             for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: code)) {
                 if let errors = result.errors {
-                    self.error = errors.first
+                    self.error = mapErrors(errs: errors)
                     return
                 }
                 guard let qr = result.data?.qrRecord else {
@@ -61,7 +62,18 @@ class Reader: ObservableObject {
                 }
             }
         } catch {
-            self.error = error
+            self.error = error.localizedDescription
         }
 	}
+    
+    func mapErrors(errs: [GraphQLError]) -> String? {
+        guard let err = errs.first else { return nil }
+        guard let code = err.extensions?["code"] as? Int else { return err.localizedDescription }
+        switch code {
+        case 0:
+            return "qr code is free, write some info for this qr code first"
+        default:
+            return "unknown error"
+        }
+    }
 }

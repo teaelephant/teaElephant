@@ -6,7 +6,7 @@ struct DetectorView: View {
         #if APPCLIP
         FullAppOffer()
         #elseif !targetEnvironment(simulator)
-        if let title = detailController.info {
+        if let info = detailController.info {
             VStack{
                 Button(action: {
                     detailController.info = nil
@@ -14,7 +14,7 @@ struct DetectorView: View {
                     Text("Back")
                 }
             }
-            ShowCard(info:.constant(detailController.info))
+            ShowCard(info:.constant(info))
         } else {
             Detector().edgesIgnoringSafeArea(.all)
         }

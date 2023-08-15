@@ -18,8 +18,14 @@ class TeaElephantTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-    
+    func testprocessQRCode() async throws {
+        let reader = Reader(infoReader: NFCReader(), extender: RecordGetter())
+        await reader.processQRCode("3c252497-9d87-44f0-b3de-2822c6b94df5")
+        XCTAssertEqual(
+            reader.error,
+            "qr code is free, write some info for this qr code first",
+            "incorrect error"
+        )
     }
 
     func testPerformanceExample() throws {

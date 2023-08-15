@@ -23,7 +23,9 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
   public static func objectType(forTypename typename: String) -> Object? {
     switch typename {
     case "Mutation": return TeaElephantSchema.Objects.Mutation
+    case "Session": return TeaElephantSchema.Objects.Session
     case "QRRecord": return TeaElephantSchema.Objects.QRRecord
+    case "Collection": return TeaElephantSchema.Objects.Collection
     case "Tea": return TeaElephantSchema.Objects.Tea
     case "Query": return TeaElephantSchema.Objects.Query
     default: return nil

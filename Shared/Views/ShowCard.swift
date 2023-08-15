@@ -19,16 +19,16 @@ struct ShowCard: View {
                 Description(description: info!.data.description)
                 Spacer()
                 HStack {
-                    Text("Годен до:")
+                    Text("Use until:")
                     Text(self.dateToString(info!.meta.expirationDate)).foregroundColor(.red)
                 }
                 HStack {
-                    Text("Температура заваривания")
+                    Text("Boiling temperature")
                     Text(info!.meta.brewingTemp.formattedString)
                 }
             }.padding(.horizontal, 20)
         } else {
-            Text("Считайте метку").bold().font(.title)
+            Text("Read tea info").bold().font(.title)
         }
     }
     
@@ -36,7 +36,7 @@ struct ShowCard: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.locale = Locale(identifier: "en_EN")
         return dateFormatter.string(from:date)
     }
 }

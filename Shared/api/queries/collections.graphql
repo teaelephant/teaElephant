@@ -1,0 +1,13 @@
+query collections{
+  collections{
+    id
+    name
+    records{
+      id
+      tea{
+        id
+        name
+      }
+    }
+  }
+}

@@ -43,8 +43,8 @@ struct NewCard: View {
 				VStack(alignment: .center, spacing: 20) {
 
 					HStack {
-						Text("Имя")
-						TextField("Имя", text: $name)
+						Text("Name")
+						TextField("Name", text: $name)
 										.onChange(of: name, perform: search)
 										.textFieldStyle(RoundedBorderTextFieldStyle())
 										.multilineTextAlignment(.trailing)
@@ -54,23 +54,23 @@ struct NewCard: View {
                         TypeView(type: ($searcher.detectedInfo.wrappedValue?.data.type.value)!)
 						Description(description: ($searcher.detectedInfo.wrappedValue?.data.description)!)
 					} else {
-						Picker(selection: $type, label: Text("Тип напитка")) {
+						Picker(selection: $type, label: Text("Type of")) {
 							Text(Type_Enum.tea.rawValue).tag(Type_Enum.tea)
 							Text(Type_Enum.coffee.rawValue).tag(Type_Enum.coffee)
 							Text(Type_Enum.herb.rawValue).tag(Type_Enum.herb)
 						}.frame(height: 100)
 						HStack {
-							Text("Описание")
+							Text("Description")
 							TextEditor(text: $description)
 											.textFieldStyle(RoundedBorderTextFieldStyle())
 											.multilineTextAlignment(.trailing)
 											.lineLimit(5)
 						}.frame(height: 150)
 					}
-					DatePicker("Срок годности", selection: $expirationDate, displayedComponents: [.date]).frame(height: 50)
+					DatePicker("Use until", selection: $expirationDate, displayedComponents: [.date]).frame(height: 50)
 					HStack {
-						Text("Температура заваривания")
-						TextField("Температура заваривания", text: $brewingTemp)
+						Text("Boiling temperature")
+						TextField("Boiling temperature", text: $brewingTemp)
 										.textFieldStyle(RoundedBorderTextFieldStyle())
 										.multilineTextAlignment(.trailing)
 					}
@@ -80,14 +80,14 @@ struct NewCard: View {
                             await saveNFC()
                         }
 					}) {
-						Text("Сохранить на NFC метку").padding(10)
+						Text("Save to NFC tag").padding(10)
 					}
 					Button(action: {
 						withAnimation {
 							getQR()
 						}
 					}) {
-						Text("Сохранить на QR код").padding(10)
+						Text("Save to QR code").padding(10)
 					}
 				}.padding()
 			}.keyboardAdaptive()
