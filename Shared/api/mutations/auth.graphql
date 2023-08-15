@@ -1,0 +1,5 @@
+mutation auth($code:String!){
+  authApple(appleCode:$code) {
+    token
+  }
+}

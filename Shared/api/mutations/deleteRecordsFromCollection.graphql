@@ -1,0 +1,8 @@
+mutation deleteRecordsFromCollection($id: ID!, $records: [ID!]!) {
+  deleteRecordsFromCollection(id: $id, records: $records) {
+    id
+    records {
+      id
+    }
+  }
+}

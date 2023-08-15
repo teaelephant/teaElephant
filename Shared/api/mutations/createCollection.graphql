@@ -1,0 +1,13 @@
+mutation createCollection($name:String!){
+  createCollection(name:$name) {
+    id
+    name
+    records{
+      id
+      tea{
+        id
+        name
+      }
+    }
+  }
+}

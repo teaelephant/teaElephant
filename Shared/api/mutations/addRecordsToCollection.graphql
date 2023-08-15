@@ -1,0 +1,8 @@
+mutation addRecordsToCollection($id:ID!, $records:[ID!]!){
+  addRecordsToCollection(
+    id: $id
+    records: $records
+  ) {
+    id
+  }
+}
