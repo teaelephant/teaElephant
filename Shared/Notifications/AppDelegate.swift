@@ -18,6 +18,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                         options: authOptions,
                         completionHandler: { _, _ in })
         UIApplication.shared.registerForRemoteNotifications()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    print("Dispatch")
+                    AppState.shared.pageToNavigationTo = "test"
+                }
         return true
     }
 
@@ -27,7 +31,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                             String(format: "%02.2hhx", data)
                         }
                         .joined()
-        UserManager.shared.registerDeviceToken(deviceToken: token)
+        AuthManager.shared.registerDeviceToken(token)
     }
 
     func application(_ application: UIApplication,
@@ -38,3 +42,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+class AppState: ObservableObject {
+    static let shared = AppState()
+    @Published var pageToNavigationTo : String?
+}

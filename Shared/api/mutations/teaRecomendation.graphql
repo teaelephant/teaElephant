@@ -1,0 +1,3 @@
+mutation teaRecommendation($collectionID:ID!, $feelings:String!){
+  teaRecommendation(collectionID:$collectionID, feelings:$feelings)
+}
