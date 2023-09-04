@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct RecomendationUIView: View {
+    var id: String
+    @ObservedObject var manager: CollectionsManager
+    @State private var feelings = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView{
+            TextField("Feelings", text: $feelings)
+            Button(action: {
+                Task{
+                    await manager.recomendation(id, feelings:feelings)
+                }
+            }, label: {
+                Text("Get recomendation")
+            })
+            if let text = manager.lastRecomendation {
+                Text(text)
+            }
+        }
     }
 }
 
 #Preview {
-    RecomendationUIView()
+    RecomendationUIView(id: "", manager: CollectionsManager())
 }

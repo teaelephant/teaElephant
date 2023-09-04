@@ -57,11 +57,33 @@
 		4B37AF1325AA65BD00209E22 /* Searcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF0925AA608E00209E22 /* Searcher.swift */; };
 		4B37AF1E25AAE60200209E22 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF1D25AAE60200209E22 /* Description.swift */; };
 		4B37AF1F25AAE60200209E22 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B37AF1D25AAE60200209E22 /* Description.swift */; };
+		4B4E296A2A973DB500383D06 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E29692A973DB500383D06 /* Collection.swift */; };
+		4B4E296B2A973DB500383D06 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E29692A973DB500383D06 /* Collection.swift */; };
+		4B4E296C2A973DB500383D06 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E29692A973DB500383D06 /* Collection.swift */; };
+		4B4E296D2A973DB500383D06 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E29692A973DB500383D06 /* Collection.swift */; };
+		4B5367A82AA5BD1A00AD6522 /* UnauthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5367A72AA5BD1A00AD6522 /* UnauthInterceptor.swift */; };
+		4B5367A92AA5BD1A00AD6522 /* UnauthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5367A72AA5BD1A00AD6522 /* UnauthInterceptor.swift */; };
 		4B56FD8F2A84D5410055BDB5 /* ARCardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56FD8E2A84D5410055BDB5 /* ARCardUIView.swift */; };
+		4B5789E52A9DCEE400549157 /* NotificationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5789E42A9DCEE400549157 /* NotificationUIView.swift */; };
+		4B5789E72A9DD0FF00549157 /* DestinatoinUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5789E62A9DD0FF00549157 /* DestinatoinUIView.swift */; };
+		4B5789E82A9DD16F00549157 /* NotificationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5789E42A9DCEE400549157 /* NotificationUIView.swift */; };
+		4B5789E92A9DD17200549157 /* DestinatoinUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5789E62A9DD0FF00549157 /* DestinatoinUIView.swift */; };
+		4B5789EB2A9DD3F000549157 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5789EA2A9DD3F000549157 /* AppState.swift */; };
+		4B5789EC2A9DD6CB00549157 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5789EA2A9DD3F000549157 /* AppState.swift */; };
 		4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
 		4B587D6124D6E865006B9F96 /* TeaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B587D5F24D6E865006B9F96 /* TeaMeta.swift */; };
 		4B587D6B24D757DC006B9F96 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
 		4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B67095B24C8A89900F4C4ED /* CardViewer.swift */; };
+		4B6F1BBF2A993D2700E4AFCC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6F1BBE2A993D2700E4AFCC /* KeychainSwift */; };
+		4B6F1BC12A993FB200E4AFCC /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6F1BC02A993FB200E4AFCC /* KeychainSwift */; };
+		4B6F1BC62A9BBF2F00E4AFCC /* me.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F1BC52A9BBF2F00E4AFCC /* me.graphql */; };
+		4B6F1BC72A9BBF2F00E4AFCC /* me.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F1BC52A9BBF2F00E4AFCC /* me.graphql */; };
+		4B6F1BC92A9BD04A00E4AFCC /* registerDevice.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F1BC82A9BD04A00E4AFCC /* registerDevice.graphql */; };
+		4B6F1BCA2A9BD04A00E4AFCC /* registerDevice.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4B6F1BC82A9BD04A00E4AFCC /* registerDevice.graphql */; };
+		4B6F1BCC2A9BD9FE00E4AFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F1BCB2A9BD9FE00E4AFCC /* AppDelegate.swift */; };
+		4B6F1BCD2A9BD9FE00E4AFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F1BCB2A9BD9FE00E4AFCC /* AppDelegate.swift */; };
+		4B6F1BCF2A9BDA5900E4AFCC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F1BCE2A9BDA5900E4AFCC /* AuthManager.swift */; };
+		4B6F1BD02A9BDA5900E4AFCC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F1BCE2A9BDA5900E4AFCC /* AuthManager.swift */; };
 		4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85B4E424C447DE00588DB9 /* Menu.swift */; };
 		4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
 		4B8ACD9F25BC91E8001DE00A /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */; };
@@ -134,6 +156,10 @@
 		4BEF3EC02A7BC71600829724 /* CacheInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEF3EBC2A7BC71600829724 /* CacheInterceptor.swift */; };
 		4BF8F1FD25C18F880061E0FE /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */; };
 		4BF8F1FE25C18F8F0061E0FE /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
+		4BFE092A2AA1C75A0033131F /* teaRecomendation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */; };
+		4BFE092B2AA1C75A0033131F /* teaRecomendation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */; };
+		4BFE092D2AA1CB650033131F /* RecomendationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */; };
+		4BFE092E2AA1CB650033131F /* RecomendationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */; };
 		4BFF931225BCDED1005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
 		4BFF939025BCECD0005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
 		4BFF939925BCED79005FC04F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF939825BCED79005FC04F /* Search.swift */; };
@@ -233,9 +259,18 @@
 		4B34874624C63F360098F811 /* UIResponder+Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Current.swift"; sourceTree = "<group>"; };
 		4B37AF0925AA608E00209E22 /* Searcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searcher.swift; sourceTree = "<group>"; };
 		4B37AF1D25AAE60200209E22 /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
+		4B4E29692A973DB500383D06 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		4B5367A72AA5BD1A00AD6522 /* UnauthInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthInterceptor.swift; sourceTree = "<group>"; };
 		4B56FD8E2A84D5410055BDB5 /* ARCardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCardUIView.swift; sourceTree = "<group>"; };
+		4B5789E42A9DCEE400549157 /* NotificationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUIView.swift; sourceTree = "<group>"; };
+		4B5789E62A9DD0FF00549157 /* DestinatoinUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinatoinUIView.swift; sourceTree = "<group>"; };
+		4B5789EA2A9DD3F000549157 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4B587D5F24D6E865006B9F96 /* TeaMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaMeta.swift; sourceTree = "<group>"; };
 		4B67095B24C8A89900F4C4ED /* CardViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewer.swift; sourceTree = "<group>"; };
+		4B6F1BC52A9BBF2F00E4AFCC /* me.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = me.graphql; sourceTree = "<group>"; };
+		4B6F1BC82A9BD04A00E4AFCC /* registerDevice.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = registerDevice.graphql; sourceTree = "<group>"; };
+		4B6F1BCB2A9BD9FE00E4AFCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4B6F1BCE2A9BDA5900E4AFCC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		4B85B4E424C447DE00588DB9 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		4B8ACD9C25BC91DA001DE00A /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
@@ -271,6 +306,8 @@
 		4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		4BB73A002A8AB8B3003524A0 /* auth.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = auth.graphql; sourceTree = "<group>"; };
 		4BEF3EBC2A7BC71600829724 /* CacheInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheInterceptor.swift; sourceTree = "<group>"; };
+		4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = teaRecomendation.graphql; sourceTree = "<group>"; };
+		4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationUIView.swift; sourceTree = "<group>"; };
 		4BFF931125BCDED1005FC04F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4BFF934325BCE2DE005FC04F /* newRecord.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = newRecord.graphql; sourceTree = "<group>"; };
 		4BFF939825BCED79005FC04F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
@@ -286,6 +323,7 @@
 			files = (
 				4BB739FC2A891BAC003524A0 /* AuthenticationServices.framework in Frameworks */,
 				4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */,
+				4B6F1BBF2A993D2700E4AFCC /* KeychainSwift in Frameworks */,
 				4B9CD76129E1DB54006C5F93 /* Apollo in Frameworks */,
 				4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */,
 				4B36C41625C3077C006C9293 /* CodeScanner in Frameworks */,
@@ -314,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B6F1BC12A993FB200E4AFCC /* KeychainSwift in Frameworks */,
 				4B36C41725C3077C006C9293 /* MessagePacker in Frameworks */,
 				4B9CD76529E1DB61006C5F93 /* Apollo in Frameworks */,
 				4BF8F1FD25C18F880061E0FE /* RealityKit.framework in Frameworks */,
@@ -489,6 +528,7 @@
 			children = (
 				4B29055E24C2ED3E007A3D1B /* TeaInfo.swift */,
 				4B587D5F24D6E865006B9F96 /* TeaMeta.swift */,
+				4B4E29692A973DB500383D06 /* Collection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -499,6 +539,17 @@
 				4B37AF0925AA608E00209E22 /* Searcher.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		4B5789E32A9DCE9E00549157 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				4B6F1BCB2A9BD9FE00E4AFCC /* AppDelegate.swift */,
+				4B5789E42A9DCEE400549157 /* NotificationUIView.swift */,
+				4B5789E62A9DD0FF00549157 /* DestinatoinUIView.swift */,
+				4B5789EA2A9DD3F000549157 /* AppState.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		4B587D6224D6EDAD006B9F96 /* api */ = {
@@ -539,6 +590,7 @@
 		4B8E854424D09EFE001FCFFF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4B5789E32A9DCE9E00549157 /* Notifications */,
 				4BB739D42A86A1AE003524A0 /* UserArea */,
 				4B37AF0825AA607600209E22 /* Search */,
 				4B587D6224D6EDAD006B9F96 /* api */,
@@ -599,6 +651,7 @@
 			children = (
 				4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */,
 				4BB739DE2A86ACE2003524A0 /* CollectionUIView.swift */,
+				4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -618,6 +671,8 @@
 			children = (
 				4BB739F82A89184E003524A0 /* AuthUIView.swift */,
 				4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */,
+				4B6F1BCE2A9BDA5900E4AFCC /* AuthManager.swift */,
+				4B5367A72AA5BD1A00AD6522 /* UnauthInterceptor.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -629,6 +684,7 @@
 				1CEAF371A747B66EAA8A014A /* get.graphql */,
 				1CEAF7893496AA85F8233991 /* qrRead.graphql */,
 				4BB739D22A869F4D003524A0 /* collections.graphql */,
+				4B6F1BC52A9BBF2F00E4AFCC /* me.graphql */,
 			);
 			path = queries;
 			sourceTree = "<group>";
@@ -643,6 +699,8 @@
 				4BB739E72A86CA32003524A0 /* deleteCollection.graphql */,
 				4BB739EA2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql */,
 				4BB73A002A8AB8B3003524A0 /* auth.graphql */,
+				4B6F1BC82A9BD04A00E4AFCC /* registerDevice.graphql */,
+				4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */,
 			);
 			path = mutations;
 			sourceTree = "<group>";
@@ -672,6 +730,7 @@
 				4B9CD76029E1DB54006C5F93 /* Apollo */,
 				4B9CD76229E1DB59006C5F93 /* ApolloWebSocket */,
 				4BDF3A5A29E2027A003D8F92 /* TeaElephantSchema */,
+				4B6F1BBE2A993D2700E4AFCC /* KeychainSwift */,
 			);
 			productName = TeaElephant;
 			productReference = 4B29052C24C0AEDE007A3D1B /* TeaElephant.app */;
@@ -732,6 +791,7 @@
 				4B9CD76429E1DB61006C5F93 /* Apollo */,
 				4B9CD76629E1DC59006C5F93 /* ApolloWebSocket */,
 				4BDF3A5C29E20282003D8F92 /* TeaElephantSchema */,
+				4B6F1BC02A993FB200E4AFCC /* KeychainSwift */,
 			);
 			productName = TeaElephantAppClip;
 			productReference = 4B8E853024D08D0B001FCFFF /* TeaElephantAppClip.app */;
@@ -776,6 +836,7 @@
 				4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */,
 				4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				4B6F1BBD2A993D2700E4AFCC /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 4B29052D24C0AEDE007A3D1B /* Products */;
 			projectDirPath = "";
@@ -800,6 +861,9 @@
 				4BB73A012A8AB8B3003524A0 /* auth.graphql in Resources */,
 				4BB739EB2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */,
 				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
+				4B6F1BC92A9BD04A00E4AFCC /* registerDevice.graphql in Resources */,
+				4BFE092A2AA1C75A0033131F /* teaRecomendation.graphql in Resources */,
+				4B6F1BC62A9BBF2F00E4AFCC /* me.graphql in Resources */,
 				4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */,
 				4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */,
 			);
@@ -823,12 +887,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B6F1BCA2A9BD04A00E4AFCC /* registerDevice.graphql in Resources */,
 				4BB739E62A86BE08003524A0 /* addRecordsToCollection.graphql in Resources */,
+				4B6F1BC72A9BBF2F00E4AFCC /* me.graphql in Resources */,
 				4BB739E92A86CA32003524A0 /* deleteCollection.graphql in Resources */,
 				4B8E855724D09FAA001FCFFF /* SharedAssets.xcassets in Resources */,
 				4B8E853A24D08D0D001FCFFF /* Preview Assets.xcassets in Resources */,
 				4B8E853724D08D0D001FCFFF /* Assets.xcassets in Resources */,
 				4BB73A022A8AB8B3003524A0 /* auth.graphql in Resources */,
+				4BFE092B2AA1C75A0033131F /* teaRecomendation.graphql in Resources */,
 				4BB739EC2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -843,14 +910,18 @@
 				4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */,
 				4B37AF0A25AA608E00209E22 /* Searcher.swift in Sources */,
 				4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */,
+				4B6F1BCC2A9BD9FE00E4AFCC /* AppDelegate.swift in Sources */,
 				4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */,
+				4BFE092D2AA1CB650033131F /* RecomendationUIView.swift in Sources */,
 				4B1D0A222504152100D26450 /* NFCreader.swift in Sources */,
 				4B907C0C2A84ED6900C89BFC /* DetailManager.swift in Sources */,
 				4B8D0BBD25AAECA900FF40DB /* Type.swift in Sources */,
+				4B4E296A2A973DB500383D06 /* Collection.swift in Sources */,
 				4BEF3EBD2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
 				4B1D0A322504169F00D26450 /* Writer.swift in Sources */,
 				4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */,
 				4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */,
+				4B5789E72A9DD0FF00549157 /* DestinatoinUIView.swift in Sources */,
 				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
 				4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */,
 				4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */,
@@ -861,6 +932,8 @@
 				4B29056624C43760007A3D1B /* ShowCard.swift in Sources */,
 				4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */,
 				4B29056424C4374F007A3D1B /* NewCard.swift in Sources */,
+				4B6F1BCF2A9BDA5900E4AFCC /* AuthManager.swift in Sources */,
+				4B5367A82AA5BD1A00AD6522 /* UnauthInterceptor.swift in Sources */,
 				4B1D0A2F2504169F00D26450 /* Reader.swift in Sources */,
 				4BB739F52A8917F0003524A0 /* UserAreaUIView.swift in Sources */,
 				4B29055F24C2ED3E007A3D1B /* TeaInfo.swift in Sources */,
@@ -874,11 +947,13 @@
 				4BB739DF2A86ACE2003524A0 /* CollectionUIView.swift in Sources */,
 				4B1B06262A7B8ECA00A332E1 /* ApolloClientExtension.swift in Sources */,
 				4BB739FE2A8AB4FF003524A0 /* AuthorizationInterceptor.swift in Sources */,
+				4B5789E52A9DCEE400549157 /* NotificationUIView.swift in Sources */,
 				1CEAF55E49D8EBDB7195A8A1 /* Detector.swift in Sources */,
 				1CEAFA47F2EA7DCDE9DDB1C2 /* ARView.swift in Sources */,
 				1CEAF0F996CA19454EAD4557 /* DetecorView.swift in Sources */,
 				4BB739EF2A86DEC2003524A0 /* Detector2.swift in Sources */,
 				4BB739F22A86E011003524A0 /* DetectorController2.swift in Sources */,
+				4B5789EB2A9DD3F000549157 /* AppState.swift in Sources */,
 				1CEAFE2B82A0A88AF3BEFAC7 /* TitleEntity.swift in Sources */,
 				1CEAFC2FB4DCF8952E85CA45 /* ARComponent.swift in Sources */,
 				4BB739F92A89184E003524A0 /* AuthUIView.swift in Sources */,
@@ -899,6 +974,7 @@
 				4B8E854C24D09F93001FCFFF /* NearFieldCommunicator.swift in Sources */,
 				4BFF939025BCECD0005FC04F /* Network.swift in Sources */,
 				4B8E854724D09F8B001FCFFF /* TeaInfo.swift in Sources */,
+				4B4E296B2A973DB500383D06 /* Collection.swift in Sources */,
 				4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */,
 				4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */,
 				4B1B06272A7B919800A332E1 /* ApolloClientExtension.swift in Sources */,
@@ -921,6 +997,7 @@
 				4BEF3EBF2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
 				4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */,
 				4B36C30B25C2D875006C9293 /* TeaMeta.swift in Sources */,
+				4B4E296C2A973DB500383D06 /* Collection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,13 +1011,17 @@
 				4B8E855024D09F9F001FCFFF /* UIResponder+Current.swift in Sources */,
 				4BB739FA2A89184E003524A0 /* AuthUIView.swift in Sources */,
 				4BB739F02A86DEC2003524A0 /* Detector2.swift in Sources */,
+				4B4E296D2A973DB500383D06 /* Collection.swift in Sources */,
 				4B8E855424D09F9F001FCFFF /* KeyboardHeightPublisher.swift in Sources */,
+				4B6F1BCD2A9BD9FE00E4AFCC /* AppDelegate.swift in Sources */,
 				4B37AF1325AA65BD00209E22 /* Searcher.swift in Sources */,
 				4B37AF1F25AAE60200209E22 /* Description.swift in Sources */,
 				4BB739FF2A8AB4FF003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				4B8E855124D09F9F001FCFFF /* ContentView.swift in Sources */,
 				4B8E854F24D09F95001FCFFF /* NearFieldCommunicator.swift in Sources */,
 				4BFF93A925BCEF03005FC04F /* RecordGetter.swift in Sources */,
+				4B5789E92A9DD17200549157 /* DestinatoinUIView.swift in Sources */,
+				4B5367A92AA5BD1A00AD6522 /* UnauthInterceptor.swift in Sources */,
 				4B8E855524D09F9F001FCFFF /* ShowCard.swift in Sources */,
 				4BB739DD2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
 				4B8E855624D09F9F001FCFFF /* Menu.swift in Sources */,
@@ -950,11 +1031,13 @@
 				4B8E855224D09F9F001FCFFF /* NewCard.swift in Sources */,
 				4B1D0A342504169F00D26450 /* Writer.swift in Sources */,
 				4B1D0A242504152100D26450 /* NFCreader.swift in Sources */,
+				4BFE092E2AA1CB650033131F /* RecomendationUIView.swift in Sources */,
 				4BB739F62A8917F0003524A0 /* UserAreaUIView.swift in Sources */,
 				4B1D0A312504169F00D26450 /* Reader.swift in Sources */,
 				4B8D0BBE25AAECA900FF40DB /* Type.swift in Sources */,
 				4B8E854924D09F8D001FCFFF /* TeaInfo.swift in Sources */,
 				4B8E853324D08D0B001FCFFF /* TeaElephantAppClipApp.swift in Sources */,
+				4B6F1BD02A9BDA5900E4AFCC /* AuthManager.swift in Sources */,
 				4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */,
 				4BB739E02A86ACE2003524A0 /* CollectionUIView.swift in Sources */,
 				4BFF939B25BCED79005FC04F /* Search.swift in Sources */,
@@ -963,9 +1046,11 @@
 				4B587D6124D6E865006B9F96 /* TeaMeta.swift in Sources */,
 				4BFF93E925BCF514005FC04F /* RecordWriter.swift in Sources */,
 				4BEF3EC02A7BC71600829724 /* CacheInterceptor.swift in Sources */,
+				4B5789EC2A9DD6CB00549157 /* AppState.swift in Sources */,
 				1CEAFB92E9A61058082EAB87 /* Manager.swift in Sources */,
 				1CEAFFEF66C6F8F828D3DCC8 /* DetecorView.swift in Sources */,
 				1CEAFB59120D515FC865748C /* Entity.swift in Sources */,
+				4B5789E82A9DD16F00549157 /* NotificationUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,7 +1205,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -1132,7 +1217,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1152,7 +1237,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -1163,7 +1248,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1269,18 +1354,19 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1299,17 +1385,18 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1387,6 +1474,14 @@
 				minimumVersion = 0.4.7;
 			};
 		};
+		4B6F1BBD2A993D2700E4AFCC /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
 		4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
@@ -1412,6 +1507,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */;
 			productName = MessagePacker;
+		};
+		4B6F1BBE2A993D2700E4AFCC /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B6F1BBD2A993D2700E4AFCC /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		4B6F1BC02A993FB200E4AFCC /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B6F1BBD2A993D2700E4AFCC /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 		4B9CD76029E1DB54006C5F93 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;

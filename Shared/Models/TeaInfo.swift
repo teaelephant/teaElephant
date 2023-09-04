@@ -19,3 +19,8 @@ struct TeaDataWithID {
     let type: Type_Enum
     let description: String
 }
+
+struct Record {
+    let id: String
+    let data: TeaDataWithID
+}

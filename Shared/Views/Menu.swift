@@ -11,6 +11,16 @@ let scale: CGFloat = 1.5
 
 struct Menu: View {
     @State var isNewCardActive = true
+    @ObservedObject var appState = AppState.shared
+    @State var navigate = false
+    
+    var pushNavigationBinding : Binding<Bool> {
+        .init { () -> Bool in
+            appState.pageToNavigationTo != nil
+        } set: { (newValue) in
+            if !newValue { appState.pageToNavigationTo = nil }
+        }
+    }
     var body: some View {
         NavigationView{
             VStack {
@@ -18,7 +28,7 @@ struct Menu: View {
                     HStack{
                         Spacer()
                         NavigationLink(
-                            destination: UserAreaUIView(),
+                            destination: UserAreaUIView(authManager: AuthManager.shared),
                             label: {
                                 Label {
                                     Text("")
@@ -59,7 +69,12 @@ struct Menu: View {
                         }.font(.title)
                     })
                 Spacer()
-            }.navigationBarTitle("Menu")
+            }.navigationBarTitle("Menu").onAppear{
+                UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+            }.overlay(NavigationLink(destination: DestinatoinUIView(id: appState.id ?? "", message: appState.notificationMessage ?? ""),
+                                     isActive: pushNavigationBinding) {
+                 EmptyView()
+             })
         }
     }
 }

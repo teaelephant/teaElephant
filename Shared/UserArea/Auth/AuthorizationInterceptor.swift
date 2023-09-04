@@ -8,6 +8,9 @@
 import Foundation
 import Apollo
 import ApolloAPI
+import KeychainSwift
+
+let tokenKey = "BearerToken"
 
 class AuthorizationInterceptor: ApolloInterceptor {
     var id =  "AuthorizationInterceptor"
@@ -19,11 +22,12 @@ class AuthorizationInterceptor: ApolloInterceptor {
         response: HTTPResponse<Operation>?,
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
     ) where Operation : GraphQLOperation {
-        if let token = Network.shared.token {
+        let keychain = KeychainSwift()
+        if let token = keychain.get(tokenKey) {
             print(token)
             request.addHeader(name: "Authorization", value: "Bearer \(token)")
         }
-
+        
         chain.proceedAsync(request: request,
                             response: response,
                            interceptor: self,

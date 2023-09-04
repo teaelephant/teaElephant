@@ -12,7 +12,6 @@ import ApolloWebSocket
 
 class Network {
     static let shared = Network()
-    var token: String?
     
     /// A web socket transport to use for subscriptions
     private lazy var webSocketTransport: WebSocketTransport = {
@@ -64,6 +63,7 @@ struct NetworkInterceptorProvider: InterceptorProvider {
             ResponseCodeInterceptor(),
             JSONResponseParsingInterceptor(),
             AutomaticPersistedQueryInterceptor(),
+            UnauthInterceptor(),
             NoCachedErrorsWrapperInterceptor(wrapping: CacheWriteInterceptor(store: self.store)),
         ]
     }

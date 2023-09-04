@@ -7,47 +7,51 @@ import TeaElephantSchema
 import Apollo
 
 protocol ExtendInfoReader {
-	func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) async
+    func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) async
 }
 
 protocol ShortInfoReader {
-	func startReadInfo()
-	func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void)
+    func startReadInfo()
+    func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void)
 }
 
 class Reader: ObservableObject {
-	@Published var detectedInfo: TeaInfo?
-	@Published var error: String?
-	var extender: ExtendInfoReader
-	var infoReader: ShortInfoReader
-
-	init(infoReader: ShortInfoReader, extender: ExtendInfoReader) {
-		self.extender = extender
-		self.infoReader = infoReader
-	}
-
-	func readInfo() {
-		infoReader.setOnRead(onReadMeta)
-		infoReader.startReadInfo()
-	}
-
-	private func onReadMeta(_ meta: TeaMeta) async {
-		await extender.getExtendInfo(id: meta.id) { (data, err) -> Void in
-			if err != nil {
+    @Published var detectedInfo: TeaInfo?
+    @Published var error: String?
+    var extender: ExtendInfoReader
+    var infoReader: ShortInfoReader
+    
+    init(infoReader: ShortInfoReader, extender: ExtendInfoReader) {
+        self.extender = extender
+        self.infoReader = infoReader
+    }
+    
+    func readInfo() {
+        infoReader.setOnRead(onReadMeta)
+        infoReader.startReadInfo()
+    }
+    
+    private func onReadMeta(_ meta: TeaMeta) async {
+        await extender.getExtendInfo(id: meta.id) { (data, err) -> Void in
+            if err != nil {
                 self.error = err?.localizedDescription
-				return
-			}
-			if data != nil {
-				self.detectedInfo = TeaInfo(meta: meta, data: data!)
-			}
-		}
-	}
-
-	func processQRCode(_ code: String) async {
+                return
+            }
+            if data != nil {
+                DispatchQueue.main.async {
+                    self.detectedInfo = TeaInfo(meta: meta, data: data!)
+                }
+            }
+        }
+    }
+    
+    func processQRCode(_ code: String) async {
         do {
             for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: code)) {
                 if let errors = result.errors {
-                    self.error = mapErrors(errs: errors)
+                    DispatchQueue.main.async {
+                        self.error = self.mapErrors(errs: errors)
+                    }
                     return
                 }
                 guard let qr = result.data?.qrRecord else {
@@ -57,14 +61,14 @@ class Reader: ObservableObject {
                 DispatchQueue.main.async {
                     self.detectedInfo = TeaInfo(
                         meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
-                                    data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description)
+                        data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description)
                     )
                 }
             }
         } catch {
             self.error = error.localizedDescription
         }
-	}
+    }
     
     func mapErrors(errs: [GraphQLError]) -> String? {
         guard let err = errs.first else { return nil }

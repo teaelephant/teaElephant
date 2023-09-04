@@ -7,33 +7,47 @@
 
 import Foundation
 import TeaElephantSchema
+import os
 
 protocol ApiSearcher {
-    func search(prefix: String, callback: @escaping (TeaDataWithID?, Error?) -> Void) async
+    func search(prefix: String) async throws -> TeaDataWithID?
 }
 
 class Searcher: ObservableObject {
     @Published var detectedInfo: TeaInfo?
     @Published var error: Error?
     var api: ApiSearcher
-
+    var currentTask: Task<Void, Error>?
+    let logger = Logger(subsystem: "xax.TeaElephant", category: "Searcher")
+    
     init(_ api: ApiSearcher) {
         self.api = api
     }
-
+    
     func search(prefix: String) async {
-        await api.search(prefix: prefix) { (data, err) -> Void in
-            if err != nil {
-                self.detectedInfo = nil
-                self.error = err
-                return
-            }
-            self.error = nil
-            if data != nil {
-                self.detectedInfo = TeaInfo(
-                        meta: TeaMeta(id: data!.ID, expirationDate: Date.init(), brewingTemp: 100),
-                        data: TeaData(name: data!.name, type: GraphQLEnum(rawValue: data!.type.rawValue), description: data!.description)
-                )
+        currentTask?.cancel()
+        currentTask = Task {
+            try await Task.sleep(nanoseconds:500_000_000)
+            guard !Task.isCancelled else { return }
+            logger.debug("start search by prefix \(prefix)")
+            do {
+                let data = try await api.search(prefix: prefix)
+                var info:TeaInfo? = nil
+                if let data = data {
+                    info = TeaInfo(
+                        meta: TeaMeta(id: data.ID, expirationDate: Date.init(), brewingTemp: 100),
+                        data: TeaData(name: data.name, type: GraphQLEnum(rawValue: data.type.rawValue), description: data.description)
+                    )
+                }
+                DispatchQueue.main.async{
+                    self.detectedInfo = info
+                    self.error = nil
+                }
+            } catch {
+                DispatchQueue.main.async{
+                    self.detectedInfo = nil
+                    self.error = error
+                }
             }
         }
     }

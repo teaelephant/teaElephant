@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct DestinatoinUIView: View {
+    var id : String
+    var message: String
+    @ObservedObject private var manager = Reader(infoReader: NFCReader(), extender: RecordGetter())
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if manager.detectedInfo == nil {
+            ProgressView().onAppear{
+                Task{
+                    await manager.processQRCode(id)
+                }
+            }
+        } else {
+            ShowCard(info: $manager.detectedInfo)
+        }
     }
 }
 
 #Preview {
-    DestinatoinUIView()
+    DestinatoinUIView(id: "", message: "some message")
 }

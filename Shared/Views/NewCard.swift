@@ -159,24 +159,24 @@ struct NewCard: View {
 	}
 
 	private func saveQR(_ code: String) async {
-		if $searcher.detectedInfo.projectedValue.wrappedValue != nil {
-			await QRManager().write(id: code, data: $searcher.detectedInfo.projectedValue.wrappedValue!.meta)
+        var formatter: NumberFormatter {
+            let nf = NumberFormatter()
+            nf.numberStyle = .currency
+            nf.isLenient = true
+            return nf
+        }
+        var temp: Int
+        guard let n = formatter.number(from: brewingTemp) else {
+            print("Температура заваривания - не число")
+            return
+        }
+        temp = n.intValue
+        print(temp)
+		if let searcherData = $searcher.detectedInfo.projectedValue.wrappedValue {
+            await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
 			name = ""
 			return
 		}
-		var formatter: NumberFormatter {
-			let nf = NumberFormatter()
-			nf.numberStyle = .currency
-			nf.isLenient = true
-			return nf
-		}
-		var temp: Int
-		guard let n = formatter.number(from: brewingTemp) else {
-			print("Температура заваривания - не число")
-			return
-		}
-		temp = n.intValue
-		print(temp)
 
 		let data = TeaData(
 						name: name,

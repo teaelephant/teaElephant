@@ -18,52 +18,54 @@ struct CollectionsUIView: View {
                 Text("netowrk error \(error.localizedDescription)").foregroundStyle(.red)
             }
             NavigationStack {
-                List{
-                    HStack{
-                        TextField("Name of new collection", text: $name).padding(.horizontal)
-                        Button(action: {
-                            Task{
-                                await manager.addCollection(name: name)
-                                name = ""
-                            }
-                        }) {
-                            Image(systemName: "plus")
-                        } .disabled(name == "").foregroundColor(.green).bold()
+                if manager.collectionsLoading {
+                    ProgressView().onAppear{
+                        Task{
+                            await manager.getCollections()
+                        }
                     }
-                    if let cols = manager.collections {
-                        ForEach(cols, id: \.id) { el in
-                            NavigationLink(el.name, value: el)
+                } else {
+                    List{
+                        HStack{
+                            TextField("Name of new collection", text: $name).padding(.horizontal)
+                            Button(action: {
+                                Task{
+                                    await manager.addCollection(name: name)
+                                    name = ""
+                                }
+                            }) {
+                                Image(systemName: "plus")
+                            } .disabled(name == "").foregroundColor(.green).bold()
+                        }
+                        ForEach($manager.collections, id: \.id) { $el in
+                            NavigationLink(el.name, destination: CollectionUIView(manager: manager, collection: $el))
                         }.onDelete(perform: { indexSet in
                             for index in indexSet {
                                 Task{
+                                    let cols = manager.collections
                                     await manager.deleteCollection(id:cols[index].id)
                                 }
                             }
                         })
-                    } else {
-                        ProgressView().onAppear{
-                            Task{
-                                await manager.getCollections()
-                            }
+                    }.refreshable {
+                        Task{
+                            await manager.getCollections(forceReload: true)
                         }
-                    }
-                }.refreshable {
-                    Task{
-                        await manager.getCollections(forceReload: true)
-                    }
-                }.navigationDestination(for: CollectionsQuery.Data.Collection.self) { el in
-                    CollectionUIView(id:el.id, name: el.name, records:el.records)
-                }.navigationBarTitle("Collections")
+                    }.navigationBarTitle("Collections")
+                }
             }
             
         }
     }
 }
 
-#Preview {
-    if #available(iOS 17.0, *) {
-        CollectionsUIView(manager: CollectionsManager())
-    } else {
-        Text("Unsupported")
+struct CollectionsUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        if #available(iOS 17.0, *) {
+            CollectionsUIView(manager: CollectionsManager())
+        } else {
+            Text("Unsupported")
+        }
     }
 }

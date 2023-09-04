@@ -10,18 +10,20 @@ import Apollo
 import TeaElephantSchema
 
 class Search: ApiSearcher {
-    func search(prefix: String, callback: @escaping (TeaDataWithID?, Error?) -> Void) async {
+    func search(prefix: String) async throws -> TeaDataWithID? {
         do {
             for try await result in Network.shared.apollo.fetchAsync(query: ListQuery(prefix: .some(prefix))) {
                 if let errors = result.errors {
-                    callback(nil, errors[0])
-                    return
+                    throw errors[0]
                 }
-                guard let tea = result.data?.teas.first else { return }
-                callback(TeaDataWithID(ID: tea.id, name: tea.name, type: tea.type.value ?? Type_Enum.unknown, description: tea.description), nil)
+                guard let tea = result.data?.teas.first else {
+                    return nil
+                }
+                return TeaDataWithID(ID: tea.id, name: tea.name, type: tea.type.value ?? Type_Enum.unknown, description: tea.description)
             }
         } catch {
-            callback(nil, error)
+            throw error
         }
+        return nil
     }
 }

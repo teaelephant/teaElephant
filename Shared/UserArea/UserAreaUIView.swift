@@ -9,20 +9,29 @@ import SwiftUI
 
 struct UserAreaUIView: View {
     @ObservedObject private var manager = CollectionsManager()
+    @ObservedObject var authManager = AuthManager()
     
     var body: some View {
-        if manager.validateAuth() {
+        if authManager.loading {
+            ProgressView().onAppear{
+                Task{
+                    await authManager.authorized()
+                }
+            }
+        } else if authManager.auth {
             if #available(iOS 17.0, *) {
                 CollectionsUIView(manager: manager)
             } else {
                 Text("Unsupported")
             }
         } else {
-            AuthUIView(manager: manager)
+            AuthUIView()
         }
     }
 }
 
-#Preview {
-    UserAreaUIView()
+struct UserAreaUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        UserAreaUIView(authManager: AuthManager.shared)
+    }
 }

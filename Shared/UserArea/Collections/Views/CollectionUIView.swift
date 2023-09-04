@@ -10,35 +10,51 @@ import TeaElephantSchema
 
 @available(iOS 17.0, *)
 struct CollectionUIView: View {
-    @ObservedObject private var manager = CollectionsManager()
+    @ObservedObject var manager: CollectionsManager
     @State private var detectForAdd = false
     @State private var newIDs = [String]()
-    var id: String
-    var name: String
-    var records: [CollectionsQuery.Data.Collection.Record]
+    @Binding var collection: Collection
     var body: some View {
-        if detectForAdd {
-            HStack{
-                Text("\(newIDs.count)").foregroundStyle(.blue).bold()
-                Button(action: {
-                    Task{
-                        detectForAdd = false
-                        await manager.addRecordsToCollection(id, newIDs: newIDs)
-                        newIDs = [String]()
-                    }
-                }) {
-                    Text("Add to collection")
-                }
-            }
-            Detector2(callback: self.appendIds).edgesIgnoringSafeArea(.all)
+        if manager.collectionsLoading {
+            ProgressView()
         } else {
-            List(records, id: \.id) { el in
-                Text("\(el.tea.name)")
-            }.navigationBarTitle("Collection \(name)").toolbar{
-                Button(action: {
-                    detectForAdd = true
-                }) {
-                    Text("Add teas")
+            if detectForAdd {
+                HStack{
+                    Text("\(newIDs.count)").foregroundStyle(.blue).bold()
+                    Button(action: {
+                        Task{
+                            detectForAdd = false
+                            await manager.addRecordsToCollection(collection.id, newIDs: newIDs)
+                            newIDs = [String]()
+                        }
+                    }) {
+                        Text("Add to collection")
+                    }
+                }
+                Detector2(callback: self.appendIds).edgesIgnoringSafeArea(.all)
+            } else {
+                List{
+                    ForEach($collection.records, id: \.id) { $el in
+                        Text("\(el.data.name)")
+                    }.onDelete(perform: { indexSet in
+                        let recordsForDelete = indexSet.map { index in
+                            if collection.records.count <= index {
+                                return ""
+                            }
+                            return collection.records[index].id
+                        }
+                        
+                        Task{
+                            await manager.deleteRecordsFromCollection(collection.id, records: recordsForDelete)
+                        }
+                    })
+                }.navigationBarTitle("Collection \(collection.name)").toolbar{
+                    Button(action: {
+                        detectForAdd = true
+                    }) {
+                        Text("Add teas")
+                    }
+                    NavigationLink("Recommend tea", destination: RecomendationUIView(id: collection.id, manager: manager))
                 }
             }
         }
@@ -49,12 +65,14 @@ struct CollectionUIView: View {
     }
 }
 
-#Preview {
-    if #available(iOS 17.0, *) {
-        NavigationStack {
-            CollectionUIView(id: "565b482a-5034-474f-becc-666fb559ba67", name: "home", records: [])
+struct CollectionUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        if #available(iOS 17.0, *) {
+            NavigationStack {
+                CollectionUIView(manager: CollectionsManager(), collection: .constant(Collection(id: "", name: "", records: [Record]())))
+            }
+        } else {
+            Text("Unsupported")
         }
-    } else {
-        Text("Unsupported")
     }
 }
