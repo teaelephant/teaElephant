@@ -81,12 +81,6 @@ extension HasTeaElephantView {
             view.cardView.frame.size = sizeCorrection
             view.frame.size = sizeCorrection
             self.sizeCorrection = nil
-        } else if let len = len, let lenNew = lenNew {
-            let k = calcConstant()
-            if let k = k {
-                let u = (len + k) / (lenNew + k)
-                // view.frame.size = CGSize(width: view.lastFrame.width*u, height: view.lastFrame.height)
-            }
         }
 
         // Updating the lastFrame of the StickyNoteView
