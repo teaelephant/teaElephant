@@ -16,15 +16,15 @@ struct RecomendationUIView: View {
             TextField("Feelings", text: $feelings)
             Button(action: {
                 Task{
-                    await manager.recomendation(id, feelings:feelings)
+                    manager.recomendation(id, feelings:feelings)
                 }
             }, label: {
                 Text("Get recomendation")
-            })
+            }).animation(.default, value: manager.recomendationLoading)
             if manager.recomendationLoading {
                 ProgressView()
             } else if let text = manager.lastRecomendation {
-                Text(text)
+                Text(LocalizedStringKey(text)).animation(.interactiveSpring, value: manager.lastRecomendation)
             }
         }
     }

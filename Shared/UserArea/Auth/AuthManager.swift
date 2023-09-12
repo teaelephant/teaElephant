@@ -83,6 +83,7 @@ class AuthManager: ObservableObject {
                 self.keychain.set(token, forKey: tokenKey)
                 self.auth = true
                 self.error = nil
+                Network.shared.Auth(token)
             }
             
         case .failure(let error):

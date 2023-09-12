@@ -31,7 +31,15 @@ struct CollectionUIView: View {
                         Text("Add to collection")
                     }
                 }
-                Detector2(callback: self.appendIds).edgesIgnoringSafeArea(.all)
+#if APPCLIP
+                FullAppOffer()
+#elseif !targetEnvironment(simulator)
+                QRDetector(callback: self.appendIds).edgesIgnoringSafeArea(.all)
+#else
+                Text("AR View not accessible in simulator")
+#endif
+                
+                
             } else {
                 List{
                     ForEach($collection.records, id: \.id) { $el in

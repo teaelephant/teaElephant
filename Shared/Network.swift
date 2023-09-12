@@ -10,15 +10,33 @@ import Apollo
 import ApolloAPI
 import ApolloWebSocket
 
+enum AuthError: Error {
+    case tokenNotFound
+}
+
 class Network {
     static let shared = Network()
     
+    private var webSocketClient: WebSocket {
+        let url = URL(string: "wss://tea-elephant.com/v2/query")!
+        return WebSocket(url: url, protocol: .graphql_transport_ws)
+    }
+    
     /// A web socket transport to use for subscriptions
     private lazy var webSocketTransport: WebSocketTransport = {
-        let url = URL(string: "wss://tea-elephant.com/v2/query")!
-        let webSocketClient = WebSocket(url: url, protocol: .graphql_transport_ws)
         return WebSocketTransport(websocket: webSocketClient)
     }()
+    
+    func Auth(_ token: String) {
+        let value = "Bearer \(token)"
+           
+        self.webSocketTransport = WebSocketTransport(websocket: webSocketClient, config: WebSocketTransport.Configuration(connectingPayload: {["Authorization":value]}()))
+        self.splitNetworkTransport = SplitNetworkTransport(
+            uploadingNetworkTransport: normalTransport,
+            webSocketNetworkTransport: webSocketTransport
+        )
+        self.apollo = ApolloClient(networkTransport: splitNetworkTransport, store: store)
+    }
     
     // The cache is necessary to set up the store, which we're going
     // to hand to the provider

@@ -1,63 +1,45 @@
 //
-// Created by Andrew Khasanov on 22.01.2021.
+//  CheckedEntity.swift
+//  TeaElephant
+//
+//  Created by Andrew Khasanov on 17/09/2023.
 //
 
+import ARKit
 import RealityKit
-import UIKit
+import SwiftUI
 
-protocol HasTeaElephantView: Entity {
-    var teaElephantComponent: TeaElephantComponent { get set }
-}
+class CheckedEntity: Entity, HasAnchoring {
+    var view: CheckedView?
+    /// Indicates whether the sticky note should animate to a new position (as opposed to moving instantaneously to a new position).
+    var shouldAnimate = false
+    /// Contains a screen space projection
+    var projection: Projection?
 
-extension HasTeaElephantView {
-    var view: TitleView? {
-        get { teaElephantComponent.view }
-        set { teaElephantComponent.view = newValue }
-    }
+    var lenNew: CGFloat?
 
-    var shouldAnimate: Bool {
-        get { teaElephantComponent.shouldAnimate }
-        set { teaElephantComponent.shouldAnimate = newValue }
-    }
+    var len: CGFloat?
 
-    var projection: Projection? {
-        get { teaElephantComponent.projection }
-        set { teaElephantComponent.projection = newValue }
+    var firstSize: CGFloat?
+    var firstLen: CGFloat?
+    var secondSize: CGFloat?
+    var secondLen: CGFloat?
+    var sizeCorrection: CGSize?
+    var uuid: String
+    
+    /// Initializes a new StickyNoteEntity and assigns the specified transform.
+    /// Also automatically initializes an associated StickyNoteView with the specified frame.
+    init(frame: CGRect, worldTransform: simd_float4x4, id: String) {
+        uuid = id
+        super.init()
+        transform.matrix = worldTransform
+        view = CheckedView(frame: frame, entity: self)
     }
-
-    var lenNew: CGFloat? {
-        get { teaElephantComponent.lenNew }
-        set { teaElephantComponent.lenNew = newValue }
+    
+    required init() {
+        fatalError("init() has not been implemented")
     }
-
-    var len: CGFloat? {
-        get { teaElephantComponent.len }
-        set { teaElephantComponent.len = newValue }
-    }
-
-    var firstSize: CGFloat? {
-        get { teaElephantComponent.firstSize }
-        set { teaElephantComponent.firstSize = newValue }
-    }
-    var secondSize: CGFloat? {
-        get { teaElephantComponent.secondSize }
-        set { teaElephantComponent.secondSize = newValue }
-    }
-    var firstLen: CGFloat? {
-        get { teaElephantComponent.firstLen }
-        set { teaElephantComponent.firstLen = newValue }
-    }
-    var secondLen: CGFloat? {
-        get { teaElephantComponent.secondLen }
-        set { teaElephantComponent.secondLen = newValue }
-    }
-
-    var sizeCorrection: CGSize? {
-        get { teaElephantComponent.sizeCorrection }
-        set { teaElephantComponent.sizeCorrection = newValue }
-    }
-
-
+    
     // Returns the center point of the enity's screen space view
     func getCenterPoint(_ point: CGPoint) -> CGPoint {
         guard let view = view else {
@@ -100,9 +82,9 @@ extension HasTeaElephantView {
         animator.addCompletion {
             switch $0 {
             case .end:
-                self.teaElephantComponent.shouldAnimate = false
+                self.shouldAnimate = false
             default:
-                self.teaElephantComponent.shouldAnimate = true
+                self.shouldAnimate = true
             }
         }
 
@@ -136,28 +118,12 @@ extension HasTeaElephantView {
         }
         return (secondSize * secondLen - firstSize * firstLen) / sizeDiff
     }
-
 }
 
-struct TeaElephantComponent: Component {
-    var view: TitleView?
-    /// Indicates whether the sticky note should animate to a new position (as opposed to moving instantaneously to a new position).
-    var shouldAnimate = false
-    /// Contains a screen space projection
-    var projection: Projection?
-
-    var lenNew: CGFloat?
-
-    var len: CGFloat?
-
-    var firstSize: CGFloat?
-    var firstLen: CGFloat?
-    var secondSize: CGFloat?
-    var secondLen: CGFloat?
-    var sizeCorrection: CGSize?
-}
-
-struct Projection {
-    let projectedPoint: CGPoint
-    let isVisible: Bool
+struct CheckedEntityModel {
+    let origin: CGPoint
+    let width: CGFloat
+    let height: CGFloat
+    let id: String
+    let worldTransform: simd_float4x4
 }

@@ -1,0 +1,4 @@
+subscription recommendTea($collectionID:ID!, $feelings:String!){
+  recommendTea(collectionID:$collectionID, feelings:$feelings)
+}
+

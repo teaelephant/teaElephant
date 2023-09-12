@@ -23,8 +23,9 @@ class AuthorizationInterceptor: ApolloInterceptor {
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
     ) where Operation : GraphQLOperation {
         if let token = AuthManager.shared.keychain.get(tokenKey) {
-            print(token)
-            request.addHeader(name: "Authorization", value: "Bearer \(token)")
+            let value = "Bearer \(token)"
+            print(value)
+            request.addHeader(name: "Authorization", value: value)
         }
         
         chain.proceedAsync(request: request,

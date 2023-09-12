@@ -7,6 +7,7 @@
 
 import Foundation
 import Apollo
+import SwiftUI
 import TeaElephantSchema
 import os
 import KeychainSwift
@@ -15,9 +16,14 @@ class CollectionsManager: ObservableObject {
     @Published var collections: [Collection] = [Collection]()
     @Published var error: Error?
     @Published var collectionsLoading = true
-    @Published var lastRecomendation: String?
+    @Published var lastRecomendation:String?
     @Published var recomendationLoading = false
+    var subscribeRecommendation: Cancellable?
     let log = Logger(subsystem: "xax.TeaElephant", category: "CollectionManager")
+    
+    deinit {
+        subscribeRecommendation?.cancel()
+    }
     
     func getCollections(forceReload: Bool = false) async {
         let cachePolicy: CachePolicy = forceReload ? .fetchIgnoringCacheData : .returnCacheDataElseFetch
@@ -122,23 +128,32 @@ class CollectionsManager: ObservableObject {
         await getCollections(forceReload: true)
     }
     
-    func recomendation(_ id: String, feelings: String) async {
+    func recomendation(_ id: String, feelings: String) {
         recomendationLoading = true
-        let result = await Network.shared.apollo.performAsync(mutation: TeaRecommendationMutation(collectionID: id, feelings: feelings))
-        switch result {
-        case .success(let graphQLResult):
-            DispatchQueue.main.async {
-                if let errors = graphQLResult.errors {
-                    print(errors)
-                    return
+        self.lastRecomendation = nil
+        subscribeRecommendation = Network.shared.apollo.subscribe(subscription: RecommendTeaSubscription(collectionID: id, feelings: feelings)) { result in
+            switch result {
+            case .success(let graphQLResult):
+                DispatchQueue.main.async {
+                    if let errors = graphQLResult.errors {
+                        print(errors)
+                        return
+                    }
+                    guard let data = graphQLResult.data?.recommendTea else {
+                        return
+                    }
+                    if self.lastRecomendation == nil {
+                        self.lastRecomendation = data
+                    } else {
+                        self.lastRecomendation! += data
+                    }
                 }
-                self.lastRecomendation = graphQLResult.data?.teaRecommendation
+            case .failure(let error):
+                print(error)
             }
-        case .failure(let error):
-            print(error)
-        }
-        DispatchQueue.main.async {
-            self.recomendationLoading = false
+            DispatchQueue.main.async {
+                self.recomendationLoading = false
+            }
         }
     }
 }

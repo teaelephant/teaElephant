@@ -13,18 +13,18 @@ import Vision
 import Combine
 import SwiftUI
 
-struct Detector2: UIViewControllerRepresentable {
+struct QRDetector: UIViewControllerRepresentable {
     var callback: (_ newID: String) -> Void
     
-    func makeUIViewController(context: Context) -> DetectorController2 {
-        let view = DetectorController2()
+    func makeUIViewController(context: Context) -> QRDetectorController {
+        let view = QRDetectorController()
         view.callback = callback
 
         return view
     }
 
-    func updateUIViewController(_ uiViewController: DetectorController2, context: Context) {
+    func updateUIViewController(_ uiViewController: QRDetectorController, context: Context) {
     }
 
-    typealias UIViewControllerType = DetectorController2
+    typealias UIViewControllerType = QRDetectorController
 }

@@ -32,14 +32,18 @@ class Searcher: ObservableObject {
             logger.debug("start search by prefix \(prefix)")
             do {
                 let data = try await api.search(prefix: prefix)
-                var info:TeaInfo? = nil
-                if let data = data {
-                    info = TeaInfo(
-                        meta: TeaMeta(id: data.ID, expirationDate: Date.init(), brewingTemp: 100),
-                        data: TeaData(name: data.name, type: GraphQLEnum(rawValue: data.type.rawValue), description: data.description),
-                        tags: [Tag]()
-                    )
-                }
+                let info: TeaInfo? = {
+                    if let data = data {
+                        return TeaInfo(
+                            meta: TeaMeta(id: data.ID, expirationDate: Date.init(), brewingTemp: 100),
+                            data: TeaData(name: data.name, type: GraphQLEnum(rawValue: data.type.rawValue), description: data.description),
+                            tags: [Tag]()
+                        )
+                    } else {
+                        return nil
+                    }
+                }()
+                
                 DispatchQueue.main.async{
                     self.detectedInfo = info
                     self.error = nil
