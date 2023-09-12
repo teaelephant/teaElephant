@@ -16,6 +16,7 @@ class CollectionsManager: ObservableObject {
     @Published var error: Error?
     @Published var collectionsLoading = true
     @Published var lastRecomendation: String?
+    @Published var recomendationLoading = false
     let log = Logger(subsystem: "xax.TeaElephant", category: "CollectionManager")
     
     func getCollections(forceReload: Bool = false) async {
@@ -23,7 +24,6 @@ class CollectionsManager: ObservableObject {
         collectionsLoading = true
         do {
             for try await result in Network.shared.apollo.fetchAsync(query: CollectionsQuery(), cachePolicy: cachePolicy) {
-                checkAuth(errors: result.errors)
                 if let errors = result.errors {
                     DispatchQueue.main.async {
                         self.error = errors.first
@@ -47,7 +47,7 @@ class CollectionsManager: ObservableObject {
                         } else {
                             self.collections.append(Collection(id: col.id, name: col.name, records: records))
                         }
-
+                        
                     }
                     self.collectionsLoading = false
                 }
@@ -63,7 +63,6 @@ class CollectionsManager: ObservableObject {
         let result = await Network.shared.apollo.performAsync(mutation: CreateCollectionMutation(name: name))
         switch result {
         case .success(let graphQLResult):
-            checkAuth(errors: graphQLResult.errors)
             if let errors = graphQLResult.errors {
                 print(errors)
                 return
@@ -84,7 +83,6 @@ class CollectionsManager: ObservableObject {
         let result = await Network.shared.apollo.performAsync(mutation: DeleteCollectionMutation(id: id))
         switch result {
         case .success(let graphQLResult):
-            checkAuth(errors: graphQLResult.errors)
             if let errors = graphQLResult.errors {
                 print(errors)
                 return
@@ -99,7 +97,6 @@ class CollectionsManager: ObservableObject {
         let result = await Network.shared.apollo.performAsync(mutation: AddRecordsToCollectionMutation(id: id, records: newIDs))
         switch result {
         case .success(let graphQLResult):
-            checkAuth(errors: graphQLResult.errors)
             if let errors = graphQLResult.errors {
                 print(errors)
                 return
@@ -115,7 +112,6 @@ class CollectionsManager: ObservableObject {
         let result = await Network.shared.apollo.performAsync(mutation: DeleteRecordsFromCollectionMutation(id: id, records: records))
         switch result {
         case .success(let graphQLResult):
-            checkAuth(errors: graphQLResult.errors)
             if let errors = graphQLResult.errors {
                 print(errors)
                 return
@@ -127,10 +123,10 @@ class CollectionsManager: ObservableObject {
     }
     
     func recomendation(_ id: String, feelings: String) async {
+        recomendationLoading = true
         let result = await Network.shared.apollo.performAsync(mutation: TeaRecommendationMutation(collectionID: id, feelings: feelings))
         switch result {
         case .success(let graphQLResult):
-            checkAuth(errors: graphQLResult.errors)
             DispatchQueue.main.async {
                 if let errors = graphQLResult.errors {
                     print(errors)
@@ -141,20 +137,8 @@ class CollectionsManager: ObservableObject {
         case .failure(let error):
             print(error)
         }
-    }
-    
-    func checkAuth(errors: [GraphQLError]?) {
         DispatchQueue.main.async {
-            guard let err = errors?.first else {
-                AuthManager.shared.auth = true
-                return
-            }
-            guard let code = err.extensions?["code"] as? Int else {
-                return
-            }
-            if code == -1 {
-                AuthManager.shared.auth = false
-            }
+            self.recomendationLoading = false
         }
     }
 }

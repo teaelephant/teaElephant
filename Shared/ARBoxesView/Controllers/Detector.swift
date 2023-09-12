@@ -13,11 +13,10 @@ import Vision
 import Combine
 import SwiftUI
 
+@available(iOS 17.0, *)
 struct Detector: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> DetectorController {
-        let view = DetectorController()
-
-        return view
+        return DetectorController()
     }
 
     func updateUIViewController(_ uiViewController: DetectorController, context: Context) {

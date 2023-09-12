@@ -18,7 +18,7 @@ struct Detector2: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> DetectorController2 {
         let view = DetectorController2()
-        view.setCallback(newCallback: callback)
+        view.callback = callback
 
         return view
     }

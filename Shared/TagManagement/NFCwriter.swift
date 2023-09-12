@@ -33,7 +33,7 @@ class tagWriter: NSObject, ShortInfoWriter {
         let payload = NFCNDEFPayload(format: NFCTypeNameFormat.nfcWellKnown, type: "application/json".data(using: .utf8)!, identifier: Data.init(count: 0), payload: data)
         message = NFCNDEFMessage(records: [payload])
         self.nfc.createSession()
-        print(message!)
+        print(message ?? "")
         /*session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
         session?.alertMessage = "Hold your iPhone near an NDEF tag to write the message."
         session?.begin()*/
@@ -191,8 +191,8 @@ extension tagWriter: NFCProtocol {
                 case .readWrite:
                     print(self.message!)
                     tag.writeNDEF(self.message!, completionHandler: { (error: Error?) in
-                        if nil != error {
-                            session.alertMessage = "Write NDEF message fail: \(error!)"
+                        if let err = error {
+                            session.alertMessage = "Write NDEF message fail: \(err)"
                         } else {
                             session.alertMessage = "Write NDEF message successful."
                         }

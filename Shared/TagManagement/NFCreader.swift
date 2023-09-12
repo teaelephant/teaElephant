@@ -85,20 +85,20 @@ extension NFCReader: NFCProtocol {
         print("\(messages)")
         DispatchQueue.main.async {
             if messages.count != 1 {
-                print("invalid message count")
-                self.error = ReaderError("invalid message count")
+                self.error = ReaderError.InvalidMessageCount
+                print(self.error!.localizedDescription)
                 return
             }
             if messages[0].records.count != 1 {
-                print("invalid records count")
-                self.error = ReaderError("invalid records count")
+                self.error = ReaderError.InvalidRecordsCount
+                print(self.error!.localizedDescription)
                 return
             }
             Task {
                 do {
                     self.detectedInfo = try TeaMeta.fromBytes(data: messages[0].records[0].payload)
-                    if self.onRead != nil && self.detectedInfo != nil {
-                        await self.onRead!(self.detectedInfo!)
+                    if let onRead = self.onRead, let detectedInfo = self.detectedInfo {
+                        await onRead(detectedInfo)
                     }
                 } catch {
                     print(error.localizedDescription)
@@ -109,9 +109,7 @@ extension NFCReader: NFCProtocol {
     }
 }
 
-struct ReaderError: Error {
-    var message: String
-    init(_ message: String) {
-        self.message = message
-    }
+enum ReaderError: Error {
+    case InvalidMessageCount
+    case InvalidRecordsCount
 }

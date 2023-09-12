@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import TeaElephant
+import SwiftUI
 
 class TeaElephantTests: XCTestCase {
 
@@ -27,7 +28,17 @@ class TeaElephantTests: XCTestCase {
             "incorrect error"
         )
     }
-
+    
+    func testColorIsDark() {
+        let colorview = Color(hex: "#BE000000")
+        XCTAssertTrue(colorview.isDark())
+    }
+    
+    func testColorIsDarkNegative() {
+        let colorview = Color(hex: "#FFFFFFFF")
+        XCTAssertFalse(colorview.isDark())
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

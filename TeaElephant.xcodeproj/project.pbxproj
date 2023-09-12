@@ -148,6 +148,16 @@
 		4BB73A022A8AB8B3003524A0 /* auth.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB73A002A8AB8B3003524A0 /* auth.graphql */; };
 		4BB73A032A8C0884003524A0 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */; };
 		4BB73A042A8C0885003524A0 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */; };
+		4BC972BA2AAF978600636A4F /* UnauthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5367A72AA5BD1A00AD6522 /* UnauthInterceptor.swift */; };
+		4BC972BB2AAF97B100636A4F /* ARCardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56FD8E2A84D5410055BDB5 /* ARCardUIView.swift */; };
+		4BC972BC2AAF97BD00636A4F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
+		4BC972BE2AAF989C00636A4F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC972BD2AAF989C00636A4F /* Color.swift */; };
+		4BC972BF2AAF989C00636A4F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC972BD2AAF989C00636A4F /* Color.swift */; };
+		4BC972C02AAF989C00636A4F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC972BD2AAF989C00636A4F /* Color.swift */; };
+		4BC972C12AAF98B300636A4F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC972BD2AAF989C00636A4F /* Color.swift */; };
+		4BC972C22AAF9A5D00636A4F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
+		4BC972C32AAF9A7400636A4F /* UnauthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5367A72AA5BD1A00AD6522 /* UnauthInterceptor.swift */; };
+		4BC972C42AAF9A9700636A4F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F1BCE2A9BDA5900E4AFCC /* AuthManager.swift */; };
 		4BDF3A5B29E2027A003D8F92 /* TeaElephantSchema in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDF3A5A29E2027A003D8F92 /* TeaElephantSchema */; };
 		4BDF3A5D29E20282003D8F92 /* TeaElephantSchema in Frameworks */ = {isa = PBXBuildFile; productRef = 4BDF3A5C29E20282003D8F92 /* TeaElephantSchema */; };
 		4BEF3EBD2A7BC71600829724 /* CacheInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEF3EBC2A7BC71600829724 /* CacheInterceptor.swift */; };
@@ -161,7 +171,6 @@
 		4BFE092D2AA1CB650033131F /* RecomendationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */; };
 		4BFE092E2AA1CB650033131F /* RecomendationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */; };
 		4BFF931225BCDED1005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
-		4BFF939025BCECD0005FC04F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF931125BCDED1005FC04F /* Network.swift */; };
 		4BFF939925BCED79005FC04F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF939825BCED79005FC04F /* Search.swift */; };
 		4BFF939B25BCED79005FC04F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF939825BCED79005FC04F /* Search.swift */; };
 		4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93A625BCEF03005FC04F /* RecordGetter.swift */; };
@@ -305,6 +314,7 @@
 		4BB739FB2A891BAB003524A0 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		4BB739FD2A8AB4FF003524A0 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		4BB73A002A8AB8B3003524A0 /* auth.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = auth.graphql; sourceTree = "<group>"; };
+		4BC972BD2AAF989C00636A4F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4BEF3EBC2A7BC71600829724 /* CacheInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheInterceptor.swift; sourceTree = "<group>"; };
 		4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = teaRecomendation.graphql; sourceTree = "<group>"; };
 		4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationUIView.swift; sourceTree = "<group>"; };
@@ -426,6 +436,7 @@
 				4B37AF1D25AAE60200209E22 /* Description.swift */,
 				4B8D0BB525AAEB6600FF40DB /* Name.swift */,
 				4B8D0BBC25AAECA900FF40DB /* Type.swift */,
+				4BC972BD2AAF989C00636A4F /* Color.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -924,6 +935,7 @@
 				4B5789E72A9DD0FF00549157 /* DestinatoinUIView.swift in Sources */,
 				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
 				4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */,
+				4BC972BE2AAF989C00636A4F /* Color.swift in Sources */,
 				4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */,
 				4BB739DC2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
 				4B37AF1E25AAE60200209E22 /* Description.swift in Sources */,
@@ -966,23 +978,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B1D0A332504169F00D26450 /* Writer.swift in Sources */,
+				4BC972C42AAF9A9700636A4F /* AuthManager.swift in Sources */,
 				4BFF93A825BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B968BEE2A84F0CA00D6FC4E /* DetailManager.swift in Sources */,
 				4B1D0A302504169F00D26450 /* Reader.swift in Sources */,
 				4B1D0A202504152100D26450 /* NFCwriter.swift in Sources */,
 				4BEF3EBE2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
 				4B8E854C24D09F93001FCFFF /* NearFieldCommunicator.swift in Sources */,
-				4BFF939025BCECD0005FC04F /* Network.swift in Sources */,
 				4B8E854724D09F8B001FCFFF /* TeaInfo.swift in Sources */,
 				4B4E296B2A973DB500383D06 /* Collection.swift in Sources */,
 				4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */,
 				4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */,
 				4B1B06272A7B919800A332E1 /* ApolloClientExtension.swift in Sources */,
+				4BC972C22AAF9A5D00636A4F /* Network.swift in Sources */,
 				4B1D0A232504152100D26450 /* NFCreader.swift in Sources */,
 				1CEAFEB02F756D050878B559 /* Manager.swift in Sources */,
 				4B36C30725C2D7EE006C9293 /* TeaMeta.swift in Sources */,
 				1CEAFB5A1B87520A502CCCC5 /* Entity.swift in Sources */,
 				4BB73A032A8C0884003524A0 /* AuthorizationInterceptor.swift in Sources */,
+				4BC972C32AAF9A7400636A4F /* UnauthInterceptor.swift in Sources */,
+				4BC972C12AAF98B300636A4F /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -995,9 +1010,13 @@
 				4B8E854824D09F8C001FCFFF /* TeaInfo.swift in Sources */,
 				4B1B06292A7B919900A332E1 /* ApolloClientExtension.swift in Sources */,
 				4BEF3EBF2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
+				4BC972BF2AAF989C00636A4F /* Color.swift in Sources */,
+				4BC972BC2AAF97BD00636A4F /* Network.swift in Sources */,
+				4BC972BB2AAF97B100636A4F /* ARCardUIView.swift in Sources */,
 				4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */,
 				4B36C30B25C2D875006C9293 /* TeaMeta.swift in Sources */,
 				4B4E296C2A973DB500383D06 /* Collection.swift in Sources */,
+				4BC972BA2AAF978600636A4F /* UnauthInterceptor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,6 +1041,7 @@
 				4BFF93A925BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B5789E92A9DD17200549157 /* DestinatoinUIView.swift in Sources */,
 				4B5367A92AA5BD1A00AD6522 /* UnauthInterceptor.swift in Sources */,
+				4BC972C02AAF989C00636A4F /* Color.swift in Sources */,
 				4B8E855524D09F9F001FCFFF /* ShowCard.swift in Sources */,
 				4BB739DD2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
 				4B8E855624D09F9F001FCFFF /* Menu.swift in Sources */,

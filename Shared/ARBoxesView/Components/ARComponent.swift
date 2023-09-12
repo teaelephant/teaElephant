@@ -5,10 +5,12 @@
 import RealityKit
 import UIKit
 
+@available(iOS 17.0, *)
 protocol HasTeaElephantView: Entity {
     var teaElephantComponent: TeaElephantComponent { get set }
 }
 
+@available(iOS 17.0, *)
 extension HasTeaElephantView {
     var view: TitleView? {
         get { teaElephantComponent.view }
@@ -145,6 +147,7 @@ extension HasTeaElephantView {
 
 }
 
+@available(iOS 17.0, *)
 struct TeaElephantComponent: Component {
     var view: TitleView?
     /// Indicates whether the sticky note should animate to a new position (as opposed to moving instantaneously to a new position).

@@ -6,19 +6,22 @@ import Foundation
 import Apollo
 import TeaElephantSchema
 
+enum WriterError: LocalizedError {
+    case EmptyData
+}
+
 class RecordWriter: ExtendInfoWriter {
-    func writeExtendInfo(info: TeaData, callback: @escaping (String, Error?)->()) async throws {
+    func writeExtendInfo(info: TeaData) async throws -> String {
         let result = await Network.shared.apollo.performAsync(mutation: CreateMutation(tea: info))
         switch result {
         case .success(let graphQLResult):
-            if let errors = graphQLResult.errors {
-                callback("", errors.first)
-                return
+            if let err = graphQLResult.errors?.first {
+                throw err
             }
-            guard let id = graphQLResult.data?.newTea.id else { return }
-            callback(id, nil)
+            guard let id = graphQLResult.data?.newTea.id else { throw WriterError.EmptyData  }
+            return id
         case .failure(let error):
-            callback("", error)
+            throw error
         }
     }
 }

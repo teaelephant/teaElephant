@@ -7,6 +7,7 @@ import Combine
 import SwiftUI
 import TeaElephantSchema
 
+@available(iOS 17.0, *)
 class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegate {
 	var arView: ARView!
 	var subscription: Cancellable!
@@ -82,9 +83,11 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 		// Retain the image buffer for Vision processing.
 		let currentBuffer = frame.capturedImage
 		// Most computer vision tasks are not rotation agnostic so it is important to pass in the orientation of the image with respect to device.
-		let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue))
+        guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue)) else {
+            return
+        }
 
-		let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer, orientation: orientation!)
+		let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer, orientation: orientation)
 		let visionQueue = DispatchQueue(label: "com.example.apple-samplecode.ARKitVision.serialVisionQueue")
 		let classificationRequest: VNDetectBarcodesRequest = {
 			// Instantiate the model from its generated Swift class.
@@ -165,7 +168,11 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
                     DispatchQueue.main.async {
                         let info = TeaInfo(
                             meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
-                            data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description))
+                            data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description),
+                            tags: qr.tea.tags.map({ tag in
+                                Tag(id: tag.id, name: tag.name, color: tag.color, category: tag.category.name)
+                            })
+                        )
                         self.newEntities.append(EntityModel(
                                         origin: convertedOrign,
                                         width: convertedWidth,

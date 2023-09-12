@@ -28,6 +28,8 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "Collection": return TeaElephantSchema.Objects.Collection
     case "Tea": return TeaElephantSchema.Objects.Tea
     case "Query": return TeaElephantSchema.Objects.Query
+    case "Tag": return TeaElephantSchema.Objects.Tag
+    case "TagCategory": return TeaElephantSchema.Objects.TagCategory
     case "User": return TeaElephantSchema.Objects.User
     default: return nil
     }

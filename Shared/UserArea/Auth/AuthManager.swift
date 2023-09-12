@@ -79,9 +79,10 @@ class AuthManager: ObservableObject {
             guard let token = graphQLResult.data?.authApple.token else { return }
             DispatchQueue.main.async{
                 self.log.debug("new token \(token)")
+                self.keychain.synchronizable = true
+                self.keychain.set(token, forKey: tokenKey)
                 self.auth = true
                 self.error = nil
-                self.keychain.set(token, forKey: tokenKey)
             }
             
         case .failure(let error):

@@ -25,10 +25,6 @@ class DetectorController2: UIViewController, ARSessionDelegate {
         arViewSetup()
     }
     
-    func setCallback(newCallback: @escaping (_ newID: String) -> Void) {
-        callback = newCallback
-    }
-
     private func arViewSetup() {
         #if !targetEnvironment(simulator)
         let config = ARWorldTrackingConfiguration()

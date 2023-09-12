@@ -7,7 +7,7 @@ import TeaElephantSchema
 import Apollo
 
 protocol ExtendInfoReader {
-    func getExtendInfo(id: String, callback: @escaping (TeaData?, Error?) -> Void) async
+    func getExtendInfo(id: String) async throws -> TeaData
 }
 
 protocol ShortInfoReader {
@@ -32,15 +32,14 @@ class Reader: ObservableObject {
     }
     
     private func onReadMeta(_ meta: TeaMeta) async {
-        await extender.getExtendInfo(id: meta.id) { (data, err) -> Void in
-            if err != nil {
-                self.error = err?.localizedDescription
-                return
+        do {
+            let data = try await extender.getExtendInfo(id: meta.id)
+            DispatchQueue.main.async {
+                self.detectedInfo = TeaInfo(meta: meta, data: data, tags: [Tag]())
             }
-            if data != nil {
-                DispatchQueue.main.async {
-                    self.detectedInfo = TeaInfo(meta: meta, data: data!)
-                }
+        } catch {
+            DispatchQueue.main.async {
+                self.error = error.localizedDescription
             }
         }
     }
@@ -61,7 +60,8 @@ class Reader: ObservableObject {
                 DispatchQueue.main.async {
                     self.detectedInfo = TeaInfo(
                         meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
-                        data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description)
+                        data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description),
+                        tags: [Tag]()
                     )
                 }
             }

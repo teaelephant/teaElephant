@@ -1,13 +1,21 @@
-query read($id:ID!){
-    qrRecord(id:$id){
+query read($id: ID!) {
+  qrRecord(id: $id) {
+    id
+    tea {
+      id
+      name
+      type
+      description
+      tags {
         id
-        tea{
-            id
-            name
-            type
-            description
+        color
+        category {
+          name
         }
-        bowlingTemp
-        expirationDate
+        name
+      }
     }
+    bowlingTemp
+    expirationDate
+  }
 }

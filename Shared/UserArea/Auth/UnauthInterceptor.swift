@@ -25,8 +25,7 @@ class UnauthInterceptor: ApolloInterceptor {
             return
         }
         if Int(code) == -1 {
-            let keychain = KeychainSwift()
-            keychain.delete(tokenKey)
+            AuthManager.shared.keychain.delete(tokenKey)
             print("token was wiped")
             AuthManager.shared.auth = false
         }

@@ -6,6 +6,7 @@ import UIKit
 import SwiftUI
 
 /// A subclass of UIView that will be inserted into the scene in "Screen Space", that composes the sticky note's visual appearance.
+@available(iOS 17.0, *)
 class TitleView: UIView {
     var cardView: UIView!
 

@@ -21,7 +21,9 @@ struct RecomendationUIView: View {
             }, label: {
                 Text("Get recomendation")
             })
-            if let text = manager.lastRecomendation {
+            if manager.recomendationLoading {
+                ProgressView()
+            } else if let text = manager.lastRecomendation {
                 Text(text)
             }
         }

@@ -11,6 +11,14 @@ import TeaElephantSchema
 struct TeaInfo {
     let meta: TeaMeta
     let data: TeaData
+    let tags: [Tag]
+}
+
+struct Tag {
+    let id: String
+    let name: String
+    let color: String
+    let category: String
 }
 
 struct TeaDataWithID {

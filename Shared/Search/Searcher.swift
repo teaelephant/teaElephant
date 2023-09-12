@@ -36,7 +36,8 @@ class Searcher: ObservableObject {
                 if let data = data {
                     info = TeaInfo(
                         meta: TeaMeta(id: data.ID, expirationDate: Date.init(), brewingTemp: 100),
-                        data: TeaData(name: data.name, type: GraphQLEnum(rawValue: data.type.rawValue), description: data.description)
+                        data: TeaData(name: data.name, type: GraphQLEnum(rawValue: data.type.rawValue), description: data.description),
+                        tags: [Tag]()
                     )
                 }
                 DispatchQueue.main.async{

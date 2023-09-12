@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SwiftUI
 
 class TeaElephantUITests: XCTestCase {
 
