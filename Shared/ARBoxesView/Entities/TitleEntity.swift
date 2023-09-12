@@ -6,7 +6,6 @@ import ARKit
 import RealityKit
 import SwiftUI
 
-@available(iOS 17.0, *)
 class TitleEntity: Entity, HasAnchoring, HasTeaElephantView {
     var teaElephantComponent = TeaElephantComponent()
     

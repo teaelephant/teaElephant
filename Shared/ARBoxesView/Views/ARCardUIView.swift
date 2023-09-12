@@ -10,7 +10,6 @@ import SwiftUI
 import ApolloAPI
 import TeaElephantSchema
 
-@available(iOS 17.0, *)
 struct ARCardUIView: View {
     @EnvironmentObject private var detailController: DetailManager
     var info: TeaInfo
@@ -39,14 +38,18 @@ struct ARCardUIView: View {
                             .foregroundColor(textColor)
                             .buttonStyle(.automatic)
                             .padding()
-                        HStack{
-                            ForEach(info.tags, id: \.self.id) { tag in
-                                let color = Color(hex: tag.color)
-                                Circle()
-                                    .stroke(color.isDark() ? .white : .black, lineWidth: 1)
-                                    .fill(color)
-                                    .frame(width: 20, height: 20)
+                        if #available(iOS 17.0, *) {
+                            HStack{
+                                ForEach(info.tags, id: \.self.id) { tag in
+                                    let color = Color(hex: tag.color)
+                                    Circle()
+                                        .stroke(color.isDark() ? .white : .black, lineWidth: 1)
+                                        .fill(color)
+                                        .frame(width: 20, height: 20)
+                                }
                             }
+                        } else {
+                            Text("Upgrade IOS version for see tags")
                         }
                     }
                 })

@@ -7,7 +7,6 @@ import Combine
 import SwiftUI
 import TeaElephantSchema
 
-@available(iOS 17.0, *)
 class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegate {
 	var arView: ARView!
 	var subscription: Cancellable!

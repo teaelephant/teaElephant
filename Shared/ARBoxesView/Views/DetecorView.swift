@@ -3,9 +3,9 @@ import SwiftUI
 struct DetectorView: View {
     @EnvironmentObject private var detailController: DetailManager
     var body: some View {
-        #if APPCLIP
+#if APPCLIP
         FullAppOffer()
-        #elseif !targetEnvironment(simulator)
+#elseif !targetEnvironment(simulator)
         if let info = detailController.info {
             VStack{
                 Button(action: {
@@ -18,9 +18,9 @@ struct DetectorView: View {
         } else {
             Detector().edgesIgnoringSafeArea(.all)
         }
-        #else
-            Text("AR View not accessible in simulator")
-        #endif
+#else
+        Text("AR View not accessible in simulator")
+#endif
     }
 }
 
