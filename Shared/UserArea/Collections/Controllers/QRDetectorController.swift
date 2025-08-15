@@ -91,7 +91,7 @@ class QRDetectorController: UIViewController, ARSessionDelegate {
         let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue))
 
         let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer, orientation: orientation!)
-        let visionQueue = DispatchQueue(label: "com.example.apple-samplecode.ARKitVision.serialVisionQueue")
+        let visionQueue = DispatchQueue(label: "com.teaElephant.ARKitVision.serialVisionQueue")
         let classificationRequest: VNDetectBarcodesRequest = {
             // Instantiate the model from its generated Swift class.
             let request: VNDetectBarcodesRequest = VNDetectBarcodesRequest(completionHandler: { request, error in
@@ -119,7 +119,7 @@ class QRDetectorController: UIViewController, ARSessionDelegate {
             })
 
             // Use CPU for Vision processing to ensure that there are adequate GPU resources for rendering.
-            request.usesCPUOnly = true
+            request.preferBackgroundProcessing = true
 
             return request
         }()

@@ -3,7 +3,7 @@
 //
 
 import Foundation
-import TeaElephantSchema
+@preconcurrency import TeaElephantSchema
 import Apollo
 
 protocol ExtendInfoReader {

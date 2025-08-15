@@ -40,6 +40,31 @@ struct CollectionUIView: View {
 #endif
                 
                 
+            } else if collection.records.isEmpty {
+                VStack(spacing: 20) {
+                    Spacer()
+                    Image(systemName: "cup.and.saucer")
+                        .font(.system(size: 60))
+                        .foregroundColor(.secondary)
+                    Text("Empty Collection")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text("Add teas by scanning NFC tags or QR codes")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
+                    Button(action: {
+                        detectForAdd = true
+                    }) {
+                        Label("Scan Tea Tags", systemImage: "qrcode.viewfinder")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    Spacer()
+                }
+                .navigationBarTitle("Collection \(collection.name)")
+                .toolbar{
+                    NavigationLink("Recommend tea", destination: RecomendationUIView(id: collection.id, manager: manager))
+                }
             } else {
                 List{
                     ForEach($collection.records, id: \.id) { $el in

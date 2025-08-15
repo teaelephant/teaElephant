@@ -13,14 +13,20 @@ struct UserAreaUIView: View {
     
     var body: some View {
         if authManager.loading {
-            ProgressView().onAppear{
+            VStack(spacing: 16) {
+                ProgressView()
+                Text("Checking authentication...")
+                    .foregroundColor(.secondary)
+            }
+            .onAppear{
                 Task{
                     await authManager.authorized()
                 }
             }
         } else if authManager.auth {
-            if #available(iOS 17.0, *) {
+            if #available(iOS 18.0, *) {
                 CollectionsUIView(manager: manager)
+                
             } else {
                 Text("Unsupported")
             }

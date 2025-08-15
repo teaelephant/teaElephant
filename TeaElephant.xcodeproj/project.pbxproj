@@ -85,7 +85,6 @@
 		4B6F1BCF2A9BDA5900E4AFCC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F1BCE2A9BDA5900E4AFCC /* AuthManager.swift */; };
 		4B6F1BD02A9BDA5900E4AFCC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6F1BCE2A9BDA5900E4AFCC /* AuthManager.swift */; };
 		4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85B4E424C447DE00588DB9 /* Menu.swift */; };
-		4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
 		4B8ACD9F25BC91E8001DE00A /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */; };
 		4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BB525AAEB6600FF40DB /* Name.swift */; };
 		4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D0BB525AAEB6600FF40DB /* Name.swift */; };
@@ -122,8 +121,8 @@
 		4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6B76524C4E1C400C46814 /* NearFieldCommunicator.swift */; };
 		4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA6B76824C4E20800C46814 /* CoreNFC.framework */; };
 		4BACC5B22B2B8DAB000884D4 /* teaRecomendations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BACC5B12B2B8DAB000884D4 /* teaRecomendations.graphql */; };
-		4BB739D92A86A388003524A0 /* CollectionsMnagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */; };
-		4BB739DA2A86A388003524A0 /* CollectionsMnagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */; };
+		4BB739D92A86A388003524A0 /* CollectionsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739D82A86A388003524A0 /* CollectionsManagement.swift */; };
+		4BB739DA2A86A388003524A0 /* CollectionsManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739D82A86A388003524A0 /* CollectionsManagement.swift */; };
 		4BB739DC2A86A52C003524A0 /* CollectionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */; };
 		4BB739DD2A86A52C003524A0 /* CollectionsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */; };
 		4BB739DF2A86ACE2003524A0 /* CollectionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739DE2A86ACE2003524A0 /* CollectionUIView.swift */; };
@@ -182,6 +181,24 @@
 		4BFF93E725BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
 		4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
 		4BFF93E925BCF514005FC04F /* RecordWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF93E625BCF514005FC04F /* RecordWriter.swift */; };
+		CE750BD02D136EAA00830DD0 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE750BCF2D136EAA00830DD0 /* Vision.framework */; };
+		CE750BD22D13705400830DD0 /* VisionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE750BD12D13705400830DD0 /* VisionKit.framework */; };
+		CE750BD42D1370ED00830DD0 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE750BD32D1370ED00830DD0 /* CoreML.framework */; };
+		CE750BD62D13715600830DD0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE750BD52D13715600830DD0 /* Accelerate.framework */; };
+		CE8267BB2D1364B600452E2B /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
+		CEAAFFC22E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBC2E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md */; };
+		CEAAFFC32E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBF2E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md */; };
+		CEAAFFC42E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFC02E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md */; };
+		CEAAFFC52E4F02C300A6B5A3 /* GEMINI.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBE2E4F02C300A6B5A3 /* GEMINI.md */; };
+		CEAAFFC62E4F02C300A6B5A3 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBD2E4F02C300A6B5A3 /* CLAUDE.md */; };
+		CEAAFFCE2E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */; };
+		CEAAFFCF2E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
+		CEAAFFD02E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */; };
+		CEAAFFD12E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
+		CEAAFFD22E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */; };
+		CEAAFFD32E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
+		CEAAFFD42E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */; };
+		CEAAFFD52E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,7 +321,7 @@
 		4BACC5B12B2B8DAB000884D4 /* teaRecomendations.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = teaRecomendations.graphql; sourceTree = "<group>"; };
 		4BB739D22A869F4D003524A0 /* collections.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = collections.graphql; sourceTree = "<group>"; };
 		4BB739D32A869F65003524A0 /* createCollection.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = createCollection.graphql; sourceTree = "<group>"; };
-		4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsMnagement.swift; sourceTree = "<group>"; };
+		4BB739D82A86A388003524A0 /* CollectionsManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsManagement.swift; sourceTree = "<group>"; };
 		4BB739DB2A86A52C003524A0 /* CollectionsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsUIView.swift; sourceTree = "<group>"; };
 		4BB739DE2A86ACE2003524A0 /* CollectionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionUIView.swift; sourceTree = "<group>"; };
 		4BB739E42A86BE08003524A0 /* addRecordsToCollection.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = addRecordsToCollection.graphql; sourceTree = "<group>"; };
@@ -324,12 +341,23 @@
 		4BFC91012AB6FCB400D2D133 /* CheckedUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckedUIView.swift; sourceTree = "<group>"; };
 		4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = teaRecomendation.graphql; sourceTree = "<group>"; };
 		4BFE092C2AA1CB650033131F /* RecomendationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationUIView.swift; sourceTree = "<group>"; };
-		4BFF931125BCDED1005FC04F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		4BFF931125BCDED1005FC04F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Network.swift; path = Shared/Core/Network/Network.swift; sourceTree = SOURCE_ROOT; };
 		4BFF934325BCE2DE005FC04F /* newRecord.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = newRecord.graphql; sourceTree = "<group>"; };
 		4BFF939825BCED79005FC04F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		4BFF939F25BCEDCF005FC04F /* list.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = list.graphql; sourceTree = "<group>"; };
 		4BFF93A625BCEF03005FC04F /* RecordGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordGetter.swift; sourceTree = "<group>"; };
 		4BFF93E625BCF514005FC04F /* RecordWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordWriter.swift; sourceTree = "<group>"; };
+		CE750BCF2D136EAA00830DD0 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		CE750BD12D13705400830DD0 /* VisionKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisionKit.framework; path = System/Library/Frameworks/VisionKit.framework; sourceTree = SDKROOT; };
+		CE750BD32D1370ED00830DD0 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		CE750BD52D13715600830DD0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		CEAAFFBC2E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ARCHITECTURE_REVIEW.md; sourceTree = "<group>"; };
+		CEAAFFBD2E4F02C300A6B5A3 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
+		CEAAFFBE2E4F02C300A6B5A3 /* GEMINI.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI.md; sourceTree = "<group>"; };
+		CEAAFFBF2E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_ARCHITECTURE_REVIEW.md; sourceTree = "<group>"; };
+		CEAAFFC02E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW.md; sourceTree = "<group>"; };
+		CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantDesign.swift; sourceTree = "<group>"; };
+		CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,15 +366,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB739FC2A891BAC003524A0 /* AuthenticationServices.framework in Frameworks */,
+				CE750BD62D13715600830DD0 /* Accelerate.framework in Frameworks */,
 				4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */,
 				4B6F1BBF2A993D2700E4AFCC /* KeychainSwift in Frameworks */,
 				4B9CD76129E1DB54006C5F93 /* Apollo in Frameworks */,
-				4B8ACD9D25BC91DA001DE00A /* ARKit.framework in Frameworks */,
 				4B36C41625C3077C006C9293 /* CodeScanner in Frameworks */,
+				CE750BD02D136EAA00830DD0 /* Vision.framework in Frameworks */,
 				4B9CD76329E1DB59006C5F93 /* ApolloWebSocket in Frameworks */,
 				4BDF3A5B29E2027A003D8F92 /* TeaElephantSchema in Frameworks */,
 				4BA6B76924C4E20800C46814 /* CoreNFC.framework in Frameworks */,
+				CE8267BB2D1364B600452E2B /* ARKit.framework in Frameworks */,
 				4B8ACD9F25BC91E8001DE00A /* RealityKit.framework in Frameworks */,
+				CE750BD42D1370ED00830DD0 /* CoreML.framework in Frameworks */,
+				CE750BD22D13705400830DD0 /* VisionKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +500,7 @@
 		4B29052324C0AEDE007A3D1B = {
 			isa = PBXGroup;
 			children = (
+				CEAAFFC12E4F02C300A6B5A3 /* docs */,
 				4B9CD7B329E201E7006C5F93 /* Packages */,
 				4B8E854424D09EFE001FCFFF /* Shared */,
 				4B29052E24C0AEDE007A3D1B /* TeaElephant */,
@@ -608,6 +641,8 @@
 		4B8E854424D09EFE001FCFFF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CEAAFFCB2E4F0CA600A6B5A3 /* DesignSystem */,
+				CEAAFFCD2E4F0CA600A6B5A3 /* Onboarding */,
 				4B5789E32A9DCE9E00549157 /* Notifications */,
 				4BB739D42A86A1AE003524A0 /* UserArea */,
 				4B37AF0825AA607600209E22 /* Search */,
@@ -616,9 +651,9 @@
 				4B29055A24C2ECD6007A3D1B /* TagManagement */,
 				1CEAFD82D710C2C5A7179BBD /* Views */,
 				4B8E854524D09F31001FCFFF /* SharedAssets.xcassets */,
-				4BFF931125BCDED1005FC04F /* Network.swift */,
 				1CEAF18217AA3B5615E54681 /* QRManagement */,
 				1CEAFCC9EC05CBB1C66062A9 /* ARBoxesView */,
+				4BFF931125BCDED1005FC04F /* Network.swift */,
 				4B1B06252A7B8ECA00A332E1 /* ApolloClientExtension.swift */,
 				4BEF3EBC2A7BC71600829724 /* CacheInterceptor.swift */,
 			);
@@ -636,6 +671,10 @@
 		4BA6B76724C4E20800C46814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE750BD52D13715600830DD0 /* Accelerate.framework */,
+				CE750BD32D1370ED00830DD0 /* CoreML.framework */,
+				CE750BD12D13705400830DD0 /* VisionKit.framework */,
+				CE750BCF2D136EAA00830DD0 /* Vision.framework */,
 				4BB739FB2A891BAB003524A0 /* AuthenticationServices.framework */,
 				4B9CD7B229E201AE006C5F93 /* schema */,
 				4B8ACD9E25BC91E8001DE00A /* RealityKit.framework */,
@@ -688,7 +727,7 @@
 		4BB739D72A86A367003524A0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4BB739D82A86A388003524A0 /* CollectionsMnagement.swift */,
+				4BB739D82A86A388003524A0 /* CollectionsManagement.swift */,
 				4BB739EE2A86DEC2003524A0 /* QRDetector.swift */,
 				4BB739F12A86E011003524A0 /* QRDetectorController.swift */,
 			);
@@ -740,6 +779,34 @@
 				4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */,
 			);
 			path = mutations;
+			sourceTree = "<group>";
+		};
+		CEAAFFC12E4F02C300A6B5A3 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAFFBC2E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md */,
+				CEAAFFBD2E4F02C300A6B5A3 /* CLAUDE.md */,
+				CEAAFFBE2E4F02C300A6B5A3 /* GEMINI.md */,
+				CEAAFFBF2E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md */,
+				CEAAFFC02E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
+		CEAAFFCB2E4F0CA600A6B5A3 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		CEAAFFCD2E4F0CA600A6B5A3 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -842,7 +909,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					4B29052B24C0AEDE007A3D1B = {
 						CreatedOnToolsVersion = 12.0;
@@ -901,6 +968,11 @@
 				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
 				4B6F1BC92A9BD04A00E4AFCC /* registerDevice.graphql in Resources */,
 				4BFE092A2AA1C75A0033131F /* teaRecomendation.graphql in Resources */,
+				CEAAFFC22E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md in Resources */,
+				CEAAFFC32E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md in Resources */,
+				CEAAFFC42E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md in Resources */,
+				CEAAFFC52E4F02C300A6B5A3 /* GEMINI.md in Resources */,
+				CEAAFFC62E4F02C300A6B5A3 /* CLAUDE.md in Resources */,
 				4B6F1BC62A9BBF2F00E4AFCC /* me.graphql in Resources */,
 				4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */,
 				4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */,
@@ -949,6 +1021,8 @@
 				4B37AF0A25AA608E00209E22 /* Searcher.swift in Sources */,
 				4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B6F1BCC2A9BD9FE00E4AFCC /* AppDelegate.swift in Sources */,
+				CEAAFFCE2E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */,
+				CEAAFFCF2E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4B34874724C63F360098F811 /* UIResponder+Current.swift in Sources */,
 				4BFE092D2AA1CB650033131F /* RecomendationUIView.swift in Sources */,
 				4B1D0A222504152100D26450 /* NFCreader.swift in Sources */,
@@ -984,7 +1058,7 @@
 				4BFC91022AB6FCB400D2D133 /* CheckedUIView.swift in Sources */,
 				1CEAF6293A5B3D4A7F3463B1 /* Manager.swift in Sources */,
 				1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */,
-				4BB739D92A86A388003524A0 /* CollectionsMnagement.swift in Sources */,
+				4BB739D92A86A388003524A0 /* CollectionsManagement.swift in Sources */,
 				4BB739DF2A86ACE2003524A0 /* CollectionUIView.swift in Sources */,
 				4B1B06262A7B8ECA00A332E1 /* ApolloClientExtension.swift in Sources */,
 				4BFC90FE2AB6FA7400D2D133 /* CheckedEntity.swift in Sources */,
@@ -1007,6 +1081,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAAFFD42E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */,
+				CEAAFFD52E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4B1D0A332504169F00D26450 /* Writer.swift in Sources */,
 				4BC972C42AAF9A9700636A4F /* AuthManager.swift in Sources */,
 				4BFF93A825BCEF03005FC04F /* RecordGetter.swift in Sources */,
@@ -1038,6 +1114,8 @@
 				4B968BEF2A84F0CB00D6FC4E /* DetailManager.swift in Sources */,
 				4BB73A042A8C0885003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				4B8E854824D09F8C001FCFFF /* TeaInfo.swift in Sources */,
+				CEAAFFD22E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */,
+				CEAAFFD32E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4B1B06292A7B919900A332E1 /* ApolloClientExtension.swift in Sources */,
 				4BEF3EBF2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
 				4BC972BF2AAF989C00636A4F /* Color.swift in Sources */,
@@ -1073,7 +1151,7 @@
 				4B8E855524D09F9F001FCFFF /* ShowCard.swift in Sources */,
 				4BB739DD2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
 				4B8E855624D09F9F001FCFFF /* Menu.swift in Sources */,
-				4BB739DA2A86A388003524A0 /* CollectionsMnagement.swift in Sources */,
+				4BB739DA2A86A388003524A0 /* CollectionsManagement.swift in Sources */,
 				4B8E855C24D0AEA5001FCFFF /* FullAppOffer.swift in Sources */,
 				4B8E855324D09F9F001FCFFF /* CardViewer.swift in Sources */,
 				4B8E855224D09F9F001FCFFF /* NewCard.swift in Sources */,
@@ -1088,6 +1166,8 @@
 				4B6F1BD02A9BDA5900E4AFCC /* AuthManager.swift in Sources */,
 				4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */,
 				4BB739E02A86ACE2003524A0 /* CollectionUIView.swift in Sources */,
+				CEAAFFD02E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */,
+				CEAAFFD12E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4BFF939B25BCED79005FC04F /* Search.swift in Sources */,
 				4B1B06282A7B919800A332E1 /* ApolloClientExtension.swift in Sources */,
 				4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */,
@@ -1127,6 +1207,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1158,6 +1239,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1175,12 +1257,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "\"-Xlinker -interposable\"";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1190,6 +1273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1221,6 +1305,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1232,11 +1317,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				OTHER_LDFLAGS = "\"-Xlinker -interposable\"";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -1246,30 +1332,34 @@
 		4B29055224C0AEDF007A3D1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1278,29 +1368,33 @@
 		4B29055324C0AEDF007A3D1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1309,12 +1403,10 @@
 		4B29055524C0AEDF007A3D1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				INFOPLIST_FILE = TeaElephantTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1323,6 +1415,10 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeaElephant.app/TeaElephant";
@@ -1332,12 +1428,10 @@
 		4B29055624C0AEDF007A3D1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				INFOPLIST_FILE = TeaElephantTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1346,6 +1440,10 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeaElephant.app/TeaElephant";
@@ -1355,9 +1453,7 @@
 		4B29055824C0AEDF007A3D1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				INFOPLIST_FILE = TeaElephantUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1367,6 +1463,10 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TeaElephant;
@@ -1376,9 +1476,7 @@
 		4B29055924C0AEDF007A3D1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				INFOPLIST_FILE = TeaElephantUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1388,6 +1486,10 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephantUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = TeaElephant;
@@ -1399,26 +1501,31 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1430,25 +1537,30 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
-				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1511,7 +1623,7 @@
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
+				minimumVersion = 1.15.3;
 			};
 		};
 		4B587D5A24D6D1E4006B9F96 /* XCRemoteSwiftPackageReference "MessagePacker" */ = {
@@ -1527,7 +1639,7 @@
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 20.0.0;
+				minimumVersion = 24.0.0;
 			};
 		};
 		4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
@@ -1535,7 +1647,7 @@
 			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.1;
+				minimumVersion = 2.5.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

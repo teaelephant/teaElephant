@@ -67,12 +67,12 @@ struct CardViewer: View {
     
     private func processQR(_ code: String) async {
         await reader.processQRCode(code)
-        print("Прочитано.")
+        print("Read successfully")
     }
     
     func readNFC() {
         reader.readInfo()
-        print("Прочитано.")
+        print("Read successfully")
     }
     
     func readQR() {

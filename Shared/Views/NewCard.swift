@@ -108,13 +108,14 @@ struct NewCard: View {
         }
         var formatter: NumberFormatter {
             let nf = NumberFormatter()
-            nf.numberStyle = .currency
+            nf.numberStyle = .decimal
             nf.isLenient = true
+            nf.maximumFractionDigits = 0
             return nf
         }
         var temp: Int
         guard let n = formatter.number(from: brewingTemp) else {
-            print("Температура заваривания - не число")
+            print("Brewing temperature is not a valid number")
             return
         }
         temp = n.intValue
@@ -134,7 +135,7 @@ struct NewCard: View {
         }
         resetState()
         presentationMode.wrappedValue.dismiss()
-        print("Сохранено")
+        print("Saved successfully")
     }
     
     private func search(_ prefix: String) {
@@ -161,13 +162,14 @@ struct NewCard: View {
     private func saveQR(_ code: String) async {
         var formatter: NumberFormatter {
             let nf = NumberFormatter()
-            nf.numberStyle = .currency
+            nf.numberStyle = .decimal
             nf.isLenient = true
+            nf.maximumFractionDigits = 0
             return nf
         }
         var temp: Int
         guard let n = formatter.number(from: brewingTemp) else {
-            print("Температура заваривания - не число")
+            print("Brewing temperature is not a valid number")
             return
         }
         temp = n.intValue
@@ -195,7 +197,7 @@ struct NewCard: View {
         }
         resetState()
         presentationMode.wrappedValue.dismiss()
-        print("Сохранено")
+        print("Saved successfully")
     }
 }
 
