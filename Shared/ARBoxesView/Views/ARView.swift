@@ -30,10 +30,16 @@ class TitleView: UIView {
         super.init(frame: frame)
 
         let vc = UIHostingController(rootView: ARCardUIView(info:title.info))
+        
+        // Make the hosting controller background transparent
+        vc.view.backgroundColor = .clear
 
         cardView = vc.view!
         
         cardView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Make this view background transparent too
+        self.backgroundColor = .clear
 
         addSubview(cardView)
 

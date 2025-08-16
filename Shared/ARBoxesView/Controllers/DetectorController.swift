@@ -14,6 +14,10 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
     var titlesMap: Dictionary<String, TitleEntity> = [:]
 	var ids = [String]()
 	var newEntities = [EntityModel]()
+	
+	// Create vision queue once, not for every frame
+	private let visionQueue = DispatchQueue(label: "com.teaElephant.ARKitVision.serialVisionQueue")
+	private var isProcessingFrame = false
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -57,7 +61,6 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 			let dotProduct = dot(cameraForward, cameraToWorldPointDirection)
 			let isVisible = dotProduct < 0
 
-
 			// Updates the screen position of the note based on its visibility
 			title.projection = Projection(projectedPoint: projectedPoint, isVisible: isVisible)
             title.len = title.lenNew
@@ -78,24 +81,41 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 		guard case .normal = frame.camera.trackingState else {
 			return
 		}
+		
+		// Skip if already processing a frame to prevent frame accumulation
+		guard !isProcessingFrame else {
+			return
+		}
+		isProcessingFrame = true
 
 		// Retain the image buffer for Vision processing.
 		let currentBuffer = frame.capturedImage
 		// Most computer vision tasks are not rotation agnostic so it is important to pass in the orientation of the image with respect to device.
         guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue)) else {
+			isProcessingFrame = false
             return
         }
+		
+		// Create weak references to avoid retaining the frame
+		weak var weakSession = session
+		// Store frame data we need, not the frame itself - unused but kept for future use
+		_ = frame.timestamp
 
 		let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer, orientation: orientation)
-		let visionQueue = DispatchQueue(label: "com.teaElephant.ARKitVision.serialVisionQueue")
 		let classificationRequest: VNDetectBarcodesRequest = {
 			// Instantiate the model from its generated Swift class.
-			let request: VNDetectBarcodesRequest = VNDetectBarcodesRequest(completionHandler: { request, error in
+			let request: VNDetectBarcodesRequest = VNDetectBarcodesRequest(completionHandler: { [weak self] request, error in
+				defer {
+					// Always reset the processing flag
+					self?.isProcessingFrame = false
+				}
 				guard let results = request.results else {
 					print("Unable to classify image.\n\(error!.localizedDescription)")
 					return
 				}
 
+				guard let self = self, let weakSession = weakSession else { return }
+				
 				// Loopm through the found results
 				for result in results {
 					// Cast the result to a barcode-observation
@@ -106,10 +126,16 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 						if self.ids.contains(where: { id in
 							id == payload
 						}) {
-                            self.updateSizeOfTitle(barcode: barcode, frame: frame, id: payload, session: session)
+							// Get current frame for raycast query
+							if let currentFrame = weakSession.currentFrame {
+								self.updateSizeOfTitle(barcode: barcode, frame: currentFrame, id: payload, session: weakSession)
+							}
 							continue
 						}
-						self.processNewBarcode(barcode: barcode, frame: frame, payload: payload, session: session)
+						// Get current frame for raycast query
+						if let currentFrame = weakSession.currentFrame {
+							self.processNewBarcode(barcode: barcode, frame: currentFrame, payload: payload, session: weakSession)
+						}
 					}
 				}
 			})
@@ -119,11 +145,13 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 
 			return request
 		}()
-		visionQueue.async {
+		visionQueue.async { [weak self] in
 			do {
 				try requestHandler.perform([classificationRequest])
 			} catch {
 				print("Error: Vision request failed with error \"\(error)\"")
+				// Reset flag on error
+				self?.isProcessingFrame = false
 			}
 		}
 		placeNewBarcodes()

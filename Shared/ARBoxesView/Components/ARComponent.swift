@@ -77,6 +77,7 @@ extension HasTeaElephantView {
         view.frame.origin = CGPoint(x: centerPoint.x, y: centerPoint.y)
         // view.cardView.frame.origin = CGPoint(x: centerPoint.x, y: centerPoint.y)
 
+        // Apply size correction for proper AR scaling based on distance
         if let sizeCorrection = sizeCorrection {
             view.cardView.frame.size = sizeCorrection
             view.frame.size = sizeCorrection
