@@ -6,13 +6,14 @@
 //
 
 import Foundation
-import Apollo
+@preconcurrency import Apollo
 import SwiftUI
-import TeaElephantSchema
+@preconcurrency import TeaElephantSchema
 import os
 import KeychainSwift
 
-class CollectionsManager: ObservableObject {
+@MainActor
+final class CollectionsManager: ObservableObject {
     @Published var collections: [Collection] = [Collection]()
     @Published var error: Error?
     @Published var collectionsLoading = true

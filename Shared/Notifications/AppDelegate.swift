@@ -18,7 +18,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             options: authOptions,
             completionHandler: { _, _ in })
         UIApplication.shared.registerForRemoteNotifications()
-        UIApplication.shared.applicationIconBadgeNumber = 0
+        UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
         // start notification while app is in Foreground
         UNUserNotificationCenter.current().delegate = self
         return true
@@ -32,7 +32,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             AppState.shared.id = response.notification.request.content.threadIdentifier
         }
         print("app opened from PushNotification tap")
-        UIApplication.shared.applicationIconBadgeNumber = 0
+        UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
         completionHandler()
     }
     

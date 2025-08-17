@@ -25,36 +25,20 @@ extension HasTeaElephantView {
         set { teaElephantComponent.projection = newValue }
     }
 
-    var lenNew: CGFloat? {
-        get { teaElephantComponent.lenNew }
-        set { teaElephantComponent.lenNew = newValue }
+    // Simplified properties for real-time scaling
+    var referenceSize: CGFloat? {
+        get { teaElephantComponent.referenceSize }
+        set { teaElephantComponent.referenceSize = newValue }
     }
-
-    var len: CGFloat? {
-        get { teaElephantComponent.len }
-        set { teaElephantComponent.len = newValue }
+    
+    var referenceDistance: Float? {
+        get { teaElephantComponent.referenceDistance }
+        set { teaElephantComponent.referenceDistance = newValue }
     }
-
-    var firstSize: CGFloat? {
-        get { teaElephantComponent.firstSize }
-        set { teaElephantComponent.firstSize = newValue }
-    }
-    var secondSize: CGFloat? {
-        get { teaElephantComponent.secondSize }
-        set { teaElephantComponent.secondSize = newValue }
-    }
-    var firstLen: CGFloat? {
-        get { teaElephantComponent.firstLen }
-        set { teaElephantComponent.firstLen = newValue }
-    }
-    var secondLen: CGFloat? {
-        get { teaElephantComponent.secondLen }
-        set { teaElephantComponent.secondLen = newValue }
-    }
-
-    var sizeCorrection: CGSize? {
-        get { teaElephantComponent.sizeCorrection }
-        set { teaElephantComponent.sizeCorrection = newValue }
+    
+    var baseCardSize: CGSize {
+        get { teaElephantComponent.baseCardSize }
+        set { teaElephantComponent.baseCardSize = newValue }
     }
 
 
@@ -75,15 +59,10 @@ extension HasTeaElephantView {
             fatalError("Called centerOnHitLocation(_hitLocation:) on a screen space component with no view.")
         }
         view.frame.origin = CGPoint(x: centerPoint.x, y: centerPoint.y)
-        // view.cardView.frame.origin = CGPoint(x: centerPoint.x, y: centerPoint.y)
-
-        // Apply size correction for proper AR scaling based on distance
-        if let sizeCorrection = sizeCorrection {
-            view.cardView.frame.size = sizeCorrection
-            view.frame.size = sizeCorrection
-            self.sizeCorrection = nil
-        }
-
+        
+        // Real-time scaling is now handled in updateScreenPosition
+        // No need for sizeCorrection here anymore
+        
         // Updating the lastFrame of the StickyNoteView
         view.lastFrame = view.frame
     }
@@ -117,25 +96,31 @@ extension HasTeaElephantView {
         // Hides the sticky note if it can not visible from the current point of view
         isEnabled = projection.isVisible
         view?.isHidden = !isEnabled
+        
+        // Apply real-time scaling based on distance
+        if let currentDistance = projection.distance,
+           let referenceDistance = referenceDistance,
+           let view = view {
+            let scalingFactor = referenceDistance / currentDistance
+            // Calculate square size based on width
+            let squareSize = baseCardSize.width * CGFloat(scalingFactor)
+            let scaledSize = CGSize(
+                width: squareSize,
+                height: squareSize  // Ensure square aspect ratio
+            )
+            
+            // Update the view size
+            view.frame.size = scaledSize
+            // Force layout update for the cardView to match parent bounds
+            view.setNeedsLayout()
+            view.layoutIfNeeded()
+        }
 
         if shouldAnimate {
             animateTo(projectedPoint)
-            // ...
         } else {
             setPositionCenter(projectedPoint)
         }
-    }
-
-    func calcConstant() -> CGFloat? {
-        guard let secondLen = secondLen else { return nil }
-        guard let firstSize = firstSize else { return nil }
-        guard let secondSize = secondSize else { return nil }
-        guard let firstLen = firstLen else { return nil }
-        let sizeDiff = firstSize - secondSize
-        if sizeDiff == 0 {
-            return nil
-        }
-        return (secondSize * secondLen - firstSize * firstLen) / sizeDiff
     }
 
 }
@@ -146,19 +131,15 @@ struct TeaElephantComponent: Component {
     var shouldAnimate = false
     /// Contains a screen space projection
     var projection: Projection?
-
-    var lenNew: CGFloat?
-
-    var len: CGFloat?
-
-    var firstSize: CGFloat?
-    var firstLen: CGFloat?
-    var secondSize: CGFloat?
-    var secondLen: CGFloat?
-    var sizeCorrection: CGSize?
+    
+    // Simplified properties for real-time scaling
+    var referenceSize: CGFloat?
+    var referenceDistance: Float?
+    var baseCardSize: CGSize = CGSize(width: 225, height: 225) // Square card (50% bigger than 150)
 }
 
 struct Projection {
     let projectedPoint: CGPoint
     let isVisible: Bool
+    let distance: Float?
 }

@@ -40,9 +40,6 @@ class QRDetectorController: UIViewController, ARSessionDelegate {
                 return
             }
 
-            guard let or = arView.ray(through: projectedPoint) else {
-                return
-            }
 
             // Calculates whether the note can be currently visible by the camera.
             let cameraForward = arView.cameraTransform.matrix.columns.2.xyz
@@ -51,16 +48,11 @@ class QRDetectorController: UIViewController, ARSessionDelegate {
             let isVisible = dotProduct < 0
 
 
+            // Calculate current distance from camera to the AR object
+            let currentDistance = length(title.position(relativeTo: nil) - arView.cameraTransform.translation)
+            
             // Updates the screen position of the note based on its visibility
-            title.projection = Projection(projectedPoint: projectedPoint, isVisible: isVisible)
-            title.len = title.lenNew
-            title.lenNew = CGFloat(CGFloat(length(or.direction - or.origin)))
-            if title.secondSize == nil && title.firstLen == nil {
-                title.firstLen = title.lenNew
-            }
-            if title.secondSize != nil && title.secondLen == nil {
-                title.secondLen = title.lenNew
-            }
+            title.projection = Projection(projectedPoint: projectedPoint, isVisible: isVisible, distance: currentDistance)
             title.updateScreenPosition()
         }
     }

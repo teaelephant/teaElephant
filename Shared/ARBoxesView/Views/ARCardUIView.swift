@@ -17,13 +17,19 @@ struct ARCardUIView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            let iconSize = min(geometry.size.width, geometry.size.height) * 0.2 // Icon is 20% of card size
+            let cardSize = min(geometry.size.width, geometry.size.height)
+            let iconSize = cardSize * 0.2 // Icon is 20% of card size
             let fontSize = iconSize * 0.5 // Font is 50% of icon size
+            let nameFontSize = cardSize * 0.09 // Tea name font
+            let typeFontSize = cardSize * 0.07 // Type label font
+            let dateFontSize = cardSize * 0.065 // Date font
+            let tagSize = cardSize * 0.065 // Tag dot size
+            let spacing = cardSize * 0.05 // Dynamic spacing
             
             Button(action: {
                 detailController.info = info
             }) {
-                VStack(spacing: 8) {
+                VStack(spacing: spacing) {
                     // Icon
                     ZStack {
                         Circle()
@@ -41,44 +47,44 @@ struct ARCardUIView: View {
                 
                     // Tea name
                     Text(info.data.name)
-                        .font(.system(size: 14, weight: .bold))
+                        .font(.system(size: nameFontSize, weight: .bold))
                         .foregroundColor(.white)
                         .lineLimit(2)
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal, 8)
+                        .minimumScaleFactor(0.5)
                     
                     // Type label
                     Text(typeShortLabel(for: info.data.type))
-                        .font(.system(size: 11))
+                        .font(.system(size: typeFontSize))
                         .foregroundColor(typeColor(for: info.data.type))
                     
                     // Expiration if expired
                     if isExpired(info.meta.expirationDate) {
                         Text(shortDateString(info.meta.expirationDate))
-                            .font(.system(size: 10))
+                            .font(.system(size: dateFontSize))
                             .foregroundColor(.red.opacity(0.9))
                     }
                     
                     // Tags dots
                     if !info.tags.isEmpty {
-                        HStack(spacing: 4) {
+                        HStack(spacing: tagSize * 0.4) {
                             ForEach(info.tags.prefix(3), id: \.self.id) { tag in
                                 Circle()
                                     .fill(Color(hex: tag.color))
-                                    .frame(width: 10, height: 10)
+                                    .frame(width: tagSize, height: tagSize)
                             }
                         }
                     }
                 }
+                .padding(spacing)
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Allow dynamic sizing
                 .background(
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(Color.black.opacity(0.85))
+                    RoundedRectangle(cornerRadius: cardSize * 0.1)
+                        .fill(Color.black.opacity(0.9))
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(typeColor(for: info.data.type).opacity(0.3), lineWidth: 1)
+                            RoundedRectangle(cornerRadius: cardSize * 0.1)
+                                .stroke(typeColor(for: info.data.type).opacity(0.5), lineWidth: 1)
                         )
-                        .shadow(color: Color.black.opacity(0.4), radius: 8, x: 0, y: 4)
                 )
                 .scaleEffect(isHovered ? 1.05 : 1.0)
                 .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)

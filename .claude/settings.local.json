@@ -113,7 +113,8 @@
       "Bash(/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -parse /tmp/test_goaldetail.swift)",
       "Bash(/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -typecheck /Users/user/Documents/CryptoSavingsTracker/CryptoSavingsTracker/Views/GoalDetailView.swift -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk -I /Users/user/Documents/CryptoSavingsTracker -module-name CryptoSavingsTracker -target arm64-apple-ios17.0-simulator)",
       "Bash(touch:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(ln:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

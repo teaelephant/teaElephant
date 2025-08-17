@@ -15,7 +15,8 @@ protocol ShortInfoReader {
     func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void)
 }
 
-class Reader: ObservableObject {
+@MainActor
+final class Reader: ObservableObject {
     @Published var detectedInfo: TeaInfo?
     @Published var error: String?
     var extender: ExtendInfoReader

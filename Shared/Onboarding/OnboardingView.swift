@@ -41,7 +41,7 @@ struct OnboardingView: View {
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             
-            VStack(spacing: TeaSpacing.medium) {
+            VStack(spacing: TeaSpacingAlt.medium) {
                 if currentPage == 2 {
                     Button("Get Started") {
                         withAnimation {
@@ -49,7 +49,7 @@ struct OnboardingView: View {
                             UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
                         }
                     }
-                    .buttonStyle(TeaPrimaryButtonStyle())
+                    .buttonStyle(TeaPrimaryButtonStyleAlt())
                     .transition(.scale)
                 } else {
                     Button("Next") {
@@ -57,7 +57,7 @@ struct OnboardingView: View {
                             currentPage += 1
                         }
                     }
-                    .buttonStyle(TeaPrimaryButtonStyle())
+                    .buttonStyle(TeaPrimaryButtonStyleAlt())
                 }
                 
                 Button("Skip") {
@@ -66,13 +66,13 @@ struct OnboardingView: View {
                         UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
                     }
                 }
-                .font(TeaTypography.callout)
+                .font(TeaTypographyAlt.callout)
                 .foregroundColor(.secondary)
             }
-            .padding(.horizontal, TeaSpacing.xLarge)
-            .padding(.bottom, TeaSpacing.xLarge)
+            .padding(.horizontal, TeaSpacingAlt.xLarge)
+            .padding(.bottom, TeaSpacingAlt.xLarge)
         }
-        .background(Color.teaBackground)
+        .background(Color.teaBackgroundAlt)
     }
 }
 
@@ -83,24 +83,24 @@ struct OnboardingPageView: View {
     let pageIndex: Int
     
     var body: some View {
-        VStack(spacing: TeaSpacing.xLarge) {
+        VStack(spacing: TeaSpacingAlt.xLarge) {
             Spacer()
             
             Image(systemName: imageName)
                 .font(.system(size: 100))
-                .foregroundColor(.teaPrimary)
-                .padding(.bottom, TeaSpacing.large)
+                .foregroundColor(.teaPrimaryAlt)
+                .padding(.bottom, TeaSpacingAlt.large)
             
             Text(title)
-                .font(TeaTypography.title)
+                .font(TeaTypographyAlt.title)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
             
             Text(description)
-                .font(TeaTypography.body)
+                .font(TeaTypographyAlt.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, TeaSpacing.xLarge)
+                .padding(.horizontal, TeaSpacingAlt.xLarge)
             
             Spacer()
             Spacer()

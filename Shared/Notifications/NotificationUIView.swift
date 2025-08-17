@@ -9,23 +9,17 @@ import SwiftUI
 
 struct NotificationUIView: View {
     @ObservedObject var appState = AppState.shared
-    @State var navigate = false
-    
-    var pushNavigationBinding : Binding<Bool> {
-        .init { () -> Bool in
-            appState.pageToNavigationTo != nil
-        } set: { (newValue) in
-            if !newValue { appState.pageToNavigationTo = nil }
-        }
-    }
+    @State private var showingDestination = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Text("My content")
-                .overlay(NavigationLink(destination: DestinatoinUIView(id: appState.id ?? "", message: appState.notificationMessage ?? ""),
-                                        isActive: pushNavigationBinding) {
-                    EmptyView()
-                })
+                .onChange(of: appState.pageToNavigationTo) { _, newValue in
+                    showingDestination = (newValue != nil)
+                }
+                .navigationDestination(isPresented: $showingDestination) {
+                    DestinatoinUIView(id: appState.id ?? "", message: appState.notificationMessage ?? "")
+                }
         }
     }
 }

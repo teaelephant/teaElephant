@@ -13,4 +13,6 @@ struct EntityModel {
 	let id: String
     let tea: TeaInfo
 	let worldTransform: simd_float4x4
+	let referenceSize: CGFloat
+	let referenceDistance: Float
 }

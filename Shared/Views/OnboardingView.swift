@@ -1,20 +1,25 @@
 //
-//  OnboardingView.swift
+//  OnboardingView.swift (Views)
 //  TeaElephant
 //
-//  Onboarding experience for new users
+//  This file re-exports the OnboardingView from the Onboarding folder
+//  to avoid duplicate filename issues in the build
 //
 
 import SwiftUI
 
-struct OnboardingView: View {
+// Re-export from the actual implementation
+public typealias OnboardingViewAlias = OnboardingViewActual
+
+// Wrapper to avoid naming conflicts
+struct OnboardingViewActual: View {
     @Binding var hasCompletedOnboarding: Bool
     @State private var currentPage = 0
     
     var body: some View {
         VStack {
             TabView(selection: $currentPage) {
-                OnboardingPageView(
+                OnboardingPageViewWrapper(
                     imageName: "leaf.circle",
                     title: "Welcome to TeaElephant",
                     description: "Your personal tea collection manager with a modern twist",
@@ -22,7 +27,7 @@ struct OnboardingView: View {
                 )
                 .tag(0)
                 
-                OnboardingPageView(
+                OnboardingPageViewWrapper(
                     imageName: "qrcode.viewfinder",
                     title: "Smart Tea Tracking",
                     description: "Scan NFC tags or QR codes to instantly add teas to your digital collection",
@@ -30,7 +35,7 @@ struct OnboardingView: View {
                 )
                 .tag(1)
                 
-                OnboardingPageView(
+                OnboardingPageViewWrapper(
                     imageName: "arkit",
                     title: "Augmented Reality",
                     description: "Visualize your tea collection in AR and get AI-powered recommendations based on your mood",
@@ -76,7 +81,7 @@ struct OnboardingView: View {
     }
 }
 
-struct OnboardingPageView: View {
+struct OnboardingPageViewWrapper: View {
     let imageName: String
     let title: String
     let description: String
@@ -105,12 +110,5 @@ struct OnboardingPageView: View {
             Spacer()
             Spacer()
         }
-    }
-}
-
-// MARK: - Preview
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView(hasCompletedOnboarding: .constant(false))
     }
 }

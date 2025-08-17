@@ -51,26 +51,21 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 				return
 			}
 
-			guard let or = arView.ray(through: projectedPoint) else {
-				return
-			}
-
 			// Calculates whether the note can be currently visible by the camera.
 			let cameraForward = arView.cameraTransform.matrix.columns.2.xyz
 			let cameraToWorldPointDirection = normalize(title.transform.translation - arView.cameraTransform.translation)
 			let dotProduct = dot(cameraForward, cameraToWorldPointDirection)
 			let isVisible = dotProduct < 0
+			
+			// Calculate current distance from camera to the AR object
+			let currentDistance = length(title.position(relativeTo: nil) - arView.cameraTransform.translation)
 
-			// Updates the screen position of the note based on its visibility
-			title.projection = Projection(projectedPoint: projectedPoint, isVisible: isVisible)
-            title.len = title.lenNew
-            title.lenNew = CGFloat(CGFloat(length(or.direction - or.origin)))
-            if title.secondSize == nil && title.firstLen == nil {
-                title.firstLen = title.lenNew
-            }
-            if title.secondSize != nil && title.secondLen == nil {
-                title.secondLen = title.lenNew
-            }
+			// Updates the screen position of the note based on its visibility and distance
+			title.projection = Projection(
+				projectedPoint: projectedPoint,
+				isVisible: isVisible,
+				distance: currentDistance
+			)
 			title.updateScreenPosition()
 		}
 	}
@@ -173,14 +168,25 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 			return
 		}
 		ids.append(payload)
+		
+		// Calculate the reference distance from camera to the detected object
+		let cameraPosition = arView.cameraTransform.translation
+		let objectPosition = simd_make_float3(raycastResult.worldTransform.columns.3)
+		let referenceDistance = length(objectPosition - cameraPosition)
+		
 		let screenSize: CGRect = UIScreen.main.bounds
 		let transform = CGAffineTransform.identity
 						.scaledBy(x: 1, y: -1)
 						.translatedBy(x: 0, y: -screenSize.height)
 						.scaledBy(x: screenSize.width, y: screenSize.height)
 		let convertedOrign = center.applying(transform)
-		let convertedHeight = barcode.boundingBox.height * screenSize.height
-		let convertedWidth = barcode.boundingBox.width * screenSize.width * 2
+		
+		// Store the barcode size as reference size for scaling
+		let referenceSize = barcode.boundingBox.width
+		
+		// Calculate initial card size - make it square based on width (50% bigger = 1.5 * 1.5 = 2.25)
+		let convertedWidth = barcode.boundingBox.width * screenSize.width * 2.25
+		let convertedHeight = convertedWidth // Make it square
 
         Task{
             do {
@@ -206,7 +212,9 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
                                         height: convertedHeight,
                                         id: payload,
                                         tea: info,
-                                        worldTransform: raycastResult.worldTransform
+                                        worldTransform: raycastResult.worldTransform,
+                                        referenceSize: referenceSize,
+                                        referenceDistance: referenceDistance
                         ))
                     }
                         
@@ -218,19 +226,9 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 	}
     
     func updateSizeOfTitle(barcode: VNBarcodeObservation, frame: ARFrame, id: String, session: ARSession) {
-        var rect = barcode.boundingBox
-        // Flip coordinates
-        rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
-        rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
-        let screenSize: CGRect = UIScreen.main.bounds
-        let convertedHeight = barcode.boundingBox.height * screenSize.height
-        let convertedWidth = barcode.boundingBox.width * screenSize.width * 2
-        DispatchQueue.main.async {
-            self.titlesMap[id]?.sizeCorrection = CGSize(width: convertedWidth, height: convertedHeight)
-            if self.titlesMap[id]?.secondSize == nil {
-                self.titlesMap[id]?.secondSize = convertedWidth
-            }
-        }
+        // With real-time scaling, we no longer need to update size when re-detecting barcodes
+        // The size is now automatically adjusted based on distance in updateScene
+        // This method can be kept empty or removed in future refactoring
     }
 
 	private func placeNewBarcodes() {
@@ -242,8 +240,15 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 			guard let titleView = title.view else {
 				return
 			}
+			
+			// Set reference values for real-time scaling
+			title.referenceSize = entity.referenceSize
+			title.referenceDistance = entity.referenceDistance
+			// Ensure square card size
+			let squareSize = min(entity.width, entity.height)
+			title.baseCardSize = CGSize(width: squareSize, height: squareSize)
+			
 			title.setPositionCenter(entity.origin)
-            title.firstSize = entity.width
 			arView.scene.addAnchor(title)
 			arView.addSubview(titleView)
 			titles.append(title)

@@ -6,13 +6,14 @@
 //
 
 import Foundation
-import Apollo
+@preconcurrency import Apollo
 import TeaElephantSchema
 import os
 import KeychainSwift
 import UIKit
 
-class AuthManager: ObservableObject {
+@MainActor
+final class AuthManager: ObservableObject {
     @Published var error: Error?
     @Published var loading = true
     @Published var auth = false

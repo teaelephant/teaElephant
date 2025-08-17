@@ -8,7 +8,6 @@
 import SwiftUI
 import TeaElephantSchema
 
-@available(iOS 17.0, *)
 struct CollectionUIView: View {
     @ObservedObject var manager: CollectionsManager
     @State private var detectForAdd = false
@@ -100,12 +99,8 @@ struct CollectionUIView: View {
 
 struct CollectionUIView_Previews: PreviewProvider {
     static var previews: some View {
-        if #available(iOS 17.0, *) {
-            NavigationStack {
-                CollectionUIView(manager: CollectionsManager(), collection: .constant(Collection(id: "", name: "", records: [Record]())))
-            }
-        } else {
-            Text("Unsupported")
+        NavigationStack {
+            CollectionUIView(manager: CollectionsManager(), collection: .constant(Collection(id: "", name: "", records: [Record]())))
         }
     }
 }

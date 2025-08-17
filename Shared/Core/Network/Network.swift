@@ -9,6 +9,7 @@ import Foundation
 import Apollo
 import ApolloAPI
 import ApolloWebSocket
+import KeychainSwift
 
 enum AuthError: Error {
     case tokenNotFound
@@ -20,6 +21,19 @@ class Network {
     private var webSocketClient: WebSocket {
         let url = URL(string: "wss://tea-elephant.com/v2/query")!
         return WebSocket(url: url, protocol: .graphql_transport_ws)
+    }
+    
+    init() {
+        // Initialize WebSocket with existing token if available
+        initializeWithExistingToken()
+    }
+    
+    private func initializeWithExistingToken() {
+        let keychain = KeychainSwift()
+        keychain.synchronizable = true
+        if let token = keychain.get(tokenKey) {
+            Auth(token)
+        }
     }
     
     /// A web socket transport to use for subscriptions

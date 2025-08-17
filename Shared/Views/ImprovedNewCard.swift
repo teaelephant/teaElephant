@@ -11,7 +11,6 @@ import CodeScanner
 import UIKit
 import TeaElephantSchema
 
-@available(iOS 15.0, *)
 struct ImprovedNewCard: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.dismiss) var dismiss
@@ -22,7 +21,7 @@ struct ImprovedNewCard: View {
     @State private var name = ""
     @State private var type = Type_Enum.tea
     @State private var description = ""
-    @State private var expirationDate = Date()
+    @State private var expirationDate = Foundation.Date()
     @State private var brewingTemp = "95"
     @State private var brewingTime = "3"
     @State private var servingSize = "250"
@@ -52,28 +51,28 @@ struct ImprovedNewCard: View {
                 Form {
                     // Section 1: Basic Information
                     Section {
-                        VStack(alignment: .leading, spacing: TeaSpacing.small) {
+                        VStack(alignment: .leading, spacing: TeaSpacingAlt.small) {
                             Label("Basic Information", systemImage: "leaf.fill")
-                                .font(TeaTypography.headline)
-                                .foregroundColor(.teaPrimary)
+                                .font(TeaTypographyAlt.headline)
+                                .foregroundColor(.teaPrimaryAlt)
                             
                             TextField("Tea Name", text: $name)
                                 .onChange(of: name, perform: search)
                                 .textFieldStyle(.roundedBorder)
                             
                             if let searchData = searcher.detectedInfo {
-                                VStack(alignment: .leading, spacing: TeaSpacing.xSmall) {
+                                VStack(alignment: .leading, spacing: TeaSpacingAlt.xSmall) {
                                     Text("Found: \(searchData.data.name)")
-                                        .font(TeaTypography.caption)
-                                        .foregroundColor(.teaSuccess)
+                                        .font(TeaTypographyAlt.caption)
+                                        .foregroundColor(.teaPrimaryAlt)
                                     Text("Type: \(searchData.data.type.value?.rawValue ?? "Unknown")")
-                                        .font(TeaTypography.caption)
+                                        .font(TeaTypographyAlt.caption)
                                         .foregroundColor(.secondary)
                                 }
-                                .padding(.vertical, TeaSpacing.xSmall)
-                                .padding(.horizontal, TeaSpacing.small)
-                                .background(Color.teaSuccess.opacity(0.1))
-                                .cornerRadius(TeaCorners.small)
+                                .padding(.vertical, TeaSpacingAlt.xSmall)
+                                .padding(.horizontal, TeaSpacingAlt.small)
+                                .background(Color.teaPrimaryAlt.opacity(0.1))
+                                .cornerRadius(TeaCornerRadiusAlt.small)
                             }
                             
                             Picker("Type", selection: $type) {
@@ -83,36 +82,36 @@ struct ImprovedNewCard: View {
                             }
                             .pickerStyle(SegmentedPickerStyle())
                         }
-                        .padding(.vertical, TeaSpacing.xSmall)
+                        .padding(.vertical, TeaSpacingAlt.xSmall)
                     }
                     
                     // Section 2: Description
                     Section {
-                        VStack(alignment: .leading, spacing: TeaSpacing.small) {
+                        VStack(alignment: .leading, spacing: TeaSpacingAlt.small) {
                             Label("Description & Notes", systemImage: "text.alignleft")
-                                .font(TeaTypography.headline)
-                                .foregroundColor(.teaPrimary)
+                                .font(TeaTypographyAlt.headline)
+                                .foregroundColor(.teaPrimaryAlt)
                             
                             TextEditor(text: $description)
                                 .frame(minHeight: 100)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: TeaCorners.small)
+                                    RoundedRectangle(cornerRadius: TeaCornerRadiusAlt.small)
                                         .stroke(Color.gray.opacity(0.2), lineWidth: 1)
                                 )
                         }
-                        .padding(.vertical, TeaSpacing.xSmall)
+                        .padding(.vertical, TeaSpacingAlt.xSmall)
                     }
                     
                     // Section 3: Brewing Instructions
                     Section {
-                        VStack(alignment: .leading, spacing: TeaSpacing.medium) {
+                        VStack(alignment: .leading, spacing: TeaSpacingAlt.medium) {
                             Label("Brewing Instructions", systemImage: "thermometer")
-                                .font(TeaTypography.headline)
-                                .foregroundColor(.teaPrimary)
+                                .font(TeaTypographyAlt.headline)
+                                .foregroundColor(.teaPrimaryAlt)
                             
                             HStack {
                                 Image(systemName: "thermometer")
-                                    .foregroundColor(.teaSecondary)
+                                    .foregroundColor(.teaSecondaryAlt)
                                 Text("Temperature")
                                 Spacer()
                                 TextField("95", text: $brewingTemp)
@@ -125,7 +124,7 @@ struct ImprovedNewCard: View {
                             
                             HStack {
                                 Image(systemName: "timer")
-                                    .foregroundColor(.teaSecondary)
+                                    .foregroundColor(.teaSecondaryAlt)
                                 Text("Brewing Time")
                                 Spacer()
                                 TextField("3", text: $brewingTime)
@@ -138,7 +137,7 @@ struct ImprovedNewCard: View {
                             
                             HStack {
                                 Image(systemName: "drop")
-                                    .foregroundColor(.teaSecondary)
+                                    .foregroundColor(.teaSecondaryAlt)
                                 Text("Water Amount")
                                 Spacer()
                                 TextField("250", text: $servingSize)
@@ -149,25 +148,25 @@ struct ImprovedNewCard: View {
                                     .foregroundColor(.secondary)
                             }
                         }
-                        .padding(.vertical, TeaSpacing.xSmall)
+                        .padding(.vertical, TeaSpacingAlt.xSmall)
                     }
                     
                     // Section 4: Storage
                     Section {
-                        VStack(alignment: .leading, spacing: TeaSpacing.medium) {
+                        VStack(alignment: .leading, spacing: TeaSpacingAlt.medium) {
                             Label("Storage Information", systemImage: "calendar")
-                                .font(TeaTypography.headline)
-                                .foregroundColor(.teaPrimary)
+                                .font(TeaTypographyAlt.headline)
+                                .foregroundColor(.teaPrimaryAlt)
                             
                             DatePicker("Best Before", selection: $expirationDate, displayedComponents: .date)
                                 .datePickerStyle(.compact)
                         }
-                        .padding(.vertical, TeaSpacing.xSmall)
+                        .padding(.vertical, TeaSpacingAlt.xSmall)
                     }
                     
                     // Section 5: Save Options
                     Section {
-                        VStack(spacing: TeaSpacing.medium) {
+                        VStack(spacing: TeaSpacingAlt.medium) {
                             Button(action: {
                                 Task {
                                     await saveNFC()
@@ -182,7 +181,7 @@ struct ImprovedNewCard: View {
                                         .foregroundColor(.secondary)
                                 }
                             }
-                            .buttonStyle(TeaPrimaryButtonStyle())
+                            .buttonStyle(TeaPrimaryButtonStyleAlt())
                             
                             Button(action: {
                                 withAnimation {
@@ -198,9 +197,9 @@ struct ImprovedNewCard: View {
                                         .foregroundColor(.secondary)
                                 }
                             }
-                            .buttonStyle(TeaSecondaryButtonStyle())
+                            .buttonStyle(TeaSecondaryButtonStyleAlt())
                         }
-                        .padding(.vertical, TeaSpacing.small)
+                        .padding(.vertical, TeaSpacingAlt.small)
                     }
                 }
                 .navigationTitle("Add New Tea")
@@ -210,7 +209,7 @@ struct ImprovedNewCard: View {
                         Button("Cancel") {
                             dismiss()
                         }
-                        .foregroundColor(.teaSecondary)
+                        .foregroundColor(.teaSecondaryAlt)
                     }
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -220,7 +219,7 @@ struct ImprovedNewCard: View {
                             }
                         }
                         .fontWeight(.semibold)
-                        .foregroundColor(.teaPrimary)
+                        .foregroundColor(.teaPrimaryAlt)
                         .disabled(name.isEmpty)
                     }
                 }
@@ -239,7 +238,9 @@ struct ImprovedNewCard: View {
     
     func search(_ searchname: String) {
         if !searchname.isEmpty && searchname.count > 2 {
-            searcher.search(searchname)
+            Task {
+                await searcher.search(prefix: searchname)
+            }
         }
     }
     
@@ -248,7 +249,7 @@ struct ImprovedNewCard: View {
         if let searcherData = searcher.detectedInfo {
             do {
                 let w = writer(extend: RecordWriter(), meta: tagWriter())
-                try await w.write(searcherData.data)
+                try await w.write(searcherData.data, expirationDate: expirationDate, brewingTemp: Int(brewingTemp) ?? 95)
                 saveSuccess = true
             } catch {
                 print(error.localizedDescription)
@@ -284,9 +285,8 @@ struct ImprovedNewCard: View {
         // Implementation from original file
         if let searcherData = searcher.detectedInfo {
             do {
-                let qr = QRwriter(with: qrcode)
-                let w = writer(extend: RecordWriter(), meta: qr)
-                try await w.write(searcherData.data)
+                // QRwriter is not available, using alternative approach
+                await QRManager().write(id: qrcode, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: Int(brewingTemp) ?? 95))
                 print("Saved successfully")
             } catch {
                 print(error.localizedDescription)
@@ -306,9 +306,9 @@ struct ImprovedNewCard: View {
         )
         
         do {
-            let qr = QRwriter(with: qrcode)
-            let w = writer(extend: RecordWriter(), meta: qr)
-            try await w.write(data, expirationDate: expirationDate, brewingTemp: tempValue)
+            let id = try await RecordWriter().writeExtendInfo(info: data)
+            let meta = TeaMeta(id: id, expirationDate: expirationDate, brewingTemp: tempValue)
+            await QRManager().write(id: qrcode, data: meta)
             print("Saved successfully")
         } catch {
             print(error.localizedDescription)

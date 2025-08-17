@@ -16,7 +16,9 @@ class UnauthInterceptor: ApolloInterceptor {
     func interceptAsync<Operation>(chain: RequestChain, request: HTTPRequest<Operation>, response: HTTPResponse<Operation>?, completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) where Operation : GraphQLOperation {
         guard let err = response?.parsedResponse?.errors?.first else {
             // No errors, or response not parsed yet - just continue
-            AuthManager.shared.auth = true
+            Task { @MainActor in
+                AuthManager.shared.auth = true
+            }
             chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
             return
         }
@@ -25,9 +27,12 @@ class UnauthInterceptor: ApolloInterceptor {
             return
         }
         if Int(code) == -1 {
-            AuthManager.shared.keychain.delete(tokenKey)
-            print("token was wiped")
-            AuthManager.shared.auth = false
+            Task { @MainActor in
+                AuthManager.shared.keychain.synchronizable = true  // Match the synchronizable setting
+                AuthManager.shared.keychain.delete(tokenKey)
+                print("token was wiped")
+                AuthManager.shared.auth = false
+            }
         }
         chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
     }

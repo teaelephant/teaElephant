@@ -4,6 +4,8 @@
 //
 //  Created by Andrew Khasanov on 19.07.2020.
 //
+//  DEPRECATED: Please use EnhancedShowCard for better UI/UX
+//
 
 import SwiftUI
 import TeaElephantSchema
@@ -26,7 +28,7 @@ struct ShowCard: View {
                         Text("Boiling temperature")
                         Text(info.meta.brewingTemp.formattedString)
                     }
-                    if #available(iOS 17.0, *) {
+                    if true {
                         VStack{
                             ForEach(info.tags, id: \.self.id) { tag in
                                 HStack{

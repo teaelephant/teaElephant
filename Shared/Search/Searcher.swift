@@ -13,7 +13,8 @@ protocol ApiSearcher {
     func search(prefix: String) async throws -> TeaDataWithID?
 }
 
-class Searcher: ObservableObject {
+@MainActor
+final class Searcher: ObservableObject {
     @Published var detectedInfo: TeaInfo?
     @Published var error: Error?
     var api: ApiSearcher

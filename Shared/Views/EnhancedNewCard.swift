@@ -10,7 +10,6 @@ import Combine
 import CodeScanner
 import TeaElephantSchema
 
-@available(iOS 13.0.0, *)
 struct EnhancedNewCard: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var searcher = Searcher(Search())

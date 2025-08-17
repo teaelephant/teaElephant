@@ -4,6 +4,9 @@
 //
 //  Created by Andrew Khasanov on 19.07.2020.
 //
+//  DEPRECATED: This view is kept for backwards compatibility with iOS < 14.0
+//  Please use MultiStepNewCard for iOS 14+ or EnhancedNewCard for iOS 13+
+//
 
 import SwiftUI
 import Combine
@@ -11,7 +14,6 @@ import CodeScanner
 import UIKit
 import TeaElephantSchema
 
-@available(iOS 13.0.0, *)
 struct NewCard: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var searcher = Searcher(Search())
@@ -45,7 +47,9 @@ struct NewCard: View {
                     HStack {
                         Text("Name")
                         TextField("Name", text: $name)
-                            .onChange(of: name, perform: search)
+                            .onChange(of: name) { _, newValue in
+                                search(newValue)
+                            }
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .multilineTextAlignment(.trailing)
                     }.zIndex(1.0)
@@ -222,10 +226,10 @@ struct KeyboardAdaptive: ViewModifier {
                     // 4.
                     let focusedTextInputBottom = UIResponder.currentFirstResponder?.globalFrame?.maxY ?? 0
                     // 5.
-                    self.bottomPadding = max(0, focusedTextInputBottom - keyboardTop - geometry.safeAreaInsets.bottom)
+                    withAnimation(.easeOut(duration: 0.16)) {
+                        self.bottomPadding = max(0, focusedTextInputBottom - keyboardTop - geometry.safeAreaInsets.bottom)
+                    }
                 }
-            // 6.
-                .animation(.easeOut(duration: 0.16))
         }
     }
 }

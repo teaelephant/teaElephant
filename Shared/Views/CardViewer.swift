@@ -14,19 +14,10 @@ struct CardViewer: View {
     var body: some View {
         VStack {
             if let err = reader.error {
-                if #available(iOS 16.0, *) {
-                    Text("\(err)").foregroundStyle(.red).bold().onAppear{
-                        Task{
-                            try await Task.sleep(nanoseconds: 5_000_000_000)
-                            reader.error = nil
-                        }
-                    }
-                } else {
-                    Text("\(err)").foregroundColor(.red).bold().onAppear{
-                        Task{
-                            try await Task.sleep(nanoseconds: 5_000_000_000)
-                            reader.error = nil
-                        }
+                Text("\(err)").foregroundStyle(.red).bold().onAppear{
+                    Task{
+                        try await Task.sleep(nanoseconds: 5_000_000_000)
+                        reader.error = nil
                     }
                 }
             }
@@ -44,7 +35,7 @@ struct CardViewer: View {
                     }
                 }
             } else {
-                ShowCard(info: $reader.detectedInfo)
+                EnhancedShowCard(info: $reader.detectedInfo)
                 Spacer()
                 Button(action: {
                     withAnimation {

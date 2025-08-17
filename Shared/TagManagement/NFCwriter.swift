@@ -152,7 +152,6 @@ extension tagWriter: NFCProtocol {
      *
      * @discussion      Gets called when the reader detects NFC tag(s) in the polling sequence.
      */
-    @available(iOS 13.0, *)
     func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         print("writing")
         if tags.count > 1 {

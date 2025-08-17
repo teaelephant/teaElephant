@@ -22,7 +22,9 @@ class AuthorizationInterceptor: ApolloInterceptor {
         response: HTTPResponse<Operation>?,
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
     ) where Operation : GraphQLOperation {
-        if let token = AuthManager.shared.keychain.get(tokenKey) {
+        let keychain = KeychainSwift()
+        keychain.synchronizable = true  // Match the synchronizable setting used in AuthManager
+        if let token = keychain.get(tokenKey) {
             let value = "Bearer \(token)"
             print(value)
             request.addHeader(name: "Authorization", value: value)

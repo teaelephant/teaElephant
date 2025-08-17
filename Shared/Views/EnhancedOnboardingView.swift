@@ -1,38 +1,20 @@
 //
-//  TeaElephantApp.swift
+//  EnhancedOnboardingView.swift
 //  TeaElephant
 //
-//  Created by Andrew Khasanov on 16.07.2020.
+//  Enhanced onboarding experience for new users
 //
 
 import SwiftUI
 
-@main
-struct TeaElephantApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+struct EnhancedOnboardingView: View {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
-    
-    var body: some Scene {
-        WindowGroup {
-            if hasCompletedOnboarding || hasSeenOnboarding {
-                ContentView()
-            } else {
-                OnboardingView(hasCompletedOnboarding: $hasCompletedOnboarding)
-            }
-        }
-    }
-}
-
-// Simple onboarding view embedded in the same file
-struct SimpleOnboardingView: View {
-    @Binding var hasCompletedOnboarding: Bool
     @State private var currentPage = 0
     
     var body: some View {
         VStack {
             TabView(selection: $currentPage) {
-                OnboardingPage(
+                OnboardingPageView(
                     imageName: "leaf.circle",
                     title: "Welcome to TeaElephant",
                     description: "Your personal tea collection manager with a modern twist",
@@ -40,7 +22,7 @@ struct SimpleOnboardingView: View {
                 )
                 .tag(0)
                 
-                OnboardingPage(
+                OnboardingPageView(
                     imageName: "qrcode.viewfinder",
                     title: "Smart Tea Tracking",
                     description: "Scan NFC tags or QR codes to instantly add teas to your digital collection",
@@ -48,10 +30,10 @@ struct SimpleOnboardingView: View {
                 )
                 .tag(1)
                 
-                OnboardingPage(
+                OnboardingPageView(
                     imageName: "arkit",
                     title: "Augmented Reality",
-                    description: "Visualize your tea collection in AR and get AI-powered recommendations",
+                    description: "Visualize your tea collection in AR and get AI-powered recommendations based on your mood",
                     pageIndex: 2
                 )
                 .tag(2)
@@ -59,68 +41,75 @@ struct SimpleOnboardingView: View {
             .tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             
-            VStack(spacing: 16) {
+            VStack(spacing: TeaSpacing.medium) {
                 if currentPage == 2 {
                     Button("Get Started") {
                         withAnimation {
-                            hasCompletedOnboarding = true
+                            hasSeenOnboarding = true
                         }
                     }
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
+                    .buttonStyle(TeaPrimaryButtonStyle())
+                    .transition(.scale)
                 } else {
                     Button("Next") {
                         withAnimation {
                             currentPage += 1
                         }
                     }
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(10)
+                    .buttonStyle(TeaPrimaryButtonStyle())
                 }
                 
                 Button("Skip") {
-                    hasCompletedOnboarding = true
+                    withAnimation {
+                        hasCompletedOnboarding = true
+                        UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+                    }
                 }
+                .font(TeaTypography.callout)
                 .foregroundColor(.secondary)
             }
-            .padding()
+            .padding(.horizontal, TeaSpacing.xLarge)
+            .padding(.bottom, TeaSpacing.xLarge)
         }
+        .background(Color.teaBackground)
     }
 }
 
-struct OnboardingPage: View {
+struct OnboardingPageView: View {
     let imageName: String
     let title: String
     let description: String
     let pageIndex: Int
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: TeaSpacing.xLarge) {
             Spacer()
             
             Image(systemName: imageName)
-                .font(.system(size: 80))
-                .foregroundColor(.green)
+                .font(.system(size: 100))
+                .foregroundColor(.teaPrimary)
+                .padding(.bottom, TeaSpacing.large)
             
             Text(title)
-                .font(.title)
-                .fontWeight(.bold)
+                .font(TeaTypography.title)
+                .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
             
             Text(description)
-                .font(.body)
+                .font(TeaTypography.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, TeaSpacing.xLarge)
             
             Spacer()
             Spacer()
         }
+    }
+}
+
+// MARK: - Preview
+struct EnhancedOnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        EnhancedOnboardingView()
     }
 }

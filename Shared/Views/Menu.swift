@@ -7,30 +7,21 @@
 
 import SwiftUI
 
+// Import the design system extensions from TeaElephantDesign.swift
+// Note: Since these are in the same module, they should be available
+
 struct Menu: View {
     @ObservedObject var appState = AppState.shared
     @State private var showingProfile = false
-    
-    var pushNavigationBinding: Binding<Bool> {
-        .init { () -> Bool in
-            appState.pageToNavigationTo != nil
-        } set: { (newValue) in
-            if !newValue { appState.pageToNavigationTo = nil }
-        }
-    }
+    @State private var showingDestination = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                // Beautiful gradient background
-                LinearGradient(
-                    colors: [
-                        Color(red: 0.96, green: 0.94, blue: 0.89),
-                        Color(red: 0.96, green: 0.94, blue: 0.89).opacity(0.8),
-                        Color(red: 0.55, green: 0.71, blue: 0.55).opacity(0.1)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
+                // Liquid glass background
+                LiquidBackground(
+                    primaryColor: Color.teaPrimaryAlt,
+                    secondaryColor: Color.vibrantBlue
                 )
                 .ignoresSafeArea()
                 
@@ -47,7 +38,7 @@ struct Menu: View {
                                 title: "Read Tea Info",
                                 subtitle: "Scan NFC or QR tags",
                                 color: Color(red: 0.55, green: 0.71, blue: 0.55),
-                                destination: AnyView(CardViewer())
+                                destination: AnyView(EnhancedCardViewer())
                             )
                             
                             menuCard(
@@ -63,25 +54,18 @@ struct Menu: View {
                                 title: "Add New Tea",
                                 subtitle: "Write info to NFC/QR",
                                 color: Color(red: 0.55, green: 0.43, blue: 0.31),
-                                destination: AnyView(NewCard())
+                                destination: AnyView(MultiStepNewCard())
                             )
                             
-                            if #available(iOS 17.0, *) {
-                                menuCard(
-                                    icon: "leaf.circle",
-                                    title: "My Collections",
-                                    subtitle: "Manage your tea library",
-                                    color: Color(red: 0.55, green: 0.71, blue: 0.55),
-                                    destination: AnyView(UserAreaUIView(authManager: AuthManager.shared))
-                                )
-                            }
+                            menuCard(
+                                icon: "leaf.circle",
+                                title: "My Collections",
+                                subtitle: "Manage your tea library",
+                                color: Color(red: 0.55, green: 0.71, blue: 0.55),
+                                destination: AnyView(UserAreaUIView(authManager: AuthManager.shared))
+                            )
                         }
                         .padding(.horizontal, 20)
-                        
-                        // Statistics Section
-                        statisticsSection
-                            .padding(.horizontal, 20)
-                            .padding(.top, 10)
                         
                         Spacer(minLength: 30)
                     }
@@ -91,17 +75,15 @@ struct Menu: View {
             .onAppear {
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             }
-            .overlay(
-                NavigationLink(
-                    destination: DestinatoinUIView(
-                        id: appState.id ?? "",
-                        message: appState.notificationMessage ?? ""
-                    ),
-                    isActive: pushNavigationBinding
-                ) {
-                    EmptyView()
-                }
-            )
+            .onChange(of: appState.pageToNavigationTo) { _, newValue in
+                showingDestination = (newValue != nil)
+            }
+            .navigationDestination(isPresented: $showingDestination) {
+                DestinatoinUIView(
+                    id: appState.id ?? "",
+                    message: appState.notificationMessage ?? ""
+                )
+            }
         }
     }
     
@@ -112,36 +94,54 @@ struct Menu: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("TeaElephant")
                         .font(.system(size: 34, weight: .bold, design: .rounded))
-                        .foregroundColor(Color(red: 0.35, green: 0.51, blue: 0.35))
+                        .if(ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil) { view in
+                            view.glassTextStyle(color: Color.teaAccentAlt)
+                        }
+                        .foregroundColor(Color.teaAccentAlt)
+                        .dynamicTypeSize(.medium ... .accessibility2)
+                        .accessibilityAddTraits(.isHeader)
+                        .accessibilityLabel("Tea Elephant")
                     
                     Text("Your Digital Tea Collection")
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(.secondary)
+                        .if(ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil) { view in
+                            view.glassTextStyle(color: .secondary)
+                        }
+                        .dynamicTypeSize(.small ... .accessibility3)
+                        .accessibilityLabel("Your Digital Tea Collection")
                 }
                 
                 Spacer()
                 
-                // Profile Button
-                if #available(iOS 17.0, *) {
-                    NavigationLink(destination: UserAreaUIView(authManager: AuthManager.shared)) {
-                        ZStack {
-                            Circle()
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            Color(red: 0.55, green: 0.71, blue: 0.55),
-                                            Color(red: 0.35, green: 0.51, blue: 0.35)
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
+                // Profile Button with glass effect
+                NavigationLink(destination: UserAreaUIView(authManager: AuthManager.shared)) {
+                    ZStack {
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                            .frame(width: 50, height: 50)
+                            .overlay(
+                                Circle()
+                                    .stroke(
+                                        LinearGradient(
+                                            colors: [
+                                                Color.glassBorder,
+                                                Color.teaPrimaryAlt.opacity(0.3)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 1
                                     )
-                                )
-                                .frame(width: 50, height: 50)
-                            
-                            Image(systemName: "person.fill")
-                                .foregroundColor(.white)
-                                .font(.system(size: 22))
-                        }
+                            )
+                            .shadow(color: Color.teaPrimaryAlt.opacity(0.2), radius: 6, x: 0, y: 3)
+                        
+                        Image(systemName: "person.fill")
+                            .foregroundColor(Color.teaPrimaryAlt)
+                            .font(.system(size: 22))
+                            .if(ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil) { view in
+                                view.vibrantTextStyle(color: Color.teaPrimaryAlt)
+                            }
                     }
                 }
             }
@@ -149,11 +149,11 @@ struct Menu: View {
         }
     }
     
-    // MARK: - Menu Card
+    // MARK: - Menu Card with Glass Effect
     private func menuCard(icon: String, title: String, subtitle: String, color: Color, destination: AnyView) -> some View {
         NavigationLink(destination: destination) {
             HStack(spacing: 16) {
-                // Icon Container
+                // Icon Container with glass effect
                 ZStack {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(
@@ -164,17 +164,26 @@ struct Menu: View {
                             )
                         )
                         .frame(width: 60, height: 60)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(Color.glassBorder.opacity(0.5), lineWidth: 1)
+                        )
                     
                     Image(systemName: icon)
                         .font(.system(size: 28))
                         .foregroundColor(color)
+                        .shadow(color: color.opacity(0.3), radius: 2, x: 0, y: 0)
                 }
                 
-                // Text Content
+                // Text Content with glass text style
                 VStack(alignment: .leading, spacing: 4) {
                     Text(title)
                         .font(.system(size: 18, weight: .semibold, design: .rounded))
                         .foregroundColor(.primary)
+                        .if(ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil) { view in
+                            view.glassTextStyle()
+                        }
                     
                     Text(subtitle)
                         .font(.system(size: 14))
@@ -183,58 +192,33 @@ struct Menu: View {
                 
                 Spacer()
                 
-                // Arrow
+                // Arrow with subtle animation
                 Image(systemName: "chevron.right")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(.secondary.opacity(0.5))
             }
             .padding(16)
-            .background(
+            .background {
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.white)
-                    .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 4)
-            )
-        }
-        .buttonStyle(MenuCardButtonStyle())
-    }
-    
-    // MARK: - Statistics Section
-    private var statisticsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Quick Stats")
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-                .foregroundColor(Color(red: 0.35, green: 0.51, blue: 0.35))
-                .padding(.horizontal, 4)
-            
-            HStack(spacing: 12) {
-                statCard(number: "0", label: "Teas", icon: "leaf.fill", color: Color(red: 0.55, green: 0.71, blue: 0.55))
-                statCard(number: "0", label: "Collections", icon: "folder.fill", color: Color(red: 0.55, green: 0.43, blue: 0.31))
-                statCard(number: "0", label: "Tags", icon: "tag.fill", color: Color(red: 0.35, green: 0.51, blue: 0.35))
+                    .fill(.ultraThinMaterial)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [
+                                        Color.glassBorder,
+                                        color.opacity(0.2)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 1
+                            )
+                    )
+                    .shadow(color: color.opacity(0.15), radius: 10, x: 0, y: 4)
             }
         }
-    }
-    
-    private func statCard(number: String, label: String, icon: String, color: Color) -> some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 24))
-                .foregroundColor(color)
-            
-            Text(number)
-                .font(.system(size: 24, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-            
-            Text(label)
-                .font(.system(size: 12))
-                .foregroundColor(.secondary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.03), radius: 6, x: 0, y: 2)
-        )
+        .buttonStyle(MenuCardButtonStyle())
     }
 }
 

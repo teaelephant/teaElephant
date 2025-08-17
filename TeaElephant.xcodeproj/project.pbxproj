@@ -199,6 +199,24 @@
 		CEAAFFD32E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
 		CEAAFFD42E4F0CA600A6B5A3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */; };
 		CEAAFFD52E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
+		CEAAFFD82E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFD62E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md */; };
+		CEAAFFD92E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFD72E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md */; };
+		CEAAFFE32E4F656B00A6B5A3 /* MultiStepNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */; };
+		CEAAFFE52E4F656B00A6B5A3 /* EnhancedShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDD2E4F656B00A6B5A3 /* EnhancedShowCard.swift */; };
+		CEAAFFE62E4F656B00A6B5A3 /* EnhancedNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDC2E4F656B00A6B5A3 /* EnhancedNewCard.swift */; };
+		CEAAFFE72E4F656B00A6B5A3 /* EnhancedCardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDA2E4F656B00A6B5A3 /* EnhancedCardViewer.swift */; };
+		CEAAFFE82E4F656B00A6B5A3 /* EnhancedMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDB2E4F656B00A6B5A3 /* EnhancedMenu.swift */; };
+		CEAAFFE92E4F656B00A6B5A3 /* ImprovedNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDE2E4F656B00A6B5A3 /* ImprovedNewCard.swift */; };
+		CEAAFFEB2E4F656B00A6B5A3 /* MultiStepNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */; };
+		CEAAFFED2E4F656B00A6B5A3 /* EnhancedShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDD2E4F656B00A6B5A3 /* EnhancedShowCard.swift */; };
+		CEAAFFEE2E4F656B00A6B5A3 /* EnhancedNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDC2E4F656B00A6B5A3 /* EnhancedNewCard.swift */; };
+		CEAAFFEF2E4F656B00A6B5A3 /* EnhancedCardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDA2E4F656B00A6B5A3 /* EnhancedCardViewer.swift */; };
+		CEAAFFF02E4F656B00A6B5A3 /* EnhancedMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDB2E4F656B00A6B5A3 /* EnhancedMenu.swift */; };
+		CEAAFFF12E4F656B00A6B5A3 /* ImprovedNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDE2E4F656B00A6B5A3 /* ImprovedNewCard.swift */; };
+		CEAAFFF62E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF32E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md */; };
+		CEAAFFF72E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF22E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md */; };
+		CEAAFFF82E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF42E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md */; };
+		CEAAFFF92E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF52E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,6 +376,18 @@
 		CEAAFFC02E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW.md; sourceTree = "<group>"; };
 		CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantDesign.swift; sourceTree = "<group>"; };
 		CEAAFFCC2E4F0CA600A6B5A3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CEAAFFD62E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW_V2.md; sourceTree = "<group>"; };
+		CEAAFFD72E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW_V3.md; sourceTree = "<group>"; };
+		CEAAFFDA2E4F656B00A6B5A3 /* EnhancedCardViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedCardViewer.swift; sourceTree = "<group>"; };
+		CEAAFFDB2E4F656B00A6B5A3 /* EnhancedMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedMenu.swift; sourceTree = "<group>"; };
+		CEAAFFDC2E4F656B00A6B5A3 /* EnhancedNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedNewCard.swift; sourceTree = "<group>"; };
+		CEAAFFDD2E4F656B00A6B5A3 /* EnhancedShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedShowCard.swift; sourceTree = "<group>"; };
+		CEAAFFDE2E4F656B00A6B5A3 /* ImprovedNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprovedNewCard.swift; sourceTree = "<group>"; };
+		CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStepNewCard.swift; sourceTree = "<group>"; };
+		CEAAFFF22E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AR_RESIZING_LOGIC_REVIEW.md; sourceTree = "<group>"; };
+		CEAAFFF32E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DESIGN_SYSTEM_REVIEW.md; sourceTree = "<group>"; };
+		CEAAFFF42E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_ARCHITECTURE_REVIEW_V2.md; sourceTree = "<group>"; };
+		CEAAFFF52E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW_V4.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +494,12 @@
 		1CEAFD82D710C2C5A7179BBD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEAAFFDA2E4F656B00A6B5A3 /* EnhancedCardViewer.swift */,
+				CEAAFFDB2E4F656B00A6B5A3 /* EnhancedMenu.swift */,
+				CEAAFFDC2E4F656B00A6B5A3 /* EnhancedNewCard.swift */,
+				CEAAFFDD2E4F656B00A6B5A3 /* EnhancedShowCard.swift */,
+				CEAAFFDE2E4F656B00A6B5A3 /* ImprovedNewCard.swift */,
+				CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */,
 				4B29053124C0AEDE007A3D1B /* ContentView.swift */,
 				4B29056324C4374F007A3D1B /* NewCard.swift */,
 				4B29056524C43760007A3D1B /* ShowCard.swift */,
@@ -784,6 +820,12 @@
 		CEAAFFC12E4F02C300A6B5A3 /* docs */ = {
 			isa = PBXGroup;
 			children = (
+				CEAAFFF22E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md */,
+				CEAAFFF32E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md */,
+				CEAAFFF42E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md */,
+				CEAAFFF52E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md */,
+				CEAAFFD62E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md */,
+				CEAAFFD72E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md */,
 				CEAAFFBC2E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md */,
 				CEAAFFBD2E4F02C300A6B5A3 /* CLAUDE.md */,
 				CEAAFFBE2E4F02C300A6B5A3 /* GEMINI.md */,
@@ -965,6 +1007,10 @@
 				4BACC5B22B2B8DAB000884D4 /* teaRecomendations.graphql in Resources */,
 				4BB73A012A8AB8B3003524A0 /* auth.graphql in Resources */,
 				4BB739EB2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */,
+				CEAAFFF62E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md in Resources */,
+				CEAAFFF72E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md in Resources */,
+				CEAAFFF82E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md in Resources */,
+				CEAAFFF92E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md in Resources */,
 				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
 				4B6F1BC92A9BD04A00E4AFCC /* registerDevice.graphql in Resources */,
 				4BFE092A2AA1C75A0033131F /* teaRecomendation.graphql in Resources */,
@@ -976,6 +1022,8 @@
 				4B6F1BC62A9BBF2F00E4AFCC /* me.graphql in Resources */,
 				4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */,
 				4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */,
+				CEAAFFD82E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md in Resources */,
+				CEAAFFD92E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,6 +1084,12 @@
 				4B5789E72A9DD0FF00549157 /* DestinatoinUIView.swift in Sources */,
 				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
 				4BA6B76624C4E1C400C46814 /* NearFieldCommunicator.swift in Sources */,
+				CEAAFFEB2E4F656B00A6B5A3 /* MultiStepNewCard.swift in Sources */,
+				CEAAFFED2E4F656B00A6B5A3 /* EnhancedShowCard.swift in Sources */,
+				CEAAFFEE2E4F656B00A6B5A3 /* EnhancedNewCard.swift in Sources */,
+				CEAAFFEF2E4F656B00A6B5A3 /* EnhancedCardViewer.swift in Sources */,
+				CEAAFFF02E4F656B00A6B5A3 /* EnhancedMenu.swift in Sources */,
+				CEAAFFF12E4F656B00A6B5A3 /* ImprovedNewCard.swift in Sources */,
 				4BC972BE2AAF989C00636A4F /* Color.swift in Sources */,
 				4B8D0BB625AAEB6600FF40DB /* Name.swift in Sources */,
 				4BB739DC2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
@@ -1135,6 +1189,12 @@
 				4B968BED2A84F0C700D6FC4E /* DetailManager.swift in Sources */,
 				4BFF93D325BCF484005FC04F /* Network.swift in Sources */,
 				4B8E855024D09F9F001FCFFF /* UIResponder+Current.swift in Sources */,
+				CEAAFFE32E4F656B00A6B5A3 /* MultiStepNewCard.swift in Sources */,
+				CEAAFFE52E4F656B00A6B5A3 /* EnhancedShowCard.swift in Sources */,
+				CEAAFFE62E4F656B00A6B5A3 /* EnhancedNewCard.swift in Sources */,
+				CEAAFFE72E4F656B00A6B5A3 /* EnhancedCardViewer.swift in Sources */,
+				CEAAFFE82E4F656B00A6B5A3 /* EnhancedMenu.swift in Sources */,
+				CEAAFFE92E4F656B00A6B5A3 /* ImprovedNewCard.swift in Sources */,
 				4BB739FA2A89184E003524A0 /* AuthUIView.swift in Sources */,
 				4B4E296D2A973DB500383D06 /* Collection.swift in Sources */,
 				4B8E855424D09F9F001FCFFF /* KeyboardHeightPublisher.swift in Sources */,
@@ -1339,7 +1399,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
@@ -1375,7 +1435,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
@@ -1505,7 +1565,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
@@ -1541,7 +1601,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;

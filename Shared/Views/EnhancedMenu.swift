@@ -67,22 +67,15 @@ struct EnhancedMenu: View {
                                 destination: AnyView(EnhancedNewCard())
                             )
                             
-                            if #available(iOS 17.0, *) {
-                                menuCard(
-                                    icon: "leaf.circle",
-                                    title: "My Collections",
-                                    subtitle: "Manage your tea library",
-                                    color: Color(red: 0.55, green: 0.71, blue: 0.55),
-                                    destination: AnyView(UserAreaUIView(authManager: AuthManager.shared))
-                                )
-                            }
+                            menuCard(
+                                icon: "leaf.circle",
+                                title: "My Collections",
+                                subtitle: "Manage your tea library",
+                                color: Color(red: 0.55, green: 0.71, blue: 0.55),
+                                destination: AnyView(UserAreaUIView(authManager: AuthManager.shared))
+                            )
                         }
                         .padding(.horizontal, 20)
-                        
-                        // Statistics Section
-                        statisticsSection
-                            .padding(.horizontal, 20)
-                            .padding(.top, 10)
                         
                         Spacer(minLength: 30)
                     }
@@ -123,7 +116,6 @@ struct EnhancedMenu: View {
                 Spacer()
                 
                 // Profile Button
-                if #available(iOS 17.0, *) {
                     NavigationLink(destination: UserAreaUIView(authManager: AuthManager.shared)) {
                         ZStack {
                             Circle()
@@ -144,7 +136,6 @@ struct EnhancedMenu: View {
                                 .font(.system(size: 22))
                         }
                     }
-                }
             }
             .padding(.horizontal, 20)
         }
@@ -196,51 +187,12 @@ struct EnhancedMenu: View {
                     .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 4)
             )
         }
-        .buttonStyle(MenuCardButtonStyle())
-    }
-    
-    // MARK: - Statistics Section
-    private var statisticsSection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Quick Stats")
-                .font(.system(size: 20, weight: .semibold, design: .rounded))
-                .foregroundColor(Color(red: 0.35, green: 0.51, blue: 0.35))
-                .padding(.horizontal, 4)
-            
-            HStack(spacing: 12) {
-                statCard(number: "0", label: "Teas", icon: "leaf.fill", color: Color(red: 0.55, green: 0.71, blue: 0.55))
-                statCard(number: "0", label: "Collections", icon: "folder.fill", color: Color(red: 0.55, green: 0.43, blue: 0.31))
-                statCard(number: "0", label: "Tags", icon: "tag.fill", color: Color(red: 0.35, green: 0.51, blue: 0.35))
-            }
-        }
-    }
-    
-    private func statCard(number: String, label: String, icon: String, color: Color) -> some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 24))
-                .foregroundColor(color)
-            
-            Text(number)
-                .font(.system(size: 24, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-            
-            Text(label)
-                .font(.system(size: 12))
-                .foregroundColor(.secondary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.03), radius: 6, x: 0, y: 2)
-        )
+        .buttonStyle(EnhancedMenuCardButtonStyle())
     }
 }
 
 // MARK: - Button Style
-struct MenuCardButtonStyle: ButtonStyle {
+struct EnhancedMenuCardButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.95 : 1)

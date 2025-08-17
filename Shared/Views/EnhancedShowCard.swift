@@ -30,7 +30,7 @@ struct EnhancedShowCard: View {
                             ) {
                                 Text(info.data.description)
                                     .font(.system(size: 15))
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(Color.teaTextSecondaryAlt)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                         }
@@ -58,7 +58,7 @@ struct EnhancedShowCard: View {
                         }
                         
                         // Tags Card
-                        if #available(iOS 17.0, *), !info.tags.isEmpty {
+                        if !info.tags.isEmpty {
                             detailCard(
                                 title: "Tags",
                                 icon: "tag.fill",
@@ -79,14 +79,7 @@ struct EnhancedShowCard: View {
                 .padding(.top, 20)
             }
             .background(
-                LinearGradient(
-                    colors: [
-                        Color(red: 0.96, green: 0.94, blue: 0.89),
-                        Color(red: 0.96, green: 0.94, blue: 0.89).opacity(0.9)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
+                Color.teaBackgroundAlt
                 .ignoresSafeArea()
             )
         } else {
@@ -120,7 +113,7 @@ struct EnhancedShowCard: View {
             // Tea Name
             Text(info.data.name)
                 .font(.system(size: 28, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
+                .foregroundColor(Color.teaTextPrimaryAlt)
                 .multilineTextAlignment(.center)
             
             // Tea Type Badge
@@ -152,7 +145,7 @@ struct EnhancedShowCard: View {
                 
                 Text(title)
                     .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.teaTextPrimaryAlt)
             }
             
             content()
@@ -161,8 +154,8 @@ struct EnhancedShowCard: View {
         .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white)
-                .shadow(color: .black.opacity(0.05), radius: 8, y: 3)
+                .fill(Color.teaCardBackgroundAlt)
+                .shadow(color: Color.glassShadow, radius: 8, y: 3)
         )
     }
     
@@ -171,23 +164,23 @@ struct EnhancedShowCard: View {
         HStack {
             Image(systemName: icon)
                 .font(.system(size: 14))
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.teaTextSecondaryAlt)
                 .frame(width: 20)
             
             Text(label)
                 .font(.system(size: 15))
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.teaTextSecondaryAlt)
             
             Spacer()
             
             Text(value)
                 .font(.system(size: 15, weight: .medium))
-                .foregroundColor(isWarning ? Color(red: 0.85, green: 0.35, blue: 0.35) : .primary)
+                .foregroundColor(isWarning ? Color(red: 0.85, green: 0.35, blue: 0.35) : Color.teaTextPrimaryAlt)
         }
     }
     
     // MARK: - Tag Row
-    private func tagRow(tag: TagEntity) -> some View {
+    private func tagRow(tag: Tag) -> some View {
         HStack(spacing: 8) {
             Circle()
                 .fill(Color(hex: tag.color))
@@ -199,11 +192,11 @@ struct EnhancedShowCard: View {
             
             Text("\(tag.category)")
                 .font(.system(size: 14, weight: .medium))
-                .foregroundColor(.secondary)
+                .foregroundColor(Color.teaTextSecondaryAlt)
             
             Text(tag.name)
                 .font(.system(size: 14))
-                .foregroundColor(.primary)
+                .foregroundColor(Color.teaTextPrimaryAlt)
             
             Spacer()
         }
@@ -220,23 +213,16 @@ struct EnhancedShowCard: View {
             VStack(spacing: 8) {
                 Text("No Tea Selected")
                     .font(.system(size: 24, weight: .semibold, design: .rounded))
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.teaTextPrimaryAlt)
                 
                 Text("Scan a tag to view tea information")
                     .font(.system(size: 16))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color.teaTextSecondaryAlt)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-            LinearGradient(
-                colors: [
-                    Color(red: 0.96, green: 0.94, blue: 0.89),
-                    Color(red: 0.96, green: 0.94, blue: 0.89).opacity(0.9)
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-            )
+            Color.teaBackgroundAlt
         )
     }
     

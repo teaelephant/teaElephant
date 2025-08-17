@@ -24,12 +24,7 @@ struct UserAreaUIView: View {
                 }
             }
         } else if authManager.auth {
-            if #available(iOS 18.0, *) {
-                CollectionsUIView(manager: manager)
-                
-            } else {
-                Text("Unsupported")
-            }
+            CollectionsUIView(manager: manager)
         } else {
             AuthUIView()
         }
