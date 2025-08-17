@@ -12,8 +12,10 @@ import SwiftUI
 
 struct Menu: View {
     @ObservedObject var appState = AppState.shared
+    @StateObject private var collectionsManager = CollectionsManager()
     @State private var showingProfile = false
     @State private var showingDestination = false
+    @State private var hasLoadedCollections = false
     
     var body: some View {
         NavigationStack {
@@ -31,6 +33,11 @@ struct Menu: View {
                         headerView
                             .padding(.top, 20)
                         
+                        // Tea of the Day Widget
+                        TeaOfTheDayWidget(manager: collectionsManager)
+                            .padding(.top, 8)
+                            .padding(.horizontal, 20)
+                        
                         // Menu Cards
                         VStack(spacing: 16) {
                             menuCard(
@@ -38,7 +45,9 @@ struct Menu: View {
                                 title: "Read Tea Info",
                                 subtitle: "Scan NFC or QR tags",
                                 color: Color(red: 0.55, green: 0.71, blue: 0.55),
-                                destination: AnyView(EnhancedCardViewer())
+                                destination: AnyView(EnhancedCardViewer()),
+                                accessibilityLabel: "Read Tea Information",
+                                accessibilityHint: "Scan NFC or QR tags to view tea details"
                             )
                             
                             menuCard(
@@ -46,7 +55,9 @@ struct Menu: View {
                                 title: "AR Explorer",
                                 subtitle: "View collection in AR",
                                 color: Color(red: 0.35, green: 0.51, blue: 0.35),
-                                destination: AnyView(DetectorView().environmentObject(DetailManager()))
+                                destination: AnyView(DetectorView().environmentObject(DetailManager())),
+                                accessibilityLabel: "Augmented Reality Explorer",
+                                accessibilityHint: "View your tea collection in augmented reality"
                             )
                             
                             menuCard(
@@ -54,7 +65,9 @@ struct Menu: View {
                                 title: "Add New Tea",
                                 subtitle: "Write info to NFC/QR",
                                 color: Color(red: 0.55, green: 0.43, blue: 0.31),
-                                destination: AnyView(MultiStepNewCard())
+                                destination: AnyView(MultiStepNewCard()),
+                                accessibilityLabel: "Add New Tea",
+                                accessibilityHint: "Write tea information to NFC tags or QR codes"
                             )
                             
                             menuCard(
@@ -62,7 +75,9 @@ struct Menu: View {
                                 title: "My Collections",
                                 subtitle: "Manage your tea library",
                                 color: Color(red: 0.55, green: 0.71, blue: 0.55),
-                                destination: AnyView(UserAreaUIView(authManager: AuthManager.shared))
+                                destination: AnyView(UserAreaUIView(authManager: AuthManager.shared)),
+                                accessibilityLabel: "My Tea Collections",
+                                accessibilityHint: "Manage and organize your tea library"
                             )
                         }
                         .padding(.horizontal, 20)
@@ -74,6 +89,14 @@ struct Menu: View {
             .navigationBarHidden(true)
             .onAppear {
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+                
+                // Load collections for Tea of the Day widget
+                if !hasLoadedCollections {
+                    Task {
+                        await collectionsManager.getCollections()
+                        hasLoadedCollections = true
+                    }
+                }
             }
             .onChange(of: appState.pageToNavigationTo) { _, newValue in
                 showingDestination = (newValue != nil)
@@ -144,13 +167,24 @@ struct Menu: View {
                             }
                     }
                 }
+                .accessibilityLabel("Profile")
+                .accessibilityHint("Tap to view your profile and collections")
+                .accessibilityAddTraits(.isButton)
             }
             .padding(.horizontal, 20)
         }
     }
     
     // MARK: - Menu Card with Glass Effect
-    private func menuCard(icon: String, title: String, subtitle: String, color: Color, destination: AnyView) -> some View {
+    private func menuCard(
+        icon: String,
+        title: String,
+        subtitle: String,
+        color: Color,
+        destination: AnyView,
+        accessibilityLabel: String? = nil,
+        accessibilityHint: String? = nil
+    ) -> some View {
         NavigationLink(destination: destination) {
             HStack(spacing: 16) {
                 // Icon Container with glass effect
@@ -219,6 +253,9 @@ struct Menu: View {
             }
         }
         .buttonStyle(MenuCardButtonStyle())
+        .accessibilityLabel(accessibilityLabel ?? title)
+        .accessibilityHint(accessibilityHint ?? subtitle)
+        .accessibilityAddTraits(.isButton)
     }
 }
 

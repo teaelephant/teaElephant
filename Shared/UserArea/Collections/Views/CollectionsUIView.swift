@@ -171,36 +171,99 @@ struct CollectionsUIView: View {
                 } else if manager.collections.isEmpty {
                     VStack(spacing: 24) {
                         Spacer()
-                        Image(systemName: "leaf.circle")
-                            .font(.system(size: 64))
-                            .foregroundColor(.secondary)
-                        Text("No Tea Collections Yet")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                        Text("Start by creating your first collection to organize your tea inventory")
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal)
                         
-                        HStack {
-                            TextField("Collection name", text: $name)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .frame(maxWidth: 250)
-                            Button(action: {
-                                Task{
-                                    await manager.addCollection(name: name)
-                                    name = ""
-                                }
-                            }) {
-                                Label("Create", systemImage: "plus.circle.fill")
-                            }
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                            .disabled(name.isEmpty)
+                        // Enhanced empty state icon with glass effect
+                        ZStack {
+                            Circle()
+                                .fill(.ultraThinMaterial)
+                                .frame(width: 100, height: 100)
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.glassBorder, lineWidth: 1)
+                                )
+                                .shadow(color: Color.glassShadow, radius: 10, y: 4)
+                            
+                            Image(systemName: "leaf.circle")
+                                .font(.system(size: 56))
+                                .foregroundColor(Color.teaPrimaryAlt.opacity(0.7))
                         }
+                        
+                        VStack(spacing: 8) {
+                            Text("No Tea Collections Yet")
+                                .font(.system(size: 24, weight: .semibold, design: .rounded))
+                                .foregroundColor(Color.teaTextPrimaryAlt)
+                            
+                            Text("Start by creating your first collection to organize your tea inventory")
+                                .font(.system(size: 16))
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color.teaTextSecondaryAlt)
+                                .padding(.horizontal)
+                        }
+                        
+                        // Enhanced add collection input for empty state
+                        VStack(spacing: 12) {
+                            Text("Create Your First Collection")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundColor(Color.teaTextSecondaryAlt)
+                            
+                            HStack(spacing: 12) {
+                                TextField("Collection name", text: $name)
+                                    .font(.system(size: 16))
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(.ultraThinMaterial)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(Color.glassBorder, lineWidth: 1)
+                                            )
+                                    )
+                                    .frame(maxWidth: 250)
+                                
+                                Button(action: {
+                                    Task{
+                                        await manager.addCollection(name: name)
+                                        name = ""
+                                    }
+                                }) {
+                                    HStack(spacing: 6) {
+                                        Image(systemName: "plus.circle.fill")
+                                        Text("Create")
+                                    }
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(
+                                                LinearGradient(
+                                                    colors: [
+                                                        Color.teaPrimaryAlt,
+                                                        Color.vibrantGreen
+                                                    ],
+                                                    startPoint: .leading,
+                                                    endPoint: .trailing
+                                                )
+                                            )
+                                            .opacity(name.isEmpty ? 0.5 : 1)
+                                    )
+                                    .shadow(color: Color.teaPrimaryAlt.opacity(name.isEmpty ? 0 : 0.3), radius: 6, y: 3)
+                                }
+                                .disabled(name.isEmpty)
+                                .animation(.spring(response: 0.3, dampingFraction: 0.7), value: name.isEmpty)
+                            }
+                        }
+                        .padding(24)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(.ultraThinMaterial)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(Color.glassBorder, lineWidth: 1)
+                                )
+                        )
                         .padding(.horizontal)
                         Spacer()
                     }
@@ -208,26 +271,99 @@ struct CollectionsUIView: View {
                 } else {
                     ScrollView {
                         VStack(spacing: 16) {
-                            // Add new collection card
-                            HStack {
-                                TextField("New collection name", text: $name)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                Button(action: {
-                                    Task {
-                                        await manager.addCollection(name: name)
-                                        name = ""
-                                    }
-                                }) {
+                            // Enhanced Add new collection card with glass design
+                            VStack(spacing: 12) {
+                                HStack(spacing: 8) {
                                     Image(systemName: "plus.circle.fill")
-                                        .font(.title2)
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(Color.vibrantGreen)
+                                    
+                                    Text("Add New Collection")
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundColor(Color.teaTextPrimaryAlt)
                                 }
-                                .disabled(name.isEmpty)
-                                .foregroundColor(name.isEmpty ? .gray : Color(red: 0.55, green: 0.71, blue: 0.55))
+                                
+                                HStack(spacing: 12) {
+                                    // Text field with glass style
+                                    TextField("Collection name", text: $name)
+                                        .font(.system(size: 16))
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 12)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(.ultraThinMaterial)
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .stroke(Color.glassBorder, lineWidth: 1)
+                                                )
+                                        )
+                                    
+                                    // Create button with glass effect
+                                    Button(action: {
+                                        Task {
+                                            await manager.addCollection(name: name)
+                                            name = ""
+                                        }
+                                    }) {
+                                        HStack(spacing: 6) {
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .font(.system(size: 18))
+                                            Text("Create")
+                                                .font(.system(size: 16, weight: .medium))
+                                        }
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 12)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(
+                                                    LinearGradient(
+                                                        colors: [
+                                                            Color.vibrantGreen,
+                                                            Color.teaPrimaryAlt
+                                                        ],
+                                                        startPoint: .leading,
+                                                        endPoint: .trailing
+                                                    )
+                                                )
+                                                .opacity(name.isEmpty ? 0.5 : 1)
+                                        )
+                                        .shadow(color: Color.vibrantGreen.opacity(name.isEmpty ? 0 : 0.3), radius: 6, y: 3)
+                                    }
+                                    .disabled(name.isEmpty)
+                                    .animation(.spring(response: 0.3, dampingFraction: 0.7), value: name.isEmpty)
+                                }
                             }
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(12)
-                            .shadow(color: .black.opacity(0.05), radius: 2, y: 1)
+                            .padding(20)
+                            .background {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                Color.vibrantGreen.opacity(0.05),
+                                                Color.teaPrimaryAlt.opacity(0.03)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(
+                                                LinearGradient(
+                                                    colors: [
+                                                        Color.glassBorder,
+                                                        Color.vibrantGreen.opacity(0.3)
+                                                    ],
+                                                    startPoint: .topLeading,
+                                                    endPoint: .bottomTrailing
+                                                ),
+                                                lineWidth: 1
+                                            )
+                                    )
+                            }
+                            .shadow(color: Color.glassShadow, radius: 10, y: 4)
                             
                             // Collections list with better visual hierarchy
                             ForEach($manager.collections.indices, id: \.self) { index in

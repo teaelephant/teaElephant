@@ -64,7 +64,9 @@ struct EnhancedNewCard: View {
                                 // Name field
                                 formField(label: "Tea Name", icon: "leaf.fill") {
                                     TextField("Enter tea name", text: $name)
-                                        .onChange(of: name, perform: search)
+                                        .onChange(of: name) { _, newValue in
+                                            search(newValue)
+                                        }
                                 }
                                 
                                 // Type picker

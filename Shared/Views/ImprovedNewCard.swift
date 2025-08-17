@@ -57,7 +57,9 @@ struct ImprovedNewCard: View {
                                 .foregroundColor(.teaPrimaryAlt)
                             
                             TextField("Tea Name", text: $name)
-                                .onChange(of: name, perform: search)
+                                .onChange(of: name) { _, newValue in
+                                    search(newValue)
+                                }
                                 .textFieldStyle(.roundedBorder)
                             
                             if let searchData = searcher.detectedInfo {
@@ -284,13 +286,9 @@ struct ImprovedNewCard: View {
     func saveQR(_ qrcode: String) async {
         // Implementation from original file
         if let searcherData = searcher.detectedInfo {
-            do {
-                // QRwriter is not available, using alternative approach
-                await QRManager().write(id: qrcode, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: Int(brewingTemp) ?? 95))
-                print("Saved successfully")
-            } catch {
-                print(error.localizedDescription)
-            }
+            // QRwriter is not available, using alternative approach
+            await QRManager().write(id: qrcode, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: Int(brewingTemp) ?? 95))
+            print("Saved successfully")
             return
         }
         

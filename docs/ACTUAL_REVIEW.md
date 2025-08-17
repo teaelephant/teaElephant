@@ -16,10 +16,6 @@ The project is now at a stage where it feels like a polished and professional ap
 
 The new design system is a huge success. The use of transparency, blur, and vibrant colors creates a beautiful and immersive experience. The custom button styles, card views, and other components are well-designed and consistent.
 
-**Recommendation:**
-
-*   **Continue to apply the design system consistently** across all views, including the new "Add New Tea" flow.
-
 ### 3.2. AR Card Resizing
 
 The refactored resizing logic is a massive improvement. It is simpler, more efficient, and provides a much smoother user experience. The real-time scaling of the AR cards is a great feature that makes the app feel more interactive and responsive.
@@ -30,14 +26,13 @@ The refactored resizing logic is a massive improvement. It is simpler, more effi
 
 ### 3.4. "Add New Tea" Flow (Updated)
 
-The new multi-step design for adding a new tea is a significant improvement. The breakdown into logical sections ("Basic Info", "Brewing", "Notes") makes the process much more user-friendly and less overwhelming. The visual design is clean and modern, and it has started to incorporate the new "liquid glass" aesthetic.
+The new multi-step design for adding a new tea is a significant improvement. The breakdown into logical sections ("Basic Info", "Tea Details", "Review & Save") makes the process much more user-friendly and less overwhelming. The visual design is clean and modern, and it has started to incorporate the new "liquid glass" aesthetic.
 
 **Recommendations:**
 
-*   **Complete the implementation:** The `MultiStepNewCard.swift` view is still a work in progress. The implementation of the different steps needs to be completed.
-*   **Apply the "liquid glass" design consistently:** The design of the `MultiStepNewCard.swift` view should be updated to fully match the new design system.
-*   **Add input validation:** Implement real-time input validation to guide the user and prevent errors.
-*   **Provide clear user feedback:** Add visual feedback to confirm that the new tea has been saved successfully.
+*   **Clarify the UI:** The button label "Save to QR Code" could be more descriptive. A label like "Assign to QR Code" or "Link to Existing QR Code" would more accurately reflect the feature's functionality.
+*   **Improve User Guidance:** A simple tooltip or a short explanation on the screen could be added to guide new users on how to use the QR code feature.
+*   **Add a "Reassign" Feature:** Since you reuse your QR codes, a dedicated "Reassign" feature would be very useful. This would make it easy to associate an existing QR code with a new tea.
 
 ## 4. Areas for Further Improvement
 

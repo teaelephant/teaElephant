@@ -17,17 +17,8 @@ To create a beautiful, simple, and intuitive app that helps tea lovers to manage
 
 These are the essential features that are critical for the app's success.
 
-1.  **Flawless Collection Management:**
-    *   **Redesign the "Add New Tea" Flow:** This is the highest priority. The current flow is clunky and inconsistent with the rest of the app. I recommend a multi-step, visually guided process for adding a new tea, with a design that matches the new "liquid glass" aesthetic.
-    *   **Comprehensive Tea Details:** The app should allow you to store all the essential information about your teas, including name, type, origin, brewing instructions, and personal notes.
-    *   **Effortless Search and Filtering:** You should be able to easily search and filter your collection by any attribute.
-
-2.  **Seamless Tagging:**
-    *   **Reliable NFC and QR Code Scanning:** The core functionality of scanning tags to add and identify teas must be flawless.
-    *   **Simple Tag Writing:** The process of writing data to a new NFC tag or QR code should be as simple as possible.
-
-3.  **Beautiful and Intuitive UI:**
-    *   **Consistent Design:** The "liquid glass" design should be applied consistently across the entire app.
+1.  **Beautiful and Intuitive UI:**
+    *   **Consistent Design:** The "liquid glass" design should be applied consistently across the entire app, including the "Add New Tea" flow. See the [Design Consistency Review](DESIGN_CONSISTENCY_REVIEW.md) for more details.
     *   **Clear and Concise Layout:** The UI should be clean, uncluttered, and easy to navigate.
 
 ### 3.2. Should-Have
@@ -35,15 +26,12 @@ These are the essential features that are critical for the app's success.
 These features are important but not as critical as the must-haves.
 
 1.  **Enhanced Tea Discovery:**
-    *   **AI-Powered Recommendations:** The existing AI recommendation feature is a great start. I recommend enhancing it by allowing you to provide more input, such as your mood, the time of day, or the weather, to get more personalized recommendations.
     *   **"Tea of the Day" Widget:** A simple widget that suggests a tea from your collection to try each day.
 
-2.  **Improved AR Experience:**
-    *   **Real-time Information:** The AR view should display real-time information about the tea, such as the brewing time remaining.
-    *   **Interactive AR Cards:** The AR cards could be made more interactive, for example, by allowing you to tap on them to see more details or to start a brewing timer.
+2  **Better Onboarding:**
+    *   **Interactive Tutorial:** A short, interactive tutorial that guides you through the app's key features, including the QR code assignment workflow.
 
-3.  **Better Onboarding:**
-    *   **Interactive Tutorial:** A short, interactive tutorial that guides you through the app's key features.
+
 
 ### 3.3. Could-Have
 

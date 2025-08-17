@@ -2,7 +2,9 @@
 //  OnboardingView.swift
 //  TeaElephant
 //
-//  Onboarding experience for new users
+//  DEPRECATED: This file is no longer used. 
+//  We now use InteractiveOnboardingView.swift instead.
+//  This file can be removed from the Xcode project.
 //
 
 import SwiftUI

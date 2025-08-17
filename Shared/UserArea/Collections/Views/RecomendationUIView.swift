@@ -16,6 +16,10 @@ struct RecomendationUIView: View {
     @State private var withAdditives = true
     @State private var isTyping = false
     @FocusState private var isFocused: Bool
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
+    @State private var retryCount = 0
+    private let maxRetries = 3
     
     var body: some View {
         ZStack {
@@ -145,7 +149,7 @@ struct RecomendationUIView: View {
                             Button(action: {
                                 isFocused = false
                                 Task {
-                                    manager.recomendation(id, feelings: feelings)
+                                    await requestRecommendation()
                                 }
                             }) {
                                 Image(systemName: "sparkles.rectangle.stack.fill")
@@ -181,6 +185,40 @@ struct RecomendationUIView: View {
                             )
                     }
                     .padding(.horizontal, 20)
+                    
+                    // Error Banner
+                    if manager.error != nil {
+                        HStack(spacing: 12) {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.system(size: 16))
+                                .foregroundColor(Color.vibrantOrange)
+                            
+                            Text("Failed to load recommendation")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundColor(Color.teaTextPrimaryAlt)
+                            
+                            Spacer()
+                            
+                            Button("Retry") {
+                                Task {
+                                    await retryLastRequest()
+                                }
+                            }
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(Color.vibrantBlue)
+                        }
+                        .padding(16)
+                        .background {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.vibrantOrange.opacity(0.1))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.vibrantOrange.opacity(0.3), lineWidth: 1)
+                                )
+                        }
+                        .padding(.horizontal, 20)
+                        .transition(.move(edge: .top).combined(with: .opacity))
+                    }
                     
                     // Results Section
                     if manager.recomendationLoading {
@@ -258,7 +296,7 @@ struct RecomendationUIView: View {
                             // Try Another Button
                             Button(action: {
                                 Task {
-                                    manager.anotherRecomendation(id)
+                                    await requestAnotherRecommendation()
                                 }
                             }) {
                                 HStack(spacing: 8) {
@@ -293,6 +331,113 @@ struct RecomendationUIView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Recommendation Error", isPresented: $showErrorAlert) {
+            Button("Retry") {
+                Task {
+                    await retryLastRequest()
+                }
+            }
+            Button("Cancel", role: .cancel) {
+                resetErrorState()
+            }
+        } message: {
+            Text(errorMessage)
+        }
+    }
+    
+    // MARK: - Error Handling Methods
+    
+    private func requestRecommendation() async {
+        do {
+            // Reset error state
+            resetErrorState()
+            
+            // Validate input
+            guard !feelings.isEmpty else {
+                showError("Please describe how you're feeling")
+                return
+            }
+            
+            // Make the request
+            manager.recomendation(id, feelings: feelings)
+            
+            // Check for errors after a delay (since manager doesn't use async)
+            try await Task.sleep(nanoseconds: 100_000_000) // 0.1 second
+            
+            if manager.error != nil {
+                handleManagerError()
+            }
+        } catch {
+            showError("Failed to get recommendation: \(error.localizedDescription)")
+        }
+    }
+    
+    private func requestAnotherRecommendation() async {
+        do {
+            resetErrorState()
+            
+            // Validate we have a previous recommendation
+            guard manager.lastRecomendation != nil else {
+                showError("No previous recommendation to refresh")
+                return
+            }
+            
+            manager.anotherRecomendation(id)
+            
+            // Check for errors after a delay
+            try await Task.sleep(nanoseconds: 100_000_000)
+            
+            if manager.error != nil {
+                handleManagerError()
+            }
+        } catch {
+            showError("Failed to get another recommendation: \(error.localizedDescription)")
+        }
+    }
+    
+    private func handleManagerError() {
+        if let error = manager.error {
+            let errorText = error.localizedDescription
+            
+            // Check for specific error types
+            if errorText.contains("network") || errorText.contains("connection") {
+                showError("Network connection error. Please check your internet and try again.")
+            } else if errorText.contains("auth") || errorText.contains("user not found") {
+                showError("Authentication error. Please sign in again.")
+            } else if errorText.contains("timeout") {
+                showError("Request timed out. Please try again.")
+            } else {
+                showError("An error occurred: \(errorText)")
+            }
+        }
+    }
+    
+    private func retryLastRequest() async {
+        retryCount += 1
+        
+        if retryCount >= maxRetries {
+            showError("Maximum retry attempts reached. Please try again later.")
+            retryCount = 0
+            return
+        }
+        
+        // Retry the last action
+        if !feelings.isEmpty {
+            await requestRecommendation()
+        } else if manager.lastRecomendation != nil {
+            await requestAnotherRecommendation()
+        }
+    }
+    
+    private func showError(_ message: String) {
+        errorMessage = message
+        showErrorAlert = true
+    }
+    
+    private func resetErrorState() {
+        errorMessage = ""
+        showErrorAlert = false
+        retryCount = 0
     }
 }
 

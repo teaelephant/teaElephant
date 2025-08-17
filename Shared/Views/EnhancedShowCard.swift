@@ -14,74 +14,79 @@ struct EnhancedShowCard: View {
     
     var body: some View {
         if let info = info {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // Header Card
-                    headerCard(info: info)
-                    
-                    // Details Cards
-                    VStack(spacing: 16) {
-                        // Description Card
-                        if !info.data.description.isEmpty {
-                            detailCard(
-                                title: "Description",
-                                icon: "text.alignleft",
-                                color: Color(red: 0.55, green: 0.71, blue: 0.55)
-                            ) {
-                                Text(info.data.description)
-                                    .font(.system(size: 15))
-                                    .foregroundColor(Color.teaTextSecondaryAlt)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                        }
+            ZStack {
+                // Liquid glass background
+                LiquidBackground(
+                    primaryColor: Color.teaPrimaryAlt,
+                    secondaryColor: Color.vibrantBlue
+                )
+                .ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Header Card with glass effect
+                        headerCard(info: info)
                         
-                        // Brewing Instructions Card
-                        detailCard(
-                            title: "Brewing Instructions",
-                            icon: "thermometer",
-                            color: Color(red: 0.55, green: 0.43, blue: 0.31)
-                        ) {
-                            VStack(spacing: 12) {
-                                brewingRow(
-                                    icon: "thermometer",
-                                    label: "Temperature",
-                                    value: "\(info.meta.brewingTemp)°C"
-                                )
-                                
-                                brewingRow(
-                                    icon: "calendar",
-                                    label: "Use Until",
-                                    value: dateToString(info.meta.expirationDate),
-                                    isWarning: isExpired(info.meta.expirationDate)
-                                )
+                        // Details Cards with glass style
+                        VStack(spacing: 16) {
+                            // Description Card
+                            if !info.data.description.isEmpty {
+                                detailCard(
+                                    title: "Description",
+                                    icon: "text.alignleft",
+                                    color: Color.teaPrimaryAlt
+                                ) {
+                                    Text(info.data.description)
+                                        .font(.system(size: 15))
+                                        .foregroundColor(Color.teaTextPrimaryAlt)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
                             }
-                        }
-                        
-                        // Tags Card
-                        if !info.tags.isEmpty {
+                            
+                            // Brewing Instructions Card
                             detailCard(
-                                title: "Tags",
-                                icon: "tag.fill",
-                                color: Color(red: 0.35, green: 0.51, blue: 0.35)
+                                title: "Brewing Instructions",
+                                icon: "thermometer",
+                                color: Color.vibrantOrange
                             ) {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    ForEach(info.tags, id: \.self.id) { tag in
-                                        tagRow(tag: tag)
+                                VStack(spacing: 12) {
+                                    brewingRow(
+                                        icon: "thermometer",
+                                        label: "Temperature",
+                                        value: "\(info.meta.brewingTemp)°C"
+                                    )
+                                    
+                                    brewingRow(
+                                        icon: "calendar",
+                                        label: "Use Until",
+                                        value: dateToString(info.meta.expirationDate),
+                                        isWarning: isExpired(info.meta.expirationDate)
+                                    )
+                                }
+                            }
+                            
+                            // Tags Card
+                            if !info.tags.isEmpty {
+                                detailCard(
+                                    title: "Tags",
+                                    icon: "tag.fill",
+                                    color: Color.vibrantGreen
+                                ) {
+                                    VStack(alignment: .leading, spacing: 8) {
+                                        ForEach(info.tags, id: \.self.id) { tag in
+                                            tagRow(tag: tag)
+                                        }
                                     }
                                 }
                             }
                         }
+                        .padding(.horizontal, 20)
+                        
+                        Spacer(minLength: 30)
                     }
-                    .padding(.horizontal, 20)
-                    
-                    Spacer(minLength: 30)
+                    .padding(.top, 20)
                 }
-                .padding(.top, 20)
             }
-            .background(
-                Color.teaBackgroundAlt
-                .ignoresSafeArea()
-            )
         } else {
             emptyStateView
         }
@@ -90,42 +95,55 @@ struct EnhancedShowCard: View {
     // MARK: - Header Card
     private func headerCard(info: TeaInfo) -> some View {
         VStack(spacing: 16) {
-            // Tea Icon
+            // Tea Icon with glass effect
             ZStack {
                 Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                Color(red: 0.55, green: 0.71, blue: 0.55).opacity(0.3),
-                                Color(red: 0.55, green: 0.71, blue: 0.55).opacity(0.1)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                    .fill(.ultraThinMaterial)
                     .frame(width: 100, height: 100)
+                    .overlay(
+                        Circle()
+                            .stroke(
+                                LinearGradient(
+                                    colors: [
+                                        Color.glassBorder,
+                                        Color.teaPrimaryAlt.opacity(0.3)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 1
+                            )
+                    )
+                    .shadow(color: Color.teaPrimaryAlt.opacity(0.2), radius: 10, y: 4)
                 
                 Image(systemName: teaIcon(for: info.data.type.value ?? .unknown))
                     .font(.system(size: 48))
-                    .foregroundColor(Color(red: 0.55, green: 0.71, blue: 0.55))
+                    .foregroundColor(Color.teaPrimaryAlt)
+                    .shadow(color: Color.teaPrimaryAlt.opacity(0.3), radius: 2)
             }
             
-            // Tea Name
+            // Tea Name with glass text effect
             Text(info.data.name)
                 .font(.system(size: 28, weight: .bold, design: .rounded))
                 .foregroundColor(Color.teaTextPrimaryAlt)
                 .multilineTextAlignment(.center)
+                .shadow(color: Color.glassShadow, radius: 1)
             
-            // Tea Type Badge
+            // Tea Type Badge with glass style
             Text(teaTypeLabel(info.data.type.value ?? .unknown))
                 .font(.system(size: 14, weight: .medium))
-                .foregroundColor(Color(red: 0.55, green: 0.71, blue: 0.55))
+                .foregroundColor(Color.teaPrimaryAlt)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
                 .background(
                     Capsule()
-                        .fill(Color(red: 0.55, green: 0.71, blue: 0.55).opacity(0.15))
+                        .fill(.ultraThinMaterial)
+                        .overlay(
+                            Capsule()
+                                .stroke(Color.glassBorder, lineWidth: 1)
+                        )
                 )
+                .shadow(color: Color.glassShadow, radius: 4, y: 2)
         }
         .padding(.horizontal, 20)
     }
@@ -142,6 +160,7 @@ struct EnhancedShowCard: View {
                 Image(systemName: icon)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(color)
+                    .shadow(color: color.opacity(0.3), radius: 1)
                 
                 Text(title)
                     .font(.system(size: 16, weight: .semibold))
@@ -152,11 +171,7 @@ struct EnhancedShowCard: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(20)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.teaCardBackgroundAlt)
-                .shadow(color: Color.glassShadow, radius: 8, y: 3)
-        )
+        .glassStyle()
     }
     
     // MARK: - Brewing Row
@@ -187,8 +202,9 @@ struct EnhancedShowCard: View {
                 .frame(width: 20, height: 20)
                 .overlay(
                     Circle()
-                        .stroke(Color.black.opacity(0.1), lineWidth: 1)
+                        .stroke(Color.glassBorder.opacity(0.3), lineWidth: 1)
                 )
+                .shadow(color: Color(hex: tag.color).opacity(0.3), radius: 2)
             
             Text("\(tag.category)")
                 .font(.system(size: 14, weight: .medium))
@@ -205,25 +221,43 @@ struct EnhancedShowCard: View {
     
     // MARK: - Empty State
     private var emptyStateView: some View {
-        VStack(spacing: 24) {
-            Image(systemName: "leaf.circle")
-                .font(.system(size: 80))
-                .foregroundColor(Color(red: 0.55, green: 0.71, blue: 0.55).opacity(0.5))
+        ZStack {
+            // Liquid glass background for empty state
+            LiquidBackground(
+                primaryColor: Color.teaPrimaryAlt.opacity(0.3),
+                secondaryColor: Color.vibrantBlue.opacity(0.2)
+            )
+            .ignoresSafeArea()
             
-            VStack(spacing: 8) {
-                Text("No Tea Selected")
-                    .font(.system(size: 24, weight: .semibold, design: .rounded))
-                    .foregroundColor(Color.teaTextPrimaryAlt)
+            VStack(spacing: 24) {
+                // Icon with glass effect
+                ZStack {
+                    Circle()
+                        .fill(.ultraThinMaterial)
+                        .frame(width: 120, height: 120)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.glassBorder, lineWidth: 1)
+                        )
+                        .shadow(color: Color.glassShadow, radius: 10, y: 4)
+                    
+                    Image(systemName: "leaf.circle")
+                        .font(.system(size: 60))
+                        .foregroundColor(Color.teaPrimaryAlt.opacity(0.6))
+                }
                 
-                Text("Scan a tag to view tea information")
-                    .font(.system(size: 16))
-                    .foregroundColor(Color.teaTextSecondaryAlt)
+                VStack(spacing: 8) {
+                    Text("No Tea Selected")
+                        .font(.system(size: 24, weight: .semibold, design: .rounded))
+                        .foregroundColor(Color.teaTextPrimaryAlt)
+                        .shadow(color: Color.glassShadow, radius: 1)
+                    
+                    Text("Scan a tag to view tea information")
+                        .font(.system(size: 16))
+                        .foregroundColor(Color.teaTextSecondaryAlt)
+                }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            Color.teaBackgroundAlt
-        )
     }
     
     // MARK: - Helper Functions

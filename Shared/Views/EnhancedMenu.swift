@@ -20,6 +20,8 @@ struct EnhancedMenu: View {
         }
     }
     
+    @State private var shouldNavigate = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -85,17 +87,12 @@ struct EnhancedMenu: View {
             .onAppear {
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             }
-            .overlay(
-                NavigationLink(
-                    destination: DestinatoinUIView(
-                        id: appState.id ?? "",
-                        message: appState.notificationMessage ?? ""
-                    ),
-                    isActive: pushNavigationBinding
-                ) {
-                    EmptyView()
-                }
-            )
+            .navigationDestination(isPresented: pushNavigationBinding) {
+                DestinatoinUIView(
+                    id: appState.id ?? "",
+                    message: appState.notificationMessage ?? ""
+                )
+            }
         }
     }
     
