@@ -213,7 +213,8 @@ struct CollectionsUIView: View {
             }
             NavigationStack {
                 let _ = print("CollectionsUIView - collectionsLoading: \(manager.collectionsLoading), collections.count: \(manager.collections.count), error: \(String(describing: manager.error))")
-                if manager.collectionsLoading {
+                // Show loading if actively loading OR if this is initial load with no collections
+                if manager.collectionsLoading || (!hasLoadedInitially && manager.collections.isEmpty) {
                     ZStack {
                         // Liquid glass background
                         LiquidBackground(
@@ -620,11 +621,11 @@ struct CollectionsUIView: View {
             print("CollectionsUIView onAppear - hasLoadedInitially: \(hasLoadedInitially), collectionsLoading: \(manager.collectionsLoading)")
             // Load collections when view appears if not already loading
             if !hasLoadedInitially && !manager.collectionsLoading {
-                hasLoadedInitially = true
                 print("CollectionsUIView - Calling getCollections")
                 Task {
                     // Small delay to ensure auth is ready after sign-in
                     try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 second delay
+                    hasLoadedInitially = true
                     await manager.getCollections()
                     print("CollectionsUIView - getCollections completed")
                 }
