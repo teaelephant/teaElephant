@@ -188,17 +188,13 @@
 		CE8267BB2D1364B600452E2B /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8ACD9C25BC91DA001DE00A /* ARKit.framework */; };
 		CEAA00042E52524100A6B5A3 /* TeaOfTheDayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA00022E52524100A6B5A3 /* TeaOfTheDayWidget.swift */; };
 		CEAA00082E52524100A6B5A3 /* TeaOfTheDayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA00022E52524100A6B5A3 /* TeaOfTheDayWidget.swift */; };
-		CEAAFFC22E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBC2E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md */; };
-		CEAAFFC32E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBF2E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md */; };
-		CEAAFFC42E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFC02E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md */; };
+		CEAA000C2E5262CA00A6B5A3 /* PROJECT_REVIEW_AND_RECOMMENDATIONS.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAA000B2E5262CA00A6B5A3 /* PROJECT_REVIEW_AND_RECOMMENDATIONS.md */; };
 		CEAAFFC52E4F02C300A6B5A3 /* GEMINI.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBE2E4F02C300A6B5A3 /* GEMINI.md */; };
 		CEAAFFC62E4F02C300A6B5A3 /* CLAUDE.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFBD2E4F02C300A6B5A3 /* CLAUDE.md */; };
 		CEAAFFCF2E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
 		CEAAFFD12E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
 		CEAAFFD32E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
 		CEAAFFD52E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */; };
-		CEAAFFD82E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFD62E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md */; };
-		CEAAFFD92E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFD72E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md */; };
 		CEAAFFE32E4F656B00A6B5A3 /* MultiStepNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */; };
 		CEAAFFE52E4F656B00A6B5A3 /* EnhancedShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDD2E4F656B00A6B5A3 /* EnhancedShowCard.swift */; };
 		CEAAFFE62E4F656B00A6B5A3 /* EnhancedNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDC2E4F656B00A6B5A3 /* EnhancedNewCard.swift */; };
@@ -211,10 +207,6 @@
 		CEAAFFEF2E4F656B00A6B5A3 /* EnhancedCardViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDA2E4F656B00A6B5A3 /* EnhancedCardViewer.swift */; };
 		CEAAFFF02E4F656B00A6B5A3 /* EnhancedMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDB2E4F656B00A6B5A3 /* EnhancedMenu.swift */; };
 		CEAAFFF12E4F656B00A6B5A3 /* ImprovedNewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFDE2E4F656B00A6B5A3 /* ImprovedNewCard.swift */; };
-		CEAAFFF62E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF32E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md */; };
-		CEAAFFF72E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF22E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md */; };
-		CEAAFFF82E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF42E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md */; };
-		CEAAFFF92E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md in Resources */ = {isa = PBXBuildFile; fileRef = CEAAFFF52E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md */; };
 		CEAAFFFB2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */; };
 		CEAAFFFC2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */; };
 		CEAAFFFD2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */; };
@@ -372,24 +364,16 @@
 		CE750BD32D1370ED00830DD0 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		CE750BD52D13715600830DD0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		CEAA00022E52524100A6B5A3 /* TeaOfTheDayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaOfTheDayWidget.swift; sourceTree = "<group>"; };
-		CEAAFFBC2E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ARCHITECTURE_REVIEW.md; sourceTree = "<group>"; };
+		CEAA000B2E5262CA00A6B5A3 /* PROJECT_REVIEW_AND_RECOMMENDATIONS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PROJECT_REVIEW_AND_RECOMMENDATIONS.md; sourceTree = "<group>"; };
 		CEAAFFBD2E4F02C300A6B5A3 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 		CEAAFFBE2E4F02C300A6B5A3 /* GEMINI.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI.md; sourceTree = "<group>"; };
-		CEAAFFBF2E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_ARCHITECTURE_REVIEW.md; sourceTree = "<group>"; };
-		CEAAFFC02E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW.md; sourceTree = "<group>"; };
 		CEAAFFCA2E4F0CA600A6B5A3 /* TeaElephantDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaElephantDesign.swift; sourceTree = "<group>"; };
-		CEAAFFD62E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW_V2.md; sourceTree = "<group>"; };
-		CEAAFFD72E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW_V3.md; sourceTree = "<group>"; };
 		CEAAFFDA2E4F656B00A6B5A3 /* EnhancedCardViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedCardViewer.swift; sourceTree = "<group>"; };
 		CEAAFFDB2E4F656B00A6B5A3 /* EnhancedMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedMenu.swift; sourceTree = "<group>"; };
 		CEAAFFDC2E4F656B00A6B5A3 /* EnhancedNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedNewCard.swift; sourceTree = "<group>"; };
 		CEAAFFDD2E4F656B00A6B5A3 /* EnhancedShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancedShowCard.swift; sourceTree = "<group>"; };
 		CEAAFFDE2E4F656B00A6B5A3 /* ImprovedNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprovedNewCard.swift; sourceTree = "<group>"; };
 		CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStepNewCard.swift; sourceTree = "<group>"; };
-		CEAAFFF22E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AR_RESIZING_LOGIC_REVIEW.md; sourceTree = "<group>"; };
-		CEAAFFF32E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DESIGN_SYSTEM_REVIEW.md; sourceTree = "<group>"; };
-		CEAAFFF42E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_ARCHITECTURE_REVIEW_V2.md; sourceTree = "<group>"; };
-		CEAAFFF52E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = GEMINI_UX_REVIEW_V4.md; sourceTree = "<group>"; };
 		CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveOnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -824,17 +808,9 @@
 		CEAAFFC12E4F02C300A6B5A3 /* docs */ = {
 			isa = PBXGroup;
 			children = (
-				CEAAFFF22E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md */,
-				CEAAFFF32E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md */,
-				CEAAFFF42E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md */,
-				CEAAFFF52E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md */,
-				CEAAFFD62E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md */,
-				CEAAFFD72E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md */,
-				CEAAFFBC2E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md */,
+				CEAA000B2E5262CA00A6B5A3 /* PROJECT_REVIEW_AND_RECOMMENDATIONS.md */,
 				CEAAFFBD2E4F02C300A6B5A3 /* CLAUDE.md */,
 				CEAAFFBE2E4F02C300A6B5A3 /* GEMINI.md */,
-				CEAAFFBF2E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md */,
-				CEAAFFC02E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md */,
 			);
 			path = docs;
 			sourceTree = "<group>";
@@ -1011,23 +987,15 @@
 				4BACC5B22B2B8DAB000884D4 /* teaRecomendations.graphql in Resources */,
 				4BB73A012A8AB8B3003524A0 /* auth.graphql in Resources */,
 				4BB739EB2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */,
-				CEAAFFF62E50884B00A6B5A3 /* DESIGN_SYSTEM_REVIEW.md in Resources */,
-				CEAAFFF72E50884B00A6B5A3 /* AR_RESIZING_LOGIC_REVIEW.md in Resources */,
-				CEAAFFF82E50884B00A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW_V2.md in Resources */,
-				CEAAFFF92E50884B00A6B5A3 /* GEMINI_UX_REVIEW_V4.md in Resources */,
 				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
+				CEAA000C2E5262CA00A6B5A3 /* PROJECT_REVIEW_AND_RECOMMENDATIONS.md in Resources */,
 				4B6F1BC92A9BD04A00E4AFCC /* registerDevice.graphql in Resources */,
 				4BFE092A2AA1C75A0033131F /* teaRecomendation.graphql in Resources */,
-				CEAAFFC22E4F02C300A6B5A3 /* ARCHITECTURE_REVIEW.md in Resources */,
-				CEAAFFC32E4F02C300A6B5A3 /* GEMINI_ARCHITECTURE_REVIEW.md in Resources */,
-				CEAAFFC42E4F02C300A6B5A3 /* GEMINI_UX_REVIEW.md in Resources */,
 				CEAAFFC52E4F02C300A6B5A3 /* GEMINI.md in Resources */,
 				CEAAFFC62E4F02C300A6B5A3 /* CLAUDE.md in Resources */,
 				4B6F1BC62A9BBF2F00E4AFCC /* me.graphql in Resources */,
 				4B9CD7A729E1EEF9006C5F93 /* apollo-codegen-config.json in Resources */,
 				4B29053424C0AEDF007A3D1B /* Assets.xcassets in Resources */,
-				CEAAFFD82E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V2.md in Resources */,
-				CEAAFFD92E4F604E00A6B5A3 /* GEMINI_UX_REVIEW_V3.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,7 +1373,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
@@ -1441,7 +1409,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
@@ -1571,14 +1539,14 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1607,13 +1575,13 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

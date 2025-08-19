@@ -52,6 +52,19 @@ class Network {
         self.apollo = ApolloClient(networkTransport: splitNetworkTransport, store: store)
     }
     
+    func clearAuth() {
+        // Reset to default transport without auth
+        self.webSocketTransport = WebSocketTransport(websocket: webSocketClient)
+        self.splitNetworkTransport = SplitNetworkTransport(
+            uploadingNetworkTransport: normalTransport,
+            webSocketNetworkTransport: webSocketTransport
+        )
+        self.apollo = ApolloClient(networkTransport: splitNetworkTransport, store: store)
+        
+        // Clear any cached data
+        self.store.clearCache()
+    }
+    
     // The cache is necessary to set up the store, which we're going
     // to hand to the provider
     let cache = InMemoryNormalizedCache()

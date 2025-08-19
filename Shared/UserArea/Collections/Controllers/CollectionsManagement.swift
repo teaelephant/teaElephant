@@ -16,7 +16,7 @@ import KeychainSwift
 final class CollectionsManager: ObservableObject {
     @Published var collections: [Collection] = [Collection]()
     @Published var error: Error?
-    @Published var collectionsLoading = true
+    @Published var collectionsLoading = false
     @Published var lastRecomendation:String?
     @Published var recommendationsStack:String?
     @Published var recomendationLoading = false
@@ -30,39 +30,50 @@ final class CollectionsManager: ObservableObject {
     func getCollections(forceReload: Bool = false) async {
         let cachePolicy: CachePolicy = forceReload ? .fetchIgnoringCacheData : .returnCacheDataElseFetch
         collectionsLoading = true
+        log.debug("Starting getCollections, forceReload: \(forceReload)")
         do {
             for try await result in Network.shared.apollo.fetchAsync(query: CollectionsQuery(), cachePolicy: cachePolicy) {
                 if let errors = result.errors {
+                    log.error("getCollections error: \(errors)")
                     DispatchQueue.main.async {
                         self.error = errors.first
+                        self.collectionsLoading = false
                     }
+                    // Check if it's an auth error
+                    if let code = errors.first?.extensions?["code"] as? Int, code == -1 {
+                        log.debug("Auth error detected, setting auth to false")
+                        AuthManager.shared.auth = false
+                    }
+                    return
                 }
                 guard let cols = result.data?.collections else {
+                    log.debug("No collections data received")
+                    DispatchQueue.main.async {
+                        self.collectionsLoading = false
+                    }
                     return
                 }
                 
-                
+                log.debug("Received \(cols.count) collections")
                 DispatchQueue.main.async {
+                    // Clear and rebuild the collections array to ensure deleted items are removed
+                    var newCollections: [Collection] = []
                     for col in cols {
                         let records = col.records.map { record in
                             Record(id: record.id, data: TeaDataWithID(ID: record.tea.id, name: record.tea.name, type: .tea, description: ""))
                         }
-                        if let index = self.collections.firstIndex(where: {
-                            $0.id == col.id
-                        }){
-                            self.collections[index].records = records
-                            self.collections[index].name = col.name
-                        } else {
-                            self.collections.append(Collection(id: col.id, name: col.name, records: records))
-                        }
-                        
+                        newCollections.append(Collection(id: col.id, name: col.name, records: records))
                     }
+                    // Replace the entire array with fresh data
+                    self.collections = newCollections
                     self.collectionsLoading = false
+                    self.log.debug("Updated collections array with \(newCollections.count) items")
                 }
             }
         } catch {
             DispatchQueue.main.async {
                 self.error = error
+                self.collectionsLoading = false
             }
         }
     }

@@ -115,7 +115,10 @@
       "Bash(touch:*)",
       "Bash(git checkout:*)",
       "Bash(ln:*)",
-      "Bash(/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -typecheck Shared/Views/TeaOfTheDayWidget.swift -I . -module-name TeaElephant -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk)"
+      "Bash(/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -typecheck Shared/Views/TeaOfTheDayWidget.swift -I . -module-name TeaElephant -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk)",
+      "Bash(/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -typecheck Shared/Views/Menu.swift -I . -module-name TeaElephant -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.0.sdk)",
+      "Bash(/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -typecheck Shared/UserArea/Auth/AuthUIView.swift -I . -module-name TeaElephant -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk)",
+      "Bash(/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -typecheck Shared/UserArea/Auth/AuthManager.swift -I . -module-name TeaElephant -sdk /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.0.sdk)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

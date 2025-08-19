@@ -15,7 +15,7 @@ import UIKit
 @MainActor
 final class AuthManager: ObservableObject {
     @Published var error: Error?
-    @Published var loading = true
+    @Published var loading = false
     @Published var auth = false
     static let shared = AuthManager()
     let log = Logger(subsystem: "xax.TeaElephant", category: "AuthManager")
@@ -69,6 +69,7 @@ final class AuthManager: ObservableObject {
     }
     
     func Auth(_ code: String) async {
+        self.keychain.synchronizable = true
         self.keychain.delete(tokenKey)
         let result = await Network.shared.apollo.performAsync(mutation: AuthMutation(code: code, deviceID: deviceId))
         switch result {
@@ -78,17 +79,23 @@ final class AuthManager: ObservableObject {
                 return
             }
             guard let token = graphQLResult.data?.authApple.token else { return }
+            
+            // Update Network BEFORE setting auth to true
+            self.log.debug("new token \(token)")
+            self.keychain.set(token, forKey: tokenKey)
+            Network.shared.Auth(token)
+            
+            // Now update UI state
             DispatchQueue.main.async{
-                self.log.debug("new token \(token)")
-                self.keychain.synchronizable = true
-                self.keychain.set(token, forKey: tokenKey)
                 self.auth = true
                 self.error = nil
-                Network.shared.Auth(token)
             }
             
         case .failure(let error):
             print(error)
+            DispatchQueue.main.async{
+                self.error = error
+            }
         }
     }
     
@@ -99,11 +106,33 @@ final class AuthManager: ObservableObject {
                 return
             }
             guard let code = err.extensions?["code"] as? Int else {
+                self.error = err
                 return
             }
             if code == -1 {
                 self.auth = false
+                self.loading = false
+                // Clear invalid token
+                self.keychain.delete(tokenKey)
+                self.log.debug("Token invalid, cleared from keychain")
             }
+        }
+    }
+    
+    func signOut() {
+        DispatchQueue.main.async {
+            self.auth = false
+            self.loading = false
+            self.error = nil
+            
+            // Clear the token from keychain with synchronizable flag
+            self.keychain.synchronizable = true
+            self.keychain.delete(tokenKey)
+            
+            // Clear Network authentication and cache
+            Network.shared.clearAuth()
+            
+            self.log.debug("User signed out, cleared token and cache")
         }
     }
     

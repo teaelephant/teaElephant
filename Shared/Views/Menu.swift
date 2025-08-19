@@ -13,6 +13,7 @@ import SwiftUI
 struct Menu: View {
     @ObservedObject var appState = AppState.shared
     @StateObject private var collectionsManager = CollectionsManager()
+    @StateObject private var authManager = AuthManager.shared
     @State private var showingProfile = false
     @State private var showingDestination = false
     @State private var hasLoadedCollections = false
@@ -69,16 +70,6 @@ struct Menu: View {
                                 accessibilityLabel: "Add New Tea",
                                 accessibilityHint: "Write tea information to NFC tags or QR codes"
                             )
-                            
-                            menuCard(
-                                icon: "leaf.circle",
-                                title: "My Collections",
-                                subtitle: "Manage your tea library",
-                                color: Color(red: 0.55, green: 0.71, blue: 0.55),
-                                destination: AnyView(UserAreaUIView(authManager: AuthManager.shared)),
-                                accessibilityLabel: "My Tea Collections",
-                                accessibilityHint: "Manage and organize your tea library"
-                            )
                         }
                         .padding(.horizontal, 20)
                         
@@ -89,6 +80,11 @@ struct Menu: View {
             .navigationBarHidden(true)
             .onAppear {
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+                
+                // Check authentication status
+                Task {
+                    await authManager.authorized()
+                }
                 
                 // Load collections for Tea of the Day widget
                 if !hasLoadedCollections {
@@ -137,38 +133,65 @@ struct Menu: View {
                 
                 Spacer()
                 
-                // Profile Button with glass effect
+                // Context-aware button: Sign In or Profile based on auth state
                 NavigationLink(destination: UserAreaUIView(authManager: AuthManager.shared)) {
-                    ZStack {
-                        Circle()
-                            .fill(.ultraThinMaterial)
-                            .frame(width: 50, height: 50)
-                            .overlay(
-                                Circle()
-                                    .stroke(
-                                        LinearGradient(
-                                            colors: [
-                                                Color.glassBorder,
-                                                Color.teaPrimaryAlt.opacity(0.3)
-                                            ],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ),
-                                        lineWidth: 1
+                    if authManager.auth {
+                        // Authenticated: Show profile icon
+                        ZStack {
+                            Circle()
+                                .fill(.ultraThinMaterial)
+                                .frame(width: 50, height: 50)
+                                .overlay(
+                                    Circle()
+                                        .stroke(
+                                            LinearGradient(
+                                                colors: [
+                                                    Color.glassBorder,
+                                                    Color.teaPrimaryAlt.opacity(0.3)
+                                                ],
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            ),
+                                            lineWidth: 1
+                                        )
+                                )
+                                .shadow(color: Color.teaPrimaryAlt.opacity(0.2), radius: 6, x: 0, y: 3)
+                            
+                            Image(systemName: "person.fill")
+                                .foregroundColor(Color.teaPrimaryAlt)
+                                .font(.system(size: 22))
+                                .if(ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil) { view in
+                                    view.vibrantTextStyle(color: Color.teaPrimaryAlt)
+                                }
+                        }
+                        .accessibilityLabel("My Collections")
+                        .accessibilityHint("Tap to view your tea collections")
+                    } else {
+                        // Not authenticated: Show Sign In button
+                        HStack(spacing: 8) {
+                            Image(systemName: "person.badge.plus")
+                                .font(.system(size: 16, weight: .medium))
+                            Text("Sign In")
+                                .font(.system(size: 14, weight: .semibold))
+                        }
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 25)
+                                .fill(
+                                    LinearGradient(
+                                        colors: [Color.teaPrimaryAlt, Color.vibrantGreen],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
                                     )
-                            )
-                            .shadow(color: Color.teaPrimaryAlt.opacity(0.2), radius: 6, x: 0, y: 3)
-                        
-                        Image(systemName: "person.fill")
-                            .foregroundColor(Color.teaPrimaryAlt)
-                            .font(.system(size: 22))
-                            .if(ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == nil) { view in
-                                view.vibrantTextStyle(color: Color.teaPrimaryAlt)
-                            }
+                                )
+                        )
+                        .shadow(color: Color.teaPrimaryAlt.opacity(0.3), radius: 8, x: 0, y: 4)
+                        .accessibilityLabel("Sign In")
+                        .accessibilityHint("Tap to sign in with Apple ID")
                     }
                 }
-                .accessibilityLabel("Profile")
-                .accessibilityHint("Tap to view your profile and collections")
                 .accessibilityAddTraits(.isButton)
             }
             .padding(.horizontal, 20)
