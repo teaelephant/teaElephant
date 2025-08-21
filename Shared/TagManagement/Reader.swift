@@ -46,28 +46,43 @@ final class Reader: ObservableObject {
     }
     
     func processQRCode(_ code: String) async {
-        do {
-            for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: code)) {
-                if let errors = result.errors {
-                    DispatchQueue.main.async {
-                        self.error = self.mapErrors(errs: errors)
+        let id = code.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Retry a few times to tolerate eventual consistency of QR writes
+        let maxAttempts = 3
+        for attempt in 1...maxAttempts {
+            do {
+                // Always fetch from network to avoid stale cache
+                for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: id), cachePolicy: .fetchIgnoringCacheData) {
+                    if let errors = result.errors {
+                        // If the error indicates free QR, retry shortly; otherwise show error
+                        let mapped = self.mapErrors(errs: errors)
+                        if attempt < maxAttempts, mapped == "qr code is free, write some info for this qr code first" {
+                            try? await Task.sleep(nanoseconds: 800_000_000) // 0.8s
+                            continue
+                        }
+                        self.error = mapped
+                        return
                     }
-                    return
-                }
-                guard let qr = result.data?.qrRecord else {
-                    return
-                }
-                
-                DispatchQueue.main.async {
+                    guard let qr = result.data?.qrRecord else {
+                        // Not found yet; retry
+                        if attempt < maxAttempts {
+                            try? await Task.sleep(nanoseconds: 800_000_000)
+                            continue
+                        }
+                        return
+                    }
+                    
                     self.detectedInfo = TeaInfo(
                         meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
                         data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description),
                         tags: [Tag]()
                     )
+                    return
                 }
+            } catch {
+                self.error = error.localizedDescription
+                return
             }
-        } catch {
-            self.error = error.localizedDescription
         }
     }
     

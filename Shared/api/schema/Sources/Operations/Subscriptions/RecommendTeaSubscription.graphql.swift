@@ -30,7 +30,7 @@ public class RecommendTeaSubscription: GraphQLSubscription {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Subscription }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Subscription }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("recommendTea", String.self, arguments: [
         "collectionID": .variable("collectionID"),

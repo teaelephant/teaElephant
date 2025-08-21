@@ -22,7 +22,7 @@ public class GetQuery: GraphQLQuery {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("tea", Tea?.self, arguments: ["id": .variable("id")]),
     ] }
@@ -37,7 +37,7 @@ public class GetQuery: GraphQLQuery {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
+      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", TeaElephantSchema.ID.self),

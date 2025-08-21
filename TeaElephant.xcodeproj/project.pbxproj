@@ -211,6 +211,9 @@
 		CEAAFFFC2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */; };
 		CEAAFFFD2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */; };
 		CEAAFFFE2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */; };
+		CEC7D1972E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */; };
+		CEC7D1982E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */; };
+		CEC7D1992E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -375,6 +378,7 @@
 		CEAAFFDE2E4F656B00A6B5A3 /* ImprovedNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprovedNewCard.swift; sourceTree = "<group>"; };
 		CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStepNewCard.swift; sourceTree = "<group>"; };
 		CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveOnboardingView.swift; sourceTree = "<group>"; };
+		CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TeaOfTheDayQuery.graphql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -780,6 +784,7 @@
 		4BFF930F25BCDEA5005FC04F /* queries */ = {
 			isa = PBXGroup;
 			children = (
+				CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */,
 				4BFF939F25BCEDCF005FC04F /* list.graphql */,
 				1CEAF371A747B66EAA8A014A /* get.graphql */,
 				1CEAF7893496AA85F8233991 /* qrRead.graphql */,
@@ -990,6 +995,7 @@
 				4B29053724C0AEDF007A3D1B /* Preview Assets.xcassets in Resources */,
 				CEAA000C2E5262CA00A6B5A3 /* PROJECT_REVIEW_AND_RECOMMENDATIONS.md in Resources */,
 				4B6F1BC92A9BD04A00E4AFCC /* registerDevice.graphql in Resources */,
+				CEC7D1982E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */,
 				4BFE092A2AA1C75A0033131F /* teaRecomendation.graphql in Resources */,
 				CEAAFFC52E4F02C300A6B5A3 /* GEMINI.md in Resources */,
 				CEAAFFC62E4F02C300A6B5A3 /* CLAUDE.md in Resources */,
@@ -1003,6 +1009,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC7D1992E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,6 +1034,7 @@
 				4BB73A022A8AB8B3003524A0 /* auth.graphql in Resources */,
 				4BFE092B2AA1C75A0033131F /* teaRecomendation.graphql in Resources */,
 				4BB739EC2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */,
+				CEC7D1972E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,7 +1381,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
@@ -1385,7 +1393,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1409,7 +1417,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephant/Info.plist;
@@ -1420,7 +1428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1539,7 +1547,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator14.0]" = arm64;
@@ -1551,7 +1559,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1575,7 +1583,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
@@ -1586,7 +1594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = xax.TeaElephant.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";

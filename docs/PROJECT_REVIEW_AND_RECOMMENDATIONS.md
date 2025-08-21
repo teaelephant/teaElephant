@@ -54,7 +54,7 @@ Here is the latest version of the product roadmap:
     *   **Dedicated Library UI:** Create a dedicated, visually rich "Tea Library" screen within the iOS app where you can browse all your base teas.
     *   **"Quick Add" from Library:** From the main menu or the "Tea Library" screen, have a "Quick Add" button for each tea.
 *   **Enhanced Tea Discovery:**
-    *   **"Tea of the Day" Widget:** A simple widget that suggests a tea from your collection to try each day.
+    *   **"Tea of the Day" Widget:** A simple widget that suggests a tea from your collection to try each day. To make this feature more engaging, the recommendation algorithm could be improved by using a scoring system that takes into account multiple criteria, such as the weather, the time of day, and the user's recent consumption history.
 
 ### 5.3. Could-Have
 

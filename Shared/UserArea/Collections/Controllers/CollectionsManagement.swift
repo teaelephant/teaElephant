@@ -20,6 +20,8 @@ final class CollectionsManager: ObservableObject {
     @Published var lastRecomendation:String?
     @Published var recommendationsStack:String?
     @Published var recomendationLoading = false
+    @Published var teaOfTheDay: TeaOfTheDayQuery.Data.TeaOfTheDay?
+    @Published var teaOfTheDayLoading = false
     var subscribeRecommendation: Cancellable?
     let log = Logger(subsystem: "xax.TeaElephant", category: "CollectionManager")
     
@@ -195,6 +197,25 @@ final class CollectionsManager: ObservableObject {
             }
             DispatchQueue.main.async {
                 self.recomendationLoading = false
+            }
+        }
+    }
+    
+    func fetchTeaOfTheDay() async {
+        teaOfTheDayLoading = true
+        do {
+            for try await result in Network.shared.apollo.fetchAsync(query: TeaOfTheDayQuery(), cachePolicy: .returnCacheDataElseFetch) {
+                DispatchQueue.main.async {
+                    self.teaOfTheDay = result.data?.teaOfTheDay
+                    self.teaOfTheDayLoading = false
+                }
+                break // Only need the first result
+            }
+        } catch {
+            log.error("Failed to fetch tea of the day: \(error)")
+            DispatchQueue.main.async {
+                self.error = error
+                self.teaOfTheDayLoading = false
             }
         }
     }

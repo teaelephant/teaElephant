@@ -30,7 +30,7 @@ public class RegisterDeviceMutation: GraphQLMutation {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("registerDeviceToken", Bool.self, arguments: [
         "deviceID": .variable("deviceID"),

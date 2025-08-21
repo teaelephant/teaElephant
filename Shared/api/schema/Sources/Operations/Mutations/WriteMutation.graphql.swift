@@ -30,7 +30,7 @@ public class WriteMutation: GraphQLMutation {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("writeToQR", WriteToQR.self, arguments: [
         "id": .variable("id"),
@@ -47,7 +47,7 @@ public class WriteMutation: GraphQLMutation {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
+      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", TeaElephantSchema.ID.self),

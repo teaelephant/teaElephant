@@ -16,7 +16,7 @@ public class MeQuery: GraphQLQuery {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("me", Me?.self),
     ] }
@@ -30,7 +30,7 @@ public class MeQuery: GraphQLQuery {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.User }
+      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.User }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("tokenExpiredAt", TeaElephantSchema.Date.self),

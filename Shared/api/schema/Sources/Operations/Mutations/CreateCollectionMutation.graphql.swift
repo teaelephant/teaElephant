@@ -22,7 +22,7 @@ public class CreateCollectionMutation: GraphQLMutation {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("createCollection", CreateCollection.self, arguments: ["name": .variable("name")]),
     ] }
@@ -37,7 +37,7 @@ public class CreateCollectionMutation: GraphQLMutation {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Collection }
+      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Collection }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", TeaElephantSchema.ID.self),
@@ -56,7 +56,7 @@ public class CreateCollectionMutation: GraphQLMutation {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
+        public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", TeaElephantSchema.ID.self),
@@ -73,7 +73,7 @@ public class CreateCollectionMutation: GraphQLMutation {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
+          public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
           public static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .field("id", TeaElephantSchema.ID.self),

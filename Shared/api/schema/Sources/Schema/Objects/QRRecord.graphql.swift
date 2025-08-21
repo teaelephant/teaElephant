@@ -4,8 +4,9 @@
 import ApolloAPI
 
 public extension Objects {
-  static let QRRecord = Object(
+  static let QRRecord = ApolloAPI.Object(
     typename: "QRRecord",
-    implementedInterfaces: []
+    implementedInterfaces: [],
+    keyFields: nil
   )
 }

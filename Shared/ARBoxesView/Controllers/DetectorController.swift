@@ -190,7 +190,7 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 
         Task{
             do {
-                for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: payload)) {
+                for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: payload), cachePolicy: .fetchIgnoringCacheData) {
                     if let errors = result.errors {
                         print(errors)
                         return

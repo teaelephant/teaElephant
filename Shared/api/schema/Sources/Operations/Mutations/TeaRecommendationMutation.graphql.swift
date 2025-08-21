@@ -30,7 +30,7 @@ public class TeaRecommendationMutation: GraphQLMutation {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("teaRecommendation", String.self, arguments: [
         "collectionID": .variable("collectionID"),

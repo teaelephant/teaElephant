@@ -13,6 +13,7 @@ struct TeaOfTheDayWidget: View {
     @State private var todaysTea: TeaInfo?
     @State private var isLoading = true
     @State private var showDetails = false
+    @State private var isFromBackend = false
     @AppStorage("lastTeaOfTheDayDate") private var lastTeaDate = ""
     @AppStorage("lastTeaOfTheDayID") private var lastTeaID = ""
     
@@ -90,10 +91,10 @@ struct TeaOfTheDayWidget: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         HStack(spacing: 6) {
-                            Image(systemName: "sparkles")
+                            Image(systemName: isFromBackend ? "sparkles" : "shuffle")
                                 .font(.system(size: 14))
-                                .foregroundColor(Color.vibrantBlue)
-                            Text("TEA OF THE DAY")
+                                .foregroundColor(isFromBackend ? Color.vibrantBlue : Color.teaPrimaryAlt)
+                            Text(isFromBackend ? "TEA OF THE DAY" : "RANDOM SELECTION")
                                 .font(.system(size: 11, weight: .bold))
                                 .foregroundColor(Color.teaTextSecondaryAlt)
                                 .tracking(1.2)
@@ -221,23 +222,47 @@ struct TeaOfTheDayWidget: View {
     private func loadTeaOfTheDay() {
         isLoading = true
         
-        // Check if we already have a tea for today
-        if lastTeaDate == currentDateString && !lastTeaID.isEmpty {
-            // Try to find the saved tea
-            if let tea = findTeaByID(lastTeaID) {
-                todaysTea = tea
-                isLoading = false
-                return
+        // Fetch tea of the day from backend
+        Task {
+            await manager.fetchTeaOfTheDay()
+            
+            DispatchQueue.main.async {
+                if let backendTea = self.manager.teaOfTheDay {
+                    // Convert backend tea to TeaInfo format
+                    self.todaysTea = self.convertToTeaInfo(backendTea.tea)
+                    self.lastTeaDate = self.currentDateString
+                    self.lastTeaID = backendTea.tea.id
+                    self.isFromBackend = true
+                } else {
+                    // Fallback to random selection if backend doesn't provide tea of the day
+                    self.isFromBackend = false
+                    self.selectRandomTea()
+                }
+                self.isLoading = false
             }
         }
-        
-        // Get a random tea for today
-        selectRandomTea()
     }
     
     private func refreshTeaOfTheDay() {
         withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-            selectRandomTea()
+            isLoading = true
+            Task {
+                // Force refresh from backend
+                await manager.fetchTeaOfTheDay()
+                
+                DispatchQueue.main.async {
+                    if let backendTea = self.manager.teaOfTheDay {
+                        self.todaysTea = self.convertToTeaInfo(backendTea.tea)
+                        self.lastTeaDate = self.currentDateString
+                        self.lastTeaID = backendTea.tea.id
+                        self.isFromBackend = true
+                    } else {
+                        self.isFromBackend = false
+                        self.selectRandomTea()
+                    }
+                    self.isLoading = false
+                }
+            }
         }
     }
     
@@ -284,6 +309,32 @@ struct TeaOfTheDayWidget: View {
         }
         
         isLoading = false
+    }
+    
+    private func convertToTeaInfo(_ tea: TeaOfTheDayQuery.Data.TeaOfTheDay.Tea) -> TeaInfo {
+        // Convert tags from backend format
+        let tags = tea.tags.map { tag in
+            Tag(
+                id: tag.id,
+                name: tag.name,
+                color: tag.color,
+                category: "" // Default category, not provided by teaOfTheDay query
+            )
+        }
+        
+        return TeaInfo(
+            meta: TeaMeta(
+                id: tea.id,
+                expirationDate: Date().addingTimeInterval(365 * 24 * 60 * 60), // Default 1 year
+                brewingTemp: 85 // Default temp, could be fetched from backend if available
+            ),
+            data: TeaData(
+                name: tea.name,
+                type: tea.type,
+                description: tea.description
+            ),
+            tags: tags
+        )
     }
     
     private func findTeaByID(_ id: String) -> TeaInfo? {

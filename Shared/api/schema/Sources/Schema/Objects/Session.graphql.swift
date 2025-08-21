@@ -4,8 +4,9 @@
 import ApolloAPI
 
 public extension Objects {
-  static let Session = Object(
+  static let Session = ApolloAPI.Object(
     typename: "Session",
-    implementedInterfaces: []
+    implementedInterfaces: [],
+    keyFields: nil
   )
 }

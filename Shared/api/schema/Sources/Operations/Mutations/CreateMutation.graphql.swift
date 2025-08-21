@@ -22,7 +22,7 @@ public class CreateMutation: GraphQLMutation {
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
+    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("newTea", NewTea.self, arguments: ["tea": .variable("tea")]),
     ] }
@@ -36,7 +36,7 @@ public class CreateMutation: GraphQLMutation {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
+      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", TeaElephantSchema.ID.self),

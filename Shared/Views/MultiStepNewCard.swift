@@ -67,91 +67,93 @@ struct MultiStepNewCard: View {
 #if APPCLIP
         FullAppOffer()
 #else
-        if readQRCode {
-            CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson") { result in
-                switch result {
-                case .success(let code):
-                    Task {
-                        await saveQR(code.string)
+        Group {
+            if readQRCode {
+                CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson") { result in
+                    switch result {
+                    case .success(let code):
+                        Task {
+                            await saveQR(code.string)
+                            readQRCode = false
+                        }
+                    case .failure(let error):
+                        errorMessage = error.localizedDescription
+                        showingErrorAlert = true
                         readQRCode = false
                     }
-                case .failure(let error):
-                    errorMessage = error.localizedDescription
-                    showingErrorAlert = true
-                    readQRCode = false
                 }
-            }
-        } else {
-            NavigationView {
-                ZStack {
-                    // Liquid glass background
-                    LiquidBackground(
-                        primaryColor: Color.teaPrimaryAlt,
-                        secondaryColor: Color.vibrantBlue
-                    )
-                    .ignoresSafeArea()
-                    
-                    VStack(spacing: 0) {
-                        // Custom Navigation Bar
-                        customNavigationBar
+            } else {
+                NavigationView {
+                    ZStack {
+                        // Liquid glass background
+                        LiquidBackground(
+                            primaryColor: Color.teaPrimaryAlt,
+                            secondaryColor: Color.vibrantBlue
+                        )
+                        .ignoresSafeArea()
                         
-                        // Progress Bar
-                        progressBar
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 16)
-                        
-                        // Step Content
-                        ScrollView {
-                            VStack(spacing: 24) {
-                                // Step indicator
-                                stepIndicator
-                                
-                                // Form content based on current step
-                                Group {
-                                    switch currentStep {
-                                    case 1:
-                                        basicInfoStep
-                                    case 2:
-                                        detailsStep
-                                    case 3:
-                                        reviewStep
-                                    default:
-                                        EmptyView()
-                                    }
-                                }
+                        VStack(spacing: 0) {
+                            // Custom Navigation Bar
+                            customNavigationBar
+                            
+                            // Progress Bar
+                            progressBar
                                 .padding(.horizontal, 20)
-                                .transition(.asymmetric(
-                                    insertion: .move(edge: .trailing).combined(with: .opacity),
-                                    removal: .move(edge: .leading).combined(with: .opacity)
-                                ))
-                                
-                                // Navigation buttons
-                                navigationButtons
+                                .padding(.vertical, 16)
+                            
+                            // Step Content
+                            ScrollView {
+                                VStack(spacing: 24) {
+                                    // Step indicator
+                                    stepIndicator
+                                    
+                                    // Form content based on current step
+                                    Group {
+                                        switch currentStep {
+                                        case 1:
+                                            basicInfoStep
+                                        case 2:
+                                            detailsStep
+                                        case 3:
+                                            reviewStep
+                                        default:
+                                            EmptyView()
+                                        }
+                                    }
                                     .padding(.horizontal, 20)
-                                    .padding(.bottom, 30)
+                                    .transition(.asymmetric(
+                                        insertion: .move(edge: .trailing).combined(with: .opacity),
+                                        removal: .move(edge: .leading).combined(with: .opacity)
+                                    ))
+                                    
+                                    // Navigation buttons
+                                    navigationButtons
+                                        .padding(.horizontal, 20)
+                                        .padding(.bottom, 30)
+                                }
                             }
                         }
+                        
+                        // Processing overlay
+                        if isProcessing {
+                            processingOverlay
+                        }
                     }
-                    
-                    // Processing overlay
-                    if isProcessing {
-                        processingOverlay
-                    }
-                }
-                .navigationBarHidden(true)
-                .alert("Success!", isPresented: $showingSuccessAlert) {
-                    Button("OK") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                } message: {
-                    Text("Tea information has been saved successfully!")
-                }
-                .alert("Error", isPresented: $showingErrorAlert) {
-                    Button("OK", role: .cancel) {}
-                } message: {
-                    Text(errorMessage)
+                    .navigationBarHidden(true)
                 }
             }
+        }
+        .alert("Success!", isPresented: $showingSuccessAlert) {
+            Button("OK") {
+                presentationMode.wrappedValue.dismiss()
+            }
+        } message: {
+            Text("Tea information has been saved successfully!")
+        }
+        .alert("Error", isPresented: $showingErrorAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(errorMessage)
         }
 #endif
     }
@@ -1087,6 +1089,7 @@ struct MultiStepNewCard: View {
     }
     
     // MARK: - Actions
+    @MainActor
     func saveNFC() async {
         isProcessing = true
         defer { isProcessing = false }
@@ -1142,6 +1145,7 @@ struct MultiStepNewCard: View {
         }
     }
     
+    @MainActor
     private func resetState() {
         name = ""
         type = Type_Enum.tea
@@ -1152,10 +1156,12 @@ struct MultiStepNewCard: View {
         isUsingExistingTea = false
     }
     
+    @MainActor
     private func getQR() {
         readQRCode = true
     }
     
+    @MainActor
     private func saveQR(_ code: String) async {
         isProcessing = true
         defer { isProcessing = false }
