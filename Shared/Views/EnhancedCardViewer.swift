@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import os
 import CodeScanner
 
+private let logQR = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "QR")
+
 struct EnhancedCardViewer: View {
-    @ObservedObject private var reader = Reader(infoReader: NFCReader(), extender: RecordGetter())
+    @StateObject private var reader = Reader(infoReader: NFCReader(), extender: RecordGetter())
     @State private var readQRCode = false
     @State private var showingEnhancedCard = false
     
@@ -37,7 +40,7 @@ struct EnhancedCardViewer: View {
                             showingEnhancedCard = true
                         }
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        logQR.error("QR scan error: \(error.localizedDescription, privacy: .public)")
                         readQRCode = false
                     }
                 }
@@ -229,13 +232,13 @@ struct EnhancedCardViewer: View {
     // MARK: - Actions
     private func processQR(_ code: String) async {
         await reader.processQRCode(code)
-        print("Read successfully")
+        logQR.info("QR processed successfully")
     }
     
     func readNFC() {
         reader.readInfo()
         showingEnhancedCard = true
-        print("Read successfully")
+        logQR.info("NFC read started")
     }
     
     func readQR() {

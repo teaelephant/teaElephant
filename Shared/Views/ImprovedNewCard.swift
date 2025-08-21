@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import os
+
+private let logUI = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "UI")
 import Combine
 import CodeScanner
 import UIKit
@@ -43,7 +46,7 @@ struct ImprovedNewCard: View {
                             readQRCode = false
                         }
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        logUI.error("QR scan error: \(error.localizedDescription, privacy: .public)")
                         readQRCode = false
                     }
                 }
@@ -260,7 +263,7 @@ struct ImprovedNewCard: View {
         }
         
         guard let tempValue = Int(brewingTemp) else {
-            print("Brewing temperature is not a valid number")
+            logUI.error("Brewing temperature is not a valid number")
             return
         }
         
@@ -275,7 +278,7 @@ struct ImprovedNewCard: View {
             try await w.write(data, expirationDate: expirationDate, brewingTemp: tempValue)
             saveSuccess = true
         } catch {
-            print(error.localizedDescription)
+            logUI.error("NFC save error: \(error.localizedDescription, privacy: .public)")
         }
     }
     
@@ -288,12 +291,12 @@ struct ImprovedNewCard: View {
         if let searcherData = searcher.detectedInfo {
             // QRwriter is not available, using alternative approach
             await QRManager().write(id: qrcode, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: Int(brewingTemp) ?? 95))
-            print("Saved successfully")
+            logUI.info("QR write with existing tea succeeded")
             return
         }
         
         guard let tempValue = Int(brewingTemp) else {
-            print("Brewing temperature is not a valid number")
+            logUI.error("Brewing temperature is not a valid number")
             return
         }
         
@@ -309,7 +312,7 @@ struct ImprovedNewCard: View {
             await QRManager().write(id: qrcode, data: meta)
             print("Saved successfully")
         } catch {
-            print(error.localizedDescription)
+            logUI.error("QR save error: \(error.localizedDescription, privacy: .public)")
         }
     }
 }

@@ -214,6 +214,14 @@
 		CEC7D1972E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */; };
 		CEC7D1982E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */; };
 		CEC7D1992E5665F000AE0292 /* TeaOfTheDayQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */; };
+		CEE6B7972E579DE60091BD2F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7952E579DE60091BD2F /* Log.swift */; };
+		CEE6B7982E579DE60091BD2F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */; };
+		CEE6B7992E579DE60091BD2F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7952E579DE60091BD2F /* Log.swift */; };
+		CEE6B79A2E579DE60091BD2F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */; };
+		CEE6B79B2E579DE60091BD2F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7952E579DE60091BD2F /* Log.swift */; };
+		CEE6B79C2E579DE60091BD2F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */; };
+		CEE6B79D2E579DE60091BD2F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7952E579DE60091BD2F /* Log.swift */; };
+		CEE6B79E2E579DE60091BD2F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,6 +387,8 @@
 		CEAAFFDF2E4F656B00A6B5A3 /* MultiStepNewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStepNewCard.swift; sourceTree = "<group>"; };
 		CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveOnboardingView.swift; sourceTree = "<group>"; };
 		CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TeaOfTheDayQuery.graphql; sourceTree = "<group>"; };
+		CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
+		CEE6B7952E579DE60091BD2F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -669,6 +679,7 @@
 		4B8E854424D09EFE001FCFFF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CEE6B7962E579DE60091BD2F /* Utilities */,
 				CEAAFFCB2E4F0CA600A6B5A3 /* DesignSystem */,
 				CEAAFFCD2E4F0CA600A6B5A3 /* Onboarding */,
 				4B5789E32A9DCE9E00549157 /* Notifications */,
@@ -834,6 +845,15 @@
 				CEAAFFFA2E52520E00A6B5A3 /* InteractiveOnboardingView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		CEE6B7962E579DE60091BD2F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */,
+				CEE6B7952E579DE60091BD2F /* Log.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1057,6 +1077,8 @@
 				4B8D0BBD25AAECA900FF40DB /* Type.swift in Sources */,
 				4B4E296A2A973DB500383D06 /* Collection.swift in Sources */,
 				4BEF3EBD2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
+				CEE6B79D2E579DE60091BD2F /* Log.swift in Sources */,
+				CEE6B79E2E579DE60091BD2F /* HapticFeedback.swift in Sources */,
 				4B1D0A322504169F00D26450 /* Writer.swift in Sources */,
 				4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */,
 				4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */,
@@ -1135,6 +1157,8 @@
 				1CEAFEB02F756D050878B559 /* Manager.swift in Sources */,
 				4B36C30725C2D7EE006C9293 /* TeaMeta.swift in Sources */,
 				1CEAFB5A1B87520A502CCCC5 /* Entity.swift in Sources */,
+				CEE6B79B2E579DE60091BD2F /* Log.swift in Sources */,
+				CEE6B79C2E579DE60091BD2F /* HapticFeedback.swift in Sources */,
 				4BB73A032A8C0884003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				4BC972C32AAF9A7400636A4F /* UnauthInterceptor.swift in Sources */,
 				CEAAFFFC2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */,
@@ -1153,6 +1177,8 @@
 				CEAAFFD32E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4B1B06292A7B919900A332E1 /* ApolloClientExtension.swift in Sources */,
 				4BEF3EBF2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
+				CEE6B7992E579DE60091BD2F /* Log.swift in Sources */,
+				CEE6B79A2E579DE60091BD2F /* HapticFeedback.swift in Sources */,
 				4BC972BF2AAF989C00636A4F /* Color.swift in Sources */,
 				4BC972BC2AAF97BD00636A4F /* Network.swift in Sources */,
 				4BC972BB2AAF97B100636A4F /* ARCardUIView.swift in Sources */,
@@ -1219,6 +1245,8 @@
 				4B5789EC2A9DD6CB00549157 /* AppState.swift in Sources */,
 				1CEAFB92E9A61058082EAB87 /* Manager.swift in Sources */,
 				1CEAFFEF66C6F8F828D3DCC8 /* DetecorView.swift in Sources */,
+				CEE6B7972E579DE60091BD2F /* Log.swift in Sources */,
+				CEE6B7982E579DE60091BD2F /* HapticFeedback.swift in Sources */,
 				1CEAFB59120D515FC865748C /* Entity.swift in Sources */,
 				4B5789E82A9DD16F00549157 /* NotificationUIView.swift in Sources */,
 			);

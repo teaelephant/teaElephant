@@ -10,7 +10,7 @@ import SwiftUI
 struct DestinatoinUIView: View {
     var id : String
     var message: String
-    @ObservedObject private var manager = Reader(infoReader: NFCReader(), extender: RecordGetter())
+    @StateObject private var manager = Reader(infoReader: NFCReader(), extender: RecordGetter())
     var body: some View {
         if manager.detectedInfo == nil {
             ProgressView().onAppear{

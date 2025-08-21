@@ -3,6 +3,9 @@
 //
 
 import Foundation
+import os
+
+private let logNetwork = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "Network")
 import TeaElephantSchema
 
 class QRManager {
@@ -15,15 +18,15 @@ class QRManager {
         switch result {
         case .success(let graphQLResult):
             if let errors = graphQLResult.errors {
-                print(errors)
+                logNetwork.error("WriteMutation errors: \(String(describing: errors), privacy: .public)")
                 return
             }
             guard let id = graphQLResult.data?.writeToQR.id else {
                 return
             }
-            print(id)
+            logNetwork.info("WriteMutation success id=\(id, privacy: .public)")
         case .failure(let error):
-            print(error)
+            logNetwork.error("WriteMutation failure: \(String(describing: error), privacy: .public)")
         }
     }
 }

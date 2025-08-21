@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import os
+
+private let logQR2 = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "QR")
 import CodeScanner
 
 struct CardViewer: View {
-    @ObservedObject private var reader = Reader(infoReader: NFCReader(), extender: RecordGetter())
+    @StateObject private var reader = Reader(infoReader: NFCReader(), extender: RecordGetter())
     @State private var readQRCode = false
     var body: some View {
         VStack {
@@ -30,7 +33,7 @@ struct CardViewer: View {
                             readQRCode = false
                         }
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        logQR2.error("QR scan error: \(error.localizedDescription, privacy: .public)")
                         readQRCode = false
                     }
                 }
@@ -58,12 +61,12 @@ struct CardViewer: View {
     
     private func processQR(_ code: String) async {
         await reader.processQRCode(code)
-        print("Read successfully")
+        logQR2.info("QR processed successfully")
     }
     
     func readNFC() {
         reader.readInfo()
-        print("Read successfully")
+        logQR2.info("NFC read started")
     }
     
     func readQR() {

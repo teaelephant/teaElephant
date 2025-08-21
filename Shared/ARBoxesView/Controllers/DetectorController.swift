@@ -6,6 +6,9 @@ import Vision
 import Combine
 import SwiftUI
 import TeaElephantSchema
+import os
+
+private let logAR = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "Network")
 
 class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegate {
 	var arView: ARView!
@@ -192,7 +195,7 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
             do {
                 for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: payload), cachePolicy: .fetchIgnoringCacheData) {
                     if let errors = result.errors {
-                        print(errors)
+                        logAR.error("AR ReadQuery errors: \(String(describing: errors), privacy: .public)")
                         return
                     }
                     guard let qr = result.data?.qrRecord else {
@@ -220,7 +223,7 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
                         
                 }
             } catch {
-                print(error)
+                logAR.error("AR ReadQuery failure: \(String(describing: error), privacy: .public)")
             }
         }
 	}

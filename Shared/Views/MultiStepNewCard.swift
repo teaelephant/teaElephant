@@ -12,25 +12,7 @@ import TeaElephantSchema
 import UIKit
 
 // MARK: - Haptic Feedback Helper
-enum HapticFeedback {
-    static func light() {
-        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-        impactFeedback.prepare()
-        impactFeedback.impactOccurred()
-    }
-    
-    static func success() {
-        let notificationFeedback = UINotificationFeedbackGenerator()
-        notificationFeedback.prepare()
-        notificationFeedback.notificationOccurred(.success)
-    }
-    
-    static func error() {
-        let notificationFeedback = UINotificationFeedbackGenerator()
-        notificationFeedback.prepare()
-        notificationFeedback.notificationOccurred(.error)
-    }
-}
+// Note: Using the shared HapticFeedback from Utilities
 
 struct MultiStepNewCard: View {
     @Environment(\.presentationMode) var presentationMode

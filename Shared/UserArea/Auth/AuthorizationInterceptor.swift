@@ -26,7 +26,7 @@ class AuthorizationInterceptor: ApolloInterceptor {
         keychain.synchronizable = true  // Match the synchronizable setting used in AuthManager
         if let token = keychain.get(tokenKey) {
             let value = "Bearer \(token)"
-            print(value)
+            // Do not log tokens in production; header is set without printing
             request.addHeader(name: "Authorization", value: value)
         }
         
