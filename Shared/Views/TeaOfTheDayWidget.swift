@@ -248,7 +248,7 @@ struct TeaOfTheDayWidget: View {
             isLoading = true
             Task {
                 // Force refresh from backend
-                await manager.fetchTeaOfTheDay()
+                await manager.fetchTeaOfTheDay(forceReload: true)
                 
                 DispatchQueue.main.async {
                     if let backendTea = self.manager.teaOfTheDay {

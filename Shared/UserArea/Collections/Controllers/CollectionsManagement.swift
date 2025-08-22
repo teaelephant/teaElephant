@@ -201,15 +201,16 @@ final class CollectionsManager: ObservableObject {
         }
     }
     
-    func fetchTeaOfTheDay() async {
+    func fetchTeaOfTheDay(forceReload: Bool = false) async {
         teaOfTheDayLoading = true
+        let policy: CachePolicy = forceReload ? .fetchIgnoringCacheData : .returnCacheDataElseFetch
         do {
-            for try await result in Network.shared.apollo.fetchAsync(query: TeaOfTheDayQuery(), cachePolicy: .returnCacheDataElseFetch) {
+            for try await result in Network.shared.apollo.fetchAsync(query: TeaOfTheDayQuery(), cachePolicy: policy) {
                 DispatchQueue.main.async {
                     self.teaOfTheDay = result.data?.teaOfTheDay
                     self.teaOfTheDayLoading = false
                 }
-                break // Only need the first result
+                break // For forceReload we already bypass cache; one result is enough
             }
         } catch {
             log.error("Failed to fetch tea of the day: \(error)")
