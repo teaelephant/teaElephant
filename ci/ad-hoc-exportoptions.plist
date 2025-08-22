@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>method</key>
+    <string>ad-hoc</string>
+    <key>teamID</key>
+    <string>R859U8DTY9</string>
+    <key>signingStyle</key>
+    <string>automatic</string>
+    <key>destination</key>
+    <string>export</string>
+    <key>stripSwiftSymbols</key>
+    <true/>
+    <key>compileBitcode</key>
+    <false/>
+    <key>manifest</key>
+    <dict/>
+    <!-- If you prefer manual signing, uncomment and set profile names:
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>xax.TeaElephant</key>
+        <string>AdHoc xax.TeaElephant</string>
+        <key>xax.TeaElephant.Clip</key>
+        <string>AdHoc xax.TeaElephant.Clip</string>
+    </dict>
+    <key>signingCertificate</key>
+    <string>Apple Distribution</string>
+    -->
+</dict>
+</plist>
