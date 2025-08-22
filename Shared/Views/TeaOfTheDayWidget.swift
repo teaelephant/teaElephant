@@ -22,6 +22,16 @@ struct TeaOfTheDayWidget: View {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: Date())
     }
+
+    private func isoDateString(from iso: String) -> String {
+        // Backend returns ISO8601; normalize to yyyy-MM-dd for comparisons
+        if let date = ISO8601DateFormatter().date(from: iso) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter.string(from: date)
+        }
+        return currentDateString
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -221,16 +231,17 @@ struct TeaOfTheDayWidget: View {
     
     private func loadTeaOfTheDay() {
         isLoading = true
-        
-        // Fetch tea of the day from backend
+        // If stored day differs from today or server's last known day, force refresh
+        let shouldForce = lastTeaDate != currentDateString
         Task {
-            await manager.fetchTeaOfTheDay()
+            await manager.fetchTeaOfTheDay(forceReload: shouldForce)
             
             DispatchQueue.main.async {
                 if let backendTea = self.manager.teaOfTheDay {
                     // Convert backend tea to TeaInfo format
                     self.todaysTea = self.convertToTeaInfo(backendTea.tea)
-                    self.lastTeaDate = self.currentDateString
+                    // Persist the server date to compare next launch
+                    self.lastTeaDate = self.isoDateString(from: backendTea.date)
                     self.lastTeaID = backendTea.tea.id
                     self.isFromBackend = true
                 } else {
@@ -253,7 +264,7 @@ struct TeaOfTheDayWidget: View {
                 DispatchQueue.main.async {
                     if let backendTea = self.manager.teaOfTheDay {
                         self.todaysTea = self.convertToTeaInfo(backendTea.tea)
-                        self.lastTeaDate = self.currentDateString
+                        self.lastTeaDate = self.isoDateString(from: backendTea.date)
                         self.lastTeaID = backendTea.tea.id
                         self.isFromBackend = true
                     } else {
