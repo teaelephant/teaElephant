@@ -493,8 +493,9 @@ struct MultiStepNewCard: View {
                             }
                         }
                         
-                        if !tempError.isEmpty {
-                            Label(tempError, systemImage: "exclamationmark.circle.fill")
+                        let tempErr = computedTempError()
+                        if !tempErr.isEmpty {
+                            Label(tempErr, systemImage: "exclamationmark.circle.fill")
                                 .font(.system(size: 12))
                                 .foregroundColor(.red)
                         }
@@ -1037,6 +1038,36 @@ struct MultiStepNewCard: View {
             descriptionError = ""
         }
     }
+
+    // MARK: - Pure Validators (no state mutation)
+    private func computedNameError() -> String {
+        if isUsingExistingTea { return "" }
+        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedName.isEmpty { return "" }
+        if trimmedName.count < 2 { return "Name must be at least 2 characters" }
+        if trimmedName.count > 100 { return "Name is too long (max 100 characters)" }
+        if trimmedName.rangeOfCharacter(from: .alphanumerics) == nil { return "Name must contain at least one letter or number" }
+        if trimmedName.contains(where: { $0.isNewline }) { return "Name cannot contain line breaks" }
+        return ""
+    }
+
+    private func computedTempError() -> String {
+        guard !brewingTemp.isEmpty else { return "Temperature is required" }
+        let cleanedTemp = brewingTemp.filter { $0.isNumber }
+        guard let temp = Int(cleanedTemp) else { return "Please enter a valid number" }
+        if temp < 50 { return "Temperature too low (minimum 50°C)" }
+        if temp > 100 { return "Temperature too high (maximum 100°C)" }
+        return ""
+    }
+
+    private func computedDescriptionError() -> String {
+        if isUsingExistingTea { return "" }
+        let trimmedDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedDescription.count > 500 { return "Description is too long (max 500 characters)" }
+        if trimmedDescription.count > 0 && trimmedDescription.count < 10 { return "Description should be at least 10 characters" }
+        if trimmedDescription.contains(where: { "<>&\"'".contains($0) }) { return "Description contains invalid characters" }
+        return ""
+    }
     
     // MARK: - Additional Validation Helpers
     private func validateBrewingTime() -> Bool {
@@ -1052,22 +1083,22 @@ struct MultiStepNewCard: View {
     private func validateCurrentStep() -> Bool {
         switch currentStep {
         case 1:
-            validateName()
-            return isUsingExistingTea || (nameError.isEmpty && !name.isEmpty)
+            let err = computedNameError()
+            return isUsingExistingTea || (err.isEmpty && !name.isEmpty)
         case 2:
-            validateTemperature()
-            validateDescription()
-            return tempError.isEmpty && (isUsingExistingTea || descriptionError.isEmpty)
+            let tErr = computedTempError()
+            let dErr = computedDescriptionError()
+            return tErr.isEmpty && (isUsingExistingTea || dErr.isEmpty)
         default:
             return true
         }
     }
     
     private func isFormValid() -> Bool {
-        validateName()
-        validateTemperature()
-        validateDescription()
-        return !name.isEmpty && (isUsingExistingTea || nameError.isEmpty) && tempError.isEmpty && (isUsingExistingTea || descriptionError.isEmpty)
+        let nErr = computedNameError()
+        let tErr = computedTempError()
+        let dErr = computedDescriptionError()
+        return !name.isEmpty && (isUsingExistingTea || nErr.isEmpty) && tErr.isEmpty && (isUsingExistingTea || dErr.isEmpty)
     }
     
     // MARK: - Actions

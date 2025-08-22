@@ -311,22 +311,22 @@ struct TeaOfTheDayWidget: View {
         isLoading = false
     }
     
-    private func convertToTeaInfo(_ tea: TeaOfTheDayQuery.Data.TeaOfTheDay.Tea) -> TeaInfo {
-        // Convert tags from backend format
+    private func convertToTeaInfo(_ record: TeaOfTheDayQuery.Data.TeaOfTheDay.Tea) -> TeaInfo {
+        // record is a QRRecord: includes meta and nested tea
+        let tea = record.tea
         let tags = tea.tags.map { tag in
             Tag(
                 id: tag.id,
                 name: tag.name,
                 color: tag.color,
-                category: "" // Default category, not provided by teaOfTheDay query
+                category: tag.category.name
             )
         }
-        
         return TeaInfo(
             meta: TeaMeta(
                 id: tea.id,
-                expirationDate: Date().addingTimeInterval(365 * 24 * 60 * 60), // Default 1 year
-                brewingTemp: 85 // Default temp, could be fetched from backend if available
+                expirationDate: ISO8601DateFormatter().date(from: record.expirationDate) ?? Date().addingTimeInterval(365 * 24 * 60 * 60),
+                brewingTemp: record.bowlingTemp
             ),
             data: TeaData(
                 name: tea.name,

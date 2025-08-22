@@ -2,13 +2,19 @@ query teaOfTheDay {
   teaOfTheDay {
     tea {
       id
-      name
-      description
-      type
-      tags {
+      bowlingTemp
+      expirationDate
+      tea {
         id
         name
-        color
+        description
+        type
+        tags {
+          id
+          name
+          color
+          category { name }
+        }
       }
     }
     date
