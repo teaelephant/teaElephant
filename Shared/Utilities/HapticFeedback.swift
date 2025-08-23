@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 
+@MainActor
 enum HapticFeedback {
     
     static func light() {

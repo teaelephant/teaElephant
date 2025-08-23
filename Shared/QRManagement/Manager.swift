@@ -4,16 +4,17 @@
 
 import Foundation
 import os
+@preconcurrency import TeaElephantSchema
 
 private let logNetwork = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "Network")
-import TeaElephantSchema
 
 class QRManager {
+    @MainActor
     public func write(id: String, data: TeaMeta) async {
         let formatter = ISO8601DateFormatter()
         let result = await Network.shared.apollo.performAsync(mutation: WriteMutation(
-                id: id,
-                data: QRRecordData(tea: data.id, bowlingTemp: data.brewingTemp, expirationDate: formatter.string(from: data.expirationDate))
+            id: id,
+            data: QRRecordData(tea: data.id, bowlingTemp: data.brewingTemp, expirationDate: formatter.string(from: data.expirationDate))
         ))
         switch result {
         case .success(let graphQLResult):

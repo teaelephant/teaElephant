@@ -1,16 +1,17 @@
 import UIKit
 import SpriteKit
 import RealityKit
-import ARKit
-import Vision
+@preconcurrency import ARKit
+@preconcurrency import Vision
 import Combine
 import SwiftUI
-import TeaElephantSchema
+@preconcurrency import TeaElephantSchema
 import os
 
 private let logAR = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "Network")
 
-class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegate {
+@MainActor
+class DetectorController: UIViewController, UITextViewDelegate {
 	var arView: ARView!
 	var subscription: Cancellable!
 	var titles = [TitleEntity]()
@@ -73,7 +74,7 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 		}
 	}
 
-	public func session(_ session: ARSession, didUpdate frame: ARFrame) {
+    func handleSessionUpdate(_ session: ARSession, didUpdate frame: ARFrame) {
 		// Do not enqueue other buffers for processing while another Vision task is still running.
 		// The camera stream has only a finite amount of buffers available; holding too many buffers for analysis would starve the camera.
 		guard case .normal = frame.camera.trackingState else {
@@ -86,73 +87,53 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 		}
 		isProcessingFrame = true
 
-		// Retain the image buffer for Vision processing.
-		let currentBuffer = frame.capturedImage
+        // Retain the image buffer for Vision processing.
+        let currentBuffer = frame.capturedImage
 		// Most computer vision tasks are not rotation agnostic so it is important to pass in the orientation of the image with respect to device.
-        guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue)) else {
+		guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue)) else {
 			isProcessingFrame = false
-            return
-        }
+			return
+		}
 		
-		// Create weak references to avoid retaining the frame
-		weak var weakSession = session
-		// Store frame data we need, not the frame itself - unused but kept for future use
-		_ = frame.timestamp
-
-		let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer, orientation: orientation)
-		let classificationRequest: VNDetectBarcodesRequest = {
-			// Instantiate the model from its generated Swift class.
-			let request: VNDetectBarcodesRequest = VNDetectBarcodesRequest(completionHandler: { [weak self] request, error in
-				defer {
-					// Always reset the processing flag
+        visionQueue.async { [weak self, sessionBox = SendableBox(session), bufferBox = SendableBox(currentBuffer)] in
+            guard let self = self else { return }
+            let handler = VNImageRequestHandler(cvPixelBuffer: bufferBox.value, orientation: orientation)
+            let request = VNDetectBarcodesRequest { request, error in
+                defer {
+                    Task { @MainActor [weak self] in
+                        self?.isProcessingFrame = false
+                    }
+                }
+                guard let results = request.results else { return }
+                let session = sessionBox.value
+                
+                for result in results {
+                    guard let barcode = result as? VNBarcodeObservation,
+                          let payload = barcode.payloadStringValue else { continue }
+                    Task { @MainActor [weak self] in
+                        guard let self = self else { return }
+                        if self.ids.contains(where: { $0 == payload }) {
+                            if let currentFrame = session.currentFrame {
+                                self.updateSizeOfTitle(barcode: barcode, frame: currentFrame, id: payload, session: session)
+                            }
+                        } else if let currentFrame = session.currentFrame {
+                            self.processNewBarcode(barcode: barcode, frame: currentFrame, payload: payload, session: session)
+                        }
+                    }
+                }
+            }
+			request.preferBackgroundProcessing = true
+			do {
+				try handler.perform([request])
+			} catch {
+				Task { @MainActor [weak self] in
 					self?.isProcessingFrame = false
 				}
-				guard let results = request.results else {
-					print("Unable to classify image.\n\(error!.localizedDescription)")
-					return
-				}
-
-				guard let self = self, let weakSession = weakSession else { return }
-				
-				// Loopm through the found results
-				for result in results {
-					// Cast the result to a barcode-observation
-					if let barcode = result as? VNBarcodeObservation {
-						guard let payload = barcode.payloadStringValue else {
-							return
-						}
-						if self.ids.contains(where: { id in
-							id == payload
-						}) {
-							// Get current frame for raycast query
-							if let currentFrame = weakSession.currentFrame {
-								self.updateSizeOfTitle(barcode: barcode, frame: currentFrame, id: payload, session: weakSession)
-							}
-							continue
-						}
-						// Get current frame for raycast query
-						if let currentFrame = weakSession.currentFrame {
-							self.processNewBarcode(barcode: barcode, frame: currentFrame, payload: payload, session: weakSession)
-						}
-					}
-				}
-			})
-
-			// Use CPU for Vision processing to ensure that there are adequate GPU resources for rendering.
-			request.preferBackgroundProcessing = true
-
-			return request
-		}()
-		visionQueue.async { [weak self] in
-			do {
-				try requestHandler.perform([classificationRequest])
-			} catch {
-				print("Error: Vision request failed with error \"\(error)\"")
-				// Reset flag on error
-				self?.isProcessingFrame = false
+			}
+			Task { @MainActor [weak self] in
+				self?.placeNewBarcodes()
 			}
 		}
-		placeNewBarcodes()
 	}
 
 	func processNewBarcode(barcode: VNBarcodeObservation, frame: ARFrame, payload: String, session: ARSession) {
@@ -191,7 +172,7 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 		let convertedWidth = barcode.boundingBox.width * screenSize.width * 2.25
 		let convertedHeight = convertedWidth // Make it square
 
-        Task{
+        Task {
             do {
                 for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: payload), cachePolicy: .fetchIgnoringCacheData) {
                     if let errors = result.errors {
@@ -201,26 +182,23 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
                     guard let qr = result.data?.qrRecord else {
                         return
                     }
-                    DispatchQueue.main.async {
-                        let info = TeaInfo(
-                            meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
-                            data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description),
-                            tags: qr.tea.tags.map({ tag in
-                                Tag(id: tag.id, name: tag.name, color: tag.color, category: tag.category.name)
-                            })
-                        )
-                        self.newEntities.append(EntityModel(
-                                        origin: convertedOrign,
-                                        width: convertedWidth,
-                                        height: convertedHeight,
-                                        id: payload,
-                                        tea: info,
-                                        worldTransform: raycastResult.worldTransform,
-                                        referenceSize: referenceSize,
-                                        referenceDistance: referenceDistance
-                        ))
-                    }
-                        
+                    let info = TeaInfo(
+                        meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
+                        data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description),
+                        tags: qr.tea.tags.map({ tag in
+                            Tag(id: tag.id, name: tag.name, color: tag.color, category: tag.category.name)
+                        })
+                    )
+                    self.newEntities.append(EntityModel(
+                        origin: convertedOrign,
+                        width: convertedWidth,
+                        height: convertedHeight,
+                        id: payload,
+                        tea: info,
+                        worldTransform: raycastResult.worldTransform,
+                        referenceSize: referenceSize,
+                        referenceDistance: referenceDistance
+                    ))
                 }
             } catch {
                 logAR.error("AR ReadQuery failure: \(String(describing: error), privacy: .public)")
@@ -256,6 +234,14 @@ class DetectorController: UIViewController, ARSessionDelegate, UITextViewDelegat
 			arView.addSubview(titleView)
 			titles.append(title)
             titlesMap[entity.id] = title
+		}
+	}
+}
+
+extension DetectorController: ARSessionDelegate {
+	nonisolated public func session(_ session: ARSession, didUpdate frame: ARFrame) {
+		Task { @MainActor in
+			handleSessionUpdate(session, didUpdate: frame)
 		}
 	}
 }

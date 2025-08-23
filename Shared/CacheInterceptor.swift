@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Apollo
+@preconcurrency import Apollo
 import ApolloAPI
 
 class NoCachedErrorsWrapperInterceptor: ApolloInterceptor {
@@ -34,4 +34,3 @@ class NoCachedErrorsWrapperInterceptor: ApolloInterceptor {
       }
     }
 }
-

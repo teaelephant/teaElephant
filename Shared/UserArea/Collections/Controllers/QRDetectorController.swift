@@ -1,8 +1,8 @@
 import UIKit
 import SpriteKit
 import RealityKit
-import ARKit
-import Vision
+@preconcurrency import ARKit
+@preconcurrency import Vision
 import Combine
 import SwiftUI
 import TeaElephantSchema
@@ -11,7 +11,8 @@ func emptyCallback(_ newID: String) -> Void {
     
 }
 
-class QRDetectorController: UIViewController, ARSessionDelegate {
+@MainActor
+class QRDetectorController: UIViewController {
     var arView: ARView!
     var subscription: Cancellable!
     var ids = [String]()
@@ -70,7 +71,7 @@ class QRDetectorController: UIViewController, ARSessionDelegate {
         #endif
     }
 
-    public func session(_ session: ARSession, didUpdate frame: ARFrame) {
+    func handleSessionUpdate(_ session: ARSession, didUpdate frame: ARFrame) {
         // Do not enqueue other buffers for processing while another Vision task is still running.
         // The camera stream has only a finite amount of buffers available; holding too many buffers for analysis would starve the camera.
         guard case .normal = frame.camera.trackingState else {
@@ -79,50 +80,53 @@ class QRDetectorController: UIViewController, ARSessionDelegate {
 
         // Retain the image buffer for Vision processing.
         let currentBuffer = frame.capturedImage
-        // Most computer vision tasks are not rotation agnostic so it is important to pass in the orientation of the image with respect to device.
-        let orientation = CGImagePropertyOrientation(rawValue: UInt32(UIDevice.current.orientation.rawValue))
+        // Snapshot orientation on main before hopping to a background queue
+        let deviceOrientationRaw = UIDevice.current.orientation.rawValue
 
-        let requestHandler = VNImageRequestHandler(cvPixelBuffer: currentBuffer, orientation: orientation!)
         let visionQueue = DispatchQueue(label: "com.teaElephant.ARKitVision.serialVisionQueue")
-        let classificationRequest: VNDetectBarcodesRequest = {
-            // Instantiate the model from its generated Swift class.
+        
+        visionQueue.async { [weak self, sessionBox = SendableBox(session), bufferBox = SendableBox(currentBuffer), deviceOrientationRaw] in
+            guard let self = self else { return }
+            guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(deviceOrientationRaw)) else { return }
+            let handler = VNImageRequestHandler(cvPixelBuffer: bufferBox.value, orientation: orientation)
             let request: VNDetectBarcodesRequest = VNDetectBarcodesRequest(completionHandler: { request, error in
                 guard let results = request.results else {
-                    print("Unable to classify image.\n\(error!.localizedDescription)")
+                    print("Unable to classify image.\n\(error?.localizedDescription ?? "Unknown error")")
                     return
                 }
 
-                // Loopm through the found results
+                // Loop through the found results
                 for result in results {
                     // Cast the result to a barcode-observation
                     if let barcode = result as? VNBarcodeObservation {
                         guard let payload = barcode.payloadStringValue else {
                             return
                         }
-                        if self.ids.contains(where: { id in
-                            id == payload
-                        }) {
-                            self.updateSizeOfTitle(barcode: barcode, frame: frame, id: payload, session: session)
-                            continue
+                        Task { @MainActor [weak self] in
+                            guard let self = self else { return }
+                            if self.ids.contains(where: { $0 == payload }) {
+                                if let currentFrame = sessionBox.value.currentFrame {
+                                    self.updateSizeOfTitle(barcode: barcode, frame: currentFrame, id: payload, session: sessionBox.value)
+                                }
+                            } else if let currentFrame = sessionBox.value.currentFrame {
+                                self.processNewBarcode(barcode: barcode, frame: currentFrame, payload: payload, session: sessionBox.value)
+                            }
                         }
-                        self.processNewBarcode(barcode: barcode, frame: frame, payload: payload, session: session)
                     }
                 }
             })
-
-            // Use CPU for Vision processing to ensure that there are adequate GPU resources for rendering.
+            
             request.preferBackgroundProcessing = true
-
-            return request
-        }()
-        visionQueue.async {
             do {
-                try requestHandler.perform([classificationRequest])
+                try handler.perform([request])
             } catch {
                 print("Error: Vision request failed with error \"\(error)\"")
             }
+            
+            Task { @MainActor [weak self] in
+                self?.placeNewBarcodes()
+            }
         }
-        placeNewBarcodes()
     }
     
     func processNewBarcode(barcode: VNBarcodeObservation, frame: ARFrame, payload: String, session: ARSession) {
@@ -190,6 +194,14 @@ class QRDetectorController: UIViewController, ARSessionDelegate {
             arView.addSubview(titleView)
             checked.append(title)
             checkedMap[entity.id] = title
+        }
+    }
+}
+
+extension QRDetectorController: ARSessionDelegate {
+    nonisolated public func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        Task { @MainActor in
+            handleSessionUpdate(session, didUpdate: frame)
         }
     }
 }

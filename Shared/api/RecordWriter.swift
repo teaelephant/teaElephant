@@ -3,16 +3,18 @@
 //
 
 import Foundation
-import Apollo
-import TeaElephantSchema
+@preconcurrency import Apollo
+@preconcurrency import TeaElephantSchema
 
 enum WriterError: LocalizedError {
     case EmptyData
 }
 
+@MainActor
 class RecordWriter: ExtendInfoWriter {
     func writeExtendInfo(info: TeaData) async throws -> String {
-        let result = await Network.shared.apollo.performAsync(mutation: CreateMutation(tea: info))
+        let mutation = CreateMutation(tea: info)
+        let result = await Network.shared.apollo.performAsync(mutation: mutation)
         switch result {
         case .success(let graphQLResult):
             if let err = graphQLResult.errors?.first {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Apollo
+@preconcurrency import Apollo
 import ApolloAPI
 import KeychainSwift
 
@@ -37,4 +37,3 @@ class UnauthInterceptor: ApolloInterceptor {
         chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
     }
 }
-

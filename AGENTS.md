@@ -9,14 +9,13 @@
 
 ## Build, Test, and Development Commands
 - Build (CLI): `xcodebuild -workspace TeaElephant.xcworkspace -scheme TeaElephant build`
-- Run tests (CLI): `xcodebuild test -workspace TeaElephant.xcworkspace -scheme TeaElephant -destination 'platform=iOS Simulator,name=iPhone 15'`
+- Run tests (CLI): `xcodebuild test -workspace TeaElephant.xcworkspace -scheme TeaElephant -destination 'platform=iOS Simulator,name=iPhone 16'`
 - Open in Xcode: `open TeaElephant.xcworkspace`
 - GraphQL schema/codegen (Apollo):
-  - Download schema: `./apollo-ios-cli download-schema --config Shared/api/apollo-codegen-config.json`
-  - Generate types: `./apollo-ios-cli generate --config Shared/api/apollo-codegen-config.json`
+  - Generate + fetch schema: `./apollo-ios-cli generate --path Shared/api/apollo-codegen-config.json --fetch-schema`
 
 ## Coding Style & Naming Conventions
-- Swift 5, Xcode formatting, 4-space indentation; follow Swift API Design Guidelines.
+- Swift 6, Xcode formatting, 4-space indentation; follow Swift API Design Guidelines.
 - Types: UpperCamelCase; methods/vars/cases: lowerCamelCase; files named after primary type.
 - Group code by feature folder (e.g., `UserArea`, `Search`, `TagManagement`). Avoid force-unwraps; prefer dependency injection (`Shared/Core/DependencyInjection`).
 
@@ -34,3 +33,7 @@
 - Do not commit secrets or tokens. Auth lives in `Shared/UserArea/Auth/*` — use secure storage.
 - Apollo endpoints are configured in `Shared/api/apollo-codegen-config.json`; avoid hardcoding URLs in code.
 - Respect `.gitignore`; avoid committing derived data or local build artifacts.
+
+## Schemes & CI
+- Schemes: `TeaElephant`, `TeaElephantAppClip`, `TeaElephantSchema`.
+- Xcode Cloud export: use `ci/ad-hoc-exportoptions.plist` and add `-allowProvisioningUpdates` to `-exportArchive` for automatic signing of App and App Clip.

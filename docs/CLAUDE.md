@@ -4,7 +4,7 @@
 TeaElephant is a **home-use iOS application** for managing tea collections with AR visualization capabilities. This is NOT a production app for distribution, allowing for relaxed deployment requirements (iOS 18+, hardcoded URLs are acceptable) while maintaining production-quality code architecture.
 
 ## Tech Stack
-- **Platform**: iOS 18.6+ (minimum supported version, home use only), with unused macOS/watchOS targets
+- **Platform**: iOS 18.6+ (minimum supported version, home use only), with unused macOS/watchOS targets, Swift 6
 - **UI**: SwiftUI (primary), UIKit (AR components)
 - **Architecture**: Hybrid MVVM-MV pattern
 - **Networking**: Apollo GraphQL client

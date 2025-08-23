@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
+@MainActor
 class DetailManager: ObservableObject {
     @Published var info: TeaInfo?
 }

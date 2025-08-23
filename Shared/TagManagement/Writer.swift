@@ -6,16 +6,18 @@ import Foundation
 import TeaElephantSchema
 
 protocol ExtendInfoWriter {
-    func writeExtendInfo(info: TeaData) async throws -> String
+    @MainActor func writeExtendInfo(info: TeaData) async throws -> String
 }
 
-protocol ShortInfoWriter {
-    func writeData(info: TeaMeta) throws
+protocol ShortInfoWriter: AnyObject {
+    @MainActor func writeData(info: TeaMeta) throws
 }
 
+@MainActor
 class writer {
     var extend: ExtendInfoWriter
     var meta: ShortInfoWriter
+    
     init(extend: ExtendInfoWriter, meta: ShortInfoWriter) {
         self.extend = extend
         self.meta = meta

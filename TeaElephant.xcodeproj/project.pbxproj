@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,7 @@
 		1CEAF55E49D8EBDB7195A8A1 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAFF5F083FF2F9221E7D4D /* Detector.swift */; };
 		1CEAF5EAC162B7CB98A68823 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
 		1CEAF6293A5B3D4A7F3463B1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF455D315B2941A7F79C5 /* Manager.swift */; };
-		1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */; };
+		1CEAF85906F2333011B0B51B /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */; settings = {COMPILER_FLAGS = "-Xfrontend -strict-concurrency=targeted"; }; };
 		1CEAFA47F2EA7DCDE9DDB1C2 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF856689D0D88ADB1AA86 /* ARView.swift */; };
 		1CEAFB59120D515FC865748C /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
 		1CEAFB5A1B87520A502CCCC5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
@@ -24,9 +24,9 @@
 		4B1B06272A7B919800A332E1 /* ApolloClientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B06252A7B8ECA00A332E1 /* ApolloClientExtension.swift */; };
 		4B1B06282A7B919800A332E1 /* ApolloClientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B06252A7B8ECA00A332E1 /* ApolloClientExtension.swift */; };
 		4B1B06292A7B919900A332E1 /* ApolloClientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1B06252A7B8ECA00A332E1 /* ApolloClientExtension.swift */; };
-		4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; };
-		4B1D0A202504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; };
-		4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; };
+		4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; settings = {COMPILER_FLAGS = "-Xfrontend -strict-concurrency=targeted"; }; };
+		4B1D0A202504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; settings = {COMPILER_FLAGS = "-Xfrontend -strict-concurrency=targeted"; }; };
+		4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1D2504152100D26450 /* NFCwriter.swift */; settings = {COMPILER_FLAGS = "-Xfrontend -strict-concurrency=targeted"; }; };
 		4B1D0A222504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
 		4B1D0A232504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
 		4B1D0A242504152100D26450 /* NFCreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D0A1E2504152100D26450 /* NFCreader.swift */; };
@@ -134,7 +134,7 @@
 		4BB739EB2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739EA2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql */; };
 		4BB739EC2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4BB739EA2A86CE0E003524A0 /* deleteRecordsFromCollection.graphql */; };
 		4BB739EF2A86DEC2003524A0 /* QRDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739EE2A86DEC2003524A0 /* QRDetector.swift */; };
-		4BB739F22A86E011003524A0 /* QRDetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F12A86E011003524A0 /* QRDetectorController.swift */; };
+		4BB739F22A86E011003524A0 /* QRDetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F12A86E011003524A0 /* QRDetectorController.swift */; settings = {COMPILER_FLAGS = "-Xfrontend -strict-concurrency=targeted"; }; };
 		4BB739F52A8917F0003524A0 /* UserAreaUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F42A8917F0003524A0 /* UserAreaUIView.swift */; };
 		4BB739F62A8917F0003524A0 /* UserAreaUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F42A8917F0003524A0 /* UserAreaUIView.swift */; };
 		4BB739F92A89184E003524A0 /* AuthUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB739F82A89184E003524A0 /* AuthUIView.swift */; };
@@ -222,6 +222,11 @@
 		CEE6B79C2E579DE60091BD2F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */; };
 		CEE6B79D2E579DE60091BD2F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7952E579DE60091BD2F /* Log.swift */; };
 		CEE6B79E2E579DE60091BD2F /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */; };
+		CEE6B7A12E5917FB0091BD2F /* TeaElephantSchema in Frameworks */ = {isa = PBXBuildFile; productRef = CEE6B7A02E5917FB0091BD2F /* TeaElephantSchema */; };
+		CEE6B7A32E5996070091BD2F /* SendableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7A22E5996070091BD2F /* SendableBox.swift */; };
+		CEE6B7A42E5996070091BD2F /* SendableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7A22E5996070091BD2F /* SendableBox.swift */; };
+		CEE6B7A52E5996070091BD2F /* SendableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7A22E5996070091BD2F /* SendableBox.swift */; };
+		CEE6B7A62E5996070091BD2F /* SendableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7A22E5996070091BD2F /* SendableBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +394,7 @@
 		CEC7D1962E5665F000AE0292 /* TeaOfTheDayQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TeaOfTheDayQuery.graphql; sourceTree = "<group>"; };
 		CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		CEE6B7952E579DE60091BD2F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		CEE6B7A22E5996070091BD2F /* SendableBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendableBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +407,7 @@
 				4B36C41125C3077C006C9293 /* MessagePacker in Frameworks */,
 				4B6F1BBF2A993D2700E4AFCC /* KeychainSwift in Frameworks */,
 				4B9CD76129E1DB54006C5F93 /* Apollo in Frameworks */,
+				CEE6B7A12E5917FB0091BD2F /* TeaElephantSchema in Frameworks */,
 				4B36C41625C3077C006C9293 /* CodeScanner in Frameworks */,
 				CE750BD02D136EAA00830DD0 /* Vision.framework in Frameworks */,
 				4B9CD76329E1DB59006C5F93 /* ApolloWebSocket in Frameworks */,
@@ -850,6 +857,7 @@
 		CEE6B7962E579DE60091BD2F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CEE6B7A22E5996070091BD2F /* SendableBox.swift */,
 				CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */,
 				CEE6B7952E579DE60091BD2F /* Log.swift */,
 			);
@@ -882,6 +890,7 @@
 				4B9CD76229E1DB59006C5F93 /* ApolloWebSocket */,
 				4BDF3A5A29E2027A003D8F92 /* TeaElephantSchema */,
 				4B6F1BBE2A993D2700E4AFCC /* KeychainSwift */,
+				CEE6B7A02E5917FB0091BD2F /* TeaElephantSchema */,
 			);
 			productName = TeaElephant;
 			productReference = 4B29052C24C0AEDE007A3D1B /* TeaElephant.app */;
@@ -988,6 +997,7 @@
 				4BC992EA25C1DCC300E5070E /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				4B6F1BBD2A993D2700E4AFCC /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				CEE6B79F2E5917FB0091BD2F /* XCLocalSwiftPackageReference "Shared/api/schema" */,
 			);
 			productRefGroup = 4B29052D24C0AEDE007A3D1B /* Products */;
 			projectDirPath = "";
@@ -1126,6 +1136,7 @@
 				1CEAF0F996CA19454EAD4557 /* DetecorView.swift in Sources */,
 				4BB739EF2A86DEC2003524A0 /* QRDetector.swift in Sources */,
 				4BB739F22A86E011003524A0 /* QRDetectorController.swift in Sources */,
+				CEE6B7A32E5996070091BD2F /* SendableBox.swift in Sources */,
 				4B5789EB2A9DD3F000549157 /* AppState.swift in Sources */,
 				1CEAFE2B82A0A88AF3BEFAC7 /* TitleEntity.swift in Sources */,
 				1CEAFC2FB4DCF8952E85CA45 /* ARComponent.swift in Sources */,
@@ -1163,6 +1174,7 @@
 				4BC972C32AAF9A7400636A4F /* UnauthInterceptor.swift in Sources */,
 				CEAAFFFC2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */,
 				4BC972C12AAF98B300636A4F /* Color.swift in Sources */,
+				CEE6B7A52E5996070091BD2F /* SendableBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1183,6 +1195,7 @@
 				4BC972BC2AAF97BD00636A4F /* Network.swift in Sources */,
 				4BC972BB2AAF97B100636A4F /* ARCardUIView.swift in Sources */,
 				4B29054D24C0AEDF007A3D1B /* TeaElephantUITests.swift in Sources */,
+				CEE6B7A62E5996070091BD2F /* SendableBox.swift in Sources */,
 				4B36C30B25C2D875006C9293 /* TeaMeta.swift in Sources */,
 				4B4E296C2A973DB500383D06 /* Collection.swift in Sources */,
 				4BC972BA2AAF978600636A4F /* UnauthInterceptor.swift in Sources */,
@@ -1232,6 +1245,7 @@
 				4B8D0BBE25AAECA900FF40DB /* Type.swift in Sources */,
 				4B8E854924D09F8D001FCFFF /* TeaInfo.swift in Sources */,
 				4B8E853324D08D0B001FCFFF /* TeaElephantAppClipApp.swift in Sources */,
+				CEE6B7A42E5996070091BD2F /* SendableBox.swift in Sources */,
 				4B6F1BD02A9BDA5900E4AFCC /* AuthManager.swift in Sources */,
 				4B1D0A212504152100D26450 /* NFCwriter.swift in Sources */,
 				4BB739E02A86ACE2003524A0 /* CollectionUIView.swift in Sources */,
@@ -1409,7 +1423,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -1430,6 +1444,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_APP_INTENTS_METADATA = NO;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1445,7 +1460,7 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephant/TeaElephant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephant/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
@@ -1466,6 +1481,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_APP_INTENTS_METADATA = NO;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1576,10 +1592,11 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
@@ -1598,6 +1615,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
+				SWIFT_EMIT_APP_INTENTS_METADATA = NO;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1612,10 +1630,11 @@
 				CODE_SIGN_ENTITLEMENTS = TeaElephantAppClip/TeaElephantAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"TeaElephantAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = R859U8DTY9;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = TeaElephantAppClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Tea Elephant";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
@@ -1634,6 +1653,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
+				SWIFT_EMIT_APP_INTENTS_METADATA = NO;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1688,6 +1708,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		CEE6B79F2E5917FB0091BD2F /* XCLocalSwiftPackageReference "Shared/api/schema" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Shared/api/schema;
+		};
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
 		4B13CAC629E1D556005A3587 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
@@ -1780,6 +1807,10 @@
 			productName = TeaElephantSchema;
 		};
 		4BDF3A5C29E20282003D8F92 /* TeaElephantSchema */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TeaElephantSchema;
+		};
+		CEE6B7A02E5917FB0091BD2F /* TeaElephantSchema */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TeaElephantSchema;
 		};

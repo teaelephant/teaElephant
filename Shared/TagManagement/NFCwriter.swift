@@ -3,19 +3,22 @@
 //
 
 import Foundation
-import CoreNFC
+@preconcurrency import CoreNFC
 import UIKit
 import MessagePacker
 
-class tagWriter: NSObject, ShortInfoWriter {
+class tagWriter: NSObject {
     var nfc: NearFieldCommunicator!
     var message: NFCNDEFMessage?
+    private weak var pendingSession: NFCNDEFReaderSession?
 
+    @MainActor
     override init() {
         super.init()
         nfc = NearFieldCommunicator(delegate: self)
     }
 
+    @MainActor
     public func writeData(info: TeaMeta) throws {
         guard NFCTagReaderSession.readingAvailable else {
             print("Scanning Not Supported")
@@ -64,9 +67,9 @@ class tagWriter: NSObject, ShortInfoWriter {
             // Restart polling in 500 milliseconds.
             let retryInterval = DispatchTimeInterval.milliseconds(500)
             session.alertMessage = "More than 1 tag is detected. Please remove all tags and try again."
-            DispatchQueue.global().asyncAfter(deadline: .now() + retryInterval, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + retryInterval) {
                 session.restartPolling()
-            })
+            }
             return
         }
 
@@ -155,31 +158,32 @@ extension tagWriter: NFCProtocol {
     func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         print("writing")
         if tags.count > 1 {
-            // Restart polling in 500 milliseconds.
-            let retryInterval = DispatchTimeInterval.milliseconds(500)
+            // Restart polling in 500 milliseconds without capturing session in a closure.
             session.alertMessage = "More than 1 tag is detected. Please remove all tags and try again."
-            DispatchQueue.global().asyncAfter(deadline: .now() + retryInterval, execute: {
-                session.restartPolling()
-            })
+            pendingSession = session
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(restartPendingSession), userInfo: nil, repeats: false)
             return
         }
 
         // Connect to the found tag and write an NDEF message to it.
         let tag = tags.first!
-        session.connect(to: tag, completionHandler: { (error: Error?) in
-            if nil != error {
+        let sessionBox = SendableBox(session)
+        let tagBox = SendableBox(tag)
+        let messageBox = SendableBox(self.message)
+        session.connect(to: tagBox.value) { (error: Error?) in
+            let session = sessionBox.value
+            if let _ = error {
                 session.alertMessage = "Unable to connect to tag."
                 session.invalidate()
                 return
             }
-
-            tag.queryNDEFStatus(completionHandler: { (ndefStatus: NFCNDEFStatus, capacity: Int, error: Error?) in
+            tagBox.value.queryNDEFStatus { (ndefStatus: NFCNDEFStatus, capacity: Int, error: Error?) in
+                let session = sessionBox.value
                 guard error == nil else {
                     session.alertMessage = "Unable to query the NDEF status of tag."
                     session.invalidate()
                     return
                 }
-
                 switch ndefStatus {
                 case .notSupported:
                     session.alertMessage = "Tag is not NDEF compliant."
@@ -188,20 +192,34 @@ extension tagWriter: NFCProtocol {
                     session.alertMessage = "Tag is read only."
                     session.invalidate()
                 case .readWrite:
-                    print(self.message!)
-                    tag.writeNDEF(self.message!, completionHandler: { (error: Error?) in
+                    guard let msg = messageBox.value else {
+                        session.alertMessage = "No message to write."
+                        session.invalidate()
+                        return
+                    }
+                    tagBox.value.writeNDEF(msg) { (error: Error?) in
+                        let session = sessionBox.value
                         if let err = error {
                             session.alertMessage = "Write NDEF message fail: \(err)"
                         } else {
                             session.alertMessage = "Write NDEF message successful."
                         }
                         session.invalidate()
-                    })
+                    }
                 @unknown default:
                     session.alertMessage = "Unknown NDEF tag status."
                     session.invalidate()
                 }
-            })
-        })
+            }
+        }
+    }
+}
+
+extension tagWriter: ShortInfoWriter {}
+
+@objc private extension tagWriter {
+    func restartPendingSession() {
+        pendingSession?.restartPolling()
+        pendingSession = nil
     }
 }

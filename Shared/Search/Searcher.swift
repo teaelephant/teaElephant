@@ -10,7 +10,7 @@ import TeaElephantSchema
 import os
 
 protocol ApiSearcher {
-    func search(prefix: String) async throws -> TeaDataWithID?
+    @MainActor func search(prefix: String) async throws -> TeaDataWithID?
 }
 
 @MainActor

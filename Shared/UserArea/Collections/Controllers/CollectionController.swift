@@ -6,7 +6,10 @@
 //
 
 import Foundation
+@preconcurrency import TeaElephantSchema
+@preconcurrency import Apollo
 
+@MainActor
 class CollectionManager: ObservableObject {
     @Published var teas: [TeaElephantSchema.CollectionsQuery.Data.Collection]?
     @Published var error: Error?

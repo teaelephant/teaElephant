@@ -6,20 +6,25 @@
 //
 
 import Foundation
-import Apollo
-import TeaElephantSchema
+@preconcurrency import Apollo
+@preconcurrency import TeaElephantSchema
+
+// Wrapper to make Result Sendable
+struct SendableResult<Success, Failure: Error>: @unchecked Sendable {
+    let result: Result<Success, Failure>
+}
 
 extension ApolloClient {
-    public func fetchAsync<Query: GraphQLQuery>(query: Query,
-                                                cachePolicy: CachePolicy = .default,
+    @preconcurrency public func fetchAsync<Query: GraphQLQuery>(query: Query,
+                                                cachePolicy: CachePolicy = .returnCacheDataElseFetch,
                                                 contextIdentifier: UUID? = nil,
-                                                queue: DispatchQueue = .main) -> AsyncThrowingStream<GraphQLResult<Query.Data>, Error> {
+                                                queue: DispatchQueue? = nil) -> AsyncThrowingStream<GraphQLResult<Query.Data>, Error> {
         AsyncThrowingStream { continuation in
-                    let request = fetch(
+            _ = fetch(
                         query: query,
                         cachePolicy: cachePolicy,
                         contextIdentifier: contextIdentifier,
-                        queue: queue
+                        queue: queue ?? .main
                     ) { response in
                         switch response {
                         case .success(let result):
@@ -31,18 +36,17 @@ extension ApolloClient {
                             continuation.finish(throwing: error)
                         }
                     }
-                    continuation.onTermination = { @Sendable _ in
-                        request.cancel()
-                    }
                 }
     }
     
-    public func performAsync<Mutation: GraphQLMutation>(mutation: Mutation, publishResultToStore: Bool = true, queue: DispatchQueue = .main) async -> Result<GraphQLResult<Mutation.Data>, Error> {
-        await withCheckedContinuation{ continuation in
+    nonisolated public func performAsync<Mutation: GraphQLMutation>(mutation: Mutation, publishResultToStore: Bool = true, queue: DispatchQueue = .main) async -> Result<GraphQLResult<Mutation.Data>, Error> {
+        let sendableResult = await withUnsafeContinuation{ continuation in
             self.perform(mutation: mutation, publishResultToStore: publishResultToStore, queue: queue) { result in
-                continuation.resume(returning: result)
+                let wrapped = SendableResult(result: result)
+                continuation.resume(returning: wrapped)
             }
         }
+        return sendableResult.result
     }
     
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CoreNFC
+@preconcurrency import CoreNFC
 
 
 typealias NFCCallback = ([NFCNDEFMessage]) -> Void
@@ -15,6 +15,7 @@ protocol NFCProtocol: NFCNDEFReaderSessionDelegate {
     func ready() -> Void
 }
 
+@MainActor
 class NearFieldCommunicator: NSObject {
     var session: NFCNDEFReaderSession!
     let delegate: NFCProtocol

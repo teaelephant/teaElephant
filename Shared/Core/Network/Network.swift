@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Apollo
+@preconcurrency import Apollo
 import ApolloAPI
 import ApolloWebSocket
 import KeychainSwift
@@ -15,6 +15,7 @@ enum AuthError: Error {
     case tokenNotFound
 }
 
+@MainActor
 class Network {
     static let shared = Network()
     

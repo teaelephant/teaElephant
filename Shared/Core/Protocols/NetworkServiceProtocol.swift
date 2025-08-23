@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Apollo
+@preconcurrency import Apollo
 import ApolloAPI
 import Combine
 

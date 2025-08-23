@@ -7,14 +7,14 @@ import os
 
 private let logReader = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "Reader")
 @preconcurrency import TeaElephantSchema
-import Apollo
+@preconcurrency import Apollo
 
 protocol ExtendInfoReader {
-    func getExtendInfo(id: String) async throws -> TeaData
+    @MainActor func getExtendInfo(id: String) async throws -> TeaData
 }
 
-protocol ShortInfoReader {
-    func startReadInfo()
+protocol ShortInfoReader: AnyObject {
+    @MainActor func startReadInfo()
     func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void)
 }
 

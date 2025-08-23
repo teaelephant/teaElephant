@@ -8,12 +8,13 @@
 import Foundation
 import SwiftUI
 import UIKit
-import CoreNFC
+@preconcurrency import CoreNFC
 import MessagePacker
 
-class NFCReader: NSObject, ObservableObject, ShortInfoReader {
+@MainActor
+class NFCReader: NSObject, ObservableObject {
     var nfc: NearFieldCommunicator!
-    private var onRead: ((_ meta: TeaMeta) async -> Void)?
+    nonisolated(unsafe) private var onRead: ((_ meta: TeaMeta) async -> Void)?
     @Published var detectedInfo: TeaMeta?
     @Published var error: Error?
 
@@ -22,7 +23,7 @@ class NFCReader: NSObject, ObservableObject, ShortInfoReader {
         nfc = NearFieldCommunicator(delegate: self)
     }
     
-    func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void) {
+    nonisolated func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void) {
         self.onRead = onRead
     }
 
@@ -39,9 +40,14 @@ class NFCReader: NSObject, ObservableObject, ShortInfoReader {
     }
 }
 
+@MainActor extension NFCReader: ShortInfoReader {
+    // startReadInfo is @MainActor
+    // setOnRead is not @MainActor
+}
+
 extension NFCReader: NFCProtocol {
 
-    func ready() -> Void {
+    nonisolated func ready() -> Void {
     }
 
     /*!
@@ -53,7 +59,7 @@ extension NFCReader: NFCProtocol {
      * @discussion      Gets called when a session becomes invalid.  At this point the client is expected to discard
      *                  the returned session object.
      */
-    public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
+    nonisolated public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
         // Check the invalidation reason from the returned error.
         if let readerError = error as? NFCReaderError {
             // Show an alert when the invalidation reason is not because of a
@@ -62,14 +68,19 @@ extension NFCReader: NFCProtocol {
             // programmatically using the invalidate method call.
             if (readerError.code != .readerSessionInvalidationErrorFirstNDEFTagRead)
                        && (readerError.code != .readerSessionInvalidationErrorUserCanceled) {
-                DispatchQueue.main.async {
-                    self.error = error
+                let errorToSet = error
+                Task { @MainActor in
+                    MainActor.assertIsolated()
+                    self.error = errorToSet
                 }
             }
         }
 
         // To read new tags, a new session instance is required.
-        self.nfc.createSession()
+        Task { @MainActor in
+            MainActor.assertIsolated()
+            self.nfc.createSession()
+        }
     }
 
     /*!
@@ -81,29 +92,42 @@ extension NFCReader: NFCProtocol {
      * @discussion      Gets called when the reader detects NFC tag(s) with NDEF messages in the polling sequence.  Polling
      *                  is automatically restarted once the detected tag is removed from the reader's read range.
      */
-    public func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
+    nonisolated public func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
         print("\(messages)")
-        DispatchQueue.main.async {
-            if messages.count != 1 {
+        // Extract data before Task to avoid capturing non-Sendable values
+        guard messages.count == 1 else {
+            Task { @MainActor in
+                MainActor.assertIsolated()
                 self.error = ReaderError.InvalidMessageCount
-                print(self.error!.localizedDescription)
-                return
-            }
-            if messages[0].records.count != 1 {
-                self.error = ReaderError.InvalidRecordsCount
-                print(self.error!.localizedDescription)
-                return
-            }
-            Task {
-                do {
-                    self.detectedInfo = try TeaMeta.fromBytes(data: messages[0].records[0].payload)
-                    if let onRead = self.onRead, let detectedInfo = self.detectedInfo {
-                        await onRead(detectedInfo)
-                    }
-                } catch {
+                if let error = self.error {
                     print(error.localizedDescription)
-                    return
                 }
+            }
+            return
+        }
+        
+        guard messages[0].records.count == 1 else {
+            Task { @MainActor in
+                MainActor.assertIsolated()
+                self.error = ReaderError.InvalidRecordsCount
+                if let error = self.error {
+                    print(error.localizedDescription)
+                }
+            }
+            return
+        }
+        
+        let payload = messages[0].records[0].payload
+        Task { @MainActor in
+            MainActor.assertIsolated()
+            do {
+                self.detectedInfo = try TeaMeta.fromBytes(data: payload)
+                if let onRead = self.onRead, let detectedInfo = self.detectedInfo {
+                    await onRead(detectedInfo)
+                }
+            } catch {
+                print(error.localizedDescription)
+                return
             }
         }
     }

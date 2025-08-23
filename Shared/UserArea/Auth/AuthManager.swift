@@ -22,7 +22,7 @@ final class AuthManager: ObservableObject {
     let keychain = KeychainSwift()
     
     private enum Key {
-        static var deviceID = "deviceID"
+        static let deviceID = "deviceID"
     }
     
     var deviceId: String {

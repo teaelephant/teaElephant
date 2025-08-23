@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
-import UserNotifications
+@preconcurrency import UserNotifications
 
-class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+@MainActor
+class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -22,18 +23,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // start notification while app is in Foreground
         UNUserNotificationCenter.current().delegate = self
         return true
-    }
-    
-    // This function will be called right after user tap on the notification
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            AppState.shared.pageToNavigationTo = .showCard
-            AppState.shared.notificationMessage = response.notification.request.content.body
-            AppState.shared.id = response.notification.request.content.threadIdentifier
-        }
-        print("app opened from PushNotification tap")
-        UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
-        completionHandler()
     }
     
     func application(_ application: UIApplication,
@@ -50,5 +39,19 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                      error: Error) {
         // Try again later.
         print(error)
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    // This function will be called right after user tap on the notification
+    nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            AppState.shared.pageToNavigationTo = .showCard
+            AppState.shared.notificationMessage = response.notification.request.content.body
+            AppState.shared.id = response.notification.request.content.threadIdentifier
+        }
+        print("app opened from PushNotification tap")
+        UNUserNotificationCenter.current().setBadgeCount(0) { _ in }
+        completionHandler()
     }
 }
