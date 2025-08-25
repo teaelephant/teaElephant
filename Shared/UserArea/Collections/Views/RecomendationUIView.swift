@@ -492,6 +492,10 @@ struct RecomendationUIView: View {
             async let hrvAvg = HealthKitManager.shared.averageQuantity(.heartRateVariabilitySDNN, unit: .secondUnit(with: .milli), last: 7)
             async let stepsDict = HealthKitManager.shared.stepsByDay(last: 7)
             async let mindful = HealthKitManager.shared.hasMindfulnessToday()
+            async let vo2 = HealthKitManager.shared.mostRecentVO2Max()
+            async let vo2Avg = HealthKitManager.shared.averageVO2Max7d()
+            async let waterToday = HealthKitManager.shared.waterTodayLiters()
+            async let waterAvg = HealthKitManager.shared.averageDailyWaterLiters(last: 7)
 
             let steps = await stepsDict
             let todayKey = Calendar.current.startOfDay(for: Date())
@@ -509,7 +513,11 @@ struct RecomendationUIView: View {
                 avgHRV7d: await hrvAvg,
                 stepsToday: steps[todayKey],
                 avgSteps7d: steps.isEmpty ? nil : (steps.values.reduce(0,+) / Double(steps.count)),
-                mindfulToday: await mindful
+                mindfulToday: await mindful,
+                vo2Max: await vo2,
+                avgVO2Max7d: await vo2Avg,
+                waterTodayLiters: await waterToday,
+                avgWaterLiters7d: await waterAvg
             )
             let text = WellnessTextGenerator.generate(from: signals)
             if !text.isEmpty {

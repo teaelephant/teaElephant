@@ -17,7 +17,7 @@ final class HealthKitManager: ObservableObject {
     }
 
     private var readTypes: Set<HKObjectType> {
-        let set: Set<HKObjectType> = [
+        var set: Set<HKObjectType> = [
             HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!,
             HKObjectType.workoutType(),
             HKObjectType.quantityType(forIdentifier: .stepCount)!,
@@ -26,6 +26,8 @@ final class HealthKitManager: ObservableObject {
             HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!,
             HKObjectType.categoryType(forIdentifier: .mindfulSession)!
         ]
+        if let vo2 = HKObjectType.quantityType(forIdentifier: .vo2Max) { set.insert(vo2) }
+        if let water = HKObjectType.quantityType(forIdentifier: .dietaryWater) { set.insert(water) }
         return set
     }
 
@@ -79,6 +81,46 @@ final class HealthKitManager: ObservableObject {
             let q = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: pred, options: .cumulativeSum) { _, stats, _ in
                 let val = stats?.sumQuantity()?.doubleValue(for: .kilocalorie()) ?? 0
                 cont.resume(returning: val)
+            }
+            self.store.execute(q)
+        }
+    }
+
+    // MARK: - VO2Max and Hydration
+    nonisolated func mostRecentVO2Max() async -> Double? {
+        let unit = HKUnit(from: "mL/min·kg")
+        return await mostRecentQuantity(.vo2Max, unit: unit)
+    }
+
+    nonisolated func averageVO2Max7d() async -> Double? {
+        let unit = HKUnit(from: "mL/min·kg")
+        return await averageQuantity(.vo2Max, unit: unit, last: 7)
+    }
+
+    nonisolated func waterTodayLiters() async -> Double {
+        guard let type = HKQuantityType.quantityType(forIdentifier: .dietaryWater) else { return 0 }
+        let start = Calendar.current.startOfDay(for: Date())
+        let pred = HKQuery.predicateForSamples(withStart: start, end: Date(), options: .strictEndDate)
+        return await withCheckedContinuation { cont in
+            let q = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: pred, options: .cumulativeSum) { _, stats, _ in
+                // quantity in milliliters → convert to liters
+                let ml = stats?.sumQuantity()?.doubleValue(for: HKUnit.literUnit(with: .milli)) ?? 0
+                cont.resume(returning: ml / 1000.0)
+            }
+            self.store.execute(q)
+        }
+    }
+
+    nonisolated func averageDailyWaterLiters(last days: Int = 7) async -> Double? {
+        guard let type = HKQuantityType.quantityType(forIdentifier: .dietaryWater) else { return nil }
+        let start = Calendar.current.date(byAdding: .day, value: -days, to: Date())!
+        let pred = HKQuery.predicateForSamples(withStart: start, end: Date(), options: .strictEndDate)
+        return await withCheckedContinuation { cont in
+            let q = HKStatisticsQuery(quantityType: type, quantitySamplePredicate: pred, options: .cumulativeSum) { _, stats, _ in
+                let ml = stats?.sumQuantity()?.doubleValue(for: HKUnit.literUnit(with: .milli)) ?? 0
+                let liters = ml / 1000.0
+                let avg = liters / Double(days)
+                cont.resume(returning: avg.isFinite ? avg : nil)
             }
             self.store.execute(q)
         }

@@ -14,6 +14,10 @@ struct WellnessSignals {
     var stepsToday: Double?
     var avgSteps7d: Double?
     var mindfulToday: Bool?
+    var vo2Max: Double?
+    var avgVO2Max7d: Double?
+    var waterTodayLiters: Double?
+    var avgWaterLiters7d: Double?
 }
 
 enum WellnessTextGenerator {
@@ -84,6 +88,38 @@ enum WellnessTextGenerator {
         // Mindfulness
         if s.mindfulToday == true {
             parts.append("Logged a mindfulness session — nice reset.")
+        }
+
+        // VO₂Max (cardio fitness)
+        if let v = s.vo2Max {
+            if let base = s.avgVO2Max7d, base > 0 {
+                let delta = v - base
+                if delta <= -2 {
+                    parts.append(String(format: "Cardio fitness (VO₂Max) %.1f mL/kg·min, below your avg.", v))
+                } else if delta >= 2 {
+                    parts.append(String(format: "Cardio fitness (VO₂Max) %.1f mL/kg·min, above recent avg.", v))
+                } else {
+                    parts.append(String(format: "VO₂Max ~%.1f mL/kg·min (near avg).", v))
+                }
+            } else {
+                parts.append(String(format: "VO₂Max ~%.1f mL/kg·min.", v))
+            }
+        }
+
+        // Hydration
+        if let w = s.waterTodayLiters {
+            if let base = s.avgWaterLiters7d, base > 0 {
+                let ratio = w / base
+                if ratio <= 0.6 {
+                    parts.append(String(format: "Hydration today ~%.1f L (below your ~%.1f L avg).", w, base))
+                } else if ratio >= 1.2 {
+                    parts.append(String(format: "Well hydrated: ~%.1f L (above your ~%.1f L avg).", w, base))
+                } else {
+                    parts.append(String(format: "Hydration ~%.1f L (near your ~%.1f L avg).", w, base))
+                }
+            } else {
+                parts.append(String(format: "Hydration so far ~%.1f L.", w))
+            }
         }
 
         // Final tone
