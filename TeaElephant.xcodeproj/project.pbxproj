@@ -227,6 +227,14 @@
 		CEE6B7A42E5996070091BD2F /* SendableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7A22E5996070091BD2F /* SendableBox.swift */; };
 		CEE6B7A52E5996070091BD2F /* SendableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7A22E5996070091BD2F /* SendableBox.swift */; };
 		CEE6B7A62E5996070091BD2F /* SendableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B7A22E5996070091BD2F /* SendableBox.swift */; };
+		CEE6B9062E5CEC140091BD2F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B9052E5CEC140091BD2F /* HealthKitManager.swift */; };
+		CEE6B9072E5CEC140091BD2F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B9052E5CEC140091BD2F /* HealthKitManager.swift */; };
+		CEE6B9082E5CEC140091BD2F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B9052E5CEC140091BD2F /* HealthKitManager.swift */; };
+		CEE6B9092E5CEC140091BD2F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B9052E5CEC140091BD2F /* HealthKitManager.swift */; };
+		CEE6B90B2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B90A2E5CEC320091BD2F /* WellnessTextGenerator.swift */; };
+		CEE6B90C2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B90A2E5CEC320091BD2F /* WellnessTextGenerator.swift */; };
+		CEE6B90D2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B90A2E5CEC320091BD2F /* WellnessTextGenerator.swift */; };
+		CEE6B90E2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6B90A2E5CEC320091BD2F /* WellnessTextGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +403,8 @@
 		CEE6B7942E579DE60091BD2F /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
 		CEE6B7952E579DE60091BD2F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		CEE6B7A22E5996070091BD2F /* SendableBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendableBox.swift; sourceTree = "<group>"; };
+		CEE6B9052E5CEC140091BD2F /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		CEE6B90A2E5CEC320091BD2F /* WellnessTextGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessTextGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -686,6 +696,7 @@
 		4B8E854424D09EFE001FCFFF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CEAAB1302E600A4000A6B5A3 /* Core */,
 				CEE6B7962E579DE60091BD2F /* Utilities */,
 				CEAAFFCB2E4F0CA600A6B5A3 /* DesignSystem */,
 				CEAAFFCD2E4F0CA600A6B5A3 /* Onboarding */,
@@ -826,6 +837,31 @@
 				4BFE09292AA1C75A0033131F /* teaRecomendation.graphql */,
 			);
 			path = mutations;
+			sourceTree = "<group>";
+		};
+		CEAAB1302E600A4000A6B5A3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CEAAB1312E600A5000A6B5A3 /* Health */,
+				CEAAB1322E600A5000A6B5A3 /* Wellness */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CEAAB1312E600A5000A6B5A3 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				CEE6B9052E5CEC140091BD2F /* HealthKitManager.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		CEAAB1322E600A5000A6B5A3 /* Wellness */ = {
+			isa = PBXGroup;
+			children = (
+				CEE6B90A2E5CEC320091BD2F /* WellnessTextGenerator.swift */,
+			);
+			path = Wellness;
 			sourceTree = "<group>";
 		};
 		CEAAFFC12E4F02C300A6B5A3 /* docs */ = {
@@ -1091,6 +1127,7 @@
 				CEE6B79E2E579DE60091BD2F /* HapticFeedback.swift in Sources */,
 				4B1D0A322504169F00D26450 /* Writer.swift in Sources */,
 				4B29053224C0AEDE007A3D1B /* ContentView.swift in Sources */,
+				CEE6B9092E5CEC140091BD2F /* HealthKitManager.swift in Sources */,
 				4B587D6024D6E865006B9F96 /* TeaMeta.swift in Sources */,
 				4B5789E72A9DD0FF00549157 /* DestinatoinUIView.swift in Sources */,
 				4B34874524C63EE20098F811 /* KeyboardHeightPublisher.swift in Sources */,
@@ -1107,6 +1144,7 @@
 				4BB739DC2A86A52C003524A0 /* CollectionsUIView.swift in Sources */,
 				4B37AF1E25AAE60200209E22 /* Description.swift in Sources */,
 				4B85B4E524C447DE00588DB9 /* Menu.swift in Sources */,
+				CEE6B90E2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */,
 				4B56FD8F2A84D5410055BDB5 /* ARCardUIView.swift in Sources */,
 				4B29056624C43760007A3D1B /* ShowCard.swift in Sources */,
 				4B67095C24C8A89900F4C4ED /* CardViewer.swift in Sources */,
@@ -1157,12 +1195,14 @@
 				4B1D0A302504169F00D26450 /* Reader.swift in Sources */,
 				4B1D0A202504152100D26450 /* NFCwriter.swift in Sources */,
 				4BEF3EBE2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
+				CEE6B9082E5CEC140091BD2F /* HealthKitManager.swift in Sources */,
 				4B8E854C24D09F93001FCFFF /* NearFieldCommunicator.swift in Sources */,
 				4B8E854724D09F8B001FCFFF /* TeaInfo.swift in Sources */,
 				4B4E296B2A973DB500383D06 /* Collection.swift in Sources */,
 				4B29054224C0AEDF007A3D1B /* TeaElephantTests.swift in Sources */,
 				4BFF93E825BCF514005FC04F /* RecordWriter.swift in Sources */,
 				4B1B06272A7B919800A332E1 /* ApolloClientExtension.swift in Sources */,
+				CEE6B90C2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */,
 				4BC972C22AAF9A5D00636A4F /* Network.swift in Sources */,
 				4B1D0A232504152100D26450 /* NFCreader.swift in Sources */,
 				1CEAFEB02F756D050878B559 /* Manager.swift in Sources */,
@@ -1186,10 +1226,12 @@
 				CEAAFFFE2E52520E00A6B5A3 /* InteractiveOnboardingView.swift in Sources */,
 				4BB73A042A8C0885003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				4B8E854824D09F8C001FCFFF /* TeaInfo.swift in Sources */,
+				CEE6B90D2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */,
 				CEAAFFD32E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4B1B06292A7B919900A332E1 /* ApolloClientExtension.swift in Sources */,
 				4BEF3EBF2A7BC71600829724 /* CacheInterceptor.swift in Sources */,
 				CEE6B7992E579DE60091BD2F /* Log.swift in Sources */,
+				CEE6B9072E5CEC140091BD2F /* HealthKitManager.swift in Sources */,
 				CEE6B79A2E579DE60091BD2F /* HapticFeedback.swift in Sources */,
 				4BC972BF2AAF989C00636A4F /* Color.swift in Sources */,
 				4BC972BC2AAF97BD00636A4F /* Network.swift in Sources */,
@@ -1223,6 +1265,7 @@
 				4B37AF1F25AAE60200209E22 /* Description.swift in Sources */,
 				4BB739FF2A8AB4FF003524A0 /* AuthorizationInterceptor.swift in Sources */,
 				4B8E855124D09F9F001FCFFF /* ContentView.swift in Sources */,
+				CEE6B90B2E5CEC320091BD2F /* WellnessTextGenerator.swift in Sources */,
 				4B8E854F24D09F95001FCFFF /* NearFieldCommunicator.swift in Sources */,
 				4BFF93A925BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B5789E92A9DD17200549157 /* DestinatoinUIView.swift in Sources */,
@@ -1252,6 +1295,7 @@
 				CEAAFFD12E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4BFF939B25BCED79005FC04F /* Search.swift in Sources */,
 				4B1B06282A7B919800A332E1 /* ApolloClientExtension.swift in Sources */,
+				CEE6B9062E5CEC140091BD2F /* HealthKitManager.swift in Sources */,
 				4B8D0BB725AAEB6600FF40DB /* Name.swift in Sources */,
 				4B587D6124D6E865006B9F96 /* TeaMeta.swift in Sources */,
 				4BFF93E925BCF514005FC04F /* RecordWriter.swift in Sources */,

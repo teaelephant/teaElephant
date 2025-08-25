@@ -7,6 +7,8 @@
 
 import SwiftUI
 import TeaElephantSchema
+import HealthKit
+import os
 
 struct RecomendationUIView: View {
     var id: String
@@ -20,6 +22,7 @@ struct RecomendationUIView: View {
     @State private var errorMessage = ""
     @State private var retryCount = 0
     private let maxRetries = 3
+    private let wellnessLogger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "TeaElephant", category: "Wellness")
     
     var body: some View {
         ZStack {
@@ -136,16 +139,50 @@ struct RecomendationUIView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         HStack(spacing: 12) {
-                            TextField("Relaxed, energetic, focused...", text: $feelings)
-                                .textFieldStyle(EnhancedTextFieldStyle(isValid: true))
+                            // Multiline editor that expands when text is present
+                            TextEditor(text: $feelings)
+                                .frame(minHeight: feelings.isEmpty ? 44 : 96, alignment: .topLeading)
+                                .scrollIndicators(.hidden)
+                                .scrollContentBackground(.hidden)
+                                .padding(10)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(.ultraThinMaterial)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.glassBorder, lineWidth: 1)
+                                        )
+                                )
                                 .focused($isFocused)
-                                .onTapGesture {
-                                    isTyping = true
+                                .onTapGesture { isTyping = true }
+                                .onChange(of: feelings) { _, _ in isTyping = !feelings.isEmpty }
+
+                            // Fancy Auto-Fill button (Wellness V1)
+                            Button(action: {
+                                isFocused = false
+                                Task { await autoFillFeelings() }
+                            }) {
+                                ZStack {
+                                    Circle()
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [Color.vibrantBlue, Color.teaPrimaryAlt],
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            )
+                                        )
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "wand.and.stars")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 18, weight: .semibold))
                                 }
-                                .onChange(of: feelings) { _, _ in
-                                    isTyping = !feelings.isEmpty
-                                }
-                            
+                                .shadow(color: Color.vibrantBlue.opacity(0.35), radius: 8, x: 0, y: 3)
+                                .overlay(Circle().stroke(Color.white.opacity(0.2), lineWidth: 1))
+                                .accessibilityLabel("Auto-Fill Feelings")
+                            }
+                            .buttonStyle(ScaledButtonStyle())
+
+                            // Submit button
                             Button(action: {
                                 isFocused = false
                                 Task {
@@ -344,7 +381,7 @@ struct RecomendationUIView: View {
             Text(errorMessage)
         }
     }
-    
+
     // MARK: - Error Handling Methods
     
     private func requestRecommendation() async {
@@ -438,6 +475,49 @@ struct RecomendationUIView: View {
         errorMessage = ""
         showErrorAlert = false
         retryCount = 0
+    }
+
+    // MARK: - Wellness Auto-Fill (V1)
+    private func autoFillFeelings() async {
+        do {
+            let ok = try await HealthKitManager.shared.requestAuthorization()
+            guard ok else { return }
+            async let sleepH = HealthKitManager.shared.fetchSleepHoursLastNight()
+            async let sleepAvg = HealthKitManager.shared.averageSleepHours(last: 7)
+            async let intense = HealthKitManager.shared.hasIntenseWorkoutToday()
+            async let workoutSummary = HealthKitManager.shared.workoutSummaryToday()
+            async let rhr = HealthKitManager.shared.mostRecentQuantity(.restingHeartRate, unit: HKUnit.count().unitDivided(by: .minute()))
+            async let rhrAvg = HealthKitManager.shared.averageQuantity(.restingHeartRate, unit: HKUnit.count().unitDivided(by: .minute()), last: 7)
+            async let hrv = HealthKitManager.shared.mostRecentQuantity(.heartRateVariabilitySDNN, unit: .secondUnit(with: .milli))
+            async let hrvAvg = HealthKitManager.shared.averageQuantity(.heartRateVariabilitySDNN, unit: .secondUnit(with: .milli), last: 7)
+            async let stepsDict = HealthKitManager.shared.stepsByDay(last: 7)
+            async let mindful = HealthKitManager.shared.hasMindfulnessToday()
+
+            let steps = await stepsDict
+            let todayKey = Calendar.current.startOfDay(for: Date())
+            let ws = await workoutSummary
+            let signals = WellnessSignals(
+                sleepHoursLastNight: await sleepH,
+                avgSleepHours7d: await sleepAvg,
+                intenseWorkoutToday: await intense,
+                workoutCountToday: ws.count,
+                longestWorkoutMinutes: ws.longestMinutes,
+                totalActiveEnergyKcal: ws.totalEnergyKcal,
+                restingHR: await rhr,
+                hrvSDNN: await hrv,
+                avgRestingHR7d: await rhrAvg,
+                avgHRV7d: await hrvAvg,
+                stepsToday: steps[todayKey],
+                avgSteps7d: steps.isEmpty ? nil : (steps.values.reduce(0,+) / Double(steps.count)),
+                mindfulToday: await mindful
+            )
+            let text = WellnessTextGenerator.generate(from: signals)
+            if !text.isEmpty {
+                feelings = text
+            }
+        } catch {
+            wellnessLogger.error("Wellness autofill failed: \(String(describing: error), privacy: .public)")
+        }
     }
 }
 

@@ -70,6 +70,8 @@ struct Menu: View {
                                 accessibilityLabel: "Add New Tea",
                                 accessibilityHint: "Write tea information to NFC tags or QR codes"
                             )
+
+                            // Wellness auto-fill is available inside the recommendation screen
                         }
                         .padding(.horizontal, 20)
                         

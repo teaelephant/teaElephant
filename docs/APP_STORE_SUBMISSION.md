@@ -32,13 +32,14 @@ Download TeaElephant today and rediscover your love for tea.
 
 ## What's New in This Version
 
-This is a major update that introduces a brand new design and a host of new features:
+This update brings significant under-the-hood improvements by migrating the app to Swift 6. We've focused on enhancing performance, stability, and data safety to provide a smoother and more reliable experience.
 
-*   **All-New "Liquid Glass" Design:** We've completely redesigned the app with a beautiful new "liquid glass" aesthetic that is both modern and immersive.
-*   **Interactive Onboarding:** A new interactive onboarding experience that guides you through the app's key features.
-*   **Tea of the Day Widget:** A new widget that suggests a tea from your collection to try each day.
-*   **Improved "Add New Tea" Flow:** A new multi-step form that makes it easier than ever to add new teas to your collection.
-*   **Enhanced AR Experience:** The AR card resizing logic has been completely refactored to be smoother and more realistic.
+Key improvements in this version:
+*   **Smarter Tea of the Day:** Our AI-powered "Tea of the Day" recommendations are now even smarter. We've improved the underlying recommendation model to provide more personalized and relevant suggestions based on your mood, the weather, and your tea collection.
+*   **Swift 6 Migration:** The app has been migrated to the latest version of Swift, taking advantage of its new concurrency features for improved performance and data-race safety.
+*   **Concurrency Enhancements:** We've adopted modern concurrency patterns, including the use of `@MainActor` to ensure that UI updates are always safe and efficient.
+*   **Optimized Data Handling:** We've refactored our data management code to be more efficient, reducing unnecessary network requests and making the app more responsive.
+*   **Improved Stability:** These architectural improvements lead to a more stable and reliable app, paving the way for exciting new features in the future.
 
 ## Keywords (comma-separated)
 

@@ -24,6 +24,10 @@
 	<string>Reader using for read tea info from tea box</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Scanning qr codes</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>This app reads your health data (sleep, workouts, steps, heart metrics) to personalize tea recommendations.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>This app may write hydration or mindfulness logs if you choose to track them here.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
