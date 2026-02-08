@@ -439,9 +439,13 @@ struct EnhancedNewCard: View {
         }
         
         if let searcherData = searcher.detectedInfo {
-            await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
-            await showSuccess()
-            resetState()
+            let didWrite = await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
+            if didWrite {
+                await showSuccess()
+                resetState()
+            } else {
+                print("QR save failed")
+            }
             return
         }
         
@@ -454,10 +458,14 @@ struct EnhancedNewCard: View {
         do {
             let id = try await RecordWriter().writeExtendInfo(info: data)
             let meta = TeaMeta(id: id, expirationDate: expirationDate, brewingTemp: temp)
-            await QRManager().write(id: code, data: meta)
-            await showSuccess()
-            resetState()
-            presentationMode.wrappedValue.dismiss()
+            let didWrite = await QRManager().write(id: code, data: meta)
+            if didWrite {
+                await showSuccess()
+                resetState()
+                presentationMode.wrappedValue.dismiss()
+            } else {
+                print("QR save failed")
+            }
         } catch {
             print(error.localizedDescription)
         }

@@ -290,8 +290,12 @@ struct ImprovedNewCard: View {
         // Implementation from original file
         if let searcherData = searcher.detectedInfo {
             // QRwriter is not available, using alternative approach
-            await QRManager().write(id: qrcode, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: Int(brewingTemp) ?? 95))
-            logUI.info("QR write with existing tea succeeded")
+            let didWrite = await QRManager().write(id: qrcode, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: Int(brewingTemp) ?? 95))
+            if didWrite {
+                logUI.info("QR write with existing tea succeeded")
+            } else {
+                logUI.error("QR write with existing tea failed")
+            }
             return
         }
         
@@ -309,8 +313,12 @@ struct ImprovedNewCard: View {
         do {
             let id = try await RecordWriter().writeExtendInfo(info: data)
             let meta = TeaMeta(id: id, expirationDate: expirationDate, brewingTemp: tempValue)
-            await QRManager().write(id: qrcode, data: meta)
-            print("Saved successfully")
+            let didWrite = await QRManager().write(id: qrcode, data: meta)
+            if didWrite {
+                print("Saved successfully")
+            } else {
+                logUI.error("QR write failed")
+            }
         } catch {
             logUI.error("QR save error: \(error.localizedDescription, privacy: .public)")
         }

@@ -49,58 +49,72 @@ final class Reader: ObservableObject {
     }
     
     func processQRCode(_ code: String) async {
-        let id = code.trimmingCharacters(in: .whitespacesAndNewlines)
-        logReader.debug("Started processing QR. raw=\(code, privacy: .public), trimmed=\(id, privacy: .public)")
-        if let url = URL(string: id), let comps = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-            let candidate = comps.queryItems?.first(where: { $0.name == "id" })?.value ?? url.lastPathComponent
-            logReader.debug("Detected URL QR payload. candidateID=\(candidate, privacy: .public)")
+        let normalizedID = QRCodePayload.normalize(code)
+        let trimmedID = code.trimmingCharacters(in: .whitespacesAndNewlines)
+        let rawID = code
+        var candidates = [String]()
+        if !normalizedID.isEmpty { candidates.append(normalizedID) }
+        if trimmedID != normalizedID, !trimmedID.isEmpty { candidates.append(trimmedID) }
+        if rawID != normalizedID, rawID != trimmedID, !rawID.isEmpty { candidates.append(rawID) }
+        logReader.debug("Started processing QR. raw=\(code, privacy: .public), normalized=\(normalizedID, privacy: .public)")
+        if candidates.isEmpty {
+            self.error = "Invalid QR code. Please scan a valid tea QR code."
+            return
         }
+        var lastMappedError: String?
         // Retry a few times to tolerate eventual consistency of QR writes
         let maxAttempts = 3
-        for attempt in 1...maxAttempts {
-            do {
-                // Always fetch from network to avoid stale cache
-                logReader.debug("Attempt #\(attempt) fetch read(id=\(id, privacy: .public)) with .fetchIgnoringCacheData")
-                for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: id), cachePolicy: .fetchIgnoringCacheData) {
-                    logReader.debug("Received GraphQLResult. source=\(String(describing: result.source), privacy: .public) errors=\(String(describing: result.errors), privacy: .public) hasData=\(result.data != nil, privacy: .public)")
-                    if let errors = result.errors {
-                        // If the error indicates free QR, retry shortly; otherwise show error
-                        let mapped = self.mapErrors(errs: errors)
-                        if attempt < maxAttempts, mapped == "qr code is free, write some info for this qr code first" {
-                            logReader.info("Server says QR is free. Retrying soon (attempt=\(attempt))")
-                            try? await Task.sleep(nanoseconds: 800_000_000) // 0.8s
-                            continue
+        for candidateID in candidates {
+            for attempt in 1...maxAttempts {
+                do {
+                    // Always fetch from network to avoid stale cache
+                    logReader.debug("Attempt #\(attempt) fetch read(id=\(candidateID, privacy: .public)) with .fetchIgnoringCacheData")
+                    for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: candidateID), cachePolicy: .fetchIgnoringCacheData) {
+                        logReader.debug("Received GraphQLResult. source=\(String(describing: result.source), privacy: .public) errors=\(String(describing: result.errors), privacy: .public) hasData=\(result.data != nil, privacy: .public)")
+                        if let errors = result.errors {
+                            // If the error indicates free QR, retry shortly; otherwise show error
+                            let mapped = self.mapErrors(errs: errors)
+                            if attempt < maxAttempts, mapped == "qr code is free, write some info for this qr code first" {
+                                logReader.info("Server says QR is free. Retrying soon (attempt=\(attempt))")
+                                try? await Task.sleep(nanoseconds: 800_000_000) // 0.8s
+                                continue
+                            }
+                            if mapped == "qr code is free, write some info for this qr code first" {
+                                lastMappedError = mapped
+                                break
+                            }
+                            logReader.error("Error after fetch: \(mapped ?? "unknown", privacy: .public)")
+                            self.error = mapped
+                            return
                         }
-                        logReader.error("Error after fetch: \(mapped ?? "unknown", privacy: .public)")
-                        self.error = mapped
+                        guard let qr = result.data?.qrRecord else {
+                            // Not found yet; retry
+                            if attempt < maxAttempts {
+                                logReader.info("qrRecord is nil. Retrying soon (attempt=\(attempt))")
+                                try? await Task.sleep(nanoseconds: 800_000_000)
+                                continue
+                            }
+                            logReader.error("qrRecord is nil. Giving up after attempt=\(attempt)")
+                            break
+                        }
+                        
+                        logReader.info("Success. tea.id=\(qr.tea.id, privacy: .public) name=\(qr.tea.name, privacy: .public) temp=\(qr.bowlingTemp, privacy: .public) exp=\(String(describing: qr.expirationDate), privacy: .public)")
+                        self.detectedInfo = TeaInfo(
+                            meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
+                            data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description),
+                            tags: [Tag]()
+                        )
                         return
                     }
-                    guard let qr = result.data?.qrRecord else {
-                        // Not found yet; retry
-                        if attempt < maxAttempts {
-                            logReader.info("qrRecord is nil. Retrying soon (attempt=\(attempt))")
-                            try? await Task.sleep(nanoseconds: 800_000_000)
-                            continue
-                        }
-                        logReader.error("qrRecord is nil. Giving up after attempt=\(attempt)")
-                        return
-                    }
-                    
-                    logReader.info("Success. tea.id=\(qr.tea.id, privacy: .public) name=\(qr.tea.name, privacy: .public) temp=\(qr.bowlingTemp, privacy: .public) exp=\(String(describing: qr.expirationDate), privacy: .public)")
-                    self.detectedInfo = TeaInfo(
-                        meta: TeaMeta(id: qr.tea.id, expirationDate: ISO8601DateFormatter().date(from: qr.expirationDate)!, brewingTemp: qr.bowlingTemp ),
-                        data: TeaData(name: qr.tea.name, type: qr.tea.type, description: qr.tea.description),
-                        tags: [Tag]()
-                    )
+                } catch {
+                    logReader.error("fetch error: \(String(describing: error), privacy: .public)")
+                    self.error = error.localizedDescription
                     return
                 }
-            } catch {
-                logReader.error("fetch error: \(String(describing: error), privacy: .public)")
-                self.error = error.localizedDescription
-                return
             }
         }
         logReader.error("Exiting without result after retries")
+        self.error = lastMappedError ?? "No tea linked to this QR code yet."
     }
     
     func mapErrors(errs: [GraphQLError]) -> String? {

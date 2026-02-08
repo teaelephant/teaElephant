@@ -13,6 +13,21 @@ import KeychainSwift
 class UnauthInterceptor: ApolloInterceptor {
     var id =  "UnAuthorizationInterceptor"
     
+    private func isUnauthenticated(_ error: GraphQLError) -> Bool {
+        if let code = error.extensions?["code"] as? Int, code == -1 {
+            return true
+        }
+        if let code = error.extensions?["code"] as? String {
+            if let codeInt = Int(code), codeInt == -1 {
+                return true
+            }
+            if code.lowercased().contains("unauth") {
+                return true
+            }
+        }
+        return (error.message ?? "").lowercased().contains("unauth")
+    }
+    
     func interceptAsync<Operation>(chain: RequestChain, request: HTTPRequest<Operation>, response: HTTPResponse<Operation>?, completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) where Operation : GraphQLOperation {
         guard let err = response?.parsedResponse?.errors?.first else {
             // No errors, or response not parsed yet - just continue
@@ -22,11 +37,7 @@ class UnauthInterceptor: ApolloInterceptor {
             chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
             return
         }
-        guard let code = err.extensions?["code"] as? String else {
-            chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
-            return
-        }
-        if Int(code) == -1 {
+        if isUnauthenticated(err) {
             Task { @MainActor in
                 AuthManager.shared.keychain.synchronizable = true  // Match the synchronizable setting
                 AuthManager.shared.keychain.delete(tokenKey)

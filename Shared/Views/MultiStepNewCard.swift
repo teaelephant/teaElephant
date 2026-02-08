@@ -1186,9 +1186,14 @@ struct MultiStepNewCard: View {
         }
         
         if let searcherData = searcher.detectedInfo {
-            await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
-            showingSuccessAlert = true
-            resetState()
+            let didWrite = await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
+            if didWrite {
+                showingSuccessAlert = true
+                resetState()
+            } else {
+                errorMessage = "Unable to save QR code. Please try again."
+                showingErrorAlert = true
+            }
             return
         }
         
@@ -1201,9 +1206,14 @@ struct MultiStepNewCard: View {
         do {
             let id = try await RecordWriter().writeExtendInfo(info: data)
             let meta = TeaMeta(id: id, expirationDate: expirationDate, brewingTemp: temp)
-            await QRManager().write(id: code, data: meta)
-            showingSuccessAlert = true
-            resetState()
+            let didWrite = await QRManager().write(id: code, data: meta)
+            if didWrite {
+                showingSuccessAlert = true
+                resetState()
+            } else {
+                errorMessage = "Unable to save QR code. Please try again."
+                showingErrorAlert = true
+            }
         } catch {
             errorMessage = error.localizedDescription
             showingErrorAlert = true

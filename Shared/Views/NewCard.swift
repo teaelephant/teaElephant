@@ -179,7 +179,10 @@ struct NewCard: View {
         temp = n.intValue
         print(temp)
         if let searcherData = $searcher.detectedInfo.projectedValue.wrappedValue {
-            await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
+            let didWrite = await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
+            if !didWrite {
+                print("QR save failed")
+            }
             name = ""
             return
         }
@@ -193,8 +196,12 @@ struct NewCard: View {
             let id = try await RecordWriter().writeExtendInfo(info: data)
             print(id)
             let meta = TeaMeta(id: id, expirationDate: expirationDate, brewingTemp: temp)
-            
-            await QRManager().write(id: code, data: meta)
+
+            let didWrite = await QRManager().write(id: code, data: meta)
+            if !didWrite {
+                print("QR save failed")
+                return
+            }
         } catch {
             print(error.localizedDescription)
             return
