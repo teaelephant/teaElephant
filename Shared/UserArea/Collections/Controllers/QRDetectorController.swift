@@ -89,7 +89,7 @@ class QRDetectorController: UIViewController {
             guard let self = self else { return }
             guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(deviceOrientationRaw)) else { return }
             let handler = VNImageRequestHandler(cvPixelBuffer: bufferBox.value, orientation: orientation)
-            let request: VNDetectBarcodesRequest = VNDetectBarcodesRequest(completionHandler: { request, error in
+            let request: VNDetectBarcodesRequest = VNDetectBarcodesRequest(completionHandler: { [weak self] request, error in
                 guard let results = request.results else {
                     print("Unable to classify image.\n\(error?.localizedDescription ?? "Unknown error")")
                     return
@@ -130,6 +130,9 @@ class QRDetectorController: UIViewController {
     }
     
     func processNewBarcode(barcode: VNBarcodeObservation, frame: ARFrame, payload: String, session: ARSession) {
+        // Barcode overlays are positioned in the AR view's coordinate space.
+        let viewportBounds = arView.bounds
+        guard !viewportBounds.isEmpty else { return }
         ids.append(payload)
         self.callback(payload)
         var rect = barcode.boundingBox
@@ -146,14 +149,13 @@ class QRDetectorController: UIViewController {
         guard let raycastResult = session.raycast(query).first else {
             return
         }
-        let screenSize: CGRect = UIScreen.main.bounds
         let transform = CGAffineTransform.identity
                         .scaledBy(x: 1, y: -1)
-                        .translatedBy(x: 0, y: -screenSize.height)
-                        .scaledBy(x: screenSize.width, y: screenSize.height)
+                        .translatedBy(x: 0, y: -viewportBounds.height)
+                        .scaledBy(x: viewportBounds.width, y: viewportBounds.height)
         let convertedOrign = center.applying(transform)
-        let convertedHeight = barcode.boundingBox.height * screenSize.height
-        let convertedWidth = barcode.boundingBox.width * screenSize.width * 2
+        let convertedHeight = barcode.boundingBox.height * viewportBounds.height
+        let convertedWidth = barcode.boundingBox.width * viewportBounds.width * 2
 
         self.newEntities.append(CheckedEntityModel(
                         origin: convertedOrign,
@@ -169,8 +171,9 @@ class QRDetectorController: UIViewController {
         // Flip coordinates
         rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
         rect = rect.applying(CGAffineTransform(translationX: 0, y: 1))
-        let screenSize: CGRect = UIScreen.main.bounds
-        let convertedWidth = barcode.boundingBox.width * screenSize.width * 2
+        let viewportBounds = arView.bounds
+        guard !viewportBounds.isEmpty else { return }
+        let convertedWidth = barcode.boundingBox.width * viewportBounds.width * 2
         DispatchQueue.main.async {
             self.checkedMap[id]?.sizeCorrection = CGSize(width: convertedWidth, height: convertedWidth)
             if self.checkedMap[id]?.secondSize == nil {

@@ -17,11 +17,14 @@ struct CardViewer: View {
     var body: some View {
         VStack {
             if let err = reader.error {
-                Text("\(err)").foregroundStyle(.red).bold().onAppear{
-                    Task{
+                Text("\(err)").foregroundStyle(.red).bold().task(id: err) {
+                    do {
                         try await Task.sleep(nanoseconds: 5_000_000_000)
-                        reader.error = nil
+                    } catch {
+                        return
                     }
+                    guard !Task.isCancelled, reader.error == err else { return }
+                    reader.error = nil
                 }
             }
             if readQRCode {

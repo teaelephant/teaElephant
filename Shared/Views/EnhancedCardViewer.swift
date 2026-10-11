@@ -71,6 +71,18 @@ struct EnhancedCardViewer: View {
         }
         .navigationBarTitle("Read Tea Info", displayMode: .large)
         .animation(.spring(), value: showingEnhancedCard)
+        .task(id: reader.error) {
+            guard let message = reader.error else { return }
+            do {
+                try await Task.sleep(nanoseconds: 5_000_000_000)
+            } catch {
+                return
+            }
+            guard !Task.isCancelled, reader.error == message else { return }
+            withAnimation {
+                reader.error = nil
+            }
+        }
     }
     
     // MARK: - Error Banner
@@ -96,14 +108,6 @@ struct EnhancedCardViewer: View {
                 )
         )
         .padding(.horizontal, 20)
-        .onAppear {
-            Task {
-                try await Task.sleep(nanoseconds: 5_000_000_000)
-                withAnimation {
-                    reader.error = nil
-                }
-            }
-        }
     }
     
     // MARK: - Empty State

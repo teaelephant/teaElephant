@@ -98,7 +98,7 @@ class DetectorController: UIViewController, UITextViewDelegate {
         visionQueue.async { [weak self, sessionBox = SendableBox(session), bufferBox = SendableBox(currentBuffer)] in
             guard let self = self else { return }
             let handler = VNImageRequestHandler(cvPixelBuffer: bufferBox.value, orientation: orientation)
-            let request = VNDetectBarcodesRequest { request, error in
+            let request = VNDetectBarcodesRequest { [weak self] request, error in
                 defer {
                     Task { @MainActor [weak self] in
                         self?.isProcessingFrame = false
@@ -137,6 +137,9 @@ class DetectorController: UIViewController, UITextViewDelegate {
 	}
 
 	func processNewBarcode(barcode: VNBarcodeObservation, frame: ARFrame, payload: String, session: ARSession) {
+		// Barcode overlays are positioned in the AR view's coordinate space.
+		let viewportBounds = arView.bounds
+		guard !viewportBounds.isEmpty else { return }
 		var rect = barcode.boundingBox
 		// Flip coordinates
 		rect = rect.applying(CGAffineTransform(scaleX: 1, y: -1))
@@ -158,18 +161,17 @@ class DetectorController: UIViewController, UITextViewDelegate {
 		let objectPosition = simd_make_float3(raycastResult.worldTransform.columns.3)
 		let referenceDistance = length(objectPosition - cameraPosition)
 		
-		let screenSize: CGRect = UIScreen.main.bounds
 		let transform = CGAffineTransform.identity
 						.scaledBy(x: 1, y: -1)
-						.translatedBy(x: 0, y: -screenSize.height)
-						.scaledBy(x: screenSize.width, y: screenSize.height)
+						.translatedBy(x: 0, y: -viewportBounds.height)
+						.scaledBy(x: viewportBounds.width, y: viewportBounds.height)
 		let convertedOrign = center.applying(transform)
 		
 		// Store the barcode size as reference size for scaling
 		let referenceSize = barcode.boundingBox.width
 		
 		// Calculate initial card size - make it square based on width (50% bigger = 1.5 * 1.5 = 2.25)
-		let convertedWidth = barcode.boundingBox.width * screenSize.width * 2.25
+		let convertedWidth = barcode.boundingBox.width * viewportBounds.width * 2.25
 		let convertedHeight = convertedWidth // Make it square
 
         Task {

@@ -28,9 +28,11 @@ xcodebuild -workspace TeaElephant.xcworkspace -scheme TeaElephantTests \
   -destination 'platform=iOS Simulator,name=iPhone 18 Pro' test
 ```
 
-Choose an installed simulator when using a different Xcode version. UI tests use the existing separate target and are not included in this unit-test scheme.
+Choose an installed simulator when using a different Xcode version. Run the UI suite separately with `-scheme TeaElephantUITests`. Its target compiles only UI-test sources and launches the built app through XCTest.
 
 The Apollo 2 adapters preserve cache-first, network-only, and cache-and-network fetching. Cancelling their tasks terminates the underlying requests or subscriptions. HTTP auth uses the existing synchronized Keychain token; WebSocket auth travels in `connection_init`. GraphQL errors are not written to the cache, and cached responses do not change authentication state.
+
+The project sets `LM_SKIP_METADATA_EXTRACTION=YES` because the app, App Clip, and test targets do not define App Intents. This skips the unused metadata extraction step. Re-enable it when adding App Intents or App Shortcuts.
 
 ## TestFlight delivery
 
