@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension Objects {
-  static let TagCategory = ApolloAPI.Object(
+  nonisolated static let TagCategory = ApolloAPI.Object(
     typename: "TagCategory",
     implementedInterfaces: [],
     keyFields: nil

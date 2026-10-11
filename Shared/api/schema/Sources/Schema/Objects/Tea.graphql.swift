@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension Objects {
-  static let Tea = ApolloAPI.Object(
+  nonisolated static let Tea = ApolloAPI.Object(
     typename: "Tea",
     implementedInterfaces: [],
     keyFields: nil

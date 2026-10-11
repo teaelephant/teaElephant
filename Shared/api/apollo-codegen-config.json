@@ -1,43 +1,40 @@
 {
-    "schemaDownloadConfiguration": {
-        "downloadMethod": {
-            "introspection": {
-                "endpointURL": "http://localhost:8080/v2/query",
-                "httpMethod": {
-                    "POST": {}
-                },
-                "includeDeprecatedInputValues": false,
-                "outputFormat": "JSON"
-            }
-        },
-        "downloadTimeout": 60,
-        "headers": [],
-        "outputPath": "./schema.json/"
-    },
-    "schemaName": "teaElephantSchema",
-  "input" : {
-    "operationSearchPaths" : [
+  "input": {
+    "operationSearchPaths": [
       "**/*.graphql"
     ],
-    "schemaSearchPaths" : [
+    "schemaSearchPaths": [
       "**/schema.json"
     ]
   },
-  "output" : {
-    "testMocks" : {
-      "none" : {
+  "output": {
+    "testMocks": {
+      "none": {}
+    },
+    "schemaTypes": {
+      "path": "./schema",
+      "moduleType": {
+        "swiftPackage": {}
       }
     },
-    "schemaTypes" : {
-      "path" : "./schema",
-      "moduleType" : {
-        "swiftPackageManager" : {
-        }
-      }
-    },
-    "operations" : {
-      "inSchemaModule" : {
-      }
+    "operations": {
+      "inSchemaModule": {}
     }
+  },
+  "schemaNamespace": "teaElephantSchema",
+  "schemaDownload": {
+    "downloadMethod": {
+      "introspection": {
+        "endpointURL": "http://localhost:8080/v2/query",
+        "httpMethod": {
+          "POST": {}
+        },
+        "includeDeprecatedInputValues": false,
+        "outputFormat": "JSON"
+      }
+    },
+    "downloadTimeout": 60,
+    "headers": [],
+    "outputPath": "./schema.json"
   }
 }

@@ -174,7 +174,7 @@ class DetectorController: UIViewController, UITextViewDelegate {
 
         Task {
             do {
-                for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: payload), cachePolicy: .fetchIgnoringCacheData) {
+                for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: payload), fetchBehavior: .NetworkOnly) {
                     if let errors = result.errors {
                         logAR.error("AR ReadQuery errors: \(String(describing: errors), privacy: .public)")
                         return

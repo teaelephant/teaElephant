@@ -10,11 +10,12 @@ import Foundation
 import ApolloAPI
 import Combine
 
+@MainActor
 protocol NetworkServiceProtocol {
-    func fetch<Query: GraphQLQuery>(_ query: Query, cachePolicy: CachePolicy) async throws -> Query.Data
-    func perform<Mutation: GraphQLMutation>(_ mutation: Mutation) async throws -> Mutation.Data
+    func fetch<Query: GraphQLQuery>(_ query: Query, fetchBehavior: FetchBehavior) async throws -> Query.Data
+    func perform<Mutation: GraphQLMutation>(_ mutation: Mutation) async throws -> Mutation.Data where Mutation.ResponseFormat == SingleResponseFormat
     func subscribe<Subscription: GraphQLSubscription>(_ subscription: Subscription) -> AnyPublisher<Subscription.Data, Error>
-    func clearCache() async
+    func clearCache() async throws
 }
 
 protocol AuthenticationServiceProtocol {

@@ -2,8 +2,9 @@
 // This file was automatically generated and should not be edited.
 
 @_exported import ApolloAPI
+@_spi(Execution) @_spi(Unsafe) import ApolloAPI
 
-public class ListQuery: GraphQLQuery {
+nonisolated public struct ListQuery: GraphQLQuery {
   public static let operationName: String = "list"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
@@ -16,15 +17,18 @@ public class ListQuery: GraphQLQuery {
     self.prefix = prefix
   }
 
-  public var __variables: Variables? { ["prefix": prefix] }
+  @_spi(Unsafe) public var __variables: Variables? { ["prefix": prefix] }
 
-  public struct Data: TeaElephantSchema.SelectionSet {
-    public let __data: DataDict
-    public init(_dataDict: DataDict) { __data = _dataDict }
+  nonisolated public struct Data: TeaElephantSchema.SelectionSet {
+    @_spi(Unsafe) public let __data: DataDict
+    @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
-    public static var __selections: [ApolloAPI.Selection] { [
+    @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
+    @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
       .field("teas", [Tea].self, arguments: ["prefix": .variable("prefix")]),
+    ] }
+    @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+      ListQuery.Data.self
     ] }
 
     /// Get information about teas.
@@ -33,17 +37,20 @@ public class ListQuery: GraphQLQuery {
     /// Tea
     ///
     /// Parent Type: `Tea`
-    public struct Tea: TeaElephantSchema.SelectionSet {
-      public let __data: DataDict
-      public init(_dataDict: DataDict) { __data = _dataDict }
+    nonisolated public struct Tea: TeaElephantSchema.SelectionSet {
+      @_spi(Unsafe) public let __data: DataDict
+      @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
-      public static var __selections: [ApolloAPI.Selection] { [
+      @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
+      @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", TeaElephantSchema.ID.self),
         .field("name", String.self),
         .field("type", GraphQLEnum<TeaElephantSchema.Type_Enum>.self),
         .field("description", String.self),
+      ] }
+      @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+        ListQuery.Data.Tea.self
       ] }
 
       public var id: TeaElephantSchema.ID { __data["id"] }

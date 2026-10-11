@@ -18,11 +18,11 @@ final class CollectionsRepository: CollectionsRepositoryProtocol {
     }
     
     func fetchCollections(forceReload: Bool = false) async throws -> [Collection] {
-        let cachePolicy: CachePolicy = forceReload ? .fetchIgnoringCacheData : .returnCacheDataElseFetch
+        let fetchBehavior: FetchBehavior = forceReload ? .NetworkOnly : .CacheFirst
         
         let data = try await networkService.fetch(
             CollectionsQuery(),
-            cachePolicy: cachePolicy
+            fetchBehavior: fetchBehavior
         )
         
         guard let collectionsData = data.collections else {

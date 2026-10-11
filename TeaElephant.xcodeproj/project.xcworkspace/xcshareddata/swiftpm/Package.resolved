@@ -1,41 +1,41 @@
 {
-  "pins" : [
+  "pins": [
     {
-      "identity" : "apollo-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apollographql/apollo-ios.git",
-      "state" : {
-        "revision" : "39fea7617346c0731be25f61afd537e7032fb562",
-        "version" : "1.22.0"
+      "identity": "apollo-ios",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/apollographql/apollo-ios.git",
+      "state": {
+        "revision": "fe14c216aaea3d25274343e80ccb3015fc3fb0b0",
+        "version": "2.4.0"
       }
     },
     {
-      "identity" : "codescanner",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/twostraws/CodeScanner.git",
-      "state" : {
-        "revision" : "5e886430238944c7200fc9e10dbf2d9550dba865",
-        "version" : "2.5.2"
+      "identity": "codescanner",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/twostraws/CodeScanner.git",
+      "state": {
+        "revision": "5e886430238944c7200fc9e10dbf2d9550dba865",
+        "version": "2.5.2"
       }
     },
     {
-      "identity" : "keychain-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/evgenyneu/keychain-swift.git",
-      "state" : {
-        "revision" : "5e1b02b6a9dac2a759a1d5dbc175c86bd192a608",
-        "version" : "24.0.0"
+      "identity": "keychain-swift",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/evgenyneu/keychain-swift.git",
+      "state": {
+        "revision": "5e1b02b6a9dac2a759a1d5dbc175c86bd192a608",
+        "version": "24.0.0"
       }
     },
     {
-      "identity" : "messagepacker",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hirotakan/MessagePacker.git",
-      "state" : {
-        "revision" : "4d8346c6bc579347e4df0429493760691c5aeca2",
-        "version" : "0.4.7"
+      "identity": "messagepacker",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/hirotakan/MessagePacker.git",
+      "state": {
+        "revision": "4d8346c6bc579347e4df0429493760691c5aeca2",
+        "version": "0.4.7"
       }
     }
   ],
-  "version" : 2
+  "version": 2
 }

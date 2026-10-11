@@ -22,7 +22,7 @@ final class CollectionsManager: ObservableObject {
     @Published var recomendationLoading = false
     @Published var teaOfTheDay: TeaOfTheDayQuery.Data.TeaOfTheDay?
     @Published var teaOfTheDayLoading = false
-    var subscribeRecommendation: Cancellable?
+    var subscribeRecommendation: Task<Void, Never>?
     let log = Logger(subsystem: "xax.TeaElephant", category: "CollectionManager")
     
     deinit {
@@ -30,11 +30,11 @@ final class CollectionsManager: ObservableObject {
     }
     
     func getCollections(forceReload: Bool = false) async {
-        let cachePolicy: CachePolicy = forceReload ? .fetchIgnoringCacheData : .returnCacheDataElseFetch
+        let fetchBehavior: FetchBehavior = forceReload ? .NetworkOnly : .CacheFirst
         collectionsLoading = true
         log.debug("Starting getCollections, forceReload: \(forceReload)")
         do {
-            for try await result in Network.shared.apollo.fetchAsync(query: CollectionsQuery(), cachePolicy: cachePolicy) {
+            for try await result in Network.shared.apollo.fetchAsync(query: CollectionsQuery(), fetchBehavior: fetchBehavior) {
                 if let errors = result.errors {
                     log.error("getCollections error: \(errors)")
                     DispatchQueue.main.async {
@@ -144,9 +144,10 @@ final class CollectionsManager: ObservableObject {
     }
     
     func recomendation(_ id: String, feelings: String) {
+        subscribeRecommendation?.cancel()
         recomendationLoading = true
         self.lastRecomendation = nil
-        subscribeRecommendation = Network.shared.apollo.subscribe(subscription: RecommendTeaSubscription(collectionID: id, feelings: feelings)) { result in
+        subscribeRecommendation = Network.shared.apollo.subscribeAsync(subscription: RecommendTeaSubscription(collectionID: id, feelings: feelings)) { result in
             switch result {
             case .success(let graphQLResult):
                 DispatchQueue.main.async {
@@ -173,9 +174,10 @@ final class CollectionsManager: ObservableObject {
     }
     
     func anotherRecomendation(_ id: String) {
+        subscribeRecommendation?.cancel()
         recomendationLoading = true
         self.lastRecomendation = nil
-        subscribeRecommendation = Network.shared.apollo.subscribe(subscription: RecommendTeaSubscription(collectionID: id, feelings: "")) { result in
+        subscribeRecommendation = Network.shared.apollo.subscribeAsync(subscription: RecommendTeaSubscription(collectionID: id, feelings: "")) { result in
             switch result {
             case .success(let graphQLResult):
                 DispatchQueue.main.async {
@@ -203,9 +205,9 @@ final class CollectionsManager: ObservableObject {
     
     func fetchTeaOfTheDay(forceReload: Bool = false) async {
         teaOfTheDayLoading = true
-        let policy: CachePolicy = forceReload ? .fetchIgnoringCacheData : .returnCacheDataElseFetch
+        let policy: FetchBehavior = forceReload ? .NetworkOnly : .CacheFirst
         do {
-            for try await result in Network.shared.apollo.fetchAsync(query: TeaOfTheDayQuery(), cachePolicy: policy) {
+            for try await result in Network.shared.apollo.fetchAsync(query: TeaOfTheDayQuery(), fetchBehavior: policy) {
                 DispatchQueue.main.async {
                     self.teaOfTheDay = result.data?.teaOfTheDay
                     self.teaOfTheDayLoading = false

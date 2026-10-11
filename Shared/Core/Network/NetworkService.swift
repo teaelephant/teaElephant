@@ -18,48 +18,35 @@ final class NetworkService: NetworkServiceProtocol {
         self.apolloClient = apolloClient
     }
     
-    func fetch<Query: GraphQLQuery>(_ query: Query, cachePolicy: CachePolicy = .returnCacheDataElseFetch) async throws -> Query.Data {
-        try await withCheckedThrowingContinuation { continuation in
-            apolloClient.fetch(query: query, cachePolicy: cachePolicy) { result in
-                switch result {
-                case .success(let response):
-                    if let data = response.data {
-                        continuation.resume(returning: data)
-                    } else if let errors = response.errors {
-                        continuation.resume(throwing: AppError.graphQLErrors(errors))
-                    } else {
-                        continuation.resume(throwing: AppError.dataCorrupted)
-                    }
-                case .failure(let error):
-                    continuation.resume(throwing: AppError.from(error))
-                }
+    func fetch<Query: GraphQLQuery>(_ query: Query, fetchBehavior: FetchBehavior = .CacheFirst) async throws -> Query.Data {
+        do {
+            for try await response in apolloClient.fetchAsync(query: query, fetchBehavior: fetchBehavior) {
+                if let data = response.data { return data }
+                if let errors = response.errors { throw AppError.graphQLErrors(errors) }
+                throw AppError.dataCorrupted
             }
+            throw AppError.dataCorrupted
+        } catch {
+            throw AppError.from(error)
         }
     }
-    
-    func perform<Mutation: GraphQLMutation>(_ mutation: Mutation) async throws -> Mutation.Data {
-        try await withCheckedThrowingContinuation { continuation in
-            apolloClient.perform(mutation: mutation) { result in
-                switch result {
-                case .success(let response):
-                    if let data = response.data {
-                        continuation.resume(returning: data)
-                    } else if let errors = response.errors {
-                        continuation.resume(throwing: AppError.graphQLErrors(errors))
-                    } else {
-                        continuation.resume(throwing: AppError.dataCorrupted)
-                    }
-                case .failure(let error):
-                    continuation.resume(throwing: AppError.from(error))
-                }
-            }
+
+    func perform<Mutation: GraphQLMutation>(_ mutation: Mutation) async throws -> Mutation.Data
+    where Mutation.ResponseFormat == SingleResponseFormat {
+        switch await apolloClient.performAsync(mutation: mutation) {
+        case .success(let response):
+            if let data = response.data { return data }
+            if let errors = response.errors { throw AppError.graphQLErrors(errors) }
+            throw AppError.dataCorrupted
+        case .failure(let error):
+            throw AppError.from(error)
         }
     }
-    
+
     func subscribe<Subscription: GraphQLSubscription>(_ subscription: Subscription) -> AnyPublisher<Subscription.Data, Error> {
         let subject = PassthroughSubject<Subscription.Data, Error>()
         
-        let cancellable = apolloClient.subscribe(subscription: subscription) { result in
+        let cancellable = apolloClient.subscribeAsync(subscription: subscription) { result in
             switch result {
             case .success(let response):
                 if let data = response.data {
@@ -79,7 +66,7 @@ final class NetworkService: NetworkServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func clearCache() async {
-        await apolloClient.clearCache()
+    func clearCache() async throws {
+        try await apolloClient.clearCache()
     }
 }

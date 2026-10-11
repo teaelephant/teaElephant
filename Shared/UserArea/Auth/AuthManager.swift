@@ -37,7 +37,7 @@ final class AuthManager: ObservableObject {
     func authorized() async {
         self.loading = true
         do {
-            for try await result in Network.shared.apollo.fetchAsync(query: MeQuery(), cachePolicy: .fetchIgnoringCacheData) {
+            for try await result in Network.shared.apollo.fetchAsync(query: MeQuery(), fetchBehavior: .NetworkOnly) {
                 DispatchQueue.main.async {
                     guard let err = result.errors?.first else {
                         self.auth = true

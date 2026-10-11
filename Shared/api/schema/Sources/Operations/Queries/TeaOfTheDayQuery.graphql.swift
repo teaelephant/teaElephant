@@ -2,8 +2,9 @@
 // This file was automatically generated and should not be edited.
 
 @_exported import ApolloAPI
+@_spi(Execution) @_spi(Unsafe) import ApolloAPI
 
-public class TeaOfTheDayQuery: GraphQLQuery {
+nonisolated public struct TeaOfTheDayQuery: GraphQLQuery {
   public static let operationName: String = "teaOfTheDay"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
@@ -12,13 +13,16 @@ public class TeaOfTheDayQuery: GraphQLQuery {
 
   public init() {}
 
-  public struct Data: TeaElephantSchema.SelectionSet {
-    public let __data: DataDict
-    public init(_dataDict: DataDict) { __data = _dataDict }
+  nonisolated public struct Data: TeaElephantSchema.SelectionSet {
+    @_spi(Unsafe) public let __data: DataDict
+    @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
-    public static var __selections: [ApolloAPI.Selection] { [
+    @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Query }
+    @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
       .field("teaOfTheDay", TeaOfTheDay?.self),
+    ] }
+    @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+      TeaOfTheDayQuery.Data.self
     ] }
 
     /// Get tea of the day
@@ -27,15 +31,18 @@ public class TeaOfTheDayQuery: GraphQLQuery {
     /// TeaOfTheDay
     ///
     /// Parent Type: `TeaOfTheDay`
-    public struct TeaOfTheDay: TeaElephantSchema.SelectionSet {
-      public let __data: DataDict
-      public init(_dataDict: DataDict) { __data = _dataDict }
+    nonisolated public struct TeaOfTheDay: TeaElephantSchema.SelectionSet {
+      @_spi(Unsafe) public let __data: DataDict
+      @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.TeaOfTheDay }
-      public static var __selections: [ApolloAPI.Selection] { [
+      @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.TeaOfTheDay }
+      @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("tea", Tea.self),
         .field("date", TeaElephantSchema.Date.self),
+      ] }
+      @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+        TeaOfTheDayQuery.Data.TeaOfTheDay.self
       ] }
 
       public var tea: Tea { __data["tea"] }
@@ -44,17 +51,20 @@ public class TeaOfTheDayQuery: GraphQLQuery {
       /// TeaOfTheDay.Tea
       ///
       /// Parent Type: `QRRecord`
-      public struct Tea: TeaElephantSchema.SelectionSet {
-        public let __data: DataDict
-        public init(_dataDict: DataDict) { __data = _dataDict }
+      nonisolated public struct Tea: TeaElephantSchema.SelectionSet {
+        @_spi(Unsafe) public let __data: DataDict
+        @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
-        public static var __selections: [ApolloAPI.Selection] { [
+        @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
+        @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", TeaElephantSchema.ID.self),
           .field("bowlingTemp", Int.self),
           .field("expirationDate", TeaElephantSchema.Date.self),
           .field("tea", Tea.self),
+        ] }
+        @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+          TeaOfTheDayQuery.Data.TeaOfTheDay.Tea.self
         ] }
 
         public var id: TeaElephantSchema.ID { __data["id"] }
@@ -65,18 +75,21 @@ public class TeaOfTheDayQuery: GraphQLQuery {
         /// TeaOfTheDay.Tea.Tea
         ///
         /// Parent Type: `Tea`
-        public struct Tea: TeaElephantSchema.SelectionSet {
-          public let __data: DataDict
-          public init(_dataDict: DataDict) { __data = _dataDict }
+        nonisolated public struct Tea: TeaElephantSchema.SelectionSet {
+          @_spi(Unsafe) public let __data: DataDict
+          @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
-          public static var __selections: [ApolloAPI.Selection] { [
+          @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tea }
+          @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .field("id", TeaElephantSchema.ID.self),
             .field("name", String.self),
             .field("description", String.self),
             .field("type", GraphQLEnum<TeaElephantSchema.Type_Enum>.self),
             .field("tags", [Tag].self),
+          ] }
+          @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+            TeaOfTheDayQuery.Data.TeaOfTheDay.Tea.Tea.self
           ] }
 
           public var id: TeaElephantSchema.ID { __data["id"] }
@@ -88,17 +101,20 @@ public class TeaOfTheDayQuery: GraphQLQuery {
           /// TeaOfTheDay.Tea.Tea.Tag
           ///
           /// Parent Type: `Tag`
-          public struct Tag: TeaElephantSchema.SelectionSet {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
+          nonisolated public struct Tag: TeaElephantSchema.SelectionSet {
+            @_spi(Unsafe) public let __data: DataDict
+            @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-            public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tag }
-            public static var __selections: [ApolloAPI.Selection] { [
+            @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Tag }
+            @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
               .field("__typename", String.self),
               .field("id", TeaElephantSchema.ID.self),
               .field("name", String.self),
               .field("color", String.self),
               .field("category", Category.self),
+            ] }
+            @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+              TeaOfTheDayQuery.Data.TeaOfTheDay.Tea.Tea.Tag.self
             ] }
 
             public var id: TeaElephantSchema.ID { __data["id"] }
@@ -109,14 +125,17 @@ public class TeaOfTheDayQuery: GraphQLQuery {
             /// TeaOfTheDay.Tea.Tea.Tag.Category
             ///
             /// Parent Type: `TagCategory`
-            public struct Category: TeaElephantSchema.SelectionSet {
-              public let __data: DataDict
-              public init(_dataDict: DataDict) { __data = _dataDict }
+            nonisolated public struct Category: TeaElephantSchema.SelectionSet {
+              @_spi(Unsafe) public let __data: DataDict
+              @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-              public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.TagCategory }
-              public static var __selections: [ApolloAPI.Selection] { [
+              @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.TagCategory }
+              @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
                 .field("__typename", String.self),
                 .field("name", String.self),
+              ] }
+              @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+                TeaOfTheDayQuery.Data.TeaOfTheDay.Tea.Tea.Tag.Category.self
               ] }
 
               public var name: String { __data["name"] }

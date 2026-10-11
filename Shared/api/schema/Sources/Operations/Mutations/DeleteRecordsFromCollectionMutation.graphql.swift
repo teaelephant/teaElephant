@@ -2,8 +2,9 @@
 // This file was automatically generated and should not be edited.
 
 @_exported import ApolloAPI
+@_spi(Execution) @_spi(Unsafe) import ApolloAPI
 
-public class DeleteRecordsFromCollectionMutation: GraphQLMutation {
+nonisolated public struct DeleteRecordsFromCollectionMutation: GraphQLMutation {
   public static let operationName: String = "deleteRecordsFromCollection"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
@@ -21,21 +22,24 @@ public class DeleteRecordsFromCollectionMutation: GraphQLMutation {
     self.records = records
   }
 
-  public var __variables: Variables? { [
+  @_spi(Unsafe) public var __variables: Variables? { [
     "id": id,
     "records": records
   ] }
 
-  public struct Data: TeaElephantSchema.SelectionSet {
-    public let __data: DataDict
-    public init(_dataDict: DataDict) { __data = _dataDict }
+  nonisolated public struct Data: TeaElephantSchema.SelectionSet {
+    @_spi(Unsafe) public let __data: DataDict
+    @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-    public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
-    public static var __selections: [ApolloAPI.Selection] { [
+    @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Mutation }
+    @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
       .field("deleteRecordsFromCollection", DeleteRecordsFromCollection.self, arguments: [
         "id": .variable("id"),
         "records": .variable("records")
       ]),
+    ] }
+    @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+      DeleteRecordsFromCollectionMutation.Data.self
     ] }
 
     /// authorization required
@@ -44,15 +48,18 @@ public class DeleteRecordsFromCollectionMutation: GraphQLMutation {
     /// DeleteRecordsFromCollection
     ///
     /// Parent Type: `Collection`
-    public struct DeleteRecordsFromCollection: TeaElephantSchema.SelectionSet {
-      public let __data: DataDict
-      public init(_dataDict: DataDict) { __data = _dataDict }
+    nonisolated public struct DeleteRecordsFromCollection: TeaElephantSchema.SelectionSet {
+      @_spi(Unsafe) public let __data: DataDict
+      @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Collection }
-      public static var __selections: [ApolloAPI.Selection] { [
+      @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.Collection }
+      @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", TeaElephantSchema.ID.self),
         .field("records", [Record].self),
+      ] }
+      @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+        DeleteRecordsFromCollectionMutation.Data.DeleteRecordsFromCollection.self
       ] }
 
       public var id: TeaElephantSchema.ID { __data["id"] }
@@ -61,14 +68,17 @@ public class DeleteRecordsFromCollectionMutation: GraphQLMutation {
       /// DeleteRecordsFromCollection.Record
       ///
       /// Parent Type: `QRRecord`
-      public struct Record: TeaElephantSchema.SelectionSet {
-        public let __data: DataDict
-        public init(_dataDict: DataDict) { __data = _dataDict }
+      nonisolated public struct Record: TeaElephantSchema.SelectionSet {
+        @_spi(Unsafe) public let __data: DataDict
+        @_spi(Unsafe) public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
-        public static var __selections: [ApolloAPI.Selection] { [
+        @_spi(Execution) public static var __parentType: any ApolloAPI.ParentType { TeaElephantSchema.Objects.QRRecord }
+        @_spi(Execution) public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", TeaElephantSchema.ID.self),
+        ] }
+        @_spi(Execution) public static var __fulfilledFragments: [any ApolloAPI.SelectionSet.Type] { [
+          DeleteRecordsFromCollectionMutation.Data.DeleteRecordsFromCollection.Record.self
         ] }
 
         public var id: TeaElephantSchema.ID { __data["id"] }

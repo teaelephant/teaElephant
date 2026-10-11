@@ -1,36 +1,26 @@
-//
-//  CacheInterceptor.swift
-//  TeaElephant
-//
-//  Created by Andrew Khasanov on 03/08/2023.
-//
-
-import Foundation
-@preconcurrency import Apollo
+import Apollo
 import ApolloAPI
 
-class NoCachedErrorsWrapperInterceptor: ApolloInterceptor {
-    let cacheWriteInterceptor: CacheWriteInterceptor
-    var id: String = UUID().uuidString
-    
-    init(wrapping cacheWriteInterceptor: CacheWriteInterceptor) {
-        self.cacheWriteInterceptor = cacheWriteInterceptor
-        self.id = cacheWriteInterceptor.id
-      }
-    
-    func interceptAsync<Operation>(chain: RequestChain, request: HTTPRequest<Operation>, response: HTTPResponse<Operation>?, completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) where Operation : GraphQLOperation {
-      guard let errors = response?.parsedResponse?.errors else {
-        // No errors, or response not parsed yet - just continue
-        cacheWriteInterceptor.interceptAsync(chain: chain, request: request, response: response, completion: completion)
-        return
-      }
-      
-      if errors.count == 0 {
-        cacheWriteInterceptor.interceptAsync(chain: chain, request: request, response: response, completion: completion)
-      }
-      else {
-        // Don't cache any response with errors
-        chain.proceedAsync(request: request, response: response, interceptor: cacheWriteInterceptor, completion: completion)
-      }
+struct NoCachedErrorsWrapperInterceptor: CacheInterceptor {
+    private let wrapped: any CacheInterceptor
+
+    init(wrapping wrapped: any CacheInterceptor = DefaultCacheInterceptor()) {
+        self.wrapped = wrapped
+    }
+
+    func readCacheData<Request: GraphQLRequest>(
+        from store: ApolloStore,
+        request: Request
+    ) async throws -> GraphQLResponse<Request.Operation>? {
+        try await wrapped.readCacheData(from: store, request: request)
+    }
+
+    func writeCacheData<Request: GraphQLRequest>(
+        to store: ApolloStore,
+        request: Request,
+        response: ParsedResult<Request.Operation>
+    ) async throws {
+        guard response.result.errors?.isEmpty != false else { return }
+        try await wrapped.writeCacheData(to: store, request: request, response: response)
     }
 }

@@ -15,9 +15,9 @@ class CollectionManager: ObservableObject {
     @Published var error: Error?
     
     func getCollections(forceReload: Bool = false) async {
-        let cachePolicy: CachePolicy = forceReload ? .fetchIgnoringCacheData : .returnCacheDataElseFetch
+        let fetchBehavior: FetchBehavior = forceReload ? .NetworkOnly : .CacheFirst
         do {
-            for try await result in Network.shared.apollo.fetchAsync(query: CollectionsQuery(token: ""), cachePolicy: cachePolicy) {
+            for try await result in Network.shared.apollo.fetchAsync(query: CollectionsQuery(token: ""), fetchBehavior: fetchBehavior) {
                 if let errors = result.errors {
                     self.error = errors.first
                     return

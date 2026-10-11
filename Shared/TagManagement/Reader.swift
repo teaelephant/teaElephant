@@ -24,10 +24,12 @@ final class Reader: ObservableObject {
     @Published var error: String?
     var extender: ExtendInfoReader
     var infoReader: ShortInfoReader
+    private let apolloClient: ApolloClient
     
-    init(infoReader: ShortInfoReader, extender: ExtendInfoReader) {
+    init(infoReader: ShortInfoReader, extender: ExtendInfoReader, apolloClient: ApolloClient = Network.shared.apollo) {
         self.extender = extender
         self.infoReader = infoReader
+        self.apolloClient = apolloClient
     }
     
     func readInfo() {
@@ -68,8 +70,8 @@ final class Reader: ObservableObject {
             for attempt in 1...maxAttempts {
                 do {
                     // Always fetch from network to avoid stale cache
-                    logReader.debug("Attempt #\(attempt) fetch read(id=\(candidateID, privacy: .public)) with .fetchIgnoringCacheData")
-                    for try await result in Network.shared.apollo.fetchAsync(query: ReadQuery(id: candidateID), cachePolicy: .fetchIgnoringCacheData) {
+                    logReader.debug("Attempt #\(attempt) fetch read(id=\(candidateID, privacy: .public)) with .NetworkOnly")
+                    for try await result in apolloClient.fetchAsync(query: ReadQuery(id: candidateID), fetchBehavior: .NetworkOnly) {
                         logReader.debug("Received GraphQLResult. source=\(String(describing: result.source), privacy: .public) errors=\(String(describing: result.errors), privacy: .public) hasData=\(result.data != nil, privacy: .public)")
                         if let errors = result.errors {
                             // If the error indicates free QR, retry shortly; otherwise show error

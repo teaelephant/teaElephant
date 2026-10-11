@@ -1,63 +1,55 @@
-//
-//  ApolloClientExtension.swift
-//  ApolloClientExtension
-//
-//  Created by Andrew Khasanov on 29.08.2021.
-//
-
-import Foundation
-@preconcurrency import Apollo
-@preconcurrency import TeaElephantSchema
-
-// Wrapper to make Result Sendable
-struct SendableResult<Success, Failure: Error>: @unchecked Sendable {
-    let result: Result<Success, Failure>
-}
+import Apollo
+import ApolloAPI
 
 extension ApolloClient {
-    @preconcurrency public func fetchAsync<Query: GraphQLQuery>(query: Query,
-                                                cachePolicy: CachePolicy = .returnCacheDataElseFetch,
-                                                contextIdentifier: UUID? = nil,
-                                                queue: DispatchQueue? = nil) -> AsyncThrowingStream<GraphQLResult<Query.Data>, Error> {
+    public func fetchAsync<Query: GraphQLQuery>(
+        query: Query,
+        fetchBehavior: FetchBehavior = .CacheFirst
+    ) -> AsyncThrowingStream<GraphQLResponse<Query>, any Swift.Error> {
         AsyncThrowingStream { continuation in
-            _ = fetch(
-                        query: query,
-                        cachePolicy: cachePolicy,
-                        contextIdentifier: contextIdentifier,
-                        queue: queue ?? .main
-                    ) { response in
-                        switch response {
-                        case .success(let result):
-                            continuation.yield(result)
-                            if result.isFinalForCachePolicy(cachePolicy) {
-                                continuation.finish()
-                            }
-                        case .failure(let error):
-                            continuation.finish(throwing: error)
-                        }
+            let task = Task {
+                do {
+                    for try await response in try fetch(query: query, fetchBehavior: fetchBehavior) {
+                        continuation.yield(response)
                     }
+                    continuation.finish()
+                } catch {
+                    continuation.finish(throwing: error)
                 }
-    }
-    
-    nonisolated public func performAsync<Mutation: GraphQLMutation>(mutation: Mutation, publishResultToStore: Bool = true, queue: DispatchQueue = .main) async -> Result<GraphQLResult<Mutation.Data>, Error> {
-        let sendableResult = await withUnsafeContinuation{ continuation in
-            self.perform(mutation: mutation, publishResultToStore: publishResultToStore, queue: queue) { result in
-                let wrapped = SendableResult(result: result)
-                continuation.resume(returning: wrapped)
             }
+            continuation.onTermination = { @Sendable _ in task.cancel() }
         }
-        return sendableResult.result
     }
-    
-}
 
-fileprivate extension GraphQLResult {
-    func isFinalForCachePolicy(_ cachePolicy: CachePolicy) -> Bool {
-        switch cachePolicy {
-        case .returnCacheDataAndFetch:
-            return source == .server
-        default:
-            return true
+    public func performAsync<Mutation: GraphQLMutation>(
+        mutation: Mutation,
+        publishResultToStore: Bool = true
+    ) async -> Result<GraphQLResponse<Mutation>, any Swift.Error>
+    where Mutation.ResponseFormat == SingleResponseFormat {
+        do {
+            return .success(try await perform(
+                mutation: mutation,
+                requestConfiguration: RequestConfiguration(writeResultsToCache: publishResultToStore)
+            ))
+        } catch {
+            return .failure(error)
+        }
+    }
+
+    public func subscribeAsync<Subscription: GraphQLSubscription>(
+        subscription: Subscription,
+        onResponse: @escaping @MainActor @Sendable (Result<GraphQLResponse<Subscription>, any Swift.Error>) -> Void
+    ) -> Task<Void, Never> {
+        Task {
+            do {
+                for try await response in try subscribe(subscription: subscription, cachePolicy: .networkOnly) {
+                    await onResponse(.success(response))
+                }
+            } catch {
+                if !Task.isCancelled {
+                    await onResponse(.failure(error))
+                }
+            }
         }
     }
 }

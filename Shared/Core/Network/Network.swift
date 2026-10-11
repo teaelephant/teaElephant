@@ -19,9 +19,16 @@ enum AuthError: Error {
 class Network {
     static let shared = Network()
     
-    private var webSocketClient: WebSocket {
-        let url = URL(string: "wss://tea-elephant.com/v2/query")!
-        return WebSocket(url: url, protocol: .graphql_transport_ws)
+    private func makeWebSocketTransport(token: String? = nil) -> WebSocketTransport {
+        WebSocketTransport(
+            urlSession: URLSession.shared,
+            store: store,
+            endpointURL: URL(string: "wss://tea-elephant.com/v2/query")!,
+            configuration: .init(
+                reconnectionInterval: 0.5,
+                connectingPayload: token.map { ["Authorization": "Bearer \($0)"] }
+            )
+        )
     }
     
     init() {
@@ -39,31 +46,38 @@ class Network {
     
     /// A web socket transport to use for subscriptions
     private lazy var webSocketTransport: WebSocketTransport = {
-        return WebSocketTransport(websocket: webSocketClient)
+        makeWebSocketTransport()
     }()
     
     func Auth(_ token: String) {
-        let value = "Bearer \(token)"
-           
-        self.webSocketTransport = WebSocketTransport(websocket: webSocketClient, config: WebSocketTransport.Configuration(connectingPayload: {["Authorization":value]}()))
+        self.webSocketTransport = makeWebSocketTransport(token: token)
         self.splitNetworkTransport = SplitNetworkTransport(
-            uploadingNetworkTransport: normalTransport,
-            webSocketNetworkTransport: webSocketTransport
+            queryTransport: normalTransport,
+            mutationTransport: normalTransport,
+            subscriptionTransport: webSocketTransport
         )
         self.apollo = ApolloClient(networkTransport: splitNetworkTransport, store: store)
     }
     
     func clearAuth() {
         // Reset to default transport without auth
-        self.webSocketTransport = WebSocketTransport(websocket: webSocketClient)
+        self.webSocketTransport = makeWebSocketTransport()
         self.splitNetworkTransport = SplitNetworkTransport(
-            uploadingNetworkTransport: normalTransport,
-            webSocketNetworkTransport: webSocketTransport
+            queryTransport: normalTransport,
+            mutationTransport: normalTransport,
+            subscriptionTransport: webSocketTransport
         )
         self.apollo = ApolloClient(networkTransport: splitNetworkTransport, store: store)
         
         // Clear any cached data
-        self.store.clearCache()
+        let store = self.store
+        Task {
+            do {
+                try await store.clearCache()
+            } catch {
+                AuthManager.shared.error = error
+            }
+        }
     }
     
     // The cache is necessary to set up the store, which we're going
@@ -74,14 +88,20 @@ class Network {
     /// An HTTP transport to use for queries and mutations
     private lazy var normalTransport: RequestChainNetworkTransport = {
         let url = URL(string: "https://tea-elephant.com/v2/query")!
-        return RequestChainNetworkTransport(interceptorProvider: NetworkInterceptorProvider(store: store, client: URLSessionClient()), endpointURL: url)
+        return RequestChainNetworkTransport(
+            urlSession: URLSession.shared,
+            interceptorProvider: NetworkInterceptorProvider(),
+            store: store,
+            endpointURL: url
+        )
     }()
     
     /// A split network transport to allow the use of both of the above
     /// transports through a single `NetworkTransport` instance.
     private lazy var splitNetworkTransport = SplitNetworkTransport(
-        uploadingNetworkTransport: normalTransport,
-        webSocketNetworkTransport: webSocketTransport
+        queryTransport: normalTransport,
+        mutationTransport: normalTransport,
+        subscriptionTransport: webSocketTransport
     )
     
     
@@ -89,28 +109,15 @@ class Network {
 }
 
 struct NetworkInterceptorProvider: InterceptorProvider {
-    
-    // These properties will remain the same throughout the life of the `InterceptorProvider`, even though they
-    // will be handed to different interceptors.
-    private let store: ApolloStore
-    private let client: URLSessionClient
-    
-    init(store: ApolloStore, client: URLSessionClient) {
-        self.store = store
-        self.client = client
+    func httpInterceptors<Operation: GraphQLOperation>(for operation: Operation) -> [any HTTPInterceptor] {
+        [AuthorizationInterceptor()] + DefaultInterceptorProvider.shared.httpInterceptors(for: operation)
     }
-    
-    func interceptors<Operation: GraphQLOperation>(for operation: Operation) -> [ApolloInterceptor] {
-        return [
-            AuthorizationInterceptor(),
-            MaxRetryInterceptor(),
-            CacheReadInterceptor(store: self.store),
-            NetworkFetchInterceptor(client: self.client),
-            ResponseCodeInterceptor(),
-            JSONResponseParsingInterceptor(),
-            AutomaticPersistedQueryInterceptor(),
-            UnauthInterceptor(),
-            NoCachedErrorsWrapperInterceptor(wrapping: CacheWriteInterceptor(store: self.store)),
-        ]
+
+    func graphQLInterceptors<Operation: GraphQLOperation>(for operation: Operation) -> [any GraphQLInterceptor] {
+        DefaultInterceptorProvider.shared.graphQLInterceptors(for: operation) + [UnauthInterceptor()]
+    }
+
+    func cacheInterceptor<Operation: GraphQLOperation>(for operation: Operation) -> any CacheInterceptor {
+        NoCachedErrorsWrapperInterceptor()
     }
 }

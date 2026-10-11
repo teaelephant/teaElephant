@@ -19,7 +19,7 @@ final class TeaRepository: TeaRepositoryProtocol {
     func fetchTea(by id: String) async throws -> TeaDataWithID {
         let data = try await networkService.fetch(
             TeaQuery(id: id),
-            cachePolicy: .returnCacheDataElseFetch
+            fetchBehavior: .CacheFirst
         )
         
         guard let tea = data.tea else {
@@ -37,7 +37,7 @@ final class TeaRepository: TeaRepositoryProtocol {
     func searchTea(query: String) async throws -> [TeaDataWithID] {
         let data = try await networkService.fetch(
             SearchTeaQuery(query: query),
-            cachePolicy: .fetchIgnoringCacheData
+            fetchBehavior: .NetworkOnly
         )
         
         guard let teas = data.searchTea else {

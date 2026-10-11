@@ -38,7 +38,7 @@ class QRManager {
         let formatter = ISO8601DateFormatter()
         let result = await Network.shared.apollo.performAsync(mutation: WriteMutation(
             id: normalizedID,
-            data: QRRecordData(tea: data.id, bowlingTemp: data.brewingTemp, expirationDate: formatter.string(from: data.expirationDate))
+            data: QRRecordData(tea: data.id, bowlingTemp: Int32(data.brewingTemp), expirationDate: formatter.string(from: data.expirationDate))
         ))
         switch result {
         case .success(let graphQLResult):

@@ -1,50 +1,37 @@
-//
-//  CacheInterceptor.swift
-//  TeaElephant
-//
-//  Created by Andrew Khasanov on 03/08/2023.
-//
-
-import Foundation
-@preconcurrency import Apollo
+import Apollo
 import ApolloAPI
-import KeychainSwift
 
-class UnauthInterceptor: ApolloInterceptor {
-    var id =  "UnAuthorizationInterceptor"
-    
+struct UnauthInterceptor: GraphQLInterceptor {
     private func isUnauthenticated(_ error: GraphQLError) -> Bool {
         if let code = error.extensions?["code"] as? Int, code == -1 {
             return true
         }
         if let code = error.extensions?["code"] as? String {
-            if let codeInt = Int(code), codeInt == -1 {
-                return true
-            }
-            if code.lowercased().contains("unauth") {
+            if Int(code) == -1 || code.lowercased().contains("unauth") {
                 return true
             }
         }
         return (error.message ?? "").lowercased().contains("unauth")
     }
-    
-    func interceptAsync<Operation>(chain: RequestChain, request: HTTPRequest<Operation>, response: HTTPResponse<Operation>?, completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) where Operation : GraphQLOperation {
-        guard let err = response?.parsedResponse?.errors?.first else {
-            // No errors, or response not parsed yet - just continue
-            Task { @MainActor in
-                AuthManager.shared.auth = true
+
+    func intercept<Request: GraphQLRequest>(
+        request: Request,
+        next: NextInterceptorFunction<Request>
+    ) async throws -> InterceptorResultStream<Request> {
+        await next(request).map { response in
+            guard response.result.source == .server else { return response }
+            await MainActor.run {
+                guard let error = response.result.errors?.first else {
+                    AuthManager.shared.auth = true
+                    return
+                }
+                if isUnauthenticated(error) {
+                    AuthManager.shared.keychain.synchronizable = true
+                    AuthManager.shared.keychain.delete(tokenKey)
+                    AuthManager.shared.auth = false
+                }
             }
-            chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
-            return
+            return response
         }
-        if isUnauthenticated(err) {
-            Task { @MainActor in
-                AuthManager.shared.keychain.synchronizable = true  // Match the synchronizable setting
-                AuthManager.shared.keychain.delete(tokenKey)
-                print("token was wiped")
-                AuthManager.shared.auth = false
-            }
-        }
-        chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)
     }
 }
