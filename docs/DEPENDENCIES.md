@@ -9,7 +9,7 @@ The dependency audit on 2026-10-11 uses stable upstream tags:
 | KeychainSwift | 24.0.0 |
 | MessagePacker | 0.4.7 |
 
-The generated schema package pins Apollo to exactly 2.4.0. Apollo 2.4 requires Swift 6.1 or newer; the schema package follows its platform minimums. The app's existing deployment settings are retained, and the unit-test target uses the same minimum iOS version as the app.
+The generated schema package pins Apollo to exactly 2.4.0. Apollo 2.4 requires Swift 6.1 or newer; the schema package follows its platform minimums. The main app retains its iOS 26.6 deployment target. The App Clip and unit-test target use the same minimum iOS version; App Store Connect rejects an App Clip whose minimum is below its parent app's.
 
 `apollo-ios-cli` installs the pinned official release into `.build/apollo-cli/2.4.0`, verifies the archive's SHA-256, and reuses the local executable. It does not require a global installation. Set `APOLLO_CLI_CACHE_DIR` to use another cache directory.
 
