@@ -1,5 +1,7 @@
 # TeaElephant for iOS
 
+![TeaElephant — Your Digital Tea Collection: NFC/QR, AR Explorer and Smart Picks](docs/images/teaelephant-ios-preview.png)
+
 TeaElephant connects a personal drink collection to the labels on its boxes.
 Scan an NFC tag or QR code to read a tea's details, attach brewing temperature
 and a best-before date to a label, organise labelled drinks into collections,
