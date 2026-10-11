@@ -26,6 +26,10 @@
 	<string>Reader using for read tea info from tea box</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Scanning qr codes</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Health data is used to personalize tea wellness recommendations.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Health data is used to save wellness information for tea recommendations.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

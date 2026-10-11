@@ -31,3 +31,22 @@ xcodebuild -workspace TeaElephant.xcworkspace -scheme TeaElephantTests \
 Choose an installed simulator when using a different Xcode version. UI tests use the existing separate target and are not included in this unit-test scheme.
 
 The Apollo 2 adapters preserve cache-first, network-only, and cache-and-network fetching. Cancelling their tasks terminates the underlying requests or subscriptions. HTTP auth uses the existing synchronized Keychain token; WebSocket auth travels in `connection_init`. GraphQL errors are not written to the cache, and cached responses do not change authentication state.
+
+## TestFlight delivery
+
+Archive the app and its embedded App Clip for physical iOS devices, then upload
+with the dedicated App Store Connect export settings:
+
+```sh
+xcodebuild -workspace TeaElephant.xcworkspace -scheme TeaElephant \
+  -configuration Release -destination 'generic/platform=iOS' \
+  -archivePath /tmp/TeaElephant.xcarchive -allowProvisioningUpdates archive
+xcodebuild -exportArchive -archivePath /tmp/TeaElephant.xcarchive \
+  -exportOptionsPlist ci/testflight-exportoptions.plist \
+  -exportPath /tmp/TeaElephant-TestFlight -allowProvisioningUpdates
+```
+
+The export uses automatic signing for team `R859U8DTY9`, uploads symbols, and
+lets Xcode manage unique build numbers. It requires a developer account signed
+in to Xcode with App Store Connect upload permissions. Successful upload and
+Apple's subsequent build processing are separate steps.
