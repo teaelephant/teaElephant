@@ -24,12 +24,12 @@ class TeaElephantTests: XCTestCase {
     }
 
     @MainActor
-    func testServerResponseRestoresAuthentication() async throws {
+    func testPublicServerResponseDoesNotRestoreAuthentication() async throws {
         let previousAuth = AuthManager.shared.auth
         defer { AuthManager.shared.auth = previousAuth }
         AuthManager.shared.auth = false
         try await processAuthResponse(source: .server)
-        XCTAssertTrue(AuthManager.shared.auth)
+        XCTAssertFalse(AuthManager.shared.auth)
     }
 
     @MainActor

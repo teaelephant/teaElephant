@@ -33,6 +33,25 @@ class TeaElephantUITests: XCTestCase {
     }
 
     @MainActor
+    func testWhitespaceOnlyNameCannotAdvance() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-hasCompletedOnboarding", "YES", "-hasSeenOnboarding", "YES"]
+        app.launch()
+        let addTea = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Add New Tea")).firstMatch
+        XCTAssertTrue(addTea.waitForExistence(timeout: 10))
+        addTea.tap()
+
+        let name = app.textFields.firstMatch
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        name.tap()
+        name.typeText("   ")
+
+        let next = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Continue")).firstMatch
+        XCTAssertTrue(next.waitForExistence(timeout: 5))
+        XCTAssertFalse(next.isEnabled, "A required name consisting only of spaces must not allow the next step")
+    }
+
+    @MainActor
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.

@@ -21,10 +21,7 @@ struct UnauthInterceptor: GraphQLInterceptor {
         await next(request).map { response in
             guard response.result.source == .server else { return response }
             await MainActor.run {
-                guard let error = response.result.errors?.first else {
-                    AuthManager.shared.auth = true
-                    return
-                }
+                guard let error = response.result.errors?.first else { return }
                 if isUnauthenticated(error) {
                     AuthManager.shared.keychain.synchronizable = true
                     AuthManager.shared.keychain.delete(tokenKey)

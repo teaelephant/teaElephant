@@ -103,7 +103,7 @@ struct NewCard: View {
     func saveNFC() async {
         if let searcherData = $searcher.detectedInfo.projectedValue.wrappedValue {
             do {
-                try tagWriter().writeData(info: searcherData.meta)
+                try await tagWriter().writeData(info: searcherData.meta)
                 name = ""
             } catch {
                 print(error.localizedDescription)

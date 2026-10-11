@@ -17,34 +17,39 @@ protocol NFCProtocol: NFCNDEFReaderSessionDelegate {
 
 @MainActor
 class NearFieldCommunicator: NSObject {
-    var session: NFCNDEFReaderSession!
-    let delegate: NFCProtocol
+    var session: NFCNDEFReaderSession?
+    weak var delegate: NFCProtocol?
 
     init(delegate: NFCProtocol) {
         self.delegate = delegate
         super.init()
     }
 
-    func createSession() {
-        if let aSession = session {
-            aSession.invalidate()
-        }
-        session = NFCNDEFReaderSession(delegate: delegate, queue: nil, invalidateAfterFirstRead: true)
-        session?.alertMessage = "Приложи телефон к баночке с чаем чтобы узнать что в ней"
-        self.session.begin()
+    func createSession(invalidateAfterFirstRead: Bool = true) {
+        invalidateSession()
+        guard let delegate else { return }
+        let newSession = NFCNDEFReaderSession(delegate: delegate, queue: nil, invalidateAfterFirstRead: invalidateAfterFirstRead)
+        session = newSession
+        newSession.alertMessage = "Приложи телефон к баночке с чаем чтобы узнать что в ней"
+        newSession.begin()
     }
 
     func ready() {
+        guard let session else { return }
         if session.isReady {
             session.begin()
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let sessionBox = SendableBox(session)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+                guard let self, self.session === sessionBox.value else { return }
                 self.ready()
             }
         }
     }
 
     func invalidateSession() {
-        session.invalidate()
+        let completedSession = session
+        session = nil
+        completedSession?.invalidate()
     }
 }

@@ -381,7 +381,7 @@ struct EnhancedNewCard: View {
     func saveNFC() async {
         if let searcherData = searcher.detectedInfo {
             do {
-                try tagWriter().writeData(info: searcherData.meta)
+                try await tagWriter().writeData(info: searcherData.meta)
                 await showSuccess()
                 resetState()
             } catch {

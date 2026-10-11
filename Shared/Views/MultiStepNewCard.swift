@@ -36,7 +36,9 @@ struct MultiStepNewCard: View {
     @State private var isProcessing = false
     @State private var stepTransitionOpacity = 1.0
     @State private var isStepAnimating = false
-    @State private var isUsingExistingTea = false
+    @State private var saveSelection = TeaSaveSelection()
+
+    private var isUsingExistingTea: Bool { saveSelection.selectedID != nil }
     
     // Validation state
     @State private var nameError = ""
@@ -724,7 +726,7 @@ struct MultiStepNewCard: View {
                         name = ""
                         type = .tea
                         description = ""
-                        isUsingExistingTea = false
+                        saveSelection.reset()
                     }) {
                         Image(systemName: "xmark.circle.fill")
                             .font(.system(size: 20))
@@ -739,7 +741,7 @@ struct MultiStepNewCard: View {
                         }
                         description = data.data.description
                         // Mark that we're using an existing tea
-                        isUsingExistingTea = true
+                        saveSelection.select(id: data.meta.id)
                         // Note: Expiration date and brewing temperature remain editable by the user
                     }) {
                         Text("Use This")
@@ -936,7 +938,7 @@ struct MultiStepNewCard: View {
     
     private var canProceed: Bool {
         switch currentStep {
-        case 1: return isUsingExistingTea || (!name.isEmpty && nameError.isEmpty)
+        case 1: return isUsingExistingTea || computedNameError().isEmpty
         case 2: return tempError.isEmpty && (isUsingExistingTea || descriptionError.isEmpty)
         default: return true
         }
@@ -965,28 +967,7 @@ struct MultiStepNewCard: View {
     
     // MARK: - Comprehensive Validation with Real-time Feedback
     private func validateName() {
-        // Skip validation if using existing tea
-        if isUsingExistingTea {
-            nameError = ""
-            return
-        }
-        
-        // Trim whitespace for validation
-        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if trimmedName.isEmpty {
-            nameError = ""
-        } else if trimmedName.count < 2 {
-            nameError = "Name must be at least 2 characters"
-        } else if trimmedName.count > 100 {
-            nameError = "Name is too long (max 100 characters)"
-        } else if trimmedName.rangeOfCharacter(from: .alphanumerics) == nil {
-            nameError = "Name must contain at least one letter or number"
-        } else if trimmedName.contains(where: { $0.isNewline }) {
-            nameError = "Name cannot contain line breaks"
-        } else {
-            nameError = ""
-        }
+        nameError = computedNameError()
     }
     
     private func validateTemperature() {
@@ -1042,13 +1023,7 @@ struct MultiStepNewCard: View {
     // MARK: - Pure Validators (no state mutation)
     private func computedNameError() -> String {
         if isUsingExistingTea { return "" }
-        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-        if trimmedName.isEmpty { return "" }
-        if trimmedName.count < 2 { return "Name must be at least 2 characters" }
-        if trimmedName.count > 100 { return "Name is too long (max 100 characters)" }
-        if trimmedName.rangeOfCharacter(from: .alphanumerics) == nil { return "Name must contain at least one letter or number" }
-        if trimmedName.contains(where: { $0.isNewline }) { return "Name cannot contain line breaks" }
-        return ""
+        return TeaSaveSelection.nameError(name)
     }
 
     private func computedTempError() -> String {
@@ -1084,7 +1059,7 @@ struct MultiStepNewCard: View {
         switch currentStep {
         case 1:
             let err = computedNameError()
-            return isUsingExistingTea || (err.isEmpty && !name.isEmpty)
+            return isUsingExistingTea || err.isEmpty
         case 2:
             let tErr = computedTempError()
             let dErr = computedDescriptionError()
@@ -1098,12 +1073,18 @@ struct MultiStepNewCard: View {
         let nErr = computedNameError()
         let tErr = computedTempError()
         let dErr = computedDescriptionError()
-        return !name.isEmpty && (isUsingExistingTea || nErr.isEmpty) && tErr.isEmpty && (isUsingExistingTea || dErr.isEmpty)
+        return (isUsingExistingTea || nErr.isEmpty) && tErr.isEmpty && (isUsingExistingTea || dErr.isEmpty)
     }
     
     // MARK: - Actions
     @MainActor
     func saveNFC() async {
+        guard !isProcessing else { return }
+        guard isFormValid() else {
+            errorMessage = "Please correct the form before saving."
+            showingErrorAlert = true
+            return
+        }
         isProcessing = true
         defer { isProcessing = false }
         
@@ -1113,16 +1094,25 @@ struct MultiStepNewCard: View {
             return
         }
         
-        // If an existing tea was found, use its ID but allow user to customize metadata
-        if let searcherData = searcher.detectedInfo {
+        let target: TeaSaveTarget
+        do {
+            target = try saveSelection.target(name: name, type: type, description: description)
+        } catch {
+            errorMessage = error.localizedDescription
+            showingErrorAlert = true
+            return
+        }
+
+        // Use only the explicitly selected tea, with the user's custom metadata.
+        if case .existing(let selectedID) = target {
             do {
                 // Create updated metadata with user's custom values
                 let updatedMeta = TeaMeta(
-                    id: searcherData.meta.id,
+                    id: selectedID,
                     expirationDate: expirationDate,
                     brewingTemp: temp
                 )
-                try tagWriter().writeData(info: updatedMeta)
+                try await tagWriter().writeData(info: updatedMeta)
                 showingSuccessAlert = true
                 resetState()
             } catch {
@@ -1132,12 +1122,7 @@ struct MultiStepNewCard: View {
             return
         }
         
-        // Create new tea if no existing tea was found
-        let data = TeaData(
-            name: name,
-            type: GraphQLEnum(Type_Enum(rawValue: type.rawValue)!),
-            description: description
-        )
+        guard case .new(let data) = target else { return }
         
         do {
             let w = writer(extend: RecordWriter(), meta: tagWriter())
@@ -1166,7 +1151,7 @@ struct MultiStepNewCard: View {
         expirationDate = Date()
         brewingTemp = "85"
         currentStep = 1
-        isUsingExistingTea = false
+        saveSelection.reset()
     }
     
     @MainActor
@@ -1176,6 +1161,12 @@ struct MultiStepNewCard: View {
     
     @MainActor
     private func saveQR(_ code: String) async {
+        guard !isProcessing else { return }
+        guard isFormValid() else {
+            errorMessage = "Please correct the form before saving."
+            showingErrorAlert = true
+            return
+        }
         isProcessing = true
         defer { isProcessing = false }
         
@@ -1185,8 +1176,17 @@ struct MultiStepNewCard: View {
             return
         }
         
-        if let searcherData = searcher.detectedInfo {
-            let didWrite = await QRManager().write(id: code, data: TeaMeta(id: searcherData.meta.id, expirationDate: expirationDate, brewingTemp: temp))
+        let target: TeaSaveTarget
+        do {
+            target = try saveSelection.target(name: name, type: type, description: description)
+        } catch {
+            errorMessage = error.localizedDescription
+            showingErrorAlert = true
+            return
+        }
+
+        if case .existing(let selectedID) = target {
+            let didWrite = await QRManager().write(id: code, data: TeaMeta(id: selectedID, expirationDate: expirationDate, brewingTemp: temp))
             if didWrite {
                 showingSuccessAlert = true
                 resetState()
@@ -1197,11 +1197,7 @@ struct MultiStepNewCard: View {
             return
         }
         
-        let data = TeaData(
-            name: name,
-            type: GraphQLEnum(Type_Enum(rawValue: type.rawValue)!),
-            description: description
-        )
+        guard case .new(let data) = target else { return }
         
         do {
             let id = try await RecordWriter().writeExtendInfo(info: data)

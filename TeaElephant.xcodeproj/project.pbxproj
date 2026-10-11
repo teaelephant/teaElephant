@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE27AB0100C04CB2994A2AA1 /* TeaSaveSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27AB0100C04CB2994A2AA3 /* TeaSaveSelection.swift */; };
+		CE27AB0100C04CB2994A2AA2 /* TeaSaveSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE27AB0100C04CB2994A2AA3 /* TeaSaveSelection.swift */; };
+		ED1FC9976AD44D7987828EE7 /* ReaderRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48C3F92EC814FD8975520B7 /* ReaderRegressionTests.swift */; };
+		84190C4B35FC4E838E194272 /* NFCReadRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DF1865E6634CB69FB90AFE /* NFCReadRegressionTests.swift */; };
+		20303BBD8561428EAFE131FF /* SaveRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9A8F2FF5564753B83B3A2E /* SaveRegressionTests.swift */; };
+		A30FD776C6F446DCA4050934 /* AuthRegressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF16F8310C841B7A90C6F11 /* AuthRegressionTests.swift */; };
 		1CEAF0F996CA19454EAD4557 /* DetecorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF4F74D285D288F667D5E /* DetecorView.swift */; };
 		1CEAF55E49D8EBDB7195A8A1 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAFF5F083FF2F9221E7D4D /* Detector.swift */; };
 		1CEAF5EAC162B7CB98A68823 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAF03A3D2B34C4D665250C /* Entity.swift */; };
@@ -268,6 +274,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE27AB0100C04CB2994A2AA3 /* TeaSaveSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeaSaveSelection.swift; sourceTree = "<group>"; };
+		B48C3F92EC814FD8975520B7 /* ReaderRegressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderRegressionTests.swift; sourceTree = "<group>"; };
+		41DF1865E6634CB69FB90AFE /* NFCReadRegressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCReadRegressionTests.swift; sourceTree = "<group>"; };
+		5E9A8F2FF5564753B83B3A2E /* SaveRegressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRegressionTests.swift; sourceTree = "<group>"; };
+		9DF16F8310C841B7A90C6F11 /* AuthRegressionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRegressionTests.swift; sourceTree = "<group>"; };
 		1CEAF03A3D2B34C4D665250C /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		1CEAF135E3468BC62A7EC9C2 /* DetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorController.swift; sourceTree = "<group>"; };
 		1CEAF1E146311E4E03BC8CE7 /* qrWrite.graphql */ = {isa = PBXFileReference; lastKnownFileType = file.graphql; path = qrWrite.graphql; sourceTree = "<group>"; };
@@ -583,6 +594,10 @@
 		4B29054024C0AEDF007A3D1B /* TeaElephantTests */ = {
 			isa = PBXGroup;
 			children = (
+				B48C3F92EC814FD8975520B7 /* ReaderRegressionTests.swift */,
+				41DF1865E6634CB69FB90AFE /* NFCReadRegressionTests.swift */,
+				5E9A8F2FF5564753B83B3A2E /* SaveRegressionTests.swift */,
+				9DF16F8310C841B7A90C6F11 /* AuthRegressionTests.swift */,
 				4B29054124C0AEDF007A3D1B /* TeaElephantTests.swift */,
 				4B29054324C0AEDF007A3D1B /* Info.plist */,
 			);
@@ -613,6 +628,7 @@
 		4B29055D24C2ED2A007A3D1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE27AB0100C04CB2994A2AA3 /* TeaSaveSelection.swift */,
 				4B29055E24C2ED3E007A3D1B /* TeaInfo.swift */,
 				4B587D5F24D6E865006B9F96 /* TeaMeta.swift */,
 				4B4E29692A973DB500383D06 /* Collection.swift */,
@@ -1094,6 +1110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B1D0A1F2504152100D26450 /* NFCwriter.swift in Sources */,
+				CE27AB0100C04CB2994A2AA1 /* TeaSaveSelection.swift in Sources */,
 				4B37AF0A25AA608E00209E22 /* Searcher.swift in Sources */,
 				4BFF93A725BCEF03005FC04F /* RecordGetter.swift in Sources */,
 				4B6F1BCC2A9BD9FE00E4AFCC /* AppDelegate.swift in Sources */,
@@ -1169,6 +1186,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1FC9976AD44D7987828EE7 /* ReaderRegressionTests.swift in Sources */,
+				84190C4B35FC4E838E194272 /* NFCReadRegressionTests.swift in Sources */,
+				20303BBD8561428EAFE131FF /* SaveRegressionTests.swift in Sources */,
+				A30FD776C6F446DCA4050934 /* AuthRegressionTests.swift in Sources */,
 				CEAAFFD52E4F0CA600A6B5A3 /* TeaElephantDesign.swift in Sources */,
 				4B1D0A332504169F00D26450 /* Writer.swift in Sources */,
 				4BC972C42AAF9A9700636A4F /* AuthManager.swift in Sources */,
@@ -1216,6 +1237,7 @@
 				4BFF93D325BCF484005FC04F /* Network.swift in Sources */,
 				4B8E855024D09F9F001FCFFF /* UIResponder+Current.swift in Sources */,
 				CEAAFFE32E4F656B00A6B5A3 /* MultiStepNewCard.swift in Sources */,
+				CE27AB0100C04CB2994A2AA2 /* TeaSaveSelection.swift in Sources */,
 				CEAAFFE52E4F656B00A6B5A3 /* EnhancedShowCard.swift in Sources */,
 				CEAAFFE62E4F656B00A6B5A3 /* EnhancedNewCard.swift in Sources */,
 				CEAAFFE72E4F656B00A6B5A3 /* EnhancedCardViewer.swift in Sources */,

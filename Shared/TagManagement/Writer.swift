@@ -10,7 +10,7 @@ protocol ExtendInfoWriter {
 }
 
 protocol ShortInfoWriter: AnyObject {
-    @MainActor func writeData(info: TeaMeta) throws
+    @MainActor func writeData(info: TeaMeta) async throws
 }
 
 @MainActor
@@ -28,7 +28,7 @@ class writer {
             let id = try await extend.writeExtendInfo(info: data)
             print(id)
             let meta = TeaMeta(id: id, expirationDate: expirationDate, brewingTemp: brewingTemp)
-            try self.meta.writeData(info: meta)
+            try await self.meta.writeData(info: meta)
         } catch {
             print(error)
             throw error

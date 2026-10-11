@@ -7,133 +7,124 @@
 
 import Foundation
 import SwiftUI
-import UIKit
 @preconcurrency import CoreNFC
-import MessagePacker
 
 @MainActor
 class NFCReader: NSObject, ObservableObject {
-    var nfc: NearFieldCommunicator!
-    nonisolated(unsafe) private var onRead: ((_ meta: TeaMeta) async -> Void)?
+    lazy var nfc = NearFieldCommunicator(delegate: self)
+    private var onRead: (@MainActor (_ meta: TeaMeta) async -> Void)?
+    private var onError: (@MainActor (_ error: Error) -> Void)?
     @Published var detectedInfo: TeaMeta?
     @Published var error: Error?
 
-    override init() {
-        super.init()
-        nfc = NearFieldCommunicator(delegate: self)
-    }
-    
-    nonisolated func setOnRead(_ onRead: @escaping (_ meta: TeaMeta) async -> Void) {
+    func setOnRead(_ onRead: @escaping @MainActor (_ meta: TeaMeta) async -> Void) {
         self.onRead = onRead
     }
 
+    func setOnError(_ onError: @escaping @MainActor (_ error: Error) -> Void) {
+        self.onError = onError
+    }
+
     func startReadInfo() {
+        detectedInfo = nil
+        error = nil
         guard NFCTagReaderSession.readingAvailable else {
-            print("Scanning Not Supported")
+            fail(ReaderError.ScanningNotSupported)
             return
         }
-        self.nfc.createSession()
-        /*session = NFCNDEFReaderSession(delegate: self, queue: DispatchQueue.main, invalidateAfterFirstRead: false)
-        self.session?.alertMessage = "Приложи телефон к баночке с чаем чтобы узнать что в ней"
-        self.session?.begin()
-        print("start")*/
+        nfc.createSession()
+    }
+
+    private func didRead(_ meta: TeaMeta) async {
+        detectedInfo = meta
+        error = nil
+        let callback = onRead
+        clearCallbacks()
+        nfc.invalidateSession()
+        await callback?(meta)
+    }
+
+    private func fail(_ error: Error) {
+        detectedInfo = nil
+        self.error = error
+        let callback = onError
+        clearCallbacks()
+        nfc.invalidateSession()
+        callback?(error)
+    }
+
+    private func clearCallbacks() {
+        onRead = nil
+        onError = nil
     }
 }
 
-@MainActor extension NFCReader: ShortInfoReader {
-    // startReadInfo is @MainActor
-    // setOnRead is not @MainActor
-}
+extension NFCReader: ShortInfoReader {}
 
 extension NFCReader: NFCProtocol {
+    nonisolated func ready() {}
 
-    nonisolated func ready() -> Void {
-    }
-
-    /*!
-     * @method readerSession:didInvalidateWithError:
-     *
-     * @param session   The session object that is invalidated.
-     * @param error     The error indicates the invalidation reason.
-     *
-     * @discussion      Gets called when a session becomes invalid.  At this point the client is expected to discard
-     *                  the returned session object.
-     */
-    nonisolated public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
-        // Check the invalidation reason from the returned error.
-        if let readerError = error as? NFCReaderError {
-            // Show an alert when the invalidation reason is not because of a
-            // successful read during a single-tag read session, or because the
-            // user canceled a multiple-tag read session from the UI or
-            // programmatically using the invalidate method call.
-            if (readerError.code != .readerSessionInvalidationErrorFirstNDEFTagRead)
-                       && (readerError.code != .readerSessionInvalidationErrorUserCanceled) {
-                let errorToSet = error
-                Task { @MainActor in
-                    MainActor.assertIsolated()
-                    self.error = errorToSet
-                }
-            }
-        }
-
-        // To read new tags, a new session instance is required.
-        Task { @MainActor in
-            MainActor.assertIsolated()
-            self.nfc.createSession()
-        }
-    }
-
-    /*!
-     * @method readerSession:didDetectNDEFs:
-     *
-     * @param session   The session object used for tag detection.
-     * @param messages  Array of @link NFCNDEFMessage @link/ objects. The order of the discovery on the tag is maintained.
-     *
-     * @discussion      Gets called when the reader detects NFC tag(s) with NDEF messages in the polling sequence.  Polling
-     *                  is automatically restarted once the detected tag is removed from the reader's read range.
-     */
-    nonisolated public func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
-        print("\(messages)")
-        // Extract data before Task to avoid capturing non-Sendable values
-        guard messages.count == 1 else {
-            Task { @MainActor in
-                MainActor.assertIsolated()
-                self.error = ReaderError.InvalidMessageCount
-                if let error = self.error {
-                    print(error.localizedDescription)
-                }
-            }
-            return
-        }
-        
-        guard messages[0].records.count == 1 else {
-            Task { @MainActor in
-                MainActor.assertIsolated()
-                self.error = ReaderError.InvalidRecordsCount
-                if let error = self.error {
-                    print(error.localizedDescription)
-                }
-            }
-            return
-        }
-        
-        let payload = messages[0].records[0].payload
-        Task { @MainActor in
-            MainActor.assertIsolated()
-            do {
-                self.detectedInfo = try TeaMeta.fromBytes(data: payload)
-                if let onRead = self.onRead, let detectedInfo = self.detectedInfo {
-                    await onRead(detectedInfo)
-                }
-            } catch {
-                print(error.localizedDescription)
+    nonisolated func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
+        let sessionBox = SendableBox(session)
+        Task { @MainActor [weak self] in
+            guard let self, self.nfc.session === sessionBox.value else { return }
+            // The detection callback owns the result and cleanup of a successful single read.
+            // Its actor task may still be queued when CoreNFC reports automatic invalidation.
+            if (error as? NFCReaderError)?.code == .readerSessionInvalidationErrorFirstNDEFTagRead {
                 return
+            }
+            self.fail(error)
+        }
+    }
+
+    nonisolated func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
+        let payload: Result<Data, ReaderError>
+        if messages.count != 1 {
+            payload = .failure(.InvalidMessageCount)
+        } else if messages[0].records.count != 1 {
+            payload = .failure(.InvalidRecordsCount)
+        } else {
+            let record = messages[0].records[0]
+            let supportedFormat = record.typeNameFormat == .nfcWellKnown || record.typeNameFormat == .media
+            if supportedFormat && record.type == Data("application/json".utf8) {
+                payload = .success(record.payload)
+            } else {
+                payload = .failure(.UnsupportedRecordType)
+            }
+        }
+
+        let sessionBox = SendableBox(session)
+        Task { @MainActor [weak self] in
+            guard let self, self.nfc.session === sessionBox.value else { return }
+            switch payload {
+            case .failure(let error):
+                self.fail(error)
+            case .success(let data):
+                do {
+                    let meta = try TeaMeta.fromBytes(data: data)
+                    await self.didRead(meta)
+                } catch {
+                    self.fail(error)
+                }
             }
         }
     }
 }
 
-enum ReaderError: Error {
+enum ReaderError: LocalizedError {
     case InvalidMessageCount
     case InvalidRecordsCount
+    case UnsupportedRecordType
+    case ScanningNotSupported
+
+    var errorDescription: String? {
+        switch self {
+        case .InvalidMessageCount, .InvalidRecordsCount:
+            return "This NFC tag does not contain a single tea record."
+        case .UnsupportedRecordType:
+            return "This NFC tag does not contain tea information."
+        case .ScanningNotSupported:
+            return "NFC scanning is not supported on this device."
+        }
+    }
 }
